@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TE-AI Architecture Evolution Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        #header {
+            background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #4488ff;
+        }
+        
+        h1 {
+            margin: 0;
+            color: #4488ff;
+            font-size: 2.5em;
+            text-shadow: 0 0 20px rgba(68, 136, 255, 0.5);
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        #dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .chart-container {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            min-height: 300px;
+        }
+        
+        .chart-container h3 {
+            margin: 0 0 15px 0;
+            color: #4488ff;
+            font-size: 1.2em;
+        }
+        
+        .full-width {
+            grid-column: span 2;
+        }
+        
+        #connection-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid #333;
+        }
+        
+        #connection-status.connected {
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+        
+        #connection-status.disconnected {
+            border-color: #ff0000;
+            color: #ff0000;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .metric-box {
+            background: rgba(40, 40, 50, 0.5);
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            color: #4488ff;
+            font-weight: bold;
+        }
+        
+        .metric-label {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        
+        #phylogeny-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .species-bar {
+            position: absolute;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .species-bar:hover {
+            opacity: 0.8;
+        }
+        
+        .species-label {
+            position: absolute;
+            font-size: 10px;
+            padding: 2px 5px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 3px;
+            white-space: nowrap;
+            display: none;
+        }
+        
+        .species-bar:hover .species-label {
+            display: block;
+        }
+        
+        #lineage-viewer {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+        
+        .lineage-node {
+            min-width: 200px;
+            height: 200px;
+            border: 2px solid #4488ff;
+            border-radius: 10px;
+            padding: 10px;
+            background: rgba(20, 20, 30, 0.9);
+            position: relative;
+        }
+        
+        .lineage-node h4 {
+            margin: 0 0 10px 0;
+            color: #4488ff;
+            font-size: 0.9em;
+        }
+        
+        .architecture-graph {
+            width: 100%;
+            height: 150px;
+            position: relative;
+        }
+        
+        .error-message {
+            color: #ff6666;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 0.8em;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 10px;
+            border-radius: 2px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .updating {
+            animation: pulse 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>🧬 TE-AI Architecture Evolution Dashboard</h1>
+        <div class="subtitle">Real-time visualization of self-modifying neural architectures</div>
+        <div id="connection-status" class="disconnected">Disconnected</div>
+    </div>
+    
+    <div id="dashboard">
+        <!-- Metrics Overview -->
+        <div class="chart-container full-width">
+            <h3>System Metrics</h3>
+            <div class="metric-grid">
+                <div class="metric-box">
+                    <div class="metric-value" id="generation">0</div>
+                    <div class="metric-label">Generation</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="population">0</div>
+                    <div class="metric-label">Population</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="fitness">0.000</div>
+                    <div class="metric-label">Best Fitness</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="diversity">0.00</div>
+                    <div class="metric-label">Diversity</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="mean-layers">0.0</div>
+                    <div class="metric-label">Avg Layers</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="mean-connections">0.0</div>
+                    <div class="metric-label">Avg Connections</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="quantum-genes">0.0</div>
+                    <div class="metric-label">Quantum Genes</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="species-count">0</div>
+                    <div class="metric-label">Architecture Species</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Architectural Census Chart -->
+        <div class="chart-container">
+            <h3>Architectural Census</h3>
+            <div class="canvas-wrapper">
+                <canvas id="census-chart"></canvas>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4488ff;"></div>
+                    <span>Avg Layers</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #44ff88;"></div>
+                    <span>Avg Connections</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff8844;"></div>
+                    <span>Avg Layer Size</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quantum Evolution Chart -->
+        <div class="chart-container">
+            <h3>Quantum Gene Evolution</h3>
+            <div class="canvas-wrapper">
+                <canvas id="quantum-chart"></canvas>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff44ff;"></div>
+                    <span>Avg Quantum Genes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #44ffff;"></div>
+                    <span>Architecture Species</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fitness Landscape -->
+        <div class="chart-container">
+            <h3>Fitness Landscape</h3>
+            <div class="canvas-wrapper">
+                <canvas id="fitness-chart"></canvas>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffff44;"></div>
+                    <span>Best Fitness</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff4444;"></div>
+                    <span>Stress Level</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Phase Distribution -->
+        <div class="chart-container">
+            <h3>System Phase</h3>
+            <div class="canvas-wrapper">
+                <canvas id="phase-chart"></canvas>
+            </div>
+            <div id="current-phase" style="text-align: center; margin-top: 10px; font-size: 1.2em; color: #4488ff;">
+                Current Phase: <span id="phase-name">NORMAL</span>
+            </div>
+        </div>
+        
+        <!-- Architecture Phylogeny -->
+        <div class="chart-container full-width">
+            <h3>Architecture Species Phylogeny</h3>
+            <div id="phylogeny-container"></div>
+        </div>
+        
+        <!-- Elite Lineage Viewer -->
+        <div class="chart-container full-width">
+            <h3>Elite Cell Lineage</h3>
+            <div id="lineage-viewer">
+                <div class="error-message">Waiting for lineage data...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script>
+        // Global state
+        let state = {
+            connected: false,
+            history: {
+                generations: [],
+                fitness: [],
+                diversity: [],
+                meanLayers: [],
+                meanConnections: [],
+                meanQuantumGenes: [],
+                architectureSpecies: [],
+                stress: [],
+                layerSizes: []
+            },
+            architecturePhylogeny: {},
+            currentEliteLineage: null,
+            charts: {}
+        };
+        
+        // Initialize charts
+        function initCharts() {
+            // Census Chart
+            const censusCtx = document.getElementById('census-chart').getContext('2d');
+            state.charts.census = new Chart(censusCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Avg Layers',
+                            data: [],
+                            borderColor: '#4488ff',
+                            backgroundColor: 'rgba(68, 136, 255, 0.1)',
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Avg Connections',
+                            data: [],
+                            borderColor: '#44ff88',
+                            backgroundColor: 'rgba(68, 255, 136, 0.1)',
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Avg Layer Size',
+                            data: [],
+                            borderColor: '#ff8844',
+                            backgroundColor: 'rgba(255, 136, 68, 0.1)',
+                            yAxisID: 'y2'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Count'
+                            }
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Layer Size'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Quantum Chart
+            const quantumCtx = document.getElementById('quantum-chart').getContext('2d');
+            state.charts.quantum = new Chart(quantumCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Avg Quantum Genes',
+                            data: [],
+                            borderColor: '#ff44ff',
+                            backgroundColor: 'rgba(255, 68, 255, 0.1)',
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Architecture Species',
+                            data: [],
+                            borderColor: '#44ffff',
+                            backgroundColor: 'rgba(68, 255, 255, 0.1)',
+                            yAxisID: 'y2'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Quantum Genes'
+                            }
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Species Count'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Fitness Chart
+            const fitnessCtx = document.getElementById('fitness-chart').getContext('2d');
+            state.charts.fitness = new Chart(fitnessCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Best Fitness',
+                            data: [],
+                            borderColor: '#ffff44',
+                            backgroundColor: 'rgba(255, 255, 68, 0.1)',
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Stress Level',
+                            data: [],
+                            borderColor: '#ff4444',
+                            backgroundColor: 'rgba(255, 68, 68, 0.1)',
+                            yAxisID: 'y2'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Fitness'
+                            }
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Stress'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Phase Chart (Pie)
+            const phaseCtx = document.getElementById('phase-chart').getContext('2d');
+            state.charts.phase = new Chart(phaseCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Normal', 'Exploration', 'Exploitation', 'Crisis', 'Dream', 'Quantum'],
+                    datasets: [{
+                        data: [100, 0, 0, 0, 0, 0],
+                        backgroundColor: [
+                            '#4488ff',
+                            '#44ff88',
+                            '#ff8844',
+                            '#ff4444',
+                            '#ff44ff',
+                            '#44ffff'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update visualizations
+        function updateVisualizations(data) {
+            // Update metrics
+            document.getElementById('generation').textContent = data.generation || 0;
+            document.getElementById('population').textContent = data.population || 0;
+            document.getElementById('fitness').textContent = (data.fitness || 0).toFixed(3);
+            document.getElementById('diversity').textContent = (data.diversity || 0).toFixed(2);
+            document.getElementById('mean-layers').textContent = (data.mean_layers || 0).toFixed(1);
+            document.getElementById('mean-connections').textContent = (data.mean_connections || 0).toFixed(1);
+            document.getElementById('quantum-genes').textContent = (data.mean_quantum_genes || 0).toFixed(1);
+            document.getElementById('species-count').textContent = data.architecture_species || 0;
+            
+            // Update phase display
+            const phase = data.phase || 'normal';
+            document.getElementById('phase-name').textContent = phase.toUpperCase();
+            updatePhaseChart(phase);
+            
+            // Add to history
+            const gen = data.generation || 0;
+            if (!state.history.generations.includes(gen)) {
+                state.history.generations.push(gen);
+                state.history.fitness.push(data.fitness || 0);
+                state.history.diversity.push(data.diversity || 0);
+                state.history.meanLayers.push(data.mean_layers || 0);
+                state.history.meanConnections.push(data.mean_connections || 0);
+                state.history.meanQuantumGenes.push(data.mean_quantum_genes || 0);
+                state.history.architectureSpecies.push(data.architecture_species || 0);
+                state.history.stress.push(data.stress || 0);
+                
+                // Keep only last 100 generations
+                if (state.history.generations.length > 100) {
+                    Object.keys(state.history).forEach(key => {
+                        state.history[key] = state.history[key].slice(-100);
+                    });
+                }
+                
+                updateCharts();
+            }
+            
+            // Update cells visualization if available
+            if (data.cells) {
+                updateCellsVisualization(data.cells);
+            }
+        }
+        
+        function updateCharts() {
+            // Update Census Chart
+            state.charts.census.data.labels = state.history.generations;
+            state.charts.census.data.datasets[0].data = state.history.meanLayers;
+            state.charts.census.data.datasets[1].data = state.history.meanConnections;
+            state.charts.census.data.datasets[2].data = state.history.layerSizes.length ? state.history.layerSizes : 
+                state.history.meanLayers.map(l => l * 10); // Estimate if not available
+            state.charts.census.update('none');
+            
+            // Update Quantum Chart
+            state.charts.quantum.data.labels = state.history.generations;
+            state.charts.quantum.data.datasets[0].data = state.history.meanQuantumGenes;
+            state.charts.quantum.data.datasets[1].data = state.history.architectureSpecies;
+            state.charts.quantum.update('none');
+            
+            // Update Fitness Chart
+            state.charts.fitness.data.labels = state.history.generations;
+            state.charts.fitness.data.datasets[0].data = state.history.fitness;
+            state.charts.fitness.data.datasets[1].data = state.history.stress;
+            state.charts.fitness.update('none');
+        }
+        
+        function updatePhaseChart(phase) {
+            const phaseIndex = {
+                'normal': 0,
+                'exploration': 1,
+                'exploitation': 2,
+                'crisis': 3,
+                'dream': 4,
+                'quantum': 5
+            };
+            
+            const newData = [0, 0, 0, 0, 0, 0];
+            newData[phaseIndex[phase] || 0] = 100;
+            
+            state.charts.phase.data.datasets[0].data = newData;
+            state.charts.phase.update('none');
+        }
+        
+        function updateCellsVisualization(cells) {
+            // Update phylogeny visualization
+            updatePhylogeny(cells);
+            
+            // Update lineage for elite cell
+            if (cells.length > 0) {
+                const eliteCell = cells.reduce((best, cell) => 
+                    (cell.fitness > best.fitness) ? cell : best
+                );
+                updateLineageViewer(eliteCell);
+            }
+        }
+        
+        function updatePhylogeny(cells) {
+            const container = document.getElementById('phylogeny-container');
+            container.innerHTML = '';
+            
+            // Count architecture types
+            const architectureCounts = {};
+            cells.forEach(cell => {
+                if (cell.genes) {
+                    const archKey = `L${cell.genes.length}`;
+                    architectureCounts[archKey] = (architectureCounts[archKey] || 0) + 1;
+                }
+            });
+            
+            // Create bars
+            const maxCount = Math.max(...Object.values(architectureCounts));
+            let x = 0;
+            
+            Object.entries(architectureCounts).forEach(([arch, count]) => {
+                const width = (count / cells.length) * 100;
+                const height = (count / maxCount) * 100;
+                const color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+                
+                const bar = document.createElement('div');
+                bar.className = 'species-bar';
+                bar.style.left = x + '%';
+                bar.style.bottom = '0';
+                bar.style.width = width + '%';
+                bar.style.height = height + '%';
+                bar.style.backgroundColor = color;
+                
+                const label = document.createElement('div');
+                label.className = 'species-label';
+                label.textContent = `${arch}: ${count} cells`;
+                bar.appendChild(label);
+                
+                container.appendChild(bar);
+                x += width;
+            });
+        }
+        
+        function updateLineageViewer(eliteCell) {
+            const viewer = document.getElementById('lineage-viewer');
+            
+            if (!eliteCell || !eliteCell.genes) {
+                return;
+            }
+            
+            viewer.innerHTML = '';
+            
+            // Create lineage node
+            const node = document.createElement('div');
+            node.className = 'lineage-node';
+            
+            const title = document.createElement('h4');
+            title.textContent = `Cell ${eliteCell.cell_id.slice(-6)} (Gen ${state.history.generations[state.history.generations.length - 1]})`;
+            node.appendChild(title);
+            
+            const info = document.createElement('div');
+            info.innerHTML = `
+                <div>Fitness: ${eliteCell.fitness.toFixed(3)}</div>
+                <div>Genes: ${eliteCell.genes.length}</div>
+                <div>Quantum: ${eliteCell.genes.filter(g => g.gene_type === 'Q').length}</div>
+            `;
+            node.appendChild(info);
+            
+            viewer.appendChild(node);
+        }
+        
+        // Polling function
+        async function pollData() {
+            try {
+                const response = await fetch('/te_ai_state.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Failed to fetch');
+                
+                const data = await response.json();
+                
+                // Update connection status
+                const statusEl = document.getElementById('connection-status');
+                statusEl.textContent = 'Connected';
+                statusEl.className = 'connected';
+                state.connected = true;
+                
+                // Update visualizations
+                updateVisualizations(data);
+                
+            } catch (error) {
+                // Update connection status
+                const statusEl = document.getElementById('connection-status');
+                statusEl.textContent = 'Disconnected';
+                statusEl.className = 'disconnected';
+                state.connected = false;
+            }
+        }
+        
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            initCharts();
+            
+            // Start polling
+            setInterval(pollData, 1000);
+            pollData(); // Initial poll
+        });
+    </script>
+</body>
+</html>

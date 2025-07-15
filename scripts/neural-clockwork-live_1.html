@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TE-AI Live Architecture Visualization</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: 'Courier New', monospace;
+        background-color: #000;
+      }
+      
+      #container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+      
+      #stats {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+      
+      #controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+      
+      #controls button {
+        display: block;
+        margin: 5px 0;
+        padding: 8px 16px;
+        background: rgba(68, 136, 255, 0.8);
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        transition: all 0.3s;
+      }
+      
+      #controls button:hover {
+        background: rgba(68, 136, 255, 1);
+        transform: translateX(-2px);
+      }
+      
+      .metric {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+      
+      .metric span {
+        color: #4488ff;
+        font-weight: bold;
+      }
+      
+      #connection-status {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+      }
+      
+      #connection-status.connected {
+        border-color: #00ff00;
+        color: #00ff00;
+      }
+      
+      #connection-status.disconnected {
+        border-color: #ff0000;
+        color: #ff0000;
+      }
+      
+      #info-panel {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+        display: none;
+      }
+      
+      #info-panel.visible {
+        display: block;
+      }
+      
+      #info-panel h3 {
+        margin-top: 0;
+        color: #4488ff;
+      }
+      
+      #phase-indicator {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+        border: 2px solid #4488ff;
+        color: #4488ff;
+        font-size: 16px;
+        font-weight: bold;
+        backdrop-filter: blur(10px);
+        text-transform: uppercase;
+      }
+      
+      #phase-indicator.exploration {
+        border-color: #0066ff;
+        color: #0066ff;
+      }
+      
+      #phase-indicator.exploitation {
+        border-color: #ff6600;
+        color: #ff6600;
+      }
+      
+      #phase-indicator.crisis {
+        border-color: #ff0000;
+        color: #ff0000;
+        animation: pulse 1s infinite;
+      }
+      
+      #phase-indicator.quantum {
+        border-color: #ff00ff;
+        color: #ff00ff;
+        animation: quantum-phase 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+      }
+      
+      @keyframes quantum-phase {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        text-align: center;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #4488ff;
+        border-radius: 50%;
+        margin: 20px auto;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="loading">
+        <div>Initializing Neural Clockwork...</div>
+        <div class="loading-spinner"></div>
+      </div>
+      
+      <div id="connection-status" class="disconnected">
+        Disconnected
+      </div>
+      
+      <div id="stats">
+        <h3 style="margin: 0 0 10px 0; color: #4488ff;">METRICS</h3>
+        <div class="metric">Generation: <span id="generation">0</span></div>
+        <div class="metric">Population: <span id="population">0</span></div>
+        <div class="metric">Stress Level: <span id="stress">0.00</span></div>
+        <div class="metric">Transpositions/sec: <span id="tps">0</span></div>
+        <div class="metric">Best Fitness: <span id="best-fitness">0.000</span></div>
+        <div class="metric">Diversity: <span id="diversity">0.00</span></div>
+      </div>
+      
+      <div id="controls">
+        <button onclick="togglePause()">Pause</button>
+        <button onclick="changeView('molecular')">Molecular View</button>
+        <button onclick="changeView('cellular')">Cellular View</button>
+        <button onclick="changeView('population')">Population View</button>
+        <button onclick="changeView('abstract')">Abstract View</button>
+        <button onclick="toggleInfo()">Toggle Info</button>
+        <button onclick="resetCamera()">Reset Camera</button>
+      </div>
+      
+      <div id="phase-indicator" class="stable">
+        STABLE
+      </div>
+      
+      <div id="info-panel">
+        <h3>Selected Object</h3>
+        <div id="object-info">Click on any gene or cell to see details</div>
+      </div>
+      
+      <div id="legend" style="position: absolute; bottom: 10px; right: 10px; 
+                              background: rgba(0,0,0,0.7); padding: 15px; 
+                              border-radius: 5px; color: white; font-size: 12px;">
+        <h4 style="margin-top: 0;">Germinal Center Zones</h4>
+        <div><span style="color: #4a4a7a;">◉</span> Dark Zone - Active Mutation</div>
+        <div><span style="color: #7a7a4a;">◉</span> Light Zone - Selection</div>
+        <div><span style="color: #4a5a7a;">◉</span> Memory Zone - Elite Cells</div>
+        <div><span style="color: #7a4a7a;">◉</span> Quantum Layer - 4D Space</div>
+        <div><span style="color: #5a5a5a;">◉</span> Mantle Zone - Transitional</div>
+        <br>
+        <h4>Cell Types</h4>
+        <div><span style="color: #0080ff;">●</span> V-Specialized (Variable)</div>
+        <div><span style="color: #00ff80;">●</span> D-Specialized (Diversity)</div>
+        <div><span style="color: #ffaa00;">●</span> J-Specialized (Joining)</div>
+        <div><span style="color: #ff00ff;">●</span> Q-Specialized (Quantum)</div>
+        <div><span style="color: #00ffff;">●</span> Balanced</div>
+        <br>
+        <h4>Visual Properties</h4>
+        <div>Size = Gene Count</div>
+        <div>Brightness = Fitness</div>
+        <div>Particles = Active Genes</div>
+        <div>Glow = Quantum Genes</div>
+        <div>Position = Zone & Properties</div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="neural-clockwork-live.js"></script>
+    <script>
+      let viz;
+      
+      // Initialize visualization
+      window.addEventListener('DOMContentLoaded', () => {
+        // Hide loading screen
+        setTimeout(() => {
+          document.getElementById('loading').style.display = 'none';
+        }, 1000);
+        
+        // Create visualization
+        viz = new LiveNeuralClockwork();
+        window.viz = viz;
+        
+        // Connection status updates
+        viz.on('connection_status', (status) => {
+          const statusEl = document.getElementById('connection-status');
+          statusEl.textContent = status.text;
+          statusEl.className = status.connected ? 'connected' : 'disconnected';
+        });
+        
+        // Update stats from events
+        viz.on("generation_start", (data) => {
+          document.getElementById("generation").textContent = data.generation;
+          document.getElementById("population").textContent = data.population_size;
+          document.getElementById("stress").textContent = data.stress_level.toFixed(3);
+        });
+        
+        viz.on("generation_complete", (data) => {
+          if (data.metrics) {
+            document.getElementById("best-fitness").textContent = 
+              data.metrics.best_fitness ? data.metrics.best_fitness.toFixed(3) : "0.000";
+            document.getElementById("diversity").textContent = 
+              data.metrics.diversity ? data.metrics.diversity.toFixed(2) : "0.00";
+          }
+        });
+        
+        viz.on("phase_transition", (data) => {
+          const phaseEl = document.getElementById("phase-indicator");
+          phaseEl.textContent = data.phase.toUpperCase();
+          phaseEl.className = data.phase;
+        });
+        
+        // Track transposition rate
+        let transpositionCount = 0;
+        viz.on("transposition", () => transpositionCount++);
+        
+        setInterval(() => {
+          document.getElementById("tps").textContent = transpositionCount;
+          transpositionCount = 0;
+        }, 1000);
+        
+        // Object selection
+        viz.on("object_selected", (data) => {
+          const infoPanel = document.getElementById("info-panel");
+          const objectInfo = document.getElementById("object-info");
+          
+          if (data) {
+            let infoHTML = "";
+            
+            if (data.gene_id) {
+              infoHTML = `
+                <strong>Gene ID:</strong> ${data.gene_id}<br>
+                <strong>Type:</strong> ${data.gene_type}<br>
+                <strong>Position:</strong> ${data.position}<br>
+                <strong>Depth:</strong> ${data.depth || 'N/A'}<br>
+                <strong>Activation:</strong> ${data.activation || 'N/A'}<br>
+                <strong>Quantum:</strong> ${data.is_quantum ? 'Yes' : 'No'}
+              `;
+            } else if (data.cellId) {
+              infoHTML = `
+                <strong>Cell ID:</strong> ${data.cellId}<br>
+                <strong>Fitness:</strong> ${data.fitness || 'N/A'}<br>
+                <strong>Active Genes:</strong> ${data.genes ? data.genes.length : 0}
+              `;
+            }
+            
+            objectInfo.innerHTML = infoHTML;
+            infoPanel.classList.add('visible');
+          }
+        });
+      });
+      
+      // Helper functions
+      function toggleInfo() {
+        const infoPanel = document.getElementById("info-panel");
+        infoPanel.classList.toggle('visible');
+      }
+      
+      function resetCamera() {
+        if (viz) {
+          viz.camera.position.set(50, 50, 50);
+          viz.controls.target.set(0, 0, 0);
+          viz.controls.update();
+        }
+      }
+      
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        switch(e.key) {
+          case '1':
+            changeView('molecular');
+            break;
+          case '2':
+            changeView('cellular');
+            break;
+          case '3':
+            changeView('population');
+            break;
+          case '4':
+            changeView('abstract');
+            break;
+          case ' ':
+            togglePause();
+            e.preventDefault();
+            break;
+          case 'i':
+            toggleInfo();
+            break;
+          case 'r':
+            resetCamera();
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

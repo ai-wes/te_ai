@@ -1,0 +1,3506 @@
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+(pshell_venv) (base) PS C:\Users\wes\desktop\te_ai\scripts> python .\run_with_visualization.py
+
+============================================================
+🧬 TE-AI WITH LIVE VISUALIZATION (CONFIG-DRIVEN) 🧬
+============================================================
+Loaded configuration: Generations=50, Population=64
+
+🎨 Visualization using polling (state file: te_ai_state.json)
+🌐 Open neural-clockwork-live.html in your browser
+
+⏳ Starting in 3 seconds...
+
+📊 Creating synthetic dataset...
+
+🧬 Initializing gene pool...
+
+🚀 Starting evolution with visualization...
+============================================================
+
+================================================================================
+🚀 OPTIMIZED TRANSPOSABLE ELEMENT AI - PERFORMANCE VERSION
+================================================================================
+
+⚙️  Configuration:
+   Device: cuda
+   Population: 64 → 512
+   Generations: 50
+   Optimization: ENABLED
+   - Using component factory for Germinal Center.
+
+🧬 Initializing production population with 64 cells...
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+   Created 50/64 cells...
+   ✨✨ A Quantum Gene has emerged!  ✨✨
+✅✅  Population initialized with 64 cells  ✅✅
+✨ Quantum Dream System integrated successfully!
+
+================================================================================
+GENERATION 1
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 64 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.569 ± 0.002, 🌿 Diversity: 4.694, 🧬 Genes: 143
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.003
+   Current stress level: 0.003
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 391 positions
+[DEBUG] Sampled 200 positions from 391 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30753.549815154423
+[DEBUG] Values mean: 0.41735242211977835, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.009166276692335653, Denominator: 15.245303726163376
+[DEBUG] Final Moran's I: 0.1202504962443596
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 44 survivors, 20 to be replaced.
+   Replaced 20 cells with optimized cloning.
+   New population size: 96
+   - Parallel batch cache cleared.
+
+⏱️  Generation 1 completed in 63.32s. Population: 96
+
+================================================================================
+GENERATION 2
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 96 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.580 ± 0.002, 🌿 Diversity: 4.478, 🧬 Genes: 116
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 584 positions
+[DEBUG] Sampled 200 positions from 584 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30863.70574250081
+[DEBUG] Values mean: 0.392287851867157, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.00919659830705142, Denominator: 15.309338592130645
+[DEBUG] Final Moran's I: 0.12014363980137827
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 67 survivors, 29 to be replaced.
+   Replaced 29 cells with optimized cloning.
+   New population size: 144
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 4.41 GB
+
+⏱️  Generation 2 completed in 89.27s. Population: 144
+
+================================================================================
+GENERATION 3
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 144 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.587 ± 0.002, 🌿 Diversity: 4.387, 🧬 Genes: 112
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+   Current stress level: 1.000
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 881 positions
+[DEBUG] Sampled 200 positions from 881 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31018.671608297875
+[DEBUG] Values mean: 0.41561904651040565, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.007973669509462072, Denominator: 14.13915999821097
+[DEBUG] Final Moran's I: 0.11278844726944151
+
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️
+   Executing stress response protocols:
+   • Triggering transposition cascade (budgeted)
+    ‼️‼️ A high-stress event triggered a Quantum Leap!  ‼️‼️
+    ‼️‼️ A high-stress event triggered a Quantum Leap!  ‼️‼️
+    ‼️‼️ A high-stress event triggered a Quantum Leap!  ‼️‼️
+    ‼️‼️ A high-stress event triggered a Quantum Leap!  ‼️‼️
+    ‼️‼️ A high-stress event triggered a Quantum Leap!  ‼️‼️
+     - 45/57 mutations executed. Tokens remaining: 0.0
+   • Applying epigenetic modifications
+     - 20 genes epigenetically modified.
+   • Facilitating horizontal gene transfer
+     - 0 successful gene transfers.
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 100 survivors, 44 to be replaced.
+   Replaced 44 cells with optimized cloning.
+   New population size: 216
+   - Parallel batch cache cleared.
+
+⏱️  Generation 3 completed in 116.68s. Population: 216
+
+================================================================================
+GENERATION 4
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 216 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.589 ± 0.001, 🌿 Diversity: 4.339, 🧬 Genes: 111
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 1342 positions
+[DEBUG] Sampled 200 positions from 1342 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31014.717151093104
+[DEBUG] Values mean: 0.3972549712303015, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008440287975146806, Denominator: 14.377450986214319
+[DEBUG] Final Moran's I: 0.1174100747516329
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 151 survivors, 65 to be replaced.
+   Replaced 65 cells with optimized cloning.
+   New population size: 324
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 9.92 GB
+
+⏱️  Generation 4 completed in 89.71s. Population: 324
+
+================================================================================
+GENERATION 5
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 324 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.592 ± 0.001, 🌿 Diversity: 4.317, 🧬 Genes: 111
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 1985 positions
+[DEBUG] Sampled 200 positions from 1985 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31080.8012578998
+[DEBUG] Values mean: 0.38261501792252295, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008212436953024085, Denominator: 14.21749583918274
+[DEBUG] Final Moran's I: 0.1155257866211714
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 226 survivors, 98 to be replaced.
+   Replaced 98 cells with optimized cloning.
+   New population size: 486
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 130 quantum genes for entanglement
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5170, realities: 3, time: 29.40s
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5007, realities: 4, time: 38.61s
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5103, realities: 5, time: 48.83s
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5115, realities: 6, time: 58.61s
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5122, realities: 7, time: 68.79s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.500
+   Average |1⟩ probability: 0.500
+   Average coherence time: 5.0 steps
+   Quantum memory size: 25 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_5.pt
+
+⏱️  Generation 5 completed in 374.05s. Population: 486
+
+================================================================================
+GENERATION 6
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 486 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.593 ± 0.002, 🌿 Diversity: 4.293, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3074 positions
+[DEBUG] Sampled 200 positions from 3074 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30948.3452252519
+[DEBUG] Values mean: 0.3947476234542679, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008222392377196392, Denominator: 14.420960479954333
+[DEBUG] Final Moran's I: 0.11403390763917315
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 340 survivors, 146 to be replaced.
+   Replaced 146 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 15.91 GB
+
+⏱️  Generation 6 completed in 202.43s. Population: 512
+
+================================================================================
+GENERATION 7
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.602 ± 0.001, 🌿 Diversity: 4.301, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3257 positions
+[DEBUG] Sampled 200 positions from 3257 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31091.23587600326
+[DEBUG] Values mean: 0.36703045758164565, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008638814680026197, Denominator: 14.723557434283517
+[DEBUG] Final Moran's I: 0.1173468398324835
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 7 completed in 210.55s. Population: 512
+
+================================================================================
+GENERATION 8
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.606 ± 0.001, 🌿 Diversity: 4.312, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3346 positions
+[DEBUG] Sampled 200 positions from 3346 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30962.746501426995
+[DEBUG] Values mean: 0.3763066981517194, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008936645720629396, Denominator: 14.983140959829761
+[DEBUG] Final Moran's I: 0.11928934987114924
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 15.99 GB
+
+⏱️  Generation 8 completed in 212.22s. Population: 512
+
+================================================================================
+GENERATION 9
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.610 ± 0.001, 🌿 Diversity: 4.296, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3367 positions
+[DEBUG] Sampled 200 positions from 3367 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31100.650609276337
+[DEBUG] Values mean: 0.3932453804266038, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.007808322655729643, Denominator: 14.274585390134389
+[DEBUG] Final Moran's I: 0.10940174362088607
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 9 completed in 208.99s. Population: 512
+
+================================================================================
+GENERATION 10
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.613 ± 0.002, 🌿 Diversity: 4.262, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3375 positions
+[DEBUG] Sampled 200 positions from 3375 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30631.53243469692
+[DEBUG] Values mean: 0.37839064268347294, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011167605493362535, Denominator: 17.176367766313
+[DEBUG] Final Moran's I: 0.13003454100773162
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 177 quantum genes for entanglement
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5315, realities: 3, time: 28.57s
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5310, realities: 4, time: 38.15s
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5300, realities: 5, time: 45.16s
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5208, realities: 6, time: 56.21s
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5286, realities: 7, time: 67.50s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.300
+   Average |1⟩ probability: 0.700
+   Average coherence time: 5.9 steps
+   Quantum memory size: 50 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_10.pt
+   - Cleared CUDA memory cache. Usage now: 16.22 GB
+
+⏱️  Generation 10 completed in 437.71s. Population: 512
+
+================================================================================
+GENERATION 11
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.612 ± 0.002, 🌿 Diversity: 4.259, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3408 positions
+[DEBUG] Sampled 200 positions from 3408 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30446.16364242328
+[DEBUG] Values mean: 0.38499333400691355, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011760019288134483, Denominator: 17.762947144511354
+[DEBUG] Final Moran's I: 0.13241067703979809
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 11 completed in 219.39s. Population: 512
+
+📊 Progress: 10/50 (20.0%)
+   Elapsed: 37.1m, ETA: 148.3m
+   Current fitness: 0.6119
+
+================================================================================
+GENERATION 12
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Resized transform_2: 128 -> 33
+Removed layer transform_0
+Changed activation in transform_1 to relu
+Removed layer transform_2
+Rewired transform_1 -> output
+Rewired transform_0 -> transform_2
+Removed layer transform_0
+Resized transform_1: 128 -> 37
+Added layer transform_4 after transform_1
+Added residual connection transform_2 -> transform_2
+Resized transform_1: 128 -> 41
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.617 ± 0.001, 🌿 Diversity: 4.216, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3443 positions
+[DEBUG] Sampled 200 positions from 3443 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30989.437343642254
+[DEBUG] Values mean: 0.3724785280188722, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008447860913124145, Denominator: 14.312741069634507
+[DEBUG] Final Moran's I: 0.11804672315419552
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.04 GB
+
+⏱️  Generation 12 completed in 207.50s. Population: 512
+
+================================================================================
+GENERATION 13
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_4 after transform_2
+Resized transform_2: 128 -> 32
+Resized transform_0: 128 -> 32
+Added layer transform_3 after transform_1
+Changed activation in transform_0 to relu
+Resized transform_2: 128 -> 45
+Removed layer transform_1
+Resized transform_0: 128 -> 34
+Removed layer transform_0
+Resized transform_0: 128 -> 64
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Added residual connection transform_0 -> transform_2
+Changed activation in transform_2 to elu
+Changed activation in transform_1 to tanh
+Removed layer transform_1
+Removed layer transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.618 ± 0.002, 🌿 Diversity: 4.172, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3469 positions
+[DEBUG] Sampled 200 positions from 3469 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30707.97872997891
+[DEBUG] Values mean: 0.38471967108015903, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.010786609727614424, Denominator: 16.47420959923325
+[DEBUG] Final Moran's I: 0.13095146887188397
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 13 completed in 209.51s. Population: 512
+
+================================================================================
+GENERATION 14
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Changed activation in transform_2 to sigmoid
+Removed layer transform_0
+Added layer transform_4 after transform_0
+Resized transform_1: 128 -> 32
+Rewired transform_2 -> transform_1
+Removed layer transform_1
+Changed activation in transform_2 to gelu
+Changed activation in transform_0 to gelu
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_2
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to relu
+Resized transform_2: 128 -> 37
+Removed layer transform_2
+Changed activation in transform_1 to sigmoid
+Added layer transform_3 after transform_2
+Changed activation in transform_1 to swish
+Changed activation in transform_1 to swish
+Removed layer transform_0
+Resized transform_1: 128 -> 36
+Resized transform_0: 128 -> 40
+Removed layer transform_1
+Resized transform_2: 128 -> 44
+Added layer transform_4 after transform_0
+Added layer transform_4 after transform_2
+Removed layer transform_0
+Changed activation in transform_2 to swish
+Added layer transform_4 after transform_2
+Added residual connection transform_1 -> output
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.621 ± 0.001, 🌿 Diversity: 4.151, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3482 positions
+[DEBUG] Sampled 200 positions from 3482 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30935.43643698734
+[DEBUG] Values mean: 0.3604156284973811, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.009903525223721222, Denominator: 15.725342607078757
+[DEBUG] Final Moran's I: 0.1259562410966252
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.06 GB
+
+⏱️  Generation 14 completed in 210.50s. Population: 512
+
+================================================================================
+GENERATION 15
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Resized transform_0: 128 -> 32
+Removed layer transform_1
+Added layer transform_5 after transform_0
+Added layer transform_4 after transform_2
+Removed layer transform_2
+Changed activation in transform_2 to elu
+Added layer transform_3 after transform_0
+Removed layer transform_1
+Added residual connection transform_1 -> output
+Changed activation in transform_2 to gelu
+Modification failed: 'Linear' object is not iterable
+Added layer transform_5 after transform_1
+Rewired transform_0 -> output
+Resized transform_2: 128 -> 32
+Changed activation in transform_0 to sigmoid
+Rewired transform_1 -> output
+Added layer transform_3 after transform_1
+Changed activation in transform_2 to relu
+Changed activation in transform_2 to swish
+Resized transform_0: 128 -> 32
+Added layer transform_4 after transform_0
+Resized transform_2: 128 -> 32
+Rewired transform_2 -> transform_2
+Rewired transform_1 -> transform_2
+Rewired transform_1 -> transform_2
+Added layer transform_5 after transform_0
+Changed activation in transform_1 to swish
+Resized transform_0: 128 -> 32
+Changed activation in transform_2 to tanh
+Added residual connection transform_0 -> transform_2
+Resized transform_1: 128 -> 32
+Changed activation in transform_1 to elu
+Changed activation in transform_0 to swish
+Changed activation in transform_1 to elu
+Resized transform_1: 128 -> 32
+Added layer transform_4 after transform_0
+Rewired transform_0 -> transform_1
+Changed activation in transform_1 to gelu
+Added layer transform_4 after transform_2
+Resized transform_0: 128 -> 38
+Removed layer transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.625 ± 0.001, 🌿 Diversity: 4.126, 🧬 Genes: 110
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3513 positions
+[DEBUG] Sampled 200 positions from 3513 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30903.54257768543
+[DEBUG] Values mean: 0.3837864346742025, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.009254122970505995, Denominator: 15.043222963470944
+[DEBUG] Final Moran's I: 0.12303378063301378
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 219 quantum genes for entanglement
+Resized transform_1: 128 -> 32
+Rewired transform_0 -> transform_1
+Removed layer transform_4
+Resized transform_2: 128 -> 50
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5298, realities: 3, time: 29.30s
+Added layer transform_6 after output
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_2
+Removed layer transform_1
+Resized transform_2: 128 -> 46
+Added layer transform_2 after transform_2
+Added layer transform_4 after transform_0
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5376, realities: 4, time: 38.21s
+Resized transform_2: 128 -> 34
+Removed layer transform_2
+Removed layer transform_1
+Removed layer transform_0
+Rewired transform_1 -> transform_1
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to sigmoid
+Added layer transform_4 after transform_0
+Added layer transform_5 after transform_2
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Resized transform_2: 128 -> 37
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5266, realities: 5, time: 48.14s
+Added layer transform_6 after transform_1
+Rewired transform_2 -> output
+Added layer transform_4 after transform_1
+Added layer transform_5 after transform_1
+Removed layer transform_4
+Changed activation in transform_1 to swish
+Added layer transform_5 after transform_1
+Changed activation in transform_0 to relu
+Rewired transform_2 -> output
+Removed layer transform_4
+Added layer transform_2 after transform_2
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to relu
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to tanh
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to swish
+Resized transform_1: 128 -> 32
+Removed layer transform_0
+Added residual connection transform_0 -> output
+Removed layer transform_0
+Resized transform_1: 128 -> 41
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5320, realities: 6, time: 57.97s
+Added layer transform_4 after transform_0
+Rewired transform_1 -> transform_1
+Added layer transform_4 after transform_0
+Added layer transform_5 after transform_3
+Added residual connection transform_2 -> transform_2
+Resized transform_1: 128 -> 45
+Added layer transform_5 after transform_1
+Added layer transform_4 after transform_1
+Removed layer transform_3
+Removed layer transform_0
+Rewired transform_2 -> output
+Resized transform_0: 128 -> 32
+Removed layer transform_2
+Changed activation in transform_1 to relu
+Removed layer transform_0
+Removed layer transform_0
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5325, realities: 7, time: 68.36s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.267
+   Average |1⟩ probability: 0.733
+   Average coherence time: 6.1 steps
+   Quantum memory size: 75 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_15.pt
+
+⏱️  Generation 15 completed in 455.54s. Population: 512
+
+================================================================================
+GENERATION 16
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Removed layer transform_2
+Added layer transform_2 after transform_2
+Added layer transform_7 after transform_5
+Removed layer transform_1
+Removed layer transform_1
+Removed layer transform_2
+Rewired transform_2 -> output
+Changed activation in transform_0 to relu
+Changed activation in transform_2 to elu
+Resized transform_1: 128 -> 39
+Rewired output -> output
+Resized transform_2: 128 -> 38
+Changed activation in transform_2 to tanh
+Added residual connection output -> output
+Rewired transform_0 -> transform_2
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_1 to swish
+Removed layer transform_2
+Removed layer transform_1
+Resized transform_4: 128 -> 32
+Changed activation in transform_2 to elu
+Resized transform_2: 128 -> 32
+Rewired transform_1 -> transform_1
+Changed activation in transform_2 to gelu
+Rewired transform_1 -> transform_2
+Resized transform_2: 128 -> 37
+Added layer transform_4 after transform_2
+Changed activation in transform_4 to tanh
+Changed activation in transform_0 to gelu
+Rewired transform_2 -> output
+Changed activation in transform_2 to swish
+Removed layer transform_1
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+Resized transform_2: 128 -> 48
+Added layer transform_5 after output
+Added layer transform_5 after transform_2
+Changed activation in transform_1 to elu
+Changed activation in transform_1 to relu
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to gelu
+Removed layer transform_1
+Rewired transform_2 -> transform_1
+Removed layer transform_0
+Added layer transform_5 after transform_0
+Changed activation in transform_0 to elu
+Changed activation in transform_1 to swish
+Changed activation in transform_0 to swish
+Added layer transform_4 after transform_0
+Removed layer transform_2
+Removed layer transform_2
+Changed activation in transform_1 to tanh
+Resized transform_1: 128 -> 34
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.622 ± 0.002, 🌿 Diversity: 4.076, 🧬 Genes: 107
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3524 positions
+[DEBUG] Sampled 200 positions from 3524 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30570.541955720128
+[DEBUG] Values mean: 0.3843555259780777, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.010593879432175223, Denominator: 16.909859957615904
+[DEBUG] Final Moran's I: 0.12529825153760574
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.10 GB
+
+⏱️  Generation 16 completed in 219.45s. Population: 512
+
+================================================================================
+GENERATION 17
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_2 after transform_2
+Added layer transform_8 after transform_1
+Removed layer transform_0
+Rewired transform_0 -> output
+Added layer transform_3 after transform_0
+Resized transform_0: 34 -> 40
+Changed activation in transform_2 to elu
+Removed layer transform_0
+Removed layer transform_0
+Added layer transform_6 after output
+Added residual connection transform_0 -> transform_1
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 32
+Resized transform_4: 128 -> 32
+Resized transform_0: 40 -> 32
+Changed activation in transform_0 to relu
+Resized transform_1: 128 -> 32
+Removed layer transform_4
+Resized transform_1: 128 -> 45
+Added layer transform_3 after transform_0
+Added layer transform_6 after transform_4
+Resized transform_4: 128 -> 32
+Rewired transform_1 -> transform_1
+Added layer transform_4 after transform_2
+Added layer transform_5 after transform_1
+Resized transform_0: 128 -> 32
+Rewired transform_2 -> transform_2
+Added layer transform_5 after output
+Removed layer transform_4
+Changed activation in transform_2 to sigmoid
+Changed activation in transform_2 to gelu
+Changed activation in transform_0 to swish
+Rewired transform_1 -> transform_2
+Changed activation in transform_2 to gelu
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to swish
+Removed layer transform_2
+Resized transform_2: 128 -> 34
+Rewired transform_0 -> output
+Added layer transform_5 after output
+Resized transform_1: 128 -> 35
+Modification failed: 'Linear' object is not iterable
+Added layer transform_4 after transform_0
+Rewired transform_1 -> output
+Rewired transform_1 -> transform_4
+Added layer transform_3 after transform_2
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Removed layer transform_0
+Added residual connection transform_1 -> output
+Changed activation in transform_0 to tanh
+Changed activation in transform_2 to gelu
+Added residual connection transform_2 -> transform_2
+Removed layer transform_0
+Added layer transform_4 after transform_0
+Resized transform_0: 128 -> 38
+Removed layer transform_0
+Removed layer transform_0
+Changed activation in transform_2 to sigmoid
+Changed activation in transform_0 to relu
+Rewired transform_2 -> transform_2
+Resized transform_1: 128 -> 32
+Rewired transform_2 -> output
+Resized transform_2: 128 -> 42
+Resized transform_1: 128 -> 32
+Added layer transform_4 after transform_2
+Changed activation in transform_2 to relu
+Added layer transform_4 after transform_2
+Resized transform_2: 128 -> 33
+Rewired transform_1 -> output
+Added layer transform_4 after transform_1
+Resized transform_2: 128 -> 32
+Removed layer transform_2
+Rewired transform_2 -> output
+Changed activation in transform_2 to sigmoid
+Changed activation in transform_1 to sigmoid
+Resized transform_2: 128 -> 39
+Resized transform_1: 128 -> 36
+Resized transform_1: 128 -> 34
+Rewired transform_2 -> output
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.628 ± 0.001, 🌿 Diversity: 4.006, 🧬 Genes: 107
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3585 positions
+[DEBUG] Sampled 200 positions from 3585 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30926.54251560782
+[DEBUG] Values mean: 0.3887036919895796, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.009032963601169106, Denominator: 15.060237706483145
+[DEBUG] Final Moran's I: 0.11995778256913685
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 17 completed in 231.15s. Population: 512
+
+================================================================================
+GENERATION 18
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_2 after transform_2
+Removed layer transform_0
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not iterable
+Resized transform_0: 40 -> 27
+Added residual connection transform_1 -> output
+Added layer transform_4 after transform_2
+Removed layer transform_5
+Changed activation in transform_0 to elu
+Rewired transform_1 -> transform_1
+Added residual connection output -> transform_2
+Changed activation in transform_2 to swish
+Changed activation in transform_1 to relu
+Added layer transform_5 after output
+Rewired transform_0 -> transform_2
+Added layer transform_2 after transform_1
+Removed layer transform_3
+Added layer transform_7 after transform_0
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to relu
+Resized transform_2: 128 -> 36
+Removed layer transform_4
+Rewired transform_0 -> transform_2
+Resized transform_2: 128 -> 32
+Removed layer transform_2
+Rewired transform_1 -> transform_1
+Added residual connection output -> transform_2
+Changed activation in transform_1 to gelu
+Added residual connection transform_2 -> transform_4
+Added residual connection transform_0 -> output
+Removed layer transform_2
+Added residual connection transform_4 -> output
+Removed layer transform_1
+Added residual connection transform_1 -> transform_1
+Changed activation in transform_0 to gelu
+Removed layer transform_2
+Removed layer transform_2
+Added layer transform_3 after transform_1
+Removed layer transform_1
+Added residual connection transform_2 -> transform_2
+Added layer transform_4 after transform_2
+Added layer transform_3 after transform_1
+Added layer transform_4 after transform_2
+Resized transform_1: 128 -> 32
+Changed activation in transform_1 to tanh
+Removed layer transform_0
+Removed layer transform_2
+Added residual connection transform_0 -> output
+Rewired transform_2 -> transform_1
+Added layer transform_4 after transform_2
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_2
+Added layer transform_5 after transform_2
+Removed layer transform_2
+Rewired transform_0 -> transform_2
+Resized transform_1: 128 -> 39
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+Added layer transform_4 after transform_2
+Changed activation in transform_1 to tanh
+Rewired transform_0 -> transform_1
+Changed activation in transform_0 to sigmoid
+Rewired transform_0 -> transform_1
+Removed layer transform_2
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 33
+Resized transform_1: 128 -> 32
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_1
+Changed activation in transform_0 to elu
+Resized transform_1: 128 -> 35
+Rewired transform_2 -> output
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Rewired transform_1 -> output
+Resized transform_2: 128 -> 32
+Added residual connection transform_0 -> transform_2
+Removed layer transform_0
+Changed activation in transform_0 to tanh
+Added layer transform_4 after transform_2
+Added residual connection transform_2 -> transform_1
+Resized transform_0: 128 -> 32
+Resized transform_1: 128 -> 40
+Changed activation in transform_2 to gelu
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Changed activation in transform_0 to gelu
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.629 ± 0.001, 🌿 Diversity: 3.981, 🧬 Genes: 105
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3580 positions
+[DEBUG] Sampled 200 positions from 3580 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30646.261177254844
+[DEBUG] Values mean: 0.3759290013332992, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011052971375544205, Denominator: 17.001828209013805
+[DEBUG] Final Moran's I: 0.13002097468182025
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.11 GB
+
+⏱️  Generation 18 completed in 229.08s. Population: 512
+
+================================================================================
+GENERATION 19
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Rewired transform_2 -> output
+Added layer transform_8 after transform_3
+Rewired output -> output
+Added layer transform_2 after transform_2
+Added layer transform_3 after transform_1
+Added residual connection transform_2 -> transform_2
+Added layer transform_4 after transform_2
+Removed layer transform_0
+Rewired transform_1 -> transform_1
+Removed layer transform_1
+Added layer transform_4 after output
+Removed layer transform_2
+Removed layer transform_0
+Added layer transform_3 after transform_0
+Rewired transform_1 -> transform_1
+Modification failed: 'Linear' object is not iterable
+Added layer transform_8 after transform_1
+Changed activation in transform_4 to elu
+Resized transform_0: 128 -> 39
+Resized transform_1: 128 -> 32
+Resized transform_2: 36 -> 26
+Changed activation in transform_2 to elu
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Removed layer transform_1
+Added layer transform_2 after transform_0
+Removed layer transform_1
+Changed activation in transform_1 to gelu
+Added layer transform_3 after transform_1
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_0 to gelu
+Changed activation in transform_0 to elu
+Resized transform_1: 128 -> 32
+Added layer transform_6 after transform_2
+Resized transform_2: 128 -> 34
+Added layer transform_4 after transform_0
+Added residual connection transform_0 -> transform_1
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_2 to swish
+Removed layer transform_0
+Resized transform_1: 128 -> 32
+Changed activation in transform_1 to gelu
+Resized transform_1: 128 -> 32
+Rewired transform_1 -> transform_2
+Resized transform_1: 128 -> 42
+Rewired transform_1 -> transform_2
+Resized transform_1: 128 -> 32
+Rewired transform_2 -> output
+Resized transform_1: 128 -> 36
+Removed layer transform_2
+Removed layer transform_2
+Added residual connection transform_0 -> transform_4
+Added layer transform_3 after transform_1
+Changed activation in transform_1 to relu
+Removed layer transform_0
+Resized transform_1: 128 -> 34
+Resized transform_2: 128 -> 32
+Added layer transform_5 after output
+Added residual connection transform_1 -> transform_1
+Removed layer transform_2
+Changed activation in transform_0 to swish
+Rewired transform_1 -> output
+Resized transform_0: 128 -> 32
+Added layer transform_4 after transform_0
+Removed layer transform_2
+Changed activation in transform_0 to gelu
+Resized transform_1: 128 -> 39
+Changed activation in transform_1 to elu
+Removed layer transform_2
+Added layer transform_5 after output
+Changed activation in transform_2 to elu
+Rewired transform_0 -> transform_2
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Added layer transform_4 after transform_0
+Rewired transform_0 -> output
+Changed activation in transform_2 to elu
+Resized transform_2: 128 -> 36
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to swish
+Added layer transform_5 after transform_2
+Removed layer transform_2
+Removed layer transform_1
+Changed activation in transform_2 to tanh
+Added layer transform_4 after transform_0
+Changed activation in transform_2 to gelu
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Removed layer transform_1
+Added layer transform_4 after transform_2
+Changed activation in transform_1 to sigmoid
+Removed layer transform_2
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 41
+Removed layer transform_1
+Rewired transform_1 -> output
+Added layer transform_4 after transform_0
+Rewired transform_2 -> output
+Resized transform_0: 128 -> 37
+Changed activation in transform_1 to relu
+Removed layer transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.631 ± 0.001, 🌿 Diversity: 3.968, 🧬 Genes: 105
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3607 positions
+[DEBUG] Sampled 200 positions from 3607 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31255.962253163518
+[DEBUG] Values mean: 0.362892071520788, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008400214351319617, Denominator: 14.601368526425555
+[DEBUG] Final Moran's I: 0.11506064429668922
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 19 completed in 248.09s. Population: 512
+
+================================================================================
+GENERATION 20
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_2 after transform_2
+Resized transform_3: 128 -> 56
+Resized transform_2: 128 -> 32
+Rewired transform_0 -> output
+Added residual connection transform_1 -> transform_4
+Resized transform_1: 128 -> 32
+Resized transform_1: 39 -> 29
+Removed layer transform_4
+Changed activation in transform_1 to gelu
+Removed layer transform_3
+Changed activation in transform_0 to elu
+Removed layer transform_2
+Added layer transform_9 after transform_0
+Rewired transform_4 -> transform_4
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_0
+Resized transform_4: 128 -> 32
+Rewired transform_2 -> output
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Resized transform_0: 128 -> 32
+Added layer transform_3 after transform_2
+Changed activation in transform_0 to relu
+Removed layer transform_2
+Added layer transform_4 after transform_0
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_2
+Changed activation in transform_0 to gelu
+Changed activation in transform_1 to gelu
+Rewired transform_0 -> transform_4
+Rewired transform_1 -> transform_1
+Rewired transform_2 -> output
+Removed layer transform_2
+Resized transform_0: 128 -> 32
+Removed layer transform_1
+Changed activation in transform_2 to gelu
+Changed activation in transform_0 to swish
+Added layer transform_3 after transform_1
+Removed layer transform_2
+Added layer transform_3 after transform_1
+Removed layer transform_0
+Removed layer transform_1
+Added layer transform_3 after transform_1
+Resized transform_2: 128 -> 32
+Added layer transform_4 after output
+Added layer transform_4 after transform_1
+Added layer transform_4 after output
+Changed activation in transform_2 to elu
+Added layer transform_4 after transform_1
+Rewired transform_2 -> transform_2
+Added layer transform_6 after transform_2
+Resized transform_1: 128 -> 32
+Rewired transform_1 -> transform_1
+Added layer transform_4 after transform_2
+Resized transform_0: 128 -> 36
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to swish
+Added layer transform_4 after transform_1
+Removed layer transform_0
+Changed activation in transform_2 to elu
+Rewired transform_1 -> output
+Added layer transform_3 after transform_0
+Added residual connection transform_2 -> transform_1
+Added residual connection output -> output
+Resized transform_0: 128 -> 35
+Removed layer transform_1
+Changed activation in transform_0 to elu
+Added residual connection transform_2 -> transform_2
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_0
+Changed activation in transform_0 to tanh
+Added residual connection transform_0 -> transform_2
+Removed layer transform_0
+Changed activation in transform_0 to relu
+Removed layer transform_2
+Added layer transform_4 after transform_2
+Removed layer transform_1
+Added layer transform_4 after transform_0
+Changed activation in transform_0 to swish
+Removed layer transform_2
+Removed layer transform_1
+Removed layer transform_1
+Changed activation in transform_0 to sigmoid
+Changed activation in transform_1 to relu
+Rewired transform_2 -> transform_2
+Changed activation in transform_0 to sigmoid
+Resized transform_1: 128 -> 32
+Added layer transform_5 after transform_1
+Resized transform_1: 128 -> 42
+Added residual connection transform_1 -> transform_1
+Removed layer transform_2
+Resized transform_1: 128 -> 33
+Changed activation in transform_2 to relu
+Added residual connection transform_1 -> transform_1
+Removed layer transform_2
+Changed activation in transform_1 to gelu
+Added residual connection transform_0 -> transform_2
+Added residual connection transform_1 -> transform_1
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_2
+Removed layer transform_2
+Changed activation in transform_1 to sigmoid
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to tanh
+Removed layer transform_1
+Changed activation in transform_2 to swish
+Resized transform_2: 128 -> 44
+Added residual connection transform_0 -> transform_2
+Changed activation in transform_0 to elu
+Removed layer transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.631 ± 0.002, 🌿 Diversity: 3.956, 🧬 Genes: 104
+   Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3606 positions
+[DEBUG] Sampled 200 positions from 3606 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30652.804475347526
+[DEBUG] Values mean: 0.36915295555931704, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.010866242233645428, Denominator: 16.769894842778168
+[DEBUG] Final Moran's I: 0.1295922524919695
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 253 quantum genes for entanglement
+Added layer transform_4 after output
+Changed activation in transform_2 to elu
+Modification failed: 'Linear' object is not iterable
+Added layer transform_4 after transform_0
+Changed activation in transform_1 to tanh
+Changed activation in transform_1 to tanh
+Removed layer transform_1
+Resized transform_2: 128 -> 32
+Resized transform_1: 128 -> 32
+Resized transform_2: 128 -> 32
+Rewired transform_2 -> output
+Added residual connection output -> transform_1
+Added layer transform_4 after transform_2
+Removed layer transform_0
+Removed layer transform_4
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5361, realities: 3, time: 38.07s
+Added layer transform_4 after transform_0
+Changed activation in transform_0 to swish
+Removed layer transform_1
+Resized transform_2: 128 -> 35
+Rewired transform_2 -> output
+Changed activation in transform_2 to gelu
+Removed layer transform_2
+Removed layer transform_0
+Added residual connection output -> transform_3
+Resized transform_0: 128 -> 32
+Added layer transform_2 after transform_0
+Changed activation in transform_1 to elu
+Changed activation in transform_0 to gelu
+Changed activation in transform_0 to gelu
+Removed layer transform_0
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5427, realities: 4, time: 46.88s
+Rewired transform_2 -> transform_2
+Added layer transform_3 after transform_1
+Resized transform_0: 128 -> 36
+Removed layer transform_1
+Added residual connection transform_0 -> transform_3
+Removed layer transform_0
+Changed activation in transform_0 to gelu
+Rewired transform_5 -> transform_6
+Added layer transform_4 after transform_1
+Removed layer transform_4
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to sigmoid
+Changed activation in transform_2 to tanh
+Resized transform_0: 128 -> 44
+Removed layer transform_1
+Removed layer transform_1
+Resized transform_2: 128 -> 32
+Removed layer transform_0
+Changed activation in transform_2 to tanh
+Added layer transform_5 after transform_0
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Rewired transform_1 -> transform_3
+Added residual connection output -> transform_4
+Modification failed: 'Linear' object is not iterable
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5411, realities: 5, time: 59.65s
+Added layer transform_4 after transform_1
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Resized transform_1: 128 -> 32
+Rewired transform_1 -> output
+Changed activation in transform_1 to swish
+Changed activation in transform_1 to relu
+Resized transform_2: 128 -> 32
+Resized transform_1: 128 -> 41
+Changed activation in transform_1 to sigmoid
+Removed layer transform_1
+Changed activation in transform_2 to swish
+Changed activation in transform_2 to elu
+Removed layer transform_1
+Changed activation in transform_0 to relu
+Resized transform_2: 128 -> 40
+Resized transform_2: 44 -> 33
+Removed layer transform_0
+Resized transform_1: 128 -> 32
+Added residual connection transform_1 -> transform_2
+Added layer transform_4 after transform_2
+Added layer transform_10 after transform_6
+Added layer transform_4 after transform_0
+Added layer transform_3 after transform_0
+Added layer transform_4 after transform_2
+Changed activation in transform_2 to elu
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5465, realities: 6, time: 75.86s
+Removed layer transform_0
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Removed layer transform_2
+Resized transform_2: 128 -> 32
+Resized transform_1: 45 -> 32
+Rewired transform_3 -> output
+Removed layer transform_2
+Removed layer transform_3
+Changed activation in transform_1 to gelu
+Removed layer transform_0
+Added layer transform_5 after transform_1
+Resized transform_2: 128 -> 32
+Resized transform_2: 128 -> 32
+Removed layer transform_2
+Added layer transform_3 after transform_0
+Removed layer transform_0
+Rewired transform_1 -> transform_2
+Added layer transform_2 after transform_1
+Added layer transform_5 after output
+Removed layer transform_1
+Removed layer transform_2
+Changed activation in transform_1 to relu
+Changed activation in transform_2 to swish
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Removed layer transform_1
+Removed layer transform_4
+Added residual connection transform_0 -> transform_4
+Removed layer transform_0
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5453, realities: 7, time: 83.94s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.290
+   Average |1⟩ probability: 0.710
+   Average coherence time: 7.3 steps
+   Quantum memory size: 100 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_20.pt
+   - Cleared CUDA memory cache. Usage now: 16.32 GB
+
+⏱️  Generation 20 completed in 570.19s. Population: 512
+
+================================================================================
+GENERATION 21
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Changed activation in transform_2 to gelu
+Modification failed: 'Linear' object is not iterable
+Added layer transform_3 after transform_0
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_6
+Added residual connection transform_1 -> output
+Rewired transform_2 -> transform_3
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_0 to gelu
+Resized transform_7: 128 -> 32
+Rewired transform_1 -> transform_5
+Removed layer transform_4
+Rewired transform_0 -> output
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not subscriptable
+Added residual connection transform_0 -> output
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not iterable
+Rewired output -> transform_5
+Added layer transform_6 after transform_1
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_1
+Added layer transform_4 after output
+Added layer transform_2 after transform_2
+Rewired transform_1 -> output
+Changed activation in transform_0 to swish
+Removed layer transform_4
+Resized transform_2: 128 -> 34
+Added layer transform_3 after transform_2
+Resized transform_2: 128 -> 32
+Resized transform_1: 36 -> 27
+Changed activation in transform_1 to sigmoid
+Added layer transform_3 after output
+Changed activation in transform_2 to tanh
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_5 after transform_2
+Removed layer transform_2
+Added layer transform_5 after output
+Changed activation in transform_2 to swish
+Resized transform_5: 128 -> 36
+Added layer transform_4 after transform_1
+Added layer transform_3 after transform_0
+Added layer transform_5 after transform_0
+Added residual connection transform_2 -> transform_4
+Removed layer transform_0
+Resized transform_0: 128 -> 32
+Changed activation in transform_2 to elu
+Changed activation in transform_1 to elu
+Changed activation in transform_2 to tanh
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_2
+Changed activation in transform_0 to elu
+Changed activation in transform_2 to sigmoid
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to elu
+Changed activation in transform_2 to relu
+Resized transform_1: 41 -> 32
+Added residual connection transform_0 -> transform_2
+Resized transform_0: 128 -> 33
+Rewired transform_1 -> transform_2
+Added layer transform_2 after transform_0
+Resized transform_2: 128 -> 45
+Changed activation in transform_0 to tanh
+Added layer transform_5 after transform_2
+Removed layer transform_0
+Resized transform_0: 128 -> 44
+Added layer transform_3 after transform_0
+Added layer transform_3 after transform_1
+Added layer transform_5 after transform_1
+Resized transform_2: 40 -> 29
+Added layer transform_6 after transform_4
+Added layer transform_4 after transform_2
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+Modification failed: 'Linear' object is not iterable
+Resized transform_1: 33 -> 24
+Resized transform_0: 128 -> 32
+Added layer transform_5 after transform_0
+Added layer transform_3 after transform_0
+Resized transform_0: 128 -> 32
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to tanh
+Removed layer transform_2
+Removed layer transform_1
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_2
+Resized transform_2: 128 -> 32
+Removed layer transform_2
+Added layer transform_3 after transform_1
+Changed activation in transform_0 to swish
+Changed activation in transform_2 to gelu
+Rewired transform_2 -> output
+Rewired transform_2 -> output
+Added layer transform_4 after transform_2
+Resized transform_1: 128 -> 32
+Added layer transform_5 after transform_2
+Changed activation in transform_1 to relu
+Added layer transform_3 after transform_2
+Changed activation in transform_2 to relu
+Removed layer transform_1
+Modification failed: 'Linear' object is not iterable
+Added layer transform_3 after transform_1
+Added layer transform_4 after transform_1
+Added layer transform_4 after transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.629 ± 0.002, 🌿 Diversity: 3.947, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3607 positions
+[DEBUG] Sampled 200 positions from 3607 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 31082.95439081896
+[DEBUG] Values mean: 0.36196472444253686, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008537685857279364, Denominator: 14.883273781054866
+[DEBUG] Final Moran's I: 0.11472860047964856
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 21 completed in 274.62s. Population: 512
+
+📊 Progress: 20/50 (40.0%)
+   Elapsed: 84.7m, ETA: 127.0m
+   Current fitness: 0.6287
+
+================================================================================
+GENERATION 22
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Removed layer transform_4
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_1
+Added layer transform_3 after transform_0
+Modification failed: 'Linear' object is not iterable
+Resized transform_2: 128 -> 32
+Rewired transform_1 -> output
+Changed activation in transform_2 to swish
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_2: 128 -> 58
+Added layer transform_2 after transform_2
+Resized transform_5: 128 -> 32
+Rewired output -> transform_2
+Added layer transform_3 after output
+Added residual connection output -> output
+Added layer transform_5 after transform_0
+Added residual connection output -> output
+Rewired transform_4 -> output
+Changed activation in transform_1 to sigmoid
+Changed activation in transform_0 to swish
+Removed layer transform_6
+Removed layer transform_2
+Added layer transform_3 after transform_0
+Rewired output -> transform_1
+Changed activation in transform_2 to sigmoid
+Removed layer transform_0
+Rewired transform_0 -> transform_2
+Changed activation in transform_2 to sigmoid
+Added layer transform_2 after transform_1
+Removed layer transform_4
+Changed activation in transform_1 to relu
+Resized transform_1: 128 -> 32
+Resized transform_0: 128 -> 32
+Rewired transform_0 -> transform_3
+Changed activation in transform_0 to tanh
+Changed activation in transform_0 to gelu
+Added residual connection transform_0 -> transform_1
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_2
+Removed layer transform_5
+Removed layer transform_5
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_3 to tanh
+Rewired transform_0 -> transform_3
+Added layer transform_5 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Added residual connection transform_1 -> output
+Resized transform_2: 128 -> 41
+Removed layer transform_0
+Added layer transform_2 after transform_0
+Rewired transform_2 -> output
+Changed activation in transform_2 to elu
+Removed layer transform_1
+Changed activation in transform_0 to gelu
+Removed layer transform_0
+Added layer transform_4 after transform_2
+Removed layer transform_1
+Removed layer transform_2
+Rewired transform_0 -> output
+Added layer transform_4 after transform_0
+Added layer transform_6 after output
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to tanh
+Added layer transform_3 after output
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_3
+Changed activation in transform_2 to gelu
+Added layer transform_6 after transform_4
+Removed layer transform_2
+Rewired transform_0 -> transform_5
+Removed layer transform_1
+Changed activation in transform_1 to swish
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_2 to swish
+Added residual connection transform_0 -> output
+Changed activation in transform_1 to sigmoid
+Added layer transform_4 after output
+Rewired transform_0 -> output
+Added layer transform_5 after transform_2
+Removed layer transform_0
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Resized transform_0: 128 -> 37
+Rewired transform_0 -> output
+Removed layer transform_2
+Added layer transform_3 after transform_1
+Rewired transform_1 -> transform_1
+Changed activation in transform_1 to tanh
+Added layer transform_4 after transform_0
+Added residual connection transform_1 -> transform_5
+Rewired transform_1 -> transform_2
+Removed layer transform_2
+Changed activation in transform_0 to elu
+Removed layer transform_1
+Rewired transform_0 -> transform_2
+Resized transform_2: 128 -> 43
+Resized transform_0: 128 -> 32
+Rewired transform_1 -> transform_2
+Removed layer transform_1
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_1
+Added residual connection transform_1 -> output
+Changed activation in transform_1 to relu
+Changed activation in transform_2 to swish
+Changed activation in transform_1 to tanh
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 35
+Rewired transform_0 -> transform_2
+Removed layer transform_2
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.634 ± 0.001, 🌿 Diversity: 3.938, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.001
+   Current stress level: 0.001
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3588 positions
+[DEBUG] Sampled 200 positions from 3588 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30864.1822182703
+[DEBUG] Values mean: 0.36032447245229354, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.010292562290791606, Denominator: 16.22172819617955
+[DEBUG] Final Moran's I: 0.12689846810792518
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.12 GB
+
+⏱️  Generation 22 completed in 252.25s. Population: 512
+
+================================================================================
+GENERATION 23
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Changed activation in transform_2 to swish
+Removed layer transform_3
+Changed activation in transform_2 to relu
+Added residual connection output -> transform_3
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_0
+Added layer transform_4 after transform_0
+Added layer transform_4 after transform_2
+Changed activation in transform_1 to sigmoid
+Added layer transform_3 after transform_1
+Rewired transform_1 -> transform_2
+Removed layer transform_5
+Added layer transform_3 after output
+Removed layer transform_0
+Removed layer transform_0
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after transform_0
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 32
+Rewired transform_0 -> output
+Removed layer transform_1
+Changed activation in transform_0 to swish
+Resized transform_0: 128 -> 45
+Added layer transform_4 after transform_1
+Rewired transform_2 -> output
+Removed layer transform_2
+Modification failed: 'Linear' object is not iterable
+Rewired transform_0 -> output
+Removed layer transform_2
+Rewired transform_1 -> output
+Added layer transform_4 after transform_0
+Removed layer transform_0
+Resized transform_1: 128 -> 36
+Changed activation in transform_1 to tanh
+Added residual connection transform_3 -> transform_3
+Added layer transform_6 after output
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to sigmoid
+Added residual connection transform_1 -> transform_4
+Changed activation in transform_2 to tanh
+Removed layer transform_3
+Removed layer transform_1
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to swish
+Removed layer transform_1
+Resized transform_2: 128 -> 39
+Removed layer transform_2
+Added layer transform_5 after transform_0
+Rewired transform_0 -> transform_2
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Rewired transform_2 -> output
+Removed layer transform_5
+Added layer transform_2 after transform_0
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_5: 128 -> 32
+Changed activation in transform_1 to sigmoid
+Changed activation in transform_0 to elu
+Modification failed: 'Linear' object is not iterable
+Added residual connection transform_0 -> transform_2
+Added residual connection transform_1 -> output
+Changed activation in transform_1 to sigmoid
+Added layer transform_5 after output
+Changed activation in transform_2 to relu
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to elu
+Rewired output -> output
+Removed layer transform_3
+Changed activation in transform_0 to swish
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_4 after transform_1
+Added layer transform_5 after transform_0
+Changed activation in transform_0 to tanh
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 33
+Added residual connection transform_2 -> transform_1
+Changed activation in transform_0 to swish
+Added layer transform_4 after transform_2
+Changed activation in transform_0 to gelu
+Removed layer transform_0
+Changed activation in transform_0 to sigmoid
+Added residual connection transform_2 -> transform_2
+Removed layer transform_1
+Removed layer transform_0
+Resized transform_1: 128 -> 32
+Rewired transform_2 -> output
+Resized transform_0: 128 -> 42
+Changed activation in transform_1 to tanh
+Resized transform_2: 128 -> 32
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Added layer transform_5 after output
+Added layer transform_4 after transform_2
+Added residual connection transform_1 -> output
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Changed activation in transform_2 to sigmoid
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Changed activation in transform_0 to sigmoid
+Resized transform_0: 128 -> 32
+Rewired transform_1 -> output
+Removed layer transform_0
+Added layer transform_4 after transform_2
+Changed activation in transform_2 to relu
+Removed layer transform_1
+Changed activation in transform_2 to tanh
+Resized transform_0: 128 -> 32
+Changed activation in transform_1 to swish
+Changed activation in transform_1 to sigmoid
+Resized transform_1: 128 -> 32
+Changed activation in transform_2 to tanh
+Changed activation in transform_1 to tanh
+Removed layer transform_0
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_1
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.635 ± 0.001, 🌿 Diversity: 3.926, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.001
+   Current stress level: 0.001
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3590 positions
+[DEBUG] Sampled 200 positions from 3590 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30328.006933200923
+[DEBUG] Values mean: 0.43819423182105594, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.01272416391697374, Denominator: 18.24727011969794
+[DEBUG] Final Moran's I: 0.13946375357525942
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 23 completed in 231.86s. Population: 512
+
+================================================================================
+GENERATION 24
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Resized transform_2: 128 -> 42
+Resized transform_6: 128 -> 46
+Added layer transform_2 after transform_2
+Removed layer transform_0
+Added layer transform_4 after transform_1
+Resized transform_1: 29 -> 31
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_2 -> transform_1
+Added layer transform_4 after transform_5
+Rewired transform_2 -> transform_2
+Changed activation in transform_2 to relu
+Removed layer transform_4
+Removed layer transform_5
+Changed activation in transform_2 to gelu
+Rewired transform_0 -> transform_2
+Removed layer transform_1
+Removed layer transform_0
+Added residual connection output -> output
+Resized transform_0: 128 -> 32
+Resized transform_0: 128 -> 32
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_3
+Changed activation in transform_0 to elu
+Resized transform_2: 128 -> 44
+Changed activation in transform_0 to swish
+Rewired transform_0 -> output
+Modification failed: 'Linear' object is not iterable
+Added residual connection transform_1 -> transform_1
+Added residual connection transform_1 -> output
+Added layer transform_3 after transform_4
+Changed activation in transform_1 to relu
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Changed activation in transform_1 to tanh
+Added residual connection output -> transform_4
+Added layer transform_3 after transform_1
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_5 to sigmoid
+Resized transform_2: 128 -> 32
+Removed layer transform_0
+Added layer transform_5 after output
+Removed layer transform_0
+Resized transform_0: 128 -> 33
+Removed layer transform_2
+Modification failed: 'Linear' object is not iterable
+Resized transform_0: 128 -> 32
+Added layer transform_5 after output
+Added layer transform_4 after output
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_0 -> transform_2
+Resized transform_0: 128 -> 37
+Removed layer transform_5
+Resized transform_0: 128 -> 32
+Rewired transform_0 -> output
+Added layer transform_4 after transform_4
+Removed layer transform_0
+Changed activation in transform_0 to tanh
+Changed activation in transform_1 to sigmoid
+Resized transform_0: 128 -> 50
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_2 to gelu
+Resized transform_0: 128 -> 34
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Added layer transform_6 after output
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_0 -> transform_1
+Resized transform_2: 128 -> 34
+Removed layer transform_4
+Resized transform_4: 128 -> 32
+Changed activation in transform_0 to relu
+Added layer transform_4 after transform_0
+Changed activation in transform_1 to sigmoid
+Added layer transform_4 after transform_0
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Resized transform_1: 128 -> 46
+Added residual connection output -> transform_3
+Resized transform_2: 128 -> 34
+Rewired transform_2 -> output
+Rewired transform_1 -> output
+Modification failed: 'Linear' object is not iterable
+Resized transform_1: 128 -> 35
+Resized transform_1: 128 -> 36
+Added residual connection transform_0 -> output
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_2 -> transform_2
+Modification failed: 'Linear' object is not iterable
+Rewired transform_1 -> transform_1
+Removed layer transform_0
+Removed layer transform_0
+Changed activation in transform_0 to gelu
+Rewired transform_0 -> transform_2
+Changed activation in transform_1 to tanh
+Resized transform_2: 128 -> 37
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_2
+Rewired transform_2 -> output
+Removed layer transform_2
+Changed activation in transform_2 to elu
+Added residual connection transform_1 -> output
+Rewired transform_0 -> output
+Resized transform_2: 128 -> 32
+Changed activation in transform_0 to relu
+Removed layer transform_1
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Added layer transform_4 after transform_0
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Removed layer transform_0
+Added residual connection transform_0 -> output
+Rewired transform_2 -> transform_1
+Resized transform_2: 128 -> 32
+Added layer transform_4 after transform_2
+Removed layer transform_2
+Changed activation in transform_0 to sigmoid
+Removed layer transform_0
+Changed activation in transform_0 to sigmoid
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to gelu
+Removed layer transform_1
+Added residual connection transform_2 -> transform_1
+Added layer transform_4 after transform_2
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.634 ± 0.002, 🌿 Diversity: 3.891, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3590 positions
+[DEBUG] Sampled 200 positions from 3590 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30939.1387274769
+[DEBUG] Values mean: 0.3743051245276389, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008924018097743444, Denominator: 14.92375105147664
+[DEBUG] Final Moran's I: 0.11959484002328562
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.11 GB
+
+⏱️  Generation 24 completed in 224.01s. Population: 512
+
+================================================================================
+GENERATION 25
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Changed activation in transform_6 to relu
+Changed activation in transform_2 to sigmoid
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_4 after transform_3
+Added layer transform_5 after transform_0
+Added residual connection transform_2 -> transform_6
+Changed activation in transform_3 to sigmoid
+Added residual connection transform_2 -> output
+Removed layer transform_1
+Added layer transform_3 after output
+Changed activation in transform_1 to swish
+Added residual connection output -> transform_3
+Removed layer transform_0
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after output
+Rewired transform_0 -> output
+Changed activation in transform_0 to elu
+Resized transform_2: 44 -> 29
+Resized transform_1: 128 -> 33
+Added residual connection transform_0 -> transform_2
+Changed activation in transform_0 to sigmoid
+Changed activation in transform_1 to gelu
+Removed layer transform_2
+Resized transform_4: 128 -> 32
+Added residual connection transform_1 -> transform_4
+Removed layer transform_2
+Added layer transform_5 after transform_1
+Resized transform_4: 128 -> 32
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to swish
+Added residual connection transform_2 -> transform_2
+Resized transform_4: 128 -> 32
+Added layer transform_5 after transform_1
+Modification failed: 'Linear' object is not iterable
+Rewired transform_1 -> output
+Added layer transform_5 after transform_4
+Rewired transform_0 -> output
+Removed layer transform_0
+Removed layer transform_5
+Changed activation in transform_1 to gelu
+Added layer transform_5 after transform_1
+Rewired transform_2 -> output
+Rewired transform_0 -> transform_2
+Removed layer transform_0
+Removed layer transform_2
+Added layer transform_7 after output
+Resized transform_0: 44 -> 33
+Added layer transform_4 after output
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_3 after transform_1
+Added layer transform_3 after transform_1
+Resized transform_0: 50 -> 36
+Resized transform_2: 128 -> 32
+Added residual connection transform_2 -> transform_5
+Added layer transform_4 after transform_0
+Added residual connection transform_2 -> transform_2
+Removed layer transform_2
+Added layer transform_4 after transform_0
+Removed layer transform_2
+Added residual connection transform_2 -> transform_1
+Added layer transform_2 after transform_1
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_4
+Rewired transform_1 -> output
+Rewired transform_0 -> transform_1
+Removed layer transform_3
+Added layer transform_5 after output
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_2
+Changed activation in transform_2 to sigmoid
+Changed activation in transform_2 to sigmoid
+Added layer transform_3 after transform_0
+Added layer transform_2 after transform_2
+Removed layer transform_1
+Changed activation in transform_2 to gelu
+Changed activation in transform_1 to tanh
+Added residual connection transform_1 -> transform_1
+Added layer transform_3 after transform_0
+Added layer transform_5 after transform_0
+Added residual connection output -> transform_2
+Removed layer transform_2
+Removed layer transform_0
+Rewired transform_0 -> output
+Removed layer transform_2
+Resized transform_2: 128 -> 38
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to tanh
+Added layer transform_3 after transform_1
+Changed activation in transform_2 to sigmoid
+Resized transform_1: 128 -> 35
+Added layer transform_5 after transform_0
+Added layer transform_4 after transform_0
+Changed activation in transform_2 to relu
+Added layer transform_4 after transform_0
+Resized transform_0: 128 -> 32
+Added layer transform_5 after transform_1
+Removed layer transform_1
+Added layer transform_5 after transform_2
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 32
+Added layer transform_5 after transform_0
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to tanh
+Removed layer transform_0
+Removed layer transform_1
+Changed activation in transform_2 to gelu
+Rewired transform_2 -> transform_2
+Resized transform_2: 128 -> 33
+Added layer transform_3 after transform_2
+Removed layer transform_0
+Removed layer transform_2
+Added layer transform_4 after transform_1
+Removed layer transform_1
+Added layer transform_4 after transform_2
+Changed activation in transform_1 to gelu
+Removed layer transform_2
+Added layer transform_4 after transform_2
+Resized transform_2: 128 -> 38
+Removed layer transform_2
+Removed layer transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.636 ± 0.002, 🌿 Diversity: 3.877, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3570 positions
+[DEBUG] Sampled 200 positions from 3570 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30918.179235110907
+[DEBUG] Values mean: 0.3710518270223828, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.008955642189612251, Denominator: 15.505409870675889
+[DEBUG] Final Moran's I: 0.11551635544377739
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 246 quantum genes for entanglement
+Resized transform_2: 128 -> 43
+Added layer transform_3 after transform_2
+Resized transform_2: 33 -> 26
+Changed activation in transform_0 to tanh
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after transform_0
+Added layer transform_6 after transform_1
+Removed layer transform_0
+Added layer transform_4 after transform_0
+Added layer transform_7 after transform_5
+Added layer transform_4 after transform_0
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5394, realities: 3, time: 35.18s
+Removed layer transform_2
+Removed layer transform_2
+Changed activation in transform_2 to swish
+Rewired transform_2 -> transform_2
+Added layer transform_5 after transform_1
+Rewired transform_0 -> output
+Changed activation in transform_0 to elu
+Added residual connection transform_1 -> transform_4
+Rewired transform_1 -> output
+Rewired output -> output
+Added layer transform_4 after transform_2
+Added residual connection transform_0 -> output
+Removed layer transform_3
+Rewired transform_2 -> output
+Rewired output -> transform_2
+Rewired transform_2 -> output
+Removed layer transform_0
+Removed layer transform_0
+Removed layer transform_2
+Changed activation in transform_0 to swish
+Added residual connection transform_0 -> transform_2
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5395, realities: 4, time: 48.14s
+Added layer transform_5 after transform_2
+Added layer transform_2 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_4: 128 -> 40
+Resized transform_5: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_0
+Resized transform_1: 46 -> 36
+Removed layer transform_6
+Added residual connection transform_2 -> transform_2
+Removed layer transform_0
+Rewired transform_0 -> transform_1
+Removed layer transform_4
+Added residual connection transform_1 -> output
+Resized transform_0: 38 -> 27
+Changed activation in transform_1 to sigmoid
+Removed layer transform_2
+Removed layer transform_4
+Removed layer transform_2
+Added layer transform_3 after output
+Added residual connection output -> transform_4
+Modification failed: 'Linear' object is not subscriptable
+Added residual connection output -> transform_1
+Changed activation in transform_1 to swish
+Added residual connection output -> output
+Rewired output -> transform_3
+Removed layer transform_2
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5405, realities: 5, time: 52.54s
+Added residual connection transform_2 -> transform_1
+Changed activation in transform_2 to relu
+Added layer transform_2 after transform_0
+Changed activation in transform_2 to swish
+Added layer transform_2 after transform_0
+Added layer transform_2 after transform_2
+Removed layer transform_1
+Resized transform_0: 128 -> 37
+Added layer transform_4 after transform_2
+Added residual connection transform_0 -> transform_4
+Removed layer transform_0
+Rewired transform_2 -> output
+Resized transform_0: 128 -> 49
+Changed activation in transform_0 to swish
+Changed activation in transform_0 to gelu
+Changed activation in transform_3 to tanh
+Added layer transform_4 after transform_0
+Changed activation in transform_1 to elu
+Removed layer transform_2
+Resized transform_1: 128 -> 45
+Removed layer transform_1
+Added layer transform_3 after transform_2
+Added residual connection transform_1 -> transform_3
+Changed activation in transform_0 to tanh
+Resized transform_0: 128 -> 34
+Removed layer transform_1
+Rewired transform_1 -> output
+Removed layer transform_1
+Rewired output -> output
+Added layer transform_4 after output
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5462, realities: 6, time: 58.74s
+Added residual connection transform_1 -> transform_1
+Rewired transform_0 -> output
+Modification failed: 'Linear' object is not iterable
+Added layer transform_2 after transform_0
+Resized transform_4: 128 -> 38
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to relu
+Changed activation in transform_0 to gelu
+Resized transform_1: 128 -> 32
+Added residual connection transform_1 -> transform_6
+Rewired transform_4 -> transform_2
+Added layer transform_2 after transform_2
+Removed layer transform_4
+Changed activation in transform_1 to gelu
+Added layer transform_7 after transform_2
+Added layer transform_5 after output
+Changed activation in transform_1 to relu
+Removed layer transform_2
+Added layer transform_3 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_1 -> transform_4
+Added layer transform_3 after transform_1
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Added residual connection output -> transform_2
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Added layer transform_8 after transform_1
+Removed layer transform_0
+Changed activation in transform_0 to gelu
+Resized transform_0: 128 -> 51
+Added layer transform_2 after output
+Rewired transform_3 -> transform_1
+Added layer transform_5 after output
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not iterable
+Added layer transform_2 after output
+Removed layer transform_4
+Added layer transform_2 after output
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5533, realities: 7, time: 65.70s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.240
+   Average |1⟩ probability: 0.760
+   Average coherence time: 7.1 steps
+   Quantum memory size: 125 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_25.pt
+
+⏱️  Generation 25 completed in 488.39s. Population: 512
+
+================================================================================
+GENERATION 26
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_2 after transform_2
+Removed layer transform_5
+Rewired transform_2 -> output
+Added layer transform_2 after output
+Changed activation in transform_1 to sigmoid
+Added layer transform_3 after output
+Added layer transform_6 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_3
+Added residual connection transform_2 -> transform_2
+Rewired transform_0 -> output
+Rewired transform_1 -> transform_3
+Removed layer transform_3
+Modification failed: 'Linear' object is not iterable
+Added layer transform_3 after output
+Modification failed: 'Linear' object is not iterable
+Added layer transform_2 after transform_1
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to swish
+Modification failed: 'Linear' object is not iterable
+Added layer transform_2 after transform_2
+Changed activation in transform_1 to relu
+Added layer transform_2 after output
+Removed layer transform_1
+Changed activation in transform_1 to swish
+Added residual connection output -> transform_4
+Added residual connection transform_3 -> transform_4
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_3
+Modification failed: 'Linear' object is not subscriptable
+Rewired output -> output
+Changed activation in transform_0 to relu
+Removed layer transform_5
+Added layer transform_8 after transform_2
+Resized transform_1: 36 -> 27
+Rewired output -> output
+Added layer transform_3 after transform_1
+Added residual connection transform_4 -> transform_4
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_4
+Added residual connection transform_1 -> transform_2
+Added layer transform_4 after output
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to relu
+Changed activation in transform_1 to elu
+Removed layer transform_2
+Resized transform_4: 128 -> 32
+Rewired transform_2 -> transform_3
+Rewired transform_1 -> transform_1
+Added layer transform_7 after output
+Changed activation in transform_4 to relu
+Removed layer transform_1
+Rewired output -> transform_2
+Changed activation in transform_2 to sigmoid
+Rewired transform_1 -> output
+Rewired transform_1 -> transform_6
+Added layer transform_4 after transform_0
+Added layer transform_2 after transform_1
+Removed layer transform_4
+Resized transform_0: 32 -> 34
+Modification failed: 'Linear' object is not iterable
+Rewired transform_0 -> output
+Added layer transform_4 after transform_1
+Resized transform_2: 128 -> 40
+Removed layer transform_4
+Changed activation in transform_1 to swish
+Removed layer transform_0
+Resized transform_2: 128 -> 32
+Resized transform_3: 128 -> 40
+Resized transform_0: 128 -> 42
+Resized transform_2: 128 -> 40
+Added layer transform_4 after transform_0
+Resized transform_1: 128 -> 42
+Removed layer transform_1
+Added layer transform_4 after transform_1
+Added residual connection transform_2 -> transform_2
+Removed layer transform_6
+Rewired output -> transform_2
+Changed activation in transform_1 to relu
+Added layer transform_4 after transform_1
+Resized transform_0: 128 -> 32
+Rewired output -> transform_4
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to relu
+Removed layer transform_1
+Resized transform_0: 128 -> 40
+Added layer transform_3 after output
+Removed layer transform_2
+Changed activation in transform_4 to relu
+Removed layer transform_0
+Changed activation in transform_0 to tanh
+Resized transform_0: 128 -> 32
+Changed activation in transform_2 to gelu
+Changed activation in transform_2 to relu
+Removed layer transform_4
+Removed layer transform_2
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after transform_0
+Resized transform_1: 128 -> 32
+Added residual connection transform_1 -> output
+Rewired output -> transform_4
+Added layer transform_5 after transform_0
+Removed layer transform_1
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 32
+Added layer transform_6 after output
+Removed layer transform_0
+Resized transform_0: 128 -> 36
+Changed activation in transform_2 to gelu
+Changed activation in transform_0 to swish
+Rewired transform_0 -> transform_2
+Added layer transform_3 after transform_2
+Removed layer transform_4
+Added residual connection transform_2 -> transform_2
+Removed layer transform_1
+Added layer transform_4 after transform_1
+Resized transform_1: 128 -> 41
+Resized transform_1: 128 -> 32
+Rewired transform_2 -> transform_1
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to tanh
+Resized transform_2: 128 -> 32
+Resized transform_0: 128 -> 32
+Changed activation in transform_0 to relu
+Changed activation in transform_1 to tanh
+Added layer transform_4 after transform_0
+Removed layer transform_0
+Removed layer transform_2
+Changed activation in transform_2 to swish
+Changed activation in transform_0 to swish
+Rewired transform_1 -> transform_2
+Removed layer transform_0
+Added residual connection transform_1 -> transform_1
+Added layer transform_4 after transform_0
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.634 ± 0.002, 🌿 Diversity: 3.873, 🧬 Genes: 104
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3535 positions
+[DEBUG] Sampled 200 positions from 3535 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30742.643542689395
+[DEBUG] Values mean: 0.37961564412384063, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.009425536467143279, Denominator: 15.556345157893915
+[DEBUG] Final Moran's I: 0.12117931778288406
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.10 GB
+
+⏱️  Generation 26 completed in 232.03s. Population: 512
+
+================================================================================
+GENERATION 27
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Modification failed: 'Linear' object is not iterable
+Added layer transform_2 after transform_2
+Changed activation in transform_3 to swish
+Rewired output -> output
+Removed layer transform_3
+Removed layer transform_5
+Changed activation in transform_5 to sigmoid
+Added layer transform_3 after transform_2
+Added layer transform_3 after transform_0
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after transform_2
+Removed layer transform_3
+Resized transform_4: 128 -> 32
+Rewired output -> transform_4
+Removed layer transform_0
+Removed layer transform_0
+Added layer transform_2 after transform_2
+Resized transform_2: 128 -> 32
+Added layer transform_2 after output
+Added layer transform_3 after transform_1
+Rewired transform_3 -> transform_1
+Removed layer transform_4
+Removed layer transform_4
+Added layer transform_8 after transform_1
+Added residual connection transform_0 -> output
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_4
+Resized transform_3: 128 -> 32
+Rewired transform_1 -> output
+Rewired output -> output
+Resized transform_2: 128 -> 39
+Added layer transform_4 after transform_2
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_4
+Removed layer transform_1
+Added layer transform_6 after transform_0
+Resized transform_2: 128 -> 48
+Added layer transform_2 after output
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 32
+Removed layer transform_4
+Added layer transform_2 after transform_1
+Added layer transform_2 after transform_0
+Removed layer transform_4
+Resized transform_1: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_2 -> transform_5
+Removed layer transform_0
+Removed layer transform_1
+Rewired transform_0 -> output
+Modification failed: 'Linear' object is not subscriptable
+Added residual connection transform_1 -> transform_1
+Modification failed: 'Linear' object is not iterable
+Rewired output -> output
+Added layer transform_3 after output
+Resized transform_0: 34 -> 25
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_1 to gelu
+Changed activation in transform_1 to sigmoid
+Removed layer transform_2
+Removed layer transform_1
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_2
+Removed layer transform_2
+Rewired output -> transform_2
+Resized transform_0: 128 -> 40
+Removed layer transform_0
+Changed activation in transform_0 to sigmoid
+Added layer transform_6 after transform_2
+Changed activation in transform_2 to sigmoid
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Changed activation in transform_0 to swish
+Rewired transform_2 -> output
+Added residual connection transform_1 -> output
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to tanh
+Added layer transform_2 after transform_1
+Added layer transform_3 after output
+Rewired transform_0 -> transform_4
+Added layer transform_5 after output
+Removed layer transform_2
+Changed activation in transform_2 to tanh
+Removed layer transform_4
+Added layer transform_2 after transform_2
+Rewired transform_2 -> transform_2
+Added layer transform_2 after transform_0
+Rewired output -> output
+Rewired transform_4 -> transform_2
+Removed layer transform_0
+Removed layer transform_0
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_0: 128 -> 37
+Added layer transform_3 after transform_2
+Resized transform_5: 128 -> 32
+Added layer transform_4 after transform_0
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to elu
+Removed layer transform_1
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to swish
+Rewired transform_2 -> transform_2
+Added layer transform_4 after transform_0
+Added layer transform_4 after transform_2
+Changed activation in transform_0 to elu
+Rewired transform_0 -> transform_1
+Rewired transform_2 -> transform_1
+Changed activation in transform_1 to tanh
+Changed activation in transform_1 to gelu
+Changed activation in transform_1 to elu
+Added residual connection transform_0 -> output
+Added residual connection transform_1 -> transform_1
+Changed activation in transform_1 to sigmoid
+Added layer transform_5 after output
+Resized transform_1: 128 -> 32
+Rewired transform_0 -> output
+Removed layer transform_0
+Changed activation in transform_2 to relu
+Resized transform_1: 128 -> 44
+Changed activation in transform_1 to sigmoid
+Resized transform_1: 128 -> 35
+Removed layer transform_1
+Resized transform_2: 128 -> 49
+Resized transform_1: 128 -> 33
+Added layer transform_4 after transform_0
+Removed layer transform_0
+Changed activation in transform_1 to sigmoid
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.638 ± 0.002, 🌿 Diversity: 3.833, 🧬 Genes: 100
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3528 positions
+[DEBUG] Sampled 200 positions from 3528 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30458.894263703023
+[DEBUG] Values mean: 0.40474285760295203, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011341331005339758, Denominator: 17.251456836015027
+[DEBUG] Final Moran's I: 0.13148258855058567
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 27 completed in 220.52s. Population: 512
+
+================================================================================
+GENERATION 28
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_3 after transform_3
+Rewired transform_1 -> output
+Added layer transform_2 after output
+Changed activation in transform_0 to relu
+Removed layer transform_3
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_3 after transform_0
+Rewired output -> transform_2
+Added residual connection output -> transform_2
+Removed layer transform_6
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_1 to swish
+Added residual connection output -> output
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_2 after output
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_2: 128 -> 40
+Added residual connection transform_0 -> output
+Added layer transform_2 after transform_1
+Changed activation in transform_0 to relu
+Added layer transform_2 after transform_0
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_0: 128 -> 32
+Changed activation in transform_0 to sigmoid
+Added residual connection transform_2 -> transform_5
+Removed layer transform_4
+Added layer transform_2 after transform_2
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Added layer transform_7 after transform_0
+Modification failed: 'Linear' object is not iterable
+Resized transform_0: 128 -> 32
+Added residual connection transform_2 -> transform_1
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_0 to elu
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_3 after transform_2
+Rewired transform_0 -> transform_3
+Changed activation in transform_2 to tanh
+Added layer transform_6 after transform_5
+Removed layer transform_4
+Removed layer transform_2
+Changed activation in transform_1 to gelu
+Added layer transform_2 after transform_0
+Removed layer transform_5
+Resized transform_1: 128 -> 32
+Rewired output -> transform_2
+Resized transform_2: 34 -> 27
+Added layer transform_4 after transform_1
+Added layer transform_2 after transform_0
+Added layer transform_5 after transform_1
+Removed layer transform_2
+Changed activation in transform_1 to tanh
+Removed layer transform_1
+Resized transform_2: 128 -> 32
+Added residual connection transform_1 -> transform_1
+Added residual connection transform_4 -> transform_5
+Rewired transform_1 -> output
+Added layer transform_2 after output
+Changed activation in transform_2 to relu
+Added layer transform_4 after transform_0
+Rewired transform_2 -> output
+Rewired transform_2 -> output
+Modification failed: 'Linear' object is not iterable
+Added residual connection transform_4 -> transform_4
+Added layer transform_4 after transform_0
+Modification failed: 'Linear' object is not iterable
+Added layer transform_4 after transform_2
+Added layer transform_2 after transform_2
+Changed activation in transform_1 to tanh
+Added layer transform_3 after transform_0
+Resized transform_0: 40 -> 29
+Added residual connection transform_1 -> output
+Resized transform_1: 128 -> 32
+Rewired transform_1 -> output
+Removed layer transform_1
+Added layer transform_2 after transform_0
+Added layer transform_4 after transform_1
+Removed layer transform_0
+Resized transform_2: 128 -> 32
+Rewired transform_2 -> output
+Added residual connection output -> transform_2
+Removed layer transform_2
+Resized transform_1: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not subscriptable
+Added residual connection transform_2 -> output
+Added layer transform_7 after transform_2
+Added layer transform_2 after transform_2
+Changed activation in transform_3 to elu
+Rewired transform_1 -> transform_1
+Added layer transform_5 after output
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_0
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_4 after transform_1
+Changed activation in transform_1 to gelu
+Resized transform_1: 128 -> 32
+Resized transform_1: 128 -> 35
+Removed layer transform_0
+Resized transform_2: 128 -> 32
+Changed activation in transform_2 to swish
+Added layer transform_4 after transform_0
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Added layer transform_3 after transform_0
+Resized transform_2: 128 -> 38
+Added layer transform_6 after output
+Resized transform_1: 128 -> 34
+Changed activation in transform_2 to sigmoid
+Changed activation in transform_1 to sigmoid
+Rewired transform_2 -> transform_2
+Removed layer transform_2
+Changed activation in transform_2 to relu
+Resized transform_1: 128 -> 32
+Changed activation in transform_1 to sigmoid
+Removed layer transform_4
+Added layer transform_3 after transform_2
+Resized transform_0: 128 -> 33
+Removed layer transform_0
+Changed activation in transform_0 to gelu
+Removed layer transform_2
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_0
+Removed layer transform_2
+Resized transform_2: 128 -> 39
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Removed layer transform_1
+Rewired transform_0 -> transform_1
+Rewired transform_1 -> transform_2
+Changed activation in transform_0 to relu
+Added residual connection transform_1 -> transform_1
+Changed activation in transform_1 to gelu
+Resized transform_2: 128 -> 32
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.640 ± 0.002, 🌿 Diversity: 3.816, 🧬 Genes: 97
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3538 positions
+[DEBUG] Sampled 200 positions from 3538 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30587.546097350052
+[DEBUG] Values mean: 0.40626396215059324, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011162723206202256, Denominator: 16.784194050395413
+[DEBUG] Final Moran's I: 0.13301470624905312
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+   - Cleared CUDA memory cache. Usage now: 16.12 GB
+
+⏱️  Generation 28 completed in 221.20s. Population: 512
+
+================================================================================
+GENERATION 29
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Added layer transform_2 after transform_2
+Added layer transform_3 after transform_3
+Rewired output -> transform_3
+Changed activation in transform_4 to sigmoid
+Added layer transform_6 after transform_1
+Rewired transform_1 -> transform_4
+Removed layer transform_3
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_2: 48 -> 32
+Added residual connection output -> transform_2
+Added layer transform_3 after transform_0
+Removed layer transform_0
+Removed layer transform_4
+Removed layer transform_4
+Rewired transform_2 -> output
+Rewired transform_2 -> output
+Removed layer transform_2
+Added layer transform_5 after transform_3
+Added layer transform_3 after transform_0
+Rewired output -> transform_1
+Added layer transform_5 after transform_2
+Rewired transform_0 -> transform_6
+Resized transform_2: 128 -> 40
+Added layer transform_2 after transform_1
+Changed activation in transform_0 to sigmoid
+Rewired transform_2 -> transform_7
+Added layer transform_3 after transform_0
+Rewired transform_6 -> transform_7
+Removed layer transform_0
+Changed activation in transform_2 to swish
+Rewired transform_2 -> transform_3
+Added layer transform_4 after output
+Changed activation in transform_2 to tanh
+Removed layer transform_0
+Added layer transform_2 after transform_2
+Changed activation in transform_1 to swish
+Changed activation in transform_0 to sigmoid
+Changed activation in transform_2 to elu
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_1 to relu
+Added layer transform_3 after output
+Removed layer transform_0
+Resized transform_0: 128 -> 32
+Removed layer transform_0
+Added layer transform_2 after transform_1
+Added layer transform_3 after transform_1
+Added layer transform_5 after transform_2
+Added layer transform_3 after transform_3
+Modification failed: 'Linear' object is not subscriptable
+Rewired output -> transform_2
+Added layer transform_5 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_1
+Rewired transform_0 -> transform_2
+Removed layer transform_1
+Rewired transform_1 -> transform_4
+Resized transform_2: 128 -> 32
+Resized transform_2: 38 -> 26
+Resized transform_0: 128 -> 32
+Rewired transform_0 -> output
+Added layer transform_3 after transform_1
+Removed layer transform_3
+Added layer transform_4 after transform_1
+Rewired transform_1 -> output
+Resized transform_2: 128 -> 32
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Rewired transform_2 -> output
+Changed activation in transform_2 to swish
+Added residual connection transform_4 -> transform_5
+Changed activation in transform_1 to elu
+Changed activation in transform_2 to elu
+Added layer transform_5 after transform_2
+Added layer transform_3 after output
+Removed layer transform_2
+Removed layer transform_1
+Removed layer transform_7
+Changed activation in transform_2 to tanh
+Modification failed: 'Linear' object is not iterable
+Resized transform_2: 43 -> 34
+Added layer transform_4 after transform_1
+Rewired transform_0 -> transform_5
+Added layer transform_4 after transform_2
+Rewired transform_2 -> output
+Rewired output -> transform_2
+Added layer transform_4 after transform_1
+Rewired transform_1 -> transform_1
+Changed activation in transform_1 to sigmoid
+Removed layer transform_4
+Resized transform_0: 128 -> 32
+Rewired transform_1 -> output
+Removed layer transform_1
+Resized transform_1: 128 -> 41
+Resized transform_2: 128 -> 40
+Removed layer transform_0
+Rewired transform_2 -> output
+Added layer transform_4 after transform_2
+Added residual connection transform_1 -> output
+Changed activation in transform_1 to tanh
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to elu
+Resized transform_2: 128 -> 37
+Added layer transform_3 after transform_0
+Rewired transform_2 -> output
+Rewired transform_2 -> output
+Removed layer transform_0
+Resized transform_0: 128 -> 35
+Changed activation in transform_2 to gelu
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 33
+Changed activation in transform_2 to elu
+Removed layer transform_0
+Rewired transform_0 -> transform_1
+Added layer transform_5 after transform_1
+Rewired transform_1 -> output
+Removed layer transform_1
+Rewired transform_1 -> transform_2
+Changed activation in transform_1 to gelu
+Resized transform_1: 128 -> 32
+Changed activation in transform_2 to tanh
+Resized transform_2: 128 -> 32
+Resized transform_1: 128 -> 34
+Removed layer transform_2
+Added residual connection transform_0 -> output
+Added layer transform_4 after transform_0
+Removed layer transform_0
+Added residual connection transform_2 -> transform_1
+Changed activation in transform_2 to tanh
+Resized transform_2: 128 -> 32
+Removed layer transform_1
+Removed layer transform_1
+Changed activation in transform_2 to relu
+Rewired transform_2 -> transform_1
+Changed activation in transform_0 to elu
+Changed activation in transform_1 to elu
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.639 ± 0.002, 🌿 Diversity: 3.803, 🧬 Genes: 97
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3563 positions
+[DEBUG] Sampled 200 positions from 3563 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30362.378416605767
+[DEBUG] Values mean: 0.3999600382031676, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.012153937256098929, Denominator: 18.009077574059717
+[DEBUG] Final Moran's I: 0.13497567775048583
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+⏱️  Generation 29 completed in 236.45s. Population: 512
+
+================================================================================
+GENERATION 30
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Resized transform_2: 128 -> 32
+Added layer transform_3 after transform_3
+Removed layer transform_3
+Added layer transform_3 after output
+Added layer transform_4 after transform_1
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not subscriptable
+Rewired output -> output
+Changed activation in transform_2 to swish
+Added residual connection output -> transform_5
+Added layer transform_2 after output
+Resized transform_1: 128 -> 32
+Changed activation in transform_2 to gelu
+Removed layer transform_0
+Changed activation in transform_4 to sigmoid
+Rewired output -> transform_3
+Removed layer transform_0
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_6 after transform_2
+Resized transform_2: 128 -> 32
+Changed activation in transform_1 to swish
+Added residual connection transform_1 -> output
+Resized transform_0: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_0 to elu
+Removed layer transform_7
+Removed layer transform_3
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_3
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_2 to relu
+Changed activation in transform_0 to sigmoid
+Added layer transform_6 after transform_4
+Changed activation in transform_0 to gelu
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_3
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_1 to gelu
+Rewired transform_0 -> output
+Added layer transform_2 after transform_1
+Removed layer transform_4
+Removed layer transform_2
+Rewired transform_2 -> output
+Removed layer transform_3
+Added layer transform_5 after output
+Rewired transform_1 -> output
+Added layer transform_3 after output
+Changed activation in transform_2 to sigmoid
+Removed layer transform_0
+Removed layer transform_5
+Resized transform_2: 43 -> 32
+Changed activation in transform_2 to relu
+Removed layer transform_2
+Added layer transform_2 after output
+Removed layer transform_0
+Changed activation in transform_2 to gelu
+Removed layer transform_2
+Added layer transform_4 after transform_0
+Changed activation in transform_0 to elu
+Added layer transform_2 after transform_1
+Removed layer transform_2
+Rewired output -> transform_2
+Removed layer transform_4
+Changed activation in transform_1 to elu
+Added layer transform_5 after transform_2
+Added layer transform_5 after transform_4
+Changed activation in transform_1 to gelu
+Resized transform_2: 128 -> 32
+Changed activation in transform_4 to relu
+Added layer transform_4 after transform_2
+Modification failed: 'Linear' object is not iterable
+Resized transform_2: 128 -> 38
+Removed layer transform_1
+Resized transform_3: 128 -> 32
+Added layer transform_2 after transform_2
+Removed layer transform_0
+Changed activation in transform_3 to elu
+Rewired transform_0 -> output
+Resized transform_1: 128 -> 35
+Added layer transform_4 after transform_1
+Added layer transform_4 after transform_2
+Changed activation in transform_0 to relu
+Resized transform_1: 128 -> 32
+Changed activation in transform_2 to gelu
+Added layer transform_5 after transform_0
+Changed activation in transform_1 to relu
+Removed layer transform_4
+Rewired transform_1 -> output
+Rewired transform_1 -> output
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_0 to gelu
+Resized transform_0: 128 -> 32
+Resized transform_1: 128 -> 32
+Resized transform_2: 128 -> 32
+Added layer transform_3 after transform_2
+Resized transform_2: 128 -> 32
+Removed layer transform_2
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_0
+Resized transform_2: 128 -> 33
+Added layer transform_3 after transform_1
+Resized transform_0: 128 -> 32
+Added residual connection transform_1 -> transform_2
+Removed layer transform_0
+Added layer transform_2 after transform_0
+Added layer transform_4 after transform_0
+Resized transform_1: 128 -> 37
+Added layer transform_3 after transform_0
+Added layer transform_4 after transform_1
+Removed layer transform_2
+Changed activation in transform_1 to sigmoid
+Removed layer transform_1
+Resized transform_0: 128 -> 32
+Added layer transform_5 after transform_0
+Changed activation in transform_1 to relu
+Removed layer transform_1
+Resized transform_0: 128 -> 32
+Rewired transform_2 -> output
+Added residual connection transform_2 -> transform_2
+Added layer transform_4 after transform_2
+Added layer transform_4 after transform_0
+Resized transform_1: 128 -> 32
+Resized transform_0: 128 -> 35
+Resized transform_2: 128 -> 36
+Added residual connection transform_0 -> transform_2
+Changed activation in transform_1 to elu
+Rewired transform_2 -> output
+Added layer transform_4 after transform_2
+Removed layer transform_2
+Changed activation in transform_1 to gelu
+Added layer transform_4 after transform_1
+Rewired transform_0 -> transform_2
+Resized transform_0: 128 -> 32
+Added layer transform_4 after transform_0
+Removed layer transform_2
+Removed layer transform_0
+Rewired transform_0 -> transform_2
+Changed activation in transform_1 to relu
+   Evaluated 512 cells (optimized).
+
+📈 Phase 2: Metrics and Stress Detection
+   📊 Metrics: 💪 Fitness: 0.640 ± 0.002, 🌿 Diversity: 3.793, 🧬 Genes: 97
+   Stress factors: stagnation=0.00, diversity=0.00, variance=0.00, phase=0.00
+   Combined amplified stress: 0.002
+   Current stress level: 0.002
+
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+[DEBUG] Computing Moran's I with 3583 positions
+[DEBUG] Sampled 200 positions from 3583 total
+[DEBUG] Computing 200x200 spatial weights matrix
+[DEBUG] Weights matrix sum: 30479.513077393254
+[DEBUG] Values mean: 0.41634455142634236, values shape: (200,)
+[DEBUG] Computing Moran's I numerator and denominator
+[DEBUG] Numerator: 0.011345552701607243, Denominator: 16.85960491252632
+[DEBUG] Final Moran's I: 0.13458859517138205
+
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+   Selection complete: 358 survivors, 154 to be replaced.
+   Replaced 154 cells with optimized cloning.
+   New population size: 512
+   - Parallel batch cache cleared.
+
+💤 Phase 6: Dream Consolidation
+
+🌌 Quantum Dream Phase (5 cycles)
+   Found 250 quantum genes for entanglement
+Changed activation in transform_1 to gelu
+Added layer transform_3 after output
+Added layer transform_2 after transform_2
+Rewired transform_2 -> transform_3
+Added layer transform_2 after transform_0
+Rewired transform_2 -> output
+Resized transform_1: 128 -> 32
+Removed layer transform_2
+Changed activation in transform_2 to elu
+Rewired transform_3 -> transform_3
+Added residual connection transform_0 -> output
+Rewired transform_1 -> output
+Rewired transform_2 -> transform_1
+Changed activation in transform_0 to tanh
+Rewired output -> output
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_2 to elu
+Added residual connection transform_1 -> output
+Changed activation in transform_1 to sigmoid
+Added layer transform_4 after transform_0
+Added residual connection transform_2 -> transform_3
+Rewired output -> transform_2
+   Cycle 1: 60 quantum consolidations, avg improvement: 0.5489, realities: 3, time: 35.19s
+Modification failed: 'Linear' object is not subscriptable
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_1
+Rewired transform_0 -> output
+Rewired transform_2 -> output
+Changed activation in transform_1 to swish
+Removed layer transform_5
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_0: 128 -> 32
+Resized transform_1: 34 -> 24
+Added residual connection output -> output
+Removed layer transform_1
+Resized transform_1: 128 -> 35
+Rewired output -> transform_2
+Resized transform_2: 128 -> 40
+Added layer transform_3 after transform_2
+Added layer transform_6 after transform_3
+Rewired transform_0 -> output
+Rewired output -> transform_4
+Removed layer transform_0
+Rewired transform_0 -> output
+   Cycle 2: 80 quantum consolidations, avg improvement: 0.5436, realities: 4, time: 48.15s
+Added layer transform_5 after output
+Rewired transform_0 -> output
+Rewired transform_1 -> transform_2
+Changed activation in transform_5 to elu
+Removed layer transform_5
+Added layer transform_7 after transform_1
+Changed activation in transform_0 to sigmoid
+Added layer transform_3 after output
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_1 to gelu
+Resized transform_0: 128 -> 32
+Removed layer transform_2
+Rewired transform_2 -> output
+Changed activation in transform_0 to gelu
+Modification failed: 'Linear' object is not iterable
+Added layer transform_5 after transform_2
+Removed layer transform_1
+Resized transform_0: 128 -> 32
+Rewired transform_2 -> transform_6
+Removed layer transform_4
+Removed layer transform_3
+Resized transform_2: 128 -> 33
+Added layer transform_3 after transform_0
+Resized transform_2: 128 -> 53
+Modification failed: 'Linear' object is not subscriptable
+   Cycle 3: 100 quantum consolidations, avg improvement: 0.5435, realities: 5, time: 63.21s
+Removed layer transform_1
+Resized transform_1: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_4
+Changed activation in transform_2 to sigmoid
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_2
+Added layer transform_6 after output
+Rewired transform_4 -> transform_2
+Changed activation in transform_4 to gelu
+Added layer transform_4 after output
+Removed layer transform_2
+Removed layer transform_3
+Resized transform_1: 128 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_2: 128 -> 44
+Added layer transform_4 after transform_0
+Resized transform_0: 128 -> 53
+Added layer transform_3 after output
+Added layer transform_2 after transform_0
+Added layer transform_2 after transform_1
+Removed layer transform_0
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_1
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_0 to elu
+Added layer transform_3 after output
+Added layer transform_5 after transform_0
+Changed activation in transform_2 to sigmoid
+Added layer transform_7 after transform_1
+Rewired output -> output
+Added layer transform_4 after output
+Removed layer transform_2
+Removed layer transform_1
+   Cycle 4: 120 quantum consolidations, avg improvement: 0.5540, realities: 6, time: 70.49s
+Removed layer transform_3
+Changed activation in transform_0 to tanh
+Resized transform_0: 128 -> 42
+Changed activation in transform_0 to tanh
+Changed activation in transform_2 to elu
+Resized transform_0: 128 -> 35
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_1 to relu
+Removed layer transform_0
+Removed layer transform_1
+Added layer transform_4 after transform_0
+Rewired output -> transform_2
+Added layer transform_4 after transform_0
+Rewired output -> transform_2
+Changed activation in transform_0 to relu
+Added residual connection transform_1 -> transform_2
+Resized transform_0: 128 -> 32
+Changed activation in transform_1 to sigmoid
+Modification failed: 'Linear' object is not iterable
+Resized transform_1: 128 -> 33
+Added layer transform_3 after output
+Added layer transform_4 after transform_0
+Removed layer transform_3
+Added layer transform_4 after output
+Changed activation in transform_1 to gelu
+Added layer transform_4 after transform_0
+Rewired transform_2 -> transform_3
+Rewired output -> transform_2
+Modification failed: 'Linear' object is not iterable
+Removed layer transform_1
+Added layer transform_3 after transform_0
+Changed activation in transform_4 to elu
+Rewired transform_0 -> transform_1
+Added layer transform_4 after transform_4
+Rewired transform_2 -> transform_4
+Resized transform_0: 128 -> 37
+Resized transform_0: 128 -> 32
+   Cycle 5: 140 quantum consolidations, avg improvement: 0.5509, realities: 7, time: 78.74s
+
+📊 Quantum Dream Statistics:
+   Average |0⟩ probability: 0.320
+   Average |1⟩ probability: 0.680
+   Average coherence time: 8.0 steps
+   Quantum memory size: 150 states
+   💾 Saved checkpoint to production_results\checkpoint_gen_30.pt
+   - Cleared CUDA memory cache. Usage now: 16.33 GB
+
+⏱️  Generation 30 completed in 566.61s. Population: 512
+
+================================================================================
+GENERATION 31
+================================================================================
+
+📊 Phase 1: Fitness Evaluation (Optimized)
+Rewired transform_2 -> output
+Added residual connection output -> transform_3
+Added layer transform_5 after transform_0
+Removed layer transform_4
+Resized transform_2: 58 -> 44
+Rewired output -> output
+Added layer transform_2 after output
+Added layer transform_2 after output
+Rewired transform_2 -> output
+Added layer transform_7 after transform_4
+Added layer transform_3 after output
+Added layer transform_4 after transform_0
+Added residual connection transform_5 -> transform_3
+Added layer transform_2 after output
+Added layer transform_2 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_1 -> output
+Removed layer transform_0
+Removed layer transform_3
+Changed activation in transform_6 to swish
+Removed layer transform_0
+Added layer transform_6 after transform_6
+Added layer transform_2 after transform_1
+Rewired transform_2 -> output
+Resized transform_2: 128 -> 33
+Removed layer transform_3
+Modification failed: 'Linear' object is not iterable
+Added layer transform_3 after transform_2
+Resized transform_0: 128 -> 32
+Added layer transform_4 after transform_2
+Removed layer transform_5
+Added layer transform_2 after output
+Resized transform_2: 128 -> 32
+Added layer transform_3 after transform_0
+Removed layer transform_1
+Added layer transform_5 after transform_0
+Changed activation in transform_1 to tanh
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Rewired transform_1 -> transform_2
+Added residual connection transform_2 -> output
+Resized transform_1: 128 -> 49
+Added layer transform_2 after transform_2
+Rewired transform_0 -> output
+Removed layer transform_1
+Added layer transform_2 after transform_1
+Added residual connection transform_3 -> transform_3
+Resized transform_0: 42 -> 32
+Modification failed: 'Linear' object is not subscriptable
+Changed activation in transform_2 to gelu
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_2 to elu
+Added layer transform_6 after transform_2
+Added layer transform_3 after transform_0
+Removed layer transform_4
+Added layer transform_3 after output
+Rewired transform_2 -> output
+Added layer transform_3 after transform_1
+Added layer transform_4 after output
+Added layer transform_4 after transform_1
+Changed activation in transform_2 to relu
+Rewired transform_0 -> output
+Resized transform_1: 35 -> 25
+Modification failed: 'Linear' object is not subscriptable
+Added layer transform_3 after output
+Rewired transform_2 -> output
+Changed activation in transform_1 to elu
+Changed activation in transform_0 to sigmoid
+Added layer transform_5 after transform_1
+Changed activation in transform_1 to swish
+Rewired transform_0 -> transform_5
+Removed layer transform_5
+Changed activation in transform_2 to swish
+Changed activation in transform_2 to relu
+Added residual connection transform_2 -> transform_4
+Changed activation in transform_2 to gelu
+Added layer transform_5 after output
+Added layer transform_5 after transform_0
+Added layer transform_2 after transform_2
+Modification failed: 'Linear' object is not subscriptable
+Removed layer transform_0
+Added layer transform_4 after transform_1
+Added layer transform_3 after output
+Removed layer transform_0
+Changed activation in transform_2 to elu
+Added layer transform_3 after transform_1
+Removed layer transform_2
+Added layer transform_6 after transform_2
+Rewired transform_1 -> output
+Changed activation in transform_0 to gelu
+Changed activation in transform_2 to gelu
+Removed layer transform_2
+Added residual connection transform_1 -> transform_1
+Removed layer transform_2
+Added layer transform_3 after transform_0
+Added residual connection transform_3 -> transform_2
+Modification failed: 'Linear' object is not subscriptable
+Rewired transform_1 -> output
+Modification failed: 'Linear' object is not subscriptable
+Resized transform_1: 128 -> 32
+Added layer transform_6 after transform_2
+Removed layer transform_2
+Added layer transform_3 after transform_0
+Modification failed: 'Linear' object is not iterable
+Modification failed: 'Linear' object is not iterable
+Changed activation in transform_2 to sigmoid
+Removed layer transform_1
+Added residual connection transform_2 -> transform_1
+Rewired output -> transform_3
+Removed layer transform_1
+Resized transform_4: 128 -> 32
+Resized transform_1: 128 -> 32
+Changed activation in transform_0 to elu
+Changed activation in transform_2 to swish
+Resized transform_1: 128 -> 32
+Removed layer transform_0
+Added layer transform_4 after transform_2
+Added residual connection transform_1 -> transform_4
+Resized transform_2: 128 -> 32
+Removed layer transform_0
+Changed activation in transform_0 to swish
+Resized transform_0: 128 -> 32
+Changed activation in transform_0 to gelu
+Added residual connection transform_0 -> transform_2
+Changed activation in transform_1 to gelu
+Added layer transform_3 after transform_0
+Added layer transform_4 after transform_2
+Rewired output -> transform_1
+Added residual connection transform_1 -> output
+Resized transform_1: 128 -> 38
+Rewired output -> transform_1
+Changed activation in transform_0 to sigmoid
+Changed activation in transform_2 to gelu
+Rewired transform_2 -> output
+Resized transform_1: 128 -> 32
+Rewired transform_1 -> output
+Rewired output -> transform_2
+Removed layer transform_2
+Changed activation in transform_0 to elu

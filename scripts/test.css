@@ -1,0 +1,9 @@
+.terminal {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #1e1e1e;
+  color: #8eaaae;
+  padding: 10px;
+  border-radius: 5px;
+  overflow: auto;
+  white-space: pre;
+}

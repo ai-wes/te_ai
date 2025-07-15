@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style> body { margin: 0; } </style>
+  <script src="//unpkg.com/3d-force-graph"></script>
+  <script src="//unpkg.com/three"></script>
+</head>
+
+<body>
+  <div id="3d-graph"></div>
+
+  <script>
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+      .backgroundColor('#000020')
+      .nodeLabel('id')
+      .nodeAutoColorBy('activation')
+      .linkDirectionalArrowLength(3.5)
+      .linkDirectionalArrowRelPos(1)
+      .linkCurvature(0.25)
+      .onNodeHover(node => document.body.style.cursor = node ? 'pointer' : null)
+      .onNodeClick(node => {
+        // Center camera on node
+        const distance = 150;
+        const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+        Graph.cameraPosition(
+          { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
+          node, // lookAt ({ x, y, z })
+          2000  // ms transition duration
+        );
+      });
+
+    // Function to update the graph with new data
+    function updateGraph(data) {
+        // Update 3D graph
+        Graph.graphData(data);
+        
+        // Update title with cell ID
+        if (data.cell_id) {
+            document.getElementById('title').innerText = `Live Architecture: Cell ...${data.cell_id.slice(-6)}`;
+        }
+        
+        // Update population statistics
+        document.getElementById('generation').innerText = `Generation: ${data.generation || 0}`;
+        document.getElementById('population').innerText = `Population: ${data.population_size || 0}`;
+        document.getElementById('genes').innerText = `Genes: ${data.active_genes || 0} / ${data.total_genes || 0}`;
+        document.getElementById('phase').innerText = `Phase: ${data.phase || 'unknown'}`;
+        document.getElementById('fitness').innerText = `Fitness: ${(data.mean_fitness || 0).toFixed(4)}`;
+        
+        // Update cell type distribution
+        if (data.cell_types) {
+            document.getElementById('v-genes').innerText = `V genes: ${data.cell_types.V_genes || 0}`;
+            document.getElementById('d-genes').innerText = `D genes: ${data.cell_types.D_genes || 0}`;
+            document.getElementById('j-genes').innerText = `J genes: ${data.cell_types.J_genes || 0}`;
+            document.getElementById('q-genes').innerText = `Q genes: ${data.cell_types.Q_genes || 0}`;
+            document.getElementById('s-genes').innerText = `S genes: ${data.cell_types.S_genes || 0}`;
+        }
+        
+        // Color code the phase
+        const phaseColors = {
+            'normal': '#00ff00',
+            'transitional': '#ffff00',
+            'critical': '#ff0000',
+            'chaos': '#ff00ff'
+        };
+        const phaseElement = document.getElementById('phase');
+        phaseElement.style.color = phaseColors[data.phase] || '#ffffff';
+    }
+
+    // Function to fetch the state file
+    async function fetchState() {
+        try {
+            const response = await fetch('te_ai_state.json?cachebust=' + new Date().getTime());
+            if (response.ok) {
+                const data = await response.json();
+                updateGraph(data);
+            }
+        } catch (error) {
+            console.error('Error fetching state:', error);
+        }
+    }
+
+    // Periodically poll the state file for updates
+    setInterval(fetchState, 500); // Check for updates every 500ms
+
+    // Initial load
+    fetchState();
+  </script>
+  
+  <div id="title" style="position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; font-size: 24px;">
+    Live Architecture: Waiting for data...
+  </div>
+  
+  <div id="stats" style="position: absolute; top: 50px; left: 10px; color: white; font-family: sans-serif; font-size: 14px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">
+    <div id="generation">Generation: --</div>
+    <div id="population">Population: --</div>
+    <div id="genes">Genes: --</div>
+    <div id="phase">Phase: --</div>
+    <div id="fitness">Fitness: --</div>
+  </div>
+  
+  <div id="cell-types" style="position: absolute; top: 50px; right: 10px; color: white; font-family: sans-serif; font-size: 14px; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">
+    <div style="font-weight: bold; margin-bottom: 5px;">Gene Distribution</div>
+    <div id="v-genes">V genes: --</div>
+    <div id="d-genes">D genes: --</div>
+    <div id="j-genes">J genes: --</div>
+    <div id="q-genes">Q genes: --</div>
+    <div id="s-genes">S genes: --</div>
+  </div>
+</body>
+</html>

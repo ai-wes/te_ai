@@ -1,0 +1,99 @@
+
+# Patent Figure Descriptions
+
+## Figure 1: Overall System Architecture
+Shows the complete transposable element neural network system comprising:
+- Population Manager (100): Central control unit managing the cell population
+- Multiple Cells (102, 104, 106): Individual neural processing units containing genes
+- Subsystems: Stress Response, Gene Regulation, Epigenetic System, Dream Engine, Phase Detector
+- Bidirectional data flow between components
+
+## Figure 2: Continuous-Depth Gene Module  
+Illustrates the ODE-based neural processing within each gene:
+- Input (200): Initial state x(t₀)
+- ODE Solver (202): Solves dx/dt = f(x(t), t, θ)
+- Neural Function f (204): Parameterized transformation
+- Depth Parameter (206): τ = e^(log_depth) controls integration time
+- Output (208): Final state x(t₁)
+- Adjoint Method (210): Efficient backpropagation through ODE
+
+## Figure 3: Stress-Responsive Transposition Mechanism
+Part A shows the transposition process:
+- Before state (300): Original gene configuration
+- Transposing Gene (302): Gene marked for transposition
+- Stress Indicator (304): Stress level exceeding threshold
+- After state (306): New configuration with transposed and mutated gene
+
+Part B shows the transposition probability curve:
+- Threshold θ (308): Critical stress level
+- Probability curve (310): Sigmoid function for transposition likelihood
+- Safe and danger zones clearly marked
+
+## Figure 4: Gene Regulatory Network
+Displays the gene interaction network:
+- Gene nodes (400-408): V1, V2, D1, J1, J2 genes
+- Activating connections (green arrows with +)
+- Repressing connections (red arrows with -)
+- Regulatory Matrix W (410): Mathematical representation
+- Expression dynamics equation (412): dE/dt = σ(ΣWE + b) - λE
+
+## Figure 5: Population Evolution with Phase Transitions
+Part A shows population dynamics over generations:
+- Fitness curve (500): Population performance metric
+- Diversity curve (502): Genetic diversity measure
+- Phase regions: Stable, Critical, Chaos, Reorganization, New Stable
+- Intervention points (504, 506): Strategic modification times
+
+Part B shows the phase space diagram:
+- Critical line (508): Phase boundary
+- System trajectory (510): Evolution path through phases
+- Color-coded stability regions
+
+## Figure 6: Epigenetic Inheritance Mechanism
+Illustrates transgenerational inheritance:
+- Parent Cell (600): Original cell with epigenetic marks
+- DNA with methylation (602): CH₃ groups on DNA
+- Histones (604): Protein complexes affecting gene expression
+- Child Cells (606, 608): Offspring with inherited patterns
+- 85% Inheritance Rate (610): Statistical conservation
+- Environmental Influence (612): External stress factors
+
+## Figure 7: Dream Consolidation System
+Shows the VAE-based memory consolidation:
+- Experience Buffer (700): Recent memory storage
+- Encoder (702): q(z|x) compression to latent space
+- Latent Space (704): Compressed representation z
+- Decoder (706): p(x|z) reconstruction
+- Dream State (708): Generated consolidation patterns
+- Attention Mechanism (710): Selective focus system
+- Consolidated Memory (712): Long-term storage
+
+## Figure 8: Self-Modifying Architecture
+Depicts the meta-learning system:
+- Meta-Controller (800): Architecture modification decisions
+- Performance Monitor (802): System evaluation
+- Current Architecture (804): Multi-layer network structure
+- Modification Operations (806-810): Add layer, resize, remove
+- Feedback loops for continuous optimization
+
+## Figure 9: Horizontal Gene Transfer
+Illustrates gene sharing between cells:
+- Donor Cell (900): Source of genetic material
+- Chromosomal DNA (902): Main genetic content
+- Plasmid Formation (904): Mobile genetic element
+- Conjugation Bridge (906): Transfer mechanism
+- Recipient Cell (908): Target for gene transfer
+- Integrated Plasmid (910): Successful incorporation
+- Compatibility Check (912): Transfer validation
+
+## Figure 10: V(D)J Recombination Model
+Shows the immune-inspired recombination:
+- Germline Configuration (1000): Initial gene arrangement
+- V segments (1002): Variable region genes
+- D segments (1004): Diversity region genes  
+- J segments (1006): Joining region genes
+- Recombination Signal Sequences (1006): 12-RSS and 23-RSS
+- Recombined Configuration (1008): Final antibody gene
+- Antigen Binding Site (1010): Functional region
+- Antigen (1012): Target molecule
+- Demonstrates massive combinatorial diversity generation

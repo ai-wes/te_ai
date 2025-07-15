@@ -1,0 +1,97 @@
+{
+  "cell_id": "2d59a089-d591-4447-9ea4-a469affb10db",
+  "nodes": [
+    {
+      "id": "V94-b99a915d",
+      "size": 47,
+      "activation": "V",
+      "fx": 0,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    },
+    {
+      "id": "D25-6c16ac86",
+      "size": 67,
+      "activation": "D",
+      "fx": 100,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    },
+    {
+      "id": "J10-2bee6b5e",
+      "size": 47,
+      "activation": "J",
+      "fx": 200,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    },
+    {
+      "id": "J6-be510b89",
+      "size": 58,
+      "activation": "J",
+      "fx": 300,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    },
+    {
+      "id": "S0-f2612798",
+      "size": 50,
+      "activation": "S",
+      "fx": 400,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    },
+    {
+      "id": "S0-8cf211d9",
+      "size": 50,
+      "activation": "S",
+      "fx": 500,
+      "fy": 0,
+      "fz": 0,
+      "color": null
+    }
+  ],
+  "links": [
+    {
+      "source": "V94-b99a915d",
+      "target": "D25-6c16ac86"
+    },
+    {
+      "source": "D25-6c16ac86",
+      "target": "J10-2bee6b5e"
+    },
+    {
+      "source": "J10-2bee6b5e",
+      "target": "J6-be510b89"
+    },
+    {
+      "source": "J6-be510b89",
+      "target": "S0-f2612798"
+    },
+    {
+      "source": "S0-f2612798",
+      "target": "S0-8cf211d9"
+    }
+  ],
+  "generation": 2,
+  "population_size": 144,
+  "total_genes": 926,
+  "active_genes": 926,
+  "quantum_genes": 36,
+  "cell_types": {
+    "V_genes": 365,
+    "D_genes": 271,
+    "J_genes": 219,
+    "Q_genes": 36,
+    "S_genes": 35
+  },
+  "phase": "stable",
+  "stress_level": 0.0022180498303953746,
+  "mean_fitness": 0,
+  "timestamp": 1752561052.9964526
+}
