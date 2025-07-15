@@ -81,14 +81,14 @@ class CFG:
     dream_cycles_per_generation: int = 5
     dream_learning_rate: float = 0.001
     nightmare_adversarial_strength: float = 0.1
-    memory_replay_batch_size: int = 8
+    memory_replay_batch_size: int = 64
 
     # 8. Population Dynamics & Evolution
     initial_population: int = 64  # Renamed from population_size
     max_population: int = 512
     num_generations: int = 50
     selection_pressure: float = 0.3  # Updated value
-    mutation_rate: float = 0.01
+    mutation_rate: float = 0.02
     crossover_rate: float = 0.1  # Updated value
     elite_size: int = 5
     diversity_weight: float = 0.15

@@ -374,6 +374,10 @@ class OptimizedProductionGerminalCenter(ProductionGerminalCenter):
         self.vectorized_ops = VectorizedPopulationOps()
         self.cached_phase_detector = CachedPhaseTransitionDetector()
         
+        # Set global reference for visualization
+        import transposable_immune_ai_production_complete as prod
+        prod._current_germinal_center = self
+        
         
         
         

@@ -92,6 +92,12 @@ class InstrumentedBCell(ProductionBCell):
 class PollingGerminalCenter(OptimizedProductionGerminalCenter):
     """Germinal center that updates polling state"""
     
+    def __init__(self):
+        super().__init__()
+        # Set global reference for visualization
+        import transposable_immune_ai_production_complete as prod
+        prod._current_germinal_center = self
+    
     def evolve_generation(self, antigens):
         # Update generation start
         polling_bridge.update_metrics(
@@ -116,16 +122,23 @@ class PollingGerminalCenter(OptimizedProductionGerminalCenter):
         else:
             mean_fitness = 0
         
-        # Collect detailed cell data
+        # Collect detailed cell data for ALL cells
         cells_data = []
         population_list = list(self.population.values())
-        for i, cell in enumerate(population_list[:512]):  # Limit to 512 cells for performance
+        
+        # Process ALL cells, not just a sample
+        for i, cell in enumerate(population_list):
             cell_info = {
                 'cell_id': f'cell_{cell.cell_id}',
+                'index': i,
                 'fitness': getattr(cell, 'fitness', 0),
+                'generation': getattr(cell, 'generation', self.generation),
+                'lineage': getattr(cell, 'lineage', []),
                 'cell_type': self._get_cell_specialization(cell),
                 'zone': self._get_cell_zone(cell),
-                'genes': []
+                'genes': [],
+                'architecture': None,
+                'connections': []
             }
             
             # Get gene information
@@ -138,14 +151,40 @@ class PollingGerminalCenter(OptimizedProductionGerminalCenter):
                         'is_quantum': 'Quantum' in gene.__class__.__name__,
                         'depth': gene.compute_depth().item() if hasattr(gene, 'compute_depth') else 1.0,
                         'position': getattr(gene, 'position', 0),
-                        'activation': getattr(gene, 'activation_ema', 0.5)
+                        'activation': getattr(gene, 'activation_ema', 0.5),
+                        'variant_id': getattr(gene, 'variant_id', 0),
+                        'methylation': gene.methylation_state.mean().item() if hasattr(gene, 'methylation_state') else 0.0
                     }
                     cell_info['genes'].append(gene_info)
+                
+                # Track gene connections/relationships
+                active_genes = [g for g in cell.genes if g.is_active]
+                for idx1, gene1 in enumerate(active_genes):
+                    for idx2, gene2 in enumerate(active_genes[idx1+1:], idx1+1):
+                        cell_info['connections'].append({
+                            'source': gene1.gene_id,
+                            'target': gene2.gene_id,
+                            'strength': abs(idx1 - idx2) / len(active_genes) if active_genes else 0
+                        })
+            
+            # Add architecture information if cell has it
+            if hasattr(cell, 'architecture_modifier'):
+                arch = cell.architecture_modifier
+                cell_info['architecture'] = {
+                    'dna': getattr(arch, 'architecture_dna', None),
+                    'modules': list(arch.dynamic_modules.keys()) if hasattr(arch, 'dynamic_modules') else [],
+                    'connections': dict(arch.module_connections) if hasattr(arch, 'module_connections') else {},
+                    'modifications': len(getattr(arch, 'modification_history', []))
+                }
             
             cells_data.append(cell_info)
         
-        # Update state with cell data
+        # Update state with comprehensive cell data
         polling_bridge.state['cells'] = cells_data
+        polling_bridge.state['population_size'] = len(cells_data)
+        polling_bridge.state['total_genes'] = sum(len(c['genes']) for c in cells_data)
+        polling_bridge.state['active_genes'] = sum(1 for c in cells_data for g in c['genes'] if g['is_active'])
+        polling_bridge.state['quantum_genes'] = sum(1 for c in cells_data for g in c['genes'] if g['is_quantum'])
         
         # Get current phase
         current_phase = getattr(self.cached_phase_detector, 'current_phase', 'normal')

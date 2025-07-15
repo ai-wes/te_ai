@@ -1077,35 +1077,35 @@ class QuantumEntanglementVisualizer {
 
 class GerminalCenterLayout {
   constructor() {
-    // Define functional zones like a real germinal center
+    // Define functional zones like a real germinal center - Better aligned
     this.zones = {
       darkZone: {
-        center: new THREE.Vector3(-60, 0, 0),
-        radius: 35,
+        center: new THREE.Vector3(-100, 0, 0),
+        radius: 70,
         color: 0x4444aa, // Brighter blue-purple
         description: "High mutation zone - active transposition",
       },
       lightZone: {
-        center: new THREE.Vector3(60, 0, 0),
-        radius: 35,
+        center: new THREE.Vector3(100, 0, 0),
+        radius: 70,
         color: 0xaaaa44, // Brighter yellow-green
         description: "Selection zone - high fitness cells",
       },
       mantleZone: {
         center: new THREE.Vector3(0, 0, 0),
-        radius: 100,
+        radius: 200,
         color: 0x666666, // Medium gray
         description: "Transitional cells",
       },
       memoryZone: {
-        center: new THREE.Vector3(0, 70, 0),
-        radius: 25,
+        center: new THREE.Vector3(0, 120, 0),
+        radius: 60,
         color: 0x44aaaa, // Brighter cyan
         description: "Memory B-cells - stable high performers",
       },
       quantumLayer: {
-        center: new THREE.Vector3(0, -70, 0),
-        radius: 35,
+        center: new THREE.Vector3(0, -120, 0),
+        radius: 70,
         color: 0xaa44aa, // Brighter magenta
         description: "Quantum superposition space",
       },
@@ -1197,27 +1197,37 @@ class GerminalCenterLayout {
   }
 
   darkZonePosition(cellData, index) {
-    // Turbulent arrangement based on mutation activity
+    // Spherical helix arrangement based on mutation activity
     const zone = this.zones.darkZone;
 
-    // Create vortex-like pattern for active mutation
+    // Create spherical helix pattern
     const mutationIntensity = this.calculateMutationRate(cellData);
-    const angle = index * 0.618033988749895 * Math.PI * 2; // Golden angle
-    const radiusVariation = Math.sin(index * 0.1) * 10;
-    const radius = (1 - mutationIntensity) * zone.radius + radiusVariation;
-
-    // Spiral pattern with height based on stress
-    const height = (cellData.stress_level || 0) * 40 - 20;
+    
+    // Spherical helix parameters
+    const turns = 3; // Number of helix turns
+    const t = index / 50; // Normalize index to parameter t
+    const theta = t * turns * Math.PI * 2; // Angle around helix
+    const phi = t * Math.PI; // Angle from top to bottom
+    
+    // Radius varies with mutation intensity
+    const baseRadius = zone.radius * 0.7;
+    const radiusModulation = Math.sin(theta * 2) * 10 * mutationIntensity;
+    const r = baseRadius + radiusModulation;
+    
+    // Spherical coordinates with helix
+    const x = r * Math.sin(phi) * Math.cos(theta);
+    const y = r * Math.cos(phi);
+    const z = r * Math.sin(phi) * Math.sin(theta);
 
     return new THREE.Vector3(
-      zone.center.x + Math.cos(angle) * radius,
-      zone.center.y + height + Math.sin(index * 0.2) * 5,
-      zone.center.z + Math.sin(angle) * radius
+      zone.center.x + x,
+      zone.center.y + y,
+      zone.center.z + z
     );
   }
 
   lightZonePosition(cellData, index, population) {
-    // Organized by fitness - best cells in center
+    // Spherical distribution organized by fitness
     const zone = this.zones.lightZone;
     const fitness = cellData.fitness || 0.5;
 
@@ -1225,21 +1235,24 @@ class GerminalCenterLayout {
     const fitnessRank = cellData.fitnessRank || index;
     const normalizedRank = fitnessRank / population.length;
 
-    // Concentric rings based on fitness
-    const ring = Math.floor(normalizedRank * 5); // 5 rings
-    const ringRadius = (ring / 5) * zone.radius;
-
-    // Position within ring
-    const angleInRing = ((index % 20) / 20) * Math.PI * 2;
-
-    // Add some variation
-    const radiusJitter = (Math.random() - 0.5) * 5;
-    const finalRadius = ringRadius + radiusJitter;
+    // Spiral sphere distribution - fittest cells at center
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+    const theta = goldenAngle * index;
+    
+    // Vertical distribution based on fitness
+    const y = 1 - (2 * normalizedRank); // Maps to [-1, 1]
+    const radiusAtY = Math.sqrt(1 - y * y); // Sphere equation
+    
+    // Scale by zone radius and fitness
+    const radiusScale = zone.radius * (0.3 + normalizedRank * 0.7);
+    
+    const x = Math.cos(theta) * radiusAtY * radiusScale;
+    const z = Math.sin(theta) * radiusAtY * radiusScale;
 
     return new THREE.Vector3(
-      zone.center.x + Math.cos(angleInRing) * finalRadius,
-      zone.center.y + (1 - normalizedRank) * 10, // Higher fitness = higher position
-      zone.center.z + Math.sin(angleInRing) * finalRadius
+      zone.center.x + x,
+      zone.center.y + y * radiusScale * 0.8,
+      zone.center.z + z
     );
   }
 
@@ -1263,22 +1276,26 @@ class GerminalCenterLayout {
   }
 
   quantumLayerPosition(cellData, index) {
-    // 4D hypercube projection for quantum cells
+    // Quantum superposition sphere with phase oscillations
     const zone = this.zones.quantumLayer;
 
-    // Generate 4D coordinates
-    const t = index * 0.618033988749895; // Golden ratio spacing
-    const w = Math.sin(t * 2) * 0.5 + 0.5; // 4th dimension
-
-    // Stereographic projection from 4D to 3D
-    const scale = 1 / (1 + w);
-    const baseAngle = t * Math.PI * 2;
-    const radius = zone.radius * (0.5 + w * 0.5);
-
-    // Create interesting 4D patterns
-    const x = Math.cos(baseAngle) * Math.cos(t * 3) * radius * scale;
-    const y = Math.sin(t * 5) * 20 * scale;
-    const z = Math.sin(baseAngle) * Math.cos(t * 3) * radius * scale;
+    // Quantum phase parameters
+    const phase = index * 0.618033988749895; // Golden ratio
+    const quantumPhase = Math.sin(phase * 4) * 0.5 + 0.5;
+    
+    // Spherical distribution with quantum fluctuations
+    const theta = phase * Math.PI * 2;
+    const phi = Math.acos(1 - 2 * (index % 50) / 50);
+    
+    // Radius oscillates with quantum phase
+    const baseRadius = zone.radius * 0.8;
+    const radiusOscillation = Math.sin(phase * 8) * 10 * quantumPhase;
+    const r = baseRadius + radiusOscillation;
+    
+    // Spherical to Cartesian with quantum wobble
+    const x = r * Math.sin(phi) * Math.cos(theta);
+    const y = r * Math.cos(phi) + Math.sin(phase * 6) * 5;
+    const z = r * Math.sin(phi) * Math.sin(theta);
 
     return new THREE.Vector3(
       zone.center.x + x,
@@ -1310,6 +1327,10 @@ class GerminalCenterLayout {
   }
 
   createZoneVisualizations(scene) {
+    // Create a group for all zone visualizations
+    this.zoneGroup = new THREE.Group();
+    this.zoneGroup.frustumCulled = false;
+    
     // Sort zones by radius (largest first) so smaller zones render on top
     const sortedZones = Object.entries(this.zones).sort(
       (a, b) => b[1].radius - a[1].radius
@@ -1317,8 +1338,8 @@ class GerminalCenterLayout {
 
     // Add subtle zone indicators
     sortedZones.forEach(([name, zone]) => {
-      // Zone boundary sphere with wireframe overlay
-      const boundaryGeometry = new THREE.SphereGeometry(zone.radius, 32, 16);
+      // Zone boundary sphere with wireframe overlay - simplified geometry
+      const boundaryGeometry = new THREE.SphereGeometry(zone.radius, 16, 8);
 
       // Solid translucent sphere
       const boundaryMaterial = new THREE.MeshPhysicalMaterial({
@@ -1334,7 +1355,9 @@ class GerminalCenterLayout {
 
       const boundary = new THREE.Mesh(boundaryGeometry, boundaryMaterial);
       boundary.position.copy(zone.center);
-      scene.add(boundary);
+      boundary.frustumCulled = false; // Always render regardless of camera position
+      boundary.renderOrder = -1; // Render before other objects
+      this.zoneGroup.add(boundary); // Add to group instead of scene
 
       // Add wireframe overlay for better visibility using LineSegments
       const wireframeGeometry = new THREE.SphereGeometry(
@@ -1352,10 +1375,11 @@ class GerminalCenterLayout {
 
       const wireframe = new THREE.LineSegments(edges, wireframeMaterial);
       wireframe.position.copy(zone.center);
-      scene.add(wireframe);
+      wireframe.frustumCulled = false; // Always render regardless of camera position
+      this.zoneGroup.add(wireframe); // Add to group
 
       // Add zone ring at equator for extra definition
-      const ringGeometry = new THREE.TorusGeometry(zone.radius, 1, 8, 64);
+      const ringGeometry = new THREE.TorusGeometry(zone.radius, 1, 8, 32); // Reduced segments
       const ringMaterial = new THREE.MeshBasicMaterial({
         color: zone.color,
         transparent: true,
@@ -1366,11 +1390,15 @@ class GerminalCenterLayout {
       const ring = new THREE.Mesh(ringGeometry, ringMaterial);
       ring.position.copy(zone.center);
       ring.rotation.x = Math.PI / 2;
-      scene.add(ring);
+      ring.frustumCulled = false; // Always render regardless of camera position
+      this.zoneGroup.add(ring); // Add to group
 
       // Zone particles for atmosphere
       this.createZoneParticles(scene, zone);
     });
+    
+    // Add the entire zone group to the scene
+    scene.add(this.zoneGroup);
   }
 
   createZoneParticles(scene, zone) {
@@ -1408,7 +1436,7 @@ class GerminalCenterLayout {
 class LiveNeuralClockwork {
   constructor() {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x8eaaae); // Light neutral gray background
+    this.scene.background = new THREE.Color(0x0a0a0a); // Dark background to match UI
 
     // Add fog for atmosphere and depth (disabled for unlimited view distance)
     // this.scene.fog = new THREE.Fog(0xf0f0f0, 200, 600);
@@ -1446,6 +1474,12 @@ class LiveNeuralClockwork {
       Q: 0xff00ff, // Purple quantum tesseract
     };
 
+    // Mode state
+    this.mode = 'live'; // 'live' or 'historical'
+    this.historicalRunDir = null;
+    this.pollingActive = true;
+    this.paused = false;
+
     // Initialize
     this.setupPolling();
     this.setupScene();
@@ -1454,13 +1488,84 @@ class LiveNeuralClockwork {
     this.animate();
   }
 
+  setMode(mode, runDir = null) {
+    this.mode = mode;
+    this.historicalRunDir = runDir;
+    
+    if (mode === 'live') {
+      this.pollingActive = true;
+      this.startPolling();
+    } else if (mode === 'historical') {
+      this.pollingActive = false;
+      // Stop current polling
+      if (this.pollTimeout) {
+        clearTimeout(this.pollTimeout);
+        this.pollTimeout = null;
+      }
+      console.log("Switched to historical mode - polling stopped");
+    }
+  }
+
+  loadHistoricalData(data) {
+    // Load historical generation data directly
+    console.log("Loading historical data:", data);
+    console.log("Number of cells in data:", data.cells ? data.cells.length : 0);
+    
+    // Clear ALL existing cells from the scene
+    this.cells.forEach((cell, cellId) => {
+      this.population_mechanism.remove(cell);
+      this.scene.remove(cell);
+    });
+    this.cells.clear();
+    
+    // Clear the population mechanism children
+    while(this.population_mechanism.children.length > 0) {
+      this.population_mechanism.remove(this.population_mechanism.children[0]);
+    }
+    
+    // Load new state
+    this.handleStateUpdate(data);
+    
+    // Force refresh all cell colors after a delay
+    setTimeout(() => this.refreshCellColors(), 200);
+  }
+  
+  refreshCellColors() {
+    // Refresh colors for all existing cells
+    this.cells.forEach((cell, cellId) => {
+      const cellData = cell.userData;
+      if (cellData && cellData.genes) {
+        const specialization = this.determineCellSpecialization(cellData);
+        const fitness = cellData.fitness || 0.5;
+        const hue = this.getSpecializationHue(specialization);
+        
+        if (cell.userData.hub && cell.userData.hub.material) {
+          const saturation = 0.3 + fitness * 0.7;
+          const lightness = 0.3 + fitness * 0.2;
+          
+          cell.userData.hub.material.color.setHSL(hue, saturation, lightness);
+          cell.userData.hub.material.emissive.setHSL(hue, 0.8, 0.3);
+          cell.userData.hub.material.needsUpdate = true;
+          
+          console.log(`Refreshed cell ${cellId}: type=${specialization.primary}, hue=${hue}`);
+        }
+      }
+    });
+  }
+
   setupPolling() {
     this.pollInterval = 1000; // Poll every second for smoother updates
-    this.startPolling();
+    if (this.mode === 'live') {
+      this.startPolling();
+    }
   }
 
   async startPolling() {
+    if (!this.pollingActive) return;
+    
     const poll = async () => {
+      if (!this.pollingActive || this.mode !== 'live') return;
+      
       try {
         const response = await fetch("te_ai_state.json?t=" + Date.now());
         if (response.ok) {
@@ -1486,26 +1591,28 @@ class LiveNeuralClockwork {
         });
       }
 
-      setTimeout(poll, this.pollInterval);
+      if (this.pollingActive && this.mode === 'live') {
+        this.pollTimeout = setTimeout(poll, this.pollInterval);
+      }
     };
 
     poll();
   }
 
   handleStateUpdate(state) {
-    // Emit standard events
-    if (state.generation > 0) {
+    // Emit standard events with proper field mapping
+    if (state.generation >= 0) {
       this.emit("generation_start", {
         generation: state.generation,
-        population_size: state.population,
-        stress_level: state.stress,
+        population_size: state.population_size || state.population || 0,
+        stress_level: state.stress_level || state.stress || 0,
       });
 
       this.emit("generation_complete", {
         generation: state.generation,
         metrics: {
-          mean_fitness: state.fitness,
-          diversity: state.diversity,
+          mean_fitness: state.mean_fitness || state.fitness || 0,
+          diversity: state.diversity || 0,
         },
       });
 
@@ -1521,6 +1628,9 @@ class LiveNeuralClockwork {
 
     // Update population structure
     this.updatePopulationStructure(state);
+    
+    // Refresh colors after update
+    setTimeout(() => this.refreshCellColors(), 100);
   }
 
   updatePopulationStructure(state) {
@@ -1530,23 +1640,34 @@ class LiveNeuralClockwork {
     }
 
     if (state.cells && state.cells.length > 0) {
+      console.log(`=== Loading ${state.cells.length} cells from data ===`);
+      
       // First, calculate fitness ranks for the entire population
       const sortedByFitness = [...state.cells].sort(
         (a, b) => (b.fitness || 0) - (a.fitness || 0)
       );
 
       state.cells.forEach((cellData, index) => {
+        // Debug first cell structure
+        if (index === 0) {
+          console.log("First cell data structure:", cellData);
+          if (cellData.genes && cellData.genes.length > 0) {
+            console.log("First gene in first cell:", cellData.genes[0]);
+          }
+        }
+        
         // Add fitness rank to cell data
         cellData.fitnessRank = sortedByFitness.indexOf(cellData);
         // Add stress level and generation from state if available
-        cellData.stress_level = state.stress || 0;
+        cellData.stress_level = state.stress_level || state.stress || 0;
         cellData.generation = state.generation || 0;
 
-        let cell = this.cells.get(cellData.cell_id);
+        const cellId = cellData.cell_id || cellData.cellId || cellData.id || `cell_${index}`;
+        let cell = this.cells.get(cellId);
 
         if (!cell) {
           cell = this.createCellMechanism(cellData);
-          this.cells.set(cellData.cell_id, cell);
+          this.cells.set(cellId, cell);
           this.population_mechanism.add(cell);
 
           // Check if cell has quantum genes and create ghost
@@ -1581,6 +1702,19 @@ class LiveNeuralClockwork {
 
       // Add connections between related cells
       this.updateCellConnections(state);
+      
+      // Log summary of cell types
+      const cellTypeCounts = { V: 0, D: 0, J: 0, Q: 0, S: 0, balanced: 0 };
+      this.cells.forEach((cell, cellId) => {
+        const specialization = cell.userData.specialization;
+        if (specialization && specialization.primary) {
+          cellTypeCounts[specialization.primary] = (cellTypeCounts[specialization.primary] || 0) + 1;
+        }
+      });
+      console.log("Cell type distribution:", cellTypeCounts);
+      console.log(`Total cells created: ${this.cells.size}`);
+    } else {
+      console.log("No cells in state data!");
     }
   }
 
@@ -1680,12 +1814,16 @@ class LiveNeuralClockwork {
     if (cell.userData.hub) {
       // Update color
       const hue = this.getSpecializationHue(specialization);
-      cell.userData.hub.material.color.setHSL(
-        hue,
-        0.3 + fitness * 0.7,
-        0.3 + fitness * 0.2
-      );
+      const saturation = 0.3 + fitness * 0.7;
+      const lightness = 0.3 + fitness * 0.2;
+      
+      // Update both color and emissive
+      cell.userData.hub.material.color.setHSL(hue, saturation, lightness);
+      cell.userData.hub.material.emissive.setHSL(hue, 0.8, 0.3);
       cell.userData.hub.material.emissiveIntensity = fitness * 0.2;
+      
+      // Force material update
+      cell.userData.hub.material.needsUpdate = true;
 
       // Update size
       const targetScale = 0.8 + fitness * 0.4 + specialization.complexity * 0.2;
@@ -1750,12 +1888,16 @@ class LiveNeuralClockwork {
     this.camera.position.set(50, 30, 50);
     this.camera.lookAt(0, 0, 0);
 
-    // Renderer
-    this.renderer = new THREE.WebGLRenderer({ antialias: true });
+    // Renderer with optimizations disabled for full scene rendering
+    this.renderer = new THREE.WebGLRenderer({ 
+      antialias: true,
+      logarithmicDepthBuffer: true // Better depth precision for large scenes
+    });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.sortObjects = false; // Disable automatic sorting
     document.getElementById("container").appendChild(this.renderer.domElement);
 
     // Controls
@@ -1843,10 +1985,7 @@ class LiveNeuralClockwork {
       this.camera
     );
 
-    // Add darker grid for contrast on light background
-    const gridHelper = new THREE.GridHelper(400, 80, 0x888888, 0xcccccc);
-    gridHelper.position.y = -30;
-    this.scene.add(gridHelper);
+    // Grid removed for cleaner visualization
   }
 
   createNeuralHelixEngine() {
@@ -2190,10 +2329,13 @@ class LiveNeuralClockwork {
 
     // Determine cell specialization based on gene composition
     const specialization = this.determineCellSpecialization(cellData);
+    
+    // Debug logging AFTER specialization is calculated
+    console.log(`Cell ${cellData.cell_id || 'unknown'}: type=${specialization.primary}, genes=${JSON.stringify(specialization.geneTypes)}, hue=${this.getSpecializationHue(specialization)}`);
 
-    // Cell size based on gene count
+    // Cell size based on gene count - slightly smaller for better spacing
     const geneCount = cellData.genes ? cellData.genes.length : 3;
-    const cellSize = 3 + Math.sqrt(geneCount) * 2;
+    const cellSize = 2 + Math.sqrt(geneCount) * 1.5;
 
     // Cell shape based on specialization
     let hubGeometry;
@@ -2229,13 +2371,15 @@ class LiveNeuralClockwork {
     const hue = this.getSpecializationHue(specialization);
     const saturation = 0.3 + fitness * 0.7;
     const lightness = 0.3 + fitness * 0.2;
+    
+    // Debug logging for color mapping (moved after specialization calculation)
+    // Moved to after specialization is calculated
 
     const hubMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color().setHSL(hue, saturation, lightness),
       metalness: 0.3 + specialization.quantum_ratio * 0.5,
       roughness: 0.5 - fitness * 0.3,
       transmission: 0.3 + specialization.complexity * 0.3,
-      thickness: 1,
       clearcoat: fitness,
       clearcoatRoughness: 0.1,
       emissive: new THREE.Color().setHSL(hue, 0.8, 0.3),
@@ -2277,30 +2421,61 @@ class LiveNeuralClockwork {
   }
 
   determineCellSpecialization(cellData) {
-    const geneTypes = { V: 0, D: 0, J: 0, Q: 0 };
+    const geneTypes = { V: 0, D: 0, J: 0, Q: 0, S: 0 };
     let totalGenes = 0;
     let activeGenes = 0;
     let quantumGenes = 0;
 
-    if (cellData.genes) {
+    // Debug: log the cell data structure
+    if (cellData.genes && cellData.genes.length > 0) {
+      console.log("Cell ID:", cellData.cell_id, "Sample gene structure:", cellData.genes[0]);
+      console.log("Total genes in cell:", cellData.genes.length);
+    } else {
+      console.log("Cell ID:", cellData.cell_id, "has no genes or genes array is empty");
+    }
+
+    if (cellData.genes && Array.isArray(cellData.genes)) {
       cellData.genes.forEach((gene) => {
-        if (gene.is_active) {
-          activeGenes++;
-          geneTypes[gene.gene_type]++;
-          if (gene.is_quantum) quantumGenes++;
-        }
         totalGenes++;
+        
+        // Check different possible property names
+        const isActive = gene.is_active !== undefined ? gene.is_active : true;
+        const isQuantum = gene.is_quantum || false;
+        const geneType = gene.gene_type || 'V';
+        
+        if (isActive) {
+          activeGenes++;
+          
+          if (isQuantum) {
+            quantumGenes++;
+            geneTypes['Q'] = (geneTypes['Q'] || 0) + 1;
+          } else if (geneType === 'S' || geneType in geneTypes) {
+            // Handle S genes even if not in initial object
+            if (!(geneType in geneTypes)) {
+              geneTypes[geneType] = 0;
+            }
+            geneTypes[geneType]++;
+          }
+        }
       });
     }
 
     // Determine primary specialization
     let primary = "balanced";
     let maxCount = 0;
+    let totalTypedGenes = Object.values(geneTypes).reduce((a, b) => a + b, 0);
+    
+    // Check if any gene type dominates (more than 50% of active genes)
     for (const [type, count] of Object.entries(geneTypes)) {
-      if (count > maxCount) {
+      if (count > maxCount && count > totalTypedGenes * 0.4) {
         maxCount = count;
         primary = type;
       }
+    }
+    
+    // If no clear specialization, consider it balanced
+    if (maxCount <= totalTypedGenes * 0.4) {
+      primary = "balanced";
     }
 
     // Calculate diversity and complexity
@@ -2319,11 +2494,11 @@ class LiveNeuralClockwork {
 
   getSpecializationHue(specialization) {
     const hueMap = {
-      V: 0.6, // Blue
-      D: 0.3, // Green
-      J: 0.1, // Orange
-      Q: 0.8, // Purple
-      balanced: 0.5, // Cyan
+      V: 0.58, // Blue (0080ff) - Variable genes
+      D: 0.33, // Green (00ff80) - Diversity genes  
+      J: 0.08, // Orange (ffaa00) - Joining genes
+      Q: 0.83, // Magenta (ff00ff) - Quantum genes
+      balanced: 0.5, // Cyan (00ffff) - Balanced cells
     };
     return hueMap[specialization.primary] || 0.5;
   }
@@ -2360,11 +2535,16 @@ class LiveNeuralClockwork {
           break;
       }
 
+      // Use quantum color if it's a quantum gene, otherwise use gene type color
+      const geneColor = gene.is_quantum 
+        ? this.gene_type_colors['Q'] 
+        : this.gene_type_colors[gene.gene_type] || this.gene_type_colors['V'];
+      
       const material = new THREE.MeshPhysicalMaterial({
-        color: this.gene_type_colors[gene.gene_type],
+        color: geneColor,
         metalness: 0.8,
         roughness: 0.2,
-        emissive: this.gene_type_colors[gene.gene_type],
+        emissive: geneColor,
         emissiveIntensity: gene.activation || 0.2,
         transparent: true,
         opacity: 0.8,
@@ -2859,7 +3039,8 @@ class LiveNeuralClockwork {
     animateCollapse();
   }
 
-  updatePopulationStructure(state) {
+  updatePopulationStructure_OLD_UNUSED(state) {
+    // This was creating generic cells - replaced by the proper method above
     // Display ALL B-cells in the population
     const populationSize = state.population || 512;
     const currentCellCount = this.cells.size;
@@ -2932,7 +3113,7 @@ class LiveNeuralClockwork {
     if (!this.populationText) {
       const loader = new THREE.FontLoader();
       // For now, just log it
-      console.log(`Visualizing ${displayCount} of ${populationSize} B-cells`);
+      console.log(`Visualizing ${state.cells ? state.cells.length : 0} of ${state.population_size || 0} B-cells`);
     }
   }
 

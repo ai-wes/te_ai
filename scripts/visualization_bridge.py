@@ -8,8 +8,10 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Any
 from config import cfg
 from transposable_immune_ai_production_complete import ContinuousDepthGeneModule, QuantumGeneModule, ProductionBCell
-
 from fast_optimized_te_ai import OptimizedProductionGerminalCenter
+import os
+import sys
+from datetime import datetime
 
 
 
@@ -27,6 +29,18 @@ class VisualizationBridge:
         self.event_queue = queue.Queue()
         self.clients = set()
         self.server_thread = None
+        
+        # Create unique run ID and visualization directory
+        self.run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.viz_dir = os.path.join("visualization_data", self.run_id)
+        os.makedirs(self.viz_dir, exist_ok=True)
+        
+        # Current state file (for live polling)
+        self.current_state_file = "te_ai_state.json"
+        
+        # Generation counter
+        self.generation_counter = 0
+        
         self.start_server()
         
     def start_server(self):
@@ -66,6 +80,28 @@ class VisualizationBridge:
             'timestamp': time.time(),
             'data': data
         })
+    
+    def save_generation_snapshot(self, state_data, generation):
+        """Save a snapshot of the state for this generation"""
+        # Save to generation-specific file
+        gen_file = os.path.join(self.viz_dir, f"generation_{generation:04d}.json")
+        with open(gen_file, 'w') as f:
+            json.dump(state_data, f, indent=2)
+        
+        # Also update the current state file for live viewing
+        with open(self.current_state_file, 'w') as f:
+            json.dump(state_data, f, indent=2)
+        
+        # Save a metadata file with run info
+        metadata = {
+            'run_id': self.run_id,
+            'current_generation': generation,
+            'timestamp': time.time(),
+            'viz_dir': self.viz_dir,
+            'total_files': generation + 1
+        }
+        with open(os.path.join(self.viz_dir, "metadata.json"), 'w') as f:
+            json.dump(metadata, f, indent=2)
 class InstrumentedGeneModule(ContinuousDepthGeneModule):
     """Gene module that reports its state changes"""
 
@@ -144,6 +180,10 @@ class VisualizableGerminalCenter(OptimizedProductionGerminalCenter):
         self.viz_bridge = viz_bridge
         # Store the parameters that were passed but not used
         self.config_params = kwargs
+        
+        # Track changes between generations
+        self.previous_cell_states = {}
+        self.cell_change_history = []
 
     def evolve_generation(self, antigens):
         # Emit generation start
@@ -191,23 +231,123 @@ class VisualizableGerminalCenter(OptimizedProductionGerminalCenter):
                 elif self.current_stress > 0.5:
                     current_phase = 'transitional'
             
-            # Get a sample cell to visualize its structure
-            cell_id = list(self.population.keys())[0] if self.population else 'unknown'
-            cell = self.population[cell_id] if cell_id in self.population else None
+            # Collect data for all cells with detailed tracking
+            cells_data = []
+            cell_ids = list(self.population.keys())
+            
+            for idx, cell_id in enumerate(cell_ids):
+                cell = self.population[cell_id]
+                if hasattr(cell, 'genes'):
+                    cell_data = {
+                        'cell_id': str(cell_id),  # Ensure it's a string
+                        'index': idx,
+                        'fitness': float(cell.fitness) if hasattr(cell, 'fitness') else 0.5,
+                        'generation': int(cell.generation) if hasattr(cell, 'generation') else 0,
+                        'lineage': list(cell.lineage) if hasattr(cell, 'lineage') else [],
+                        'genes': [],
+                        'architecture': None,
+                        'connections': []
+                    }
+                    
+                    # Add detailed gene information
+                    for gene in cell.genes:
+                        gene_info = {
+                            'gene_id': str(gene.gene_id),
+                            'gene_type': str(gene.gene_type),
+                            'position': int(gene.position) if hasattr(gene, 'position') else 0,
+                            'is_active': bool(gene.is_active),
+                            'is_quantum': isinstance(gene, QuantumGeneModule),
+                            'depth': float(gene.compute_depth().item()) if hasattr(gene, 'compute_depth') else 1.0,
+                            'activation': float(gene.activation_ema) if hasattr(gene, 'activation_ema') else 0.0,
+                            'variant_id': int(gene.variant_id) if hasattr(gene, 'variant_id') else 0,
+                            'methylation': float(gene.methylation_state.mean().item()) if hasattr(gene, 'methylation_state') else 0.0
+                        }
+                        cell_data['genes'].append(gene_info)
+                    
+                    # Add architecture information if cell has it
+                    if hasattr(cell, 'architecture_modifier'):
+                        arch = cell.architecture_modifier
+                        cell_data['architecture'] = {
+                            'dna': arch.architecture_dna if hasattr(arch, 'architecture_dna') else None,
+                            'modules': list(arch.dynamic_modules.keys()) if hasattr(arch, 'dynamic_modules') else [],
+                            'connections': dict(arch.module_connections) if hasattr(arch, 'module_connections') else {},
+                            'modifications': len(arch.modification_history) if hasattr(arch, 'modification_history') else 0
+                        }
+                    
+                    # Track gene connections/relationships
+                    active_genes_list = [g for g in cell.genes if g.is_active]
+                    for i, gene1 in enumerate(active_genes_list):
+                        for j, gene2 in enumerate(active_genes_list[i+1:], i+1):
+                            # Record pairwise gene relationships
+                            cell_data['connections'].append({
+                                'source': str(gene1.gene_id),
+                                'target': str(gene2.gene_id),
+                                'strength': float(abs(i - j) / len(active_genes_list)) if active_genes_list else 0.0
+                            })
+                    
+                    cells_data.append(cell_data)
+                    
+                    # Track changes from previous generation
+                    if str(cell_id) in self.previous_cell_states:
+                        prev_state = self.previous_cell_states[str(cell_id)]
+                        changes = []
+                        
+                        # Check fitness change
+                        if abs(prev_state.get('fitness', 0) - cell_data['fitness']) > 0.01:
+                            changes.append({
+                                'type': 'fitness_change',
+                                'from': prev_state.get('fitness', 0),
+                                'to': cell_data['fitness']
+                            })
+                        
+                        # Check gene changes
+                        prev_gene_ids = {g['gene_id'] for g in prev_state.get('genes', [])}
+                        curr_gene_ids = {g['gene_id'] for g in cell_data['genes']}
+                        
+                        # New genes
+                        for gene_id in (curr_gene_ids - prev_gene_ids):
+                            changes.append({
+                                'type': 'gene_added',
+                                'gene_id': gene_id
+                            })
+                        
+                        # Lost genes
+                        for gene_id in (prev_gene_ids - curr_gene_ids):
+                            changes.append({
+                                'type': 'gene_removed',
+                                'gene_id': gene_id
+                            })
+                        
+                        if changes:
+                            self.cell_change_history.append({
+                                'cell_id': str(cell_id),
+                                'generation': int(self.generation),
+                                'changes': changes
+                            })
+                    
+                    # Store current state for next comparison
+                    # Make a deep copy to avoid reference issues
+                    self.previous_cell_states[str(cell_id)] = {
+                        'fitness': cell_data['fitness'],
+                        'genes': [{'gene_id': g['gene_id']} for g in cell_data['genes']]
+                    }
             
             # Create comprehensive state
             state = {
-                # Cell structure visualization
-                'cell_id': cell_id,
+                # Individual cells data for visualization
+                'cells': cells_data,
+                
+                # Legacy single cell visualization (for backward compatibility)
+                'cell_id': cells_data[0]['cell_id'] if cells_data else 'unknown',
                 'nodes': [],
                 'links': [],
                 
                 # Population metrics
-                'generation': self.generation if hasattr(self, 'generation') else 0,
-                'population_size': total_cells,
-                'total_genes': total_genes,
-                'active_genes': active_genes,
-                'quantum_genes': quantum_genes,
+                'generation': int(self.generation) if hasattr(self, 'generation') else 0,
+                'population_size': int(total_cells),
+                'total_genes': int(total_genes),
+                'active_genes': int(active_genes),
+                'quantum_genes': int(quantum_genes),
                 
                 # Cell type distribution
                 'cell_types': {
@@ -219,9 +359,15 @@ class VisualizableGerminalCenter(OptimizedProductionGerminalCenter):
                 },
                 
                 # System state
-                'phase': current_phase,
-                'stress_level': self.current_stress if hasattr(self, 'current_stress') else 0,
-                'mean_fitness': 0,
+                'phase': str(current_phase),
+                'stress_level': float(self.current_stress) if hasattr(self, 'current_stress') else 0.0,
+                'mean_fitness': 0.0,
+                
+                # Cell actions and events
+                'recent_actions': [],
+                'architecture_modifications': [],
+                'transposition_events': [],
+                'cell_changes': self.cell_change_history[-100:],  # Last 100 changes
                 
                 # Timestamp
                 'timestamp': time.time()
@@ -236,7 +382,33 @@ class VisualizableGerminalCenter(OptimizedProductionGerminalCenter):
                 if fitness_values:
                     state['mean_fitness'] = sum(fitness_values) / len(fitness_values)
             
-            # Add gene structure visualization for the sample cell
+            # Collect recent actions and events from the visualization bridge
+            if self.viz_bridge and hasattr(self.viz_bridge, 'event_queue'):
+                # Get recent events from the queue (non-blocking)
+                recent_events = []
+                try:
+                    import queue
+                    while not self.viz_bridge.event_queue.empty() and len(recent_events) < 50:
+                        event = self.viz_bridge.event_queue.get_nowait()
+                        recent_events.append(event)
+                        
+                        # Categorize events
+                        if event['type'] == 'transposition':
+                            state['transposition_events'].append(event['data'])
+                        elif event['type'] == 'architecture_modification':
+                            state['architecture_modifications'].append(event['data'])
+                        elif event['type'] in ['gene_activation', 'cell_structure']:
+                            state['recent_actions'].append(event)
+                            
+                except queue.Empty:
+                    pass
+                
+                # Put events back for WebSocket broadcast
+                for event in recent_events:
+                    self.viz_bridge.event_queue.put(event)
+            
+            # Add gene structure visualization for the first cell (legacy support)
+            cell = self.population[cells_data[0]['cell_id']] if cells_data else None
             if cell and hasattr(cell, 'genes'):
                 # Create nodes for each gene
                 for i, gene in enumerate(cell.genes):
@@ -259,9 +431,21 @@ class VisualizableGerminalCenter(OptimizedProductionGerminalCenter):
                         'target': active_genes_list[i+1].gene_id
                     })
             
-            # Write to file
-            with open('te_ai_state.json', 'w') as f:
-                json.dump(state, f, indent=2)
+            # Save generation snapshot
+            generation = self.generation if hasattr(self, 'generation') else 0
+            self.viz_bridge.save_generation_snapshot(state, generation)
+            
+            # Log summary
+            print(f"   📸 Saved visualization snapshot: generation_{generation:04d}.json")
+            
+            # Generate/update runs manifest periodically
+            if generation % 10 == 0:  # Every 10 generations
+                try:
+                    import subprocess
+                    subprocess.run([sys.executable, "generate_runs_manifest.py"], capture_output=True, text=True)
+                    print("   📋 Updated runs manifest")
+                except Exception as e:
+                    print(f"   ⚠️  Failed to update runs manifest: {e}")
 
         # Emit generation summary
         if self.viz_bridge:

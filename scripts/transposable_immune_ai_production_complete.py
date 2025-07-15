@@ -21,6 +21,7 @@ Version: Production 1.0
 import asyncio
 import websockets
 import json
+import os
 from threading import Thread
 import queue
 import torch
@@ -98,13 +99,39 @@ from config import cfg
 # A lock to prevent race conditions when writing to the state file
 state_lock = threading.Lock()
 
+# Global reference to current germinal center for visualization
+_current_germinal_center = None
+
+# Global run ID for unique file naming
+_run_id = None
+
 def write_visualization_state(cell_id, architecture_modifier):
-    """Writes the current architectural state of a single cell to a JSON file."""
-    state = {
-        'cell_id': cell_id,
-        'nodes': [],
-        'links': []
-    }
+    """Writes the current architectural state including full population data to JSON file."""
+    # IMPORTANT: If using visualization_bridge, skip this to prevent overwriting
+    # Check for visualization mode indicators
+    if os.path.exists('visualization_data'):
+        # We're in visualization mode, don't overwrite the comprehensive data
+        print("[DEBUG] In visualization mode - skipping write_visualization_state")
+        return
+    
+    # Also check for polling mode flag
+    if os.path.exists('.polling_mode'):
+        print("[DEBUG] In polling mode - skipping write_visualization_state")
+        return
+    
+    try:
+        _write_visualization_state_impl(cell_id, architecture_modifier)
+    except Exception as e:
+        print(f"[WARNING] write_visualization_state failed: {e}")
+        # Don't crash the training, just skip visualization
+        return
+
+def _write_visualization_state_impl(cell_id, architecture_modifier):
+    """Implementation of write_visualization_state with proper error handling."""
+    
+    # First create the basic node/link structure for this cell
+    nodes = []
+    links = []
     
     # Define node positions in 3D space
     node_positions = {}
@@ -117,14 +144,20 @@ def write_visualization_state(cell_id, architecture_modifier):
         size = 128  # Default
         if isinstance(module, nn.Sequential) and len(module) > 0 and isinstance(module[0], nn.Linear):
             size = module[0].out_features
+        elif isinstance(module, nn.Linear):
+            size = module.out_features
         
         # Determine the activation function
         activation = 'None'
-        for layer in module:
-            if isinstance(layer, (nn.ReLU, nn.Tanh, nn.Sigmoid, nn.ELU, nn.GELU, nn.SiLU)):
-                activation = type(layer).__name__
+        if isinstance(module, nn.Sequential):
+            for layer in module:
+                if isinstance(layer, (nn.ReLU, nn.Tanh, nn.Sigmoid, nn.ELU, nn.GELU, nn.SiLU)):
+                    activation = type(layer).__name__
+        elif isinstance(module, nn.Linear):
+            # Linear layers don't have activation
+            activation = 'Linear'
 
-        state['nodes'].append({
+        nodes.append({
             'id': name,
             'size': size,
             'activation': activation,
@@ -137,12 +170,174 @@ def write_visualization_state(cell_id, architecture_modifier):
         for dest in destinations:
             # Ensure both source and dest are still valid nodes
             if source in architecture_modifier.dynamic_modules and dest in architecture_modifier.dynamic_modules:
-                state['links'].append({'source': source, 'target': dest})
+                links.append({'source': source, 'target': dest})
 
-    # Write to a file that the visualizer will poll
+    # Get the full cell population data if available  
+    cells_data = []
+    population = None
+    generation = 0
+    current_stress = 0
+    
+    # Try to access the germinal center instance
+    global _current_germinal_center
+    if _current_germinal_center and hasattr(_current_germinal_center, 'population'):
+        population = _current_germinal_center.population
+        generation = getattr(_current_germinal_center, 'generation', 0)
+        current_stress = getattr(_current_germinal_center, 'current_stress', 0)
+        print(f"[DEBUG] Found germinal center with {len(population)} cells")
+    else:
+        print(f"[DEBUG] No germinal center found: gc={_current_germinal_center}, has_pop={hasattr(_current_germinal_center, 'population') if _current_germinal_center else False}")
+    
+    # If we have population data, collect comprehensive cell information
+    if population:
+        for idx, (cid, cell) in enumerate(list(population.items())):  # Get ALL cells
+            cell_info = {
+                'cell_id': cid,
+                'index': idx,
+                'fitness': getattr(cell, 'fitness', 0.5),
+                'generation': getattr(cell, 'generation', generation),
+                'lineage': getattr(cell, 'lineage', []),
+                'genes': [],
+                'architecture': None,
+                'connections': []
+            }
+            
+            # Collect gene information
+            if hasattr(cell, 'genes'):
+                for gene in cell.genes:
+                    gene_info = {
+                        'gene_id': str(getattr(gene, 'gene_id', str(id(gene)))),
+                        'gene_type': str(getattr(gene, 'gene_type', 'V')),
+                        'position': int(getattr(gene, 'position', 0)),
+                        'is_active': bool(getattr(gene, 'is_active', False)),
+                        'is_quantum': 'Quantum' in gene.__class__.__name__,
+                        'depth': float(gene.compute_depth().item()) if hasattr(gene, 'compute_depth') else 1.0,
+                        'activation': float(getattr(gene, 'activation_ema', 0.0)),
+                        'variant_id': int(getattr(gene, 'variant_id', 0)),
+                        'methylation': float(gene.methylation_state.mean().item()) if hasattr(gene, 'methylation_state') else 0.0
+                    }
+                    cell_info['genes'].append(gene_info)
+                
+                # Track gene connections
+                active_genes = [g for g in cell.genes if g.is_active]
+                for idx1, gene1 in enumerate(active_genes):
+                    for idx2, gene2 in enumerate(active_genes[idx1+1:], idx1+1):
+                        cell_info['connections'].append({
+                            'source': str(gene1.gene_id),
+                            'target': str(gene2.gene_id),
+                            'strength': float(abs(idx1 - idx2) / len(active_genes)) if active_genes else 0.0
+                        })
+            
+            # Add architecture information if this is the current cell
+            if cid == cell_id and hasattr(cell, 'architecture_modifier'):
+                arch = cell.architecture_modifier
+                try:
+                    # Safely extract serializable architecture info
+                    module_names = []
+                    if hasattr(arch, 'dynamic_modules'):
+                        module_names = list(arch.dynamic_modules.keys())
+                    
+                    connections = {}
+                    if hasattr(arch, 'module_connections'):
+                        # Convert defaultdict to regular dict and ensure all values are lists
+                        for k, v in arch.module_connections.items():
+                            connections[str(k)] = list(v) if isinstance(v, (list, set, tuple)) else [str(v)]
+                    
+                    cell_info['architecture'] = {
+                        'dna': str(getattr(arch, 'architecture_dna', 'N/A')),
+                        'modules': module_names,
+                        'connections': connections,
+                        'modifications': len(getattr(arch, 'modification_history', []))
+                    }
+                except Exception as arch_error:
+                    print(f"[WARNING] Failed to serialize architecture info: {arch_error}")
+                    cell_info['architecture'] = {
+                        'dna': 'error',
+                        'modules': [],
+                        'connections': {},
+                        'modifications': 0
+                    }
+            
+            cells_data.append(cell_info)
+    
+    # Create comprehensive state
+    state = {
+        # Individual cells data for visualization
+        'cells': cells_data,
+        
+        # Legacy single cell visualization (for backward compatibility)
+        'cell_id': cell_id,
+        'nodes': nodes,
+        'links': links,
+        
+        # Population metrics
+        'generation': generation,
+        'population_size': len(population) if population else 1,
+        'total_genes': sum(len(c.get('genes', [])) for c in cells_data),
+        'active_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('is_active', False)),
+        'quantum_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('is_quantum', False)),
+        
+        # Cell type distribution
+        'cell_types': {
+            'V_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('gene_type') == 'V' and g.get('is_active')),
+            'D_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('gene_type') == 'D' and g.get('is_active')),
+            'J_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('gene_type') == 'J' and g.get('is_active')),
+            'Q_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('is_quantum', False) and g.get('is_active')),
+            'S_genes': sum(1 for c in cells_data for g in c.get('genes', []) if g.get('gene_type') == 'S' and g.get('is_active'))
+        },
+        
+        # System state
+        'phase': 'normal',
+        'stress_level': current_stress,
+        'mean_fitness': sum(c.get('fitness', 0) for c in cells_data) / max(len(cells_data), 1),
+        
+        # Timestamp
+        'timestamp': time.time()
+    }
+
+    # Create unique filename with run ID
+    global _run_id
+    if _run_id is None:
+        from datetime import datetime
+        _run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+    # Create visualization directory if it doesn't exist
+    viz_dir = os.path.join("visualization_data", _run_id)
+    os.makedirs(viz_dir, exist_ok=True)
+    
+    # Write to both the unique file and the standard polling file
+    unique_filename = os.path.join(viz_dir, f"generation_{generation:04d}_state.json")
+    
     with state_lock:
+        # Write to unique file for this run
+        with open(unique_filename, 'w') as f:
+            json.dump(state, f, indent=2)
+            
+        # Also write to standard polling file for live visualization
         with open('te_ai_state.json', 'w') as f:
             json.dump(state, f)
+            
+        # Write metadata about current run
+        metadata = {
+            'run_id': _run_id,
+            'current_generation': generation,
+            'latest_file': unique_filename,
+            'timestamp': time.time()
+        }
+        with open(os.path.join(viz_dir, 'metadata.json'), 'w') as f:
+            json.dump(metadata, f, indent=2)
+            
+        # Also write a pointer file that tells the frontend where to find the data
+        pointer = {
+            'current_run_id': _run_id,
+            'current_generation': generation,
+            'data_directory': viz_dir,
+            'latest_state_file': unique_filename,
+            'te_ai_state_file': 'te_ai_state.json',  # For live polling
+            'timestamp': time.time()
+        }
+        with open('current_run_pointer.json', 'w') as f:
+            json.dump(pointer, f, indent=2)
 
 # ============================================================================
 # Biologically Accurate Antigen Modeling
@@ -469,8 +664,15 @@ class NeuralODEFunc(nn.Module):
         
         # Apply GNN layers with residuals
         for i, (gnn, norm) in enumerate(zip(self.gnn_layers, self.layer_norms)):
-            h_new = gnn(h, self.edge_index)
-            h_new = norm(h_new)
+            try:
+                h_new = gnn(h, self.edge_index)
+                h_new = norm(h_new)
+            except Exception as e:
+                print(f"Error in GNN layer {i}: {e}")
+                print(f"  h shape: {h.shape}")
+                print(f"  edge_index shape: {self.edge_index.shape}")
+                print(f"  gnn: {gnn}")
+                raise
             
             if i > 0:
                 # Gated residual connection
@@ -556,9 +758,17 @@ class ContinuousDepthGeneModule(nn.Module):
         
         # Initialize ODE function with current edge structure
         if self.ode_func is None or self.ode_func.edge_index.shape != edge_index.shape:
-            self.ode_func = NeuralODEFunc(cfg.hidden_dim, edge_index)
-            # Transfer to same device
-            self.ode_func = self.ode_func.to(h.device)
+            try:
+                self.ode_func = NeuralODEFunc(cfg.hidden_dim, edge_index)
+                # Transfer to same device
+                self.ode_func = self.ode_func.to(h.device)
+            except Exception as e:
+                print(f"Error creating NeuralODEFunc: {e}")
+                print(f"  hidden_dim: {cfg.hidden_dim}")
+                print(f"  edge_index shape: {edge_index.shape}")
+                print(f"  h shape: {h.shape}")
+                print(f"  device: {h.device}")
+                raise
         
         # Compute integration time based on learned depth
         depth = self.compute_depth()
@@ -2392,6 +2602,14 @@ class SelfModifyingArchitecture(nn.Module):
                 
         except Exception as e:
             print(f"Modification failed: {e}")
+            print(f"  Debug: mod_type={modification.mod_type}, target={modification.target_module}")
+            print(f"  Debug: dynamic_modules keys={list(self.dynamic_modules.keys())}")
+            if modification.target_module in self.dynamic_modules:
+                module = self.dynamic_modules[modification.target_module]
+                print(f"  Debug: target module type={type(module)}")
+                print(f"  Debug: is Sequential? {isinstance(module, nn.Sequential)}")
+            import traceback
+            traceback.print_exc()
             modification.success = False
             self.modification_history.append(modification)
             return False
@@ -3116,7 +3334,7 @@ class ProductionBCell(nn.Module):
         affinity = self.affinity_maturation(cell_representation)
         
         # Architecture self-modification based on performance
-        if len(self.fitness_history) > 5:
+        if len(self.fitness_history) > 4:
             self._attempt_architecture_modification()
         
         metadata = {
