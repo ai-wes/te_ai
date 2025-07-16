@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Living Therapeutic System - Real-time Visualization</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: "Courier New", monospace;
+        background-color: #000;
+      }
+
+      #container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      #stats {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      #controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      }
+
+      #controls button {
+        display: block;
+        margin: 5px 0;
+        padding: 8px 16px;
+        background: rgba(68, 136, 255, 0.8);
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        transition: all 0.3s;
+      }
+
+      #controls button:hover {
+        background: rgba(68, 136, 255, 1);
+        transform: translateX(-2px);
+      }
+
+      .metric {
+        margin: 8px 0;
+        font-size: 14px;
+      }
+
+      .metric span {
+        color: #4488ff;
+        font-weight: bold;
+      }
+
+      #connection-status {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      #connection-status.connected {
+        border-color: #00ff00;
+        color: #00ff00;
+      }
+
+      #connection-status.disconnected {
+        border-color: #ff0000;
+        color: #ff0000;
+      }
+
+      #info-panel {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        max-width: 600px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 12px;
+        backdrop-filter: blur(10px);
+        display: none;
+      }
+
+      #info-panel.visible {
+        display: block;
+      }
+
+      #info-panel h3 {
+        margin-top: 0;
+        color: #4488ff;
+      }
+
+      #phase-indicator {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+        border: 2px solid #4488ff;
+        color: #4488ff;
+        font-size: 16px;
+        font-weight: bold;
+        backdrop-filter: blur(10px);
+        text-transform: uppercase;
+      }
+
+      #phase-indicator.exploration {
+        border-color: #0066ff;
+        color: #0066ff;
+      }
+
+      #phase-indicator.exploitation {
+        border-color: #ff6600;
+        color: #ff6600;
+      }
+
+      #phase-indicator.crisis {
+        border-color: #ff0000;
+        color: #ff0000;
+        animation: pulse 1s infinite;
+      }
+
+      #phase-indicator.quantum {
+        border-color: #ff00ff;
+        color: #ff00ff;
+        animation: quantum-phase 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes quantum-phase {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.1);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #4488ff;
+        border-radius: 50%;
+        margin: 20px auto;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="loading">
+        <div>Initializing Neural Clockwork...</div>
+        <div class="loading-spinner"></div>
+      </div>
+
+      <div id="connection-status" class="disconnected">Disconnected</div>
+
+      <div id="stats">
+        <h4 style="margin: 0 0 10px 0; color: #4488ff">THERAPEUTIC METRICS</h4>
+        <div class="metric">Generation: <span id="generation">0</span></div>
+        <div class="metric">Population: <span id="population">0</span></div>
+        <div class="metric">
+          Patient ID: <span id="patient-id">Unknown</span>
+        </div>
+        <div class="metric">
+          Disease: <span id="disease-type">Unknown</span>
+        </div>
+        <div class="metric">Severity: <span id="severity">0.00</span></div>
+        <div class="metric">Efficacy: <span id="efficacy">0.00</span></div>
+        <div class="metric">Safety: <span id="safety">1.00</span></div>
+        <div class="metric">Resistance: <span id="resistance">0.00</span></div>
+        <div class="metric">
+          Best Fitness: <span id="best-fitness">0.000</span>
+        </div>
+        <div class="metric">Diversity: <span id="diversity">0.00</span></div>
+        <div class="metric">Stress: <span id="stress">0.000</span></div>
+        <div class="metric">TPS: <span id="tps">0</span></div>
+      </div>
+
+      <div id="controls">
+        <input
+          type="file"
+          id="fileInput"
+          accept=".json"
+          style="display: none"
+          onchange="handleFileUpload(event)"
+        />
+        <button onclick="document.getElementById('fileInput').click()">
+          Load JSON File
+        </button>
+        <button onclick="returnToLive()">Live Mode</button>
+        <div
+          id="fileStatus"
+          style="color: #4488ff; font-size: 10px; margin: 5px 0"
+        ></div>
+        <button onclick="togglePause()">Pause</button>
+        <button onclick="changeView('molecular')">Molecular View</button>
+        <button onclick="changeView('cellular')">Cellular View</button>
+        <button onclick="changeView('population')">Population View</button>
+        <button onclick="changeView('abstract')">Abstract View</button>
+        <button onclick="toggleInfo()">Toggle Info</button>
+        <button onclick="resetCamera()">Reset Camera</button>
+      </div>
+
+      <div id="phase-indicator" class="stable">STABLE</div>
+
+      <div id="info-panel">
+        <h3>Selected Object</h3>
+        <div id="object-info">Click on any gene or cell to see details</div>
+      </div>
+
+      <div
+        id="legend"
+        style="
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          background: rgba(0, 0, 0, 0.7);
+          padding: 15px;
+          border-radius: 5px;
+          color: white;
+          font-size: 10px;
+        "
+      >
+        <h4 style="margin-top: 0">Germinal Center Zones</h4>
+        <div>
+          <span style="color: #4a4a7a">◉</span> Dark Zone - Active Mutation
+          <span id="darkZoneCount" style="color: #888">(0)</span>
+        </div>
+        <div>
+          <span style="color: #7a7a4a">◉</span> Light Zone - Selection
+          <span id="lightZoneCount" style="color: #888">(0)</span>
+        </div>
+        <div>
+          <span style="color: #4a5a7a">◉</span> Memory Zone - Elite Cells
+          <span id="memoryEliteZoneCount" style="color: #888">(0)</span>
+        </div>
+        <div>
+          <span style="color: #7a4a7a">◉</span> Quantum Layer - 4D Space
+          <span id="quantumDiskCount" style="color: #888">(0)</span>
+        </div>
+        <div>
+          <span style="color: #5a5a5a">◉</span> Mantle Zone - Transitional
+          <span id="mantleZoneCount" style="color: #888">(0)</span>
+        </div>
+        <br />
+        <h4>Therapeutic Cell Types</h4>
+        <div>
+          <span style="color: #0080ff">●</span> BS - Biosensor (Sensing)
+        </div>
+        <div>
+          <span style="color: #ff4444">●</span> TE - Effector (Treatment)
+        </div>
+        <div>
+          <span style="color: #00ff80">●</span> AC - Controller (Coordination)
+        </div>
+        <div><span style="color: #ff00ff">●</span> TS - Stem (Adaptation)</div>
+        <div><span style="color: #00ffff">●</span> Balanced (Mixed)</div>
+        <br />
+        <h4>Visual Properties</h4>
+        <div>Size = Gene Count</div>
+        <div>Brightness = Fitness</div>
+        <div>Particles = Active Genes</div>
+        <div>Glow = Quantum Genes</div>
+        <div>Position = Zone & Properties</div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="therapeutics_viz.js"></script>
+    <script>
+      let viz;
+
+      // Initialize visualization
+      window.addEventListener("DOMContentLoaded", () => {
+        // Hide loading screen
+        setTimeout(() => {
+          document.getElementById("loading").style.display = "none";
+        }, 1000);
+
+        // Create visualization
+        viz = new LiveNeuralClockwork();
+        window.viz = viz;
+
+        // Removed loadAvailableRuns - using file upload instead
+
+        // Connection status updates
+        viz.on("connection_status", (status) => {
+          const statusEl = document.getElementById("connection-status");
+          statusEl.textContent = status.text;
+          statusEl.className = status.connected ? "connected" : "disconnected";
+        });
+
+        // Comment out event-based updates to prevent conflicts with polling
+        /*
+        viz.on("generation_start", (data) => {
+          document.getElementById("generation").textContent = data.generation || 0;
+          document.getElementById("population").textContent =
+            data.population_size || 0;
+          document.getElementById("stress").textContent =
+            (data.stress_level || 0).toFixed(3);
+        });
+
+        viz.on("generation_complete", (data) => {
+          if (data.metrics) {
+            document.getElementById("best-fitness").textContent = data.metrics
+              .best_fitness
+              ? data.metrics.best_fitness.toFixed(3)
+              : data.metrics.mean_fitness
+              ? data.metrics.mean_fitness.toFixed(3)
+              : "0.000";
+            document.getElementById("diversity").textContent = data.metrics
+              .diversity
+              ? data.metrics.diversity.toFixed(2)
+              : "0.00";
+          }
+        });
+        */
+
+        // Direct polling for metrics (more reliable than events)
+        let metricsPollingInterval = setInterval(async () => {
+          // Only poll if in live mode
+          if (viz && viz.mode === "live") {
+            try {
+              // Poll the therapeutic visualization state JSON in the same directory
+              const response = await fetch(
+                "therapeutic_visualization_state.json?t=" + Date.now()
+              );
+              if (response.ok) {
+                const state = await response.json();
+                // Update therapeutic metrics directly from state
+                if (state.generation !== undefined) {
+                  document.getElementById("generation").textContent =
+                    state.generation;
+                }
+                if (state.population_size !== undefined) {
+                  document.getElementById("population").textContent =
+                    state.population_size;
+                }
+                if (state.patient) {
+                  document.getElementById("patient-id").textContent =
+                    state.patient.id || "Unknown";
+                  document.getElementById("disease-type").textContent =
+                    state.patient.disease || "Unknown";
+                  document.getElementById("severity").textContent = (
+                    state.patient.severity || 0
+                  ).toFixed(3);
+                }
+                if (state.therapeutic_metrics) {
+                  document.getElementById("efficacy").textContent = (
+                    state.therapeutic_metrics.efficacy || 0
+                  ).toFixed(3);
+                  document.getElementById("safety").textContent = (
+                    state.therapeutic_metrics.safety || 1
+                  ).toFixed(3);
+                  document.getElementById("resistance").textContent = (
+                    state.therapeutic_metrics.resistance || 0
+                  ).toFixed(3);
+                }
+                // For now, calculate a simple diversity metric from cell count
+                if (state.cells && state.cells.length > 0) {
+                  // Count unique gene types across all cells as a simple diversity measure
+                  const geneTypes = new Set();
+                  state.cells.forEach((cell) => {
+                    if (cell.genes) {
+                      cell.genes.forEach((gene) => {
+                        if (gene.type) geneTypes.add(gene.type);
+                      });
+                    }
+                  });
+                  const diversity = geneTypes.size / 5.0; // Normalize by max gene types (V,D,J,Q,S)
+                  document.getElementById("diversity").textContent =
+                    diversity.toFixed(2);
+                }
+              }
+            } catch (error) {
+              // Silently ignore polling errors
+            }
+          }
+        }, 2000); // Poll every 2 seconds to reduce flashing
+
+        viz.on("phase_transition", (data) => {
+          const phaseEl = document.getElementById("phase-indicator");
+          phaseEl.textContent = data.phase.toUpperCase();
+          phaseEl.className = data.phase;
+        });
+
+        // Track transposition rate
+        let transpositionCount = 0;
+        viz.on("transposition", () => transpositionCount++);
+
+        setInterval(() => {
+          document.getElementById("tps").textContent = transpositionCount;
+          transpositionCount = 0;
+        }, 1000);
+
+        // Object selection
+        viz.on("object_selected", (data) => {
+          const infoPanel = document.getElementById("info-panel");
+          const objectInfo = document.getElementById("object-info");
+
+          if (data) {
+            let infoHTML = "";
+
+            if (data.gene_id) {
+              infoHTML = `
+                <strong>Gene ID:</strong> ${data.gene_id}<br>
+                <strong>Type:</strong> ${data.gene_type}<br>
+                <strong>Position:</strong> ${data.position}<br>
+                <strong>Depth:</strong> ${data.depth || "N/A"}<br>
+                <strong>Activation:</strong> ${data.activation || "N/A"}<br>
+                <strong>Quantum:</strong> ${data.is_quantum ? "Yes" : "No"}
+              `;
+            } else if (data.cellId) {
+              infoHTML = `
+                <strong>Cell ID:</strong> ${data.cellId}<br>
+                <strong>Fitness:</strong> ${data.fitness || "N/A"}<br>
+                <strong>Active Genes:</strong> ${
+                  data.genes ? data.genes.length : 0
+                }
+              `;
+            }
+
+            objectInfo.innerHTML = infoHTML;
+            infoPanel.classList.add("visible");
+          }
+        });
+      });
+
+      // Helper functions
+      function toggleInfo() {
+        const infoPanel = document.getElementById("info-panel");
+        infoPanel.classList.toggle("visible");
+      }
+
+      function resetCamera() {
+        if (viz) {
+          viz.camera.position.set(50, 50, 50);
+          viz.controls.target.set(0, 0, 0);
+          viz.controls.update();
+        }
+      }
+
+      // File upload handling
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          try {
+            const data = JSON.parse(e.target.result);
+            console.log("Loaded file:", file.name);
+
+            // Update status
+            document.getElementById(
+              "fileStatus"
+            ).textContent = `Loaded: ${file.name}`;
+
+            // Log data structure for debugging
+            console.log("Uploaded data structure:", {
+              hasNodes: !!data.nodes,
+              hasLinks: !!data.links,
+              hasCells: !!data.cells,
+              cellCount: data.cells ? data.cells.length : 0,
+              firstCell: data.cells && data.cells[0] ? data.cells[0] : null,
+            });
+
+            // Switch to historical mode and load data
+            if (viz) {
+              viz.setMode("historical");
+              viz.loadHistoricalData(data);
+              updateMetricsFromData(data);
+            }
+          } catch (error) {
+            console.error("Failed to parse JSON:", error);
+            document.getElementById("fileStatus").textContent =
+              "Error: Invalid JSON file";
+          }
+        };
+
+        reader.readAsText(file);
+      }
+
+      function returnToLive() {
+        if (viz) {
+          viz.setMode("live");
+          viz.startPolling();
+          document.getElementById("fileStatus").textContent = "";
+        }
+      }
+
+      // Load available runs from the file system
+      async function loadAvailableRuns() {
+        const selector = document.getElementById("runSelector");
+
+        try {
+          // First check for runs manifest
+          const manifestResponse = await fetch(
+            "visualization_data/runs_manifest.json"
+          );
+          if (manifestResponse.ok) {
+            const manifest = await manifestResponse.json();
+            console.log("Found runs manifest:", manifest);
+
+            // Add each run to the selector
+            manifest.runs.forEach((run) => {
+              const option = document.createElement("option");
+              option.value = `visualization_data/${run.id}`;
+              const date = new Date(run.timestamp * 1000).toLocaleString();
+              option.text = `${run.id} - ${run.generations} generations`;
+              selector.add(option);
+            });
+          }
+        } catch (error) {
+          console.log("No runs manifest found, checking current run pointer");
+        }
+
+        try {
+          // Also check if there's a current run pointer
+          const pointerResponse = await fetch("current_run_pointer.json");
+          if (pointerResponse.ok) {
+            const pointer = await pointerResponse.json();
+
+            // Check if this run is already in the list
+            let alreadyAdded = false;
+            for (let i = 0; i < selector.options.length; i++) {
+              if (selector.options[i].value === pointer.data_directory) {
+                alreadyAdded = true;
+                break;
+              }
+            }
+
+            if (!alreadyAdded) {
+              const option = document.createElement("option");
+              option.value = pointer.data_directory;
+              option.text = `${pointer.current_run_id} - Generation ${pointer.current_generation} (Current)`;
+              selector.add(option);
+            }
+
+            // Show run info
+            const runInfo = document.createElement("div");
+            runInfo.style.cssText =
+              "position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #666; font-size: 10px;";
+            runInfo.textContent = `Run: ${pointer.current_run_id}`;
+            document.body.appendChild(runInfo);
+          }
+        } catch (error) {
+          console.log("No current run pointer found");
+        }
+      }
+
+      function loadSelectedRun() {
+        const selector = document.getElementById("runSelector");
+        const selectedValue = selector.value;
+
+        if (selectedValue === "live") {
+          // Live polling mode - poll te_ai_state.json
+          console.log("Switching to live polling mode");
+          viz.setMode("live");
+          // Hide generation selector for live mode
+          const genSelector = document.getElementById("generationSelector");
+          if (genSelector) genSelector.style.display = "none";
+        } else {
+          // Load specific run data from directory
+          console.log("Loading historical run from:", selectedValue);
+          viz.setMode("historical", selectedValue);
+          // Load available generations for this run
+          loadGenerationsForRun(selectedValue);
+        }
+      }
+
+      async function loadGenerationsForRun(runDir) {
+        try {
+          // Load metadata to get the number of generations
+          const metadataResponse = await fetch(`${runDir}/metadata.json`);
+          if (metadataResponse.ok) {
+            const metadata = await metadataResponse.json();
+            const numGenerations = metadata.current_generation || 0;
+
+            // Create/show generation selector
+            let genSelector = document.getElementById("generationSelector");
+            if (!genSelector) {
+              // Create generation selector if it doesn't exist
+              genSelector = document.createElement("select");
+              genSelector.id = "generationSelector";
+              genSelector.style.cssText = `
+                display: block;
+                margin: 5px 0;
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                border: 1px solid #4488ff;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+                font-size: 12px;
+                cursor: pointer;
+              `;
+              genSelector.onchange = loadSelectedGeneration;
+
+              // Insert after run selector
+              const runSelector = document.getElementById("runSelector");
+              runSelector.parentNode.insertBefore(
+                genSelector,
+                runSelector.nextSibling
+              );
+            }
+
+            // Clear and populate generation selector
+            genSelector.innerHTML = "";
+            genSelector.style.display = "block";
+
+            // Add generation options
+            for (let i = 0; i <= numGenerations; i++) {
+              const option = document.createElement("option");
+              option.value = i;
+              option.text = `Generation ${i}`;
+              genSelector.add(option);
+            }
+
+            // Select the latest generation by default
+            genSelector.value = numGenerations;
+            loadSelectedGeneration();
+          }
+        } catch (error) {
+          console.error("Failed to load generations:", error);
+        }
+      }
+
+      async function loadSelectedGeneration() {
+        const runSelector = document.getElementById("runSelector");
+        const genSelector = document.getElementById("generationSelector");
+        const runDir = runSelector.value;
+        const generation = parseInt(genSelector.value);
+
+        console.log(`Loading generation ${generation} from ${runDir}`);
+
+        try {
+          // Load the specific generation file
+          const genFile = `${runDir}/generation_${String(generation).padStart(
+            4,
+            "0"
+          )}.json`;
+          const response = await fetch(genFile);
+
+          if (response.ok) {
+            const data = await response.json();
+            // Send data to visualization
+            viz.loadHistoricalData(data);
+
+            // Update metrics display
+            updateMetricsFromData(data);
+          } else {
+            console.error(`Failed to load generation file: ${genFile}`);
+          }
+        } catch (error) {
+          console.error("Failed to load generation data:", error);
+        }
+      }
+
+      function updateMetricsFromData(data) {
+        // Update all metrics from the loaded data
+        if (data.generation !== undefined) {
+          document.getElementById("generation").textContent = data.generation;
+        }
+        if (data.population_size !== undefined) {
+          document.getElementById("population").textContent =
+            data.population_size;
+        }
+        if (data.stress_level !== undefined) {
+          document.getElementById("stress").textContent =
+            data.stress_level.toFixed(3);
+        }
+        if (data.mean_fitness !== undefined) {
+          document.getElementById("best-fitness").textContent =
+            data.mean_fitness.toFixed(3);
+        }
+
+        // Update phase indicator
+        if (data.phase) {
+          const phaseEl = document.getElementById("phase-indicator");
+          phaseEl.textContent = data.phase.toUpperCase();
+          phaseEl.className = data.phase;
+        }
+      }
+
+      // View control functions
+      function changeView(viewType) {
+        if (viz) {
+          viz.changeView(viewType);
+          console.log(`Changed view to: ${viewType}`);
+        }
+      }
+
+      function togglePause() {
+        if (viz) {
+          viz.paused = !viz.paused;
+          const button = document.querySelector(
+            'button[onclick="togglePause()"]'
+          );
+          if (button) {
+            button.textContent = viz.paused ? "Resume" : "Pause";
+          }
+          console.log(viz.paused ? "Paused" : "Resumed");
+        }
+      }
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        switch (e.key) {
+          case "1":
+            changeView("molecular");
+            break;
+          case "2":
+            changeView("cellular");
+            break;
+          case "3":
+            changeView("population");
+            break;
+          case "4":
+            changeView("abstract");
+            break;
+          case " ":
+            togglePause();
+            e.preventDefault();
+            break;
+          case "i":
+            toggleInfo();
+            break;
+          case "r":
+            resetCamera();
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Self-Modifying Neural Architecture - Live 3D Visualization</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #868686;
+        color: #fff;
+      }
+
+      #canvas {
+        width: 100%;
+        height: 100vh;
+      }
+
+      #controls {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        backdrop-filter: blur(10px);
+        font-size: 13px;
+        min-width: 250px;
+      }
+
+      #controls h3 {
+        margin-top: 0;
+        color: #4a90e2;
+      }
+
+      .control-group {
+        margin: 15px 0;
+      }
+
+      .control-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #999;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .slider {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      button {
+        background: #4a90e2;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        margin: 5px 5px 5px 0;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        background: #357abd;
+        transform: translateY(-1px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      #modification-log {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 350px;
+        max-height: 300px;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 15px;
+        overflow-y: auto;
+        backdrop-filter: blur(10px);
+        font-size: 12px;
+      }
+
+      #modification-log h4 {
+        margin-top: 0;
+        color: #4a90e2;
+      }
+
+      .mod-entry {
+        margin: 8px 0;
+        padding: 8px;
+        border-left: 3px solid;
+        padding-left: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0 4px 4px 0;
+        font-family: "Monaco", "Consolas", monospace;
+        font-size: 11px;
+      }
+
+      .mod-entry.add_layer {
+        border-color: #4caf50;
+      }
+      .mod-entry.remove_layer {
+        border-color: #f44336;
+      }
+      .mod-entry.rewire {
+        border-color: #2196f3;
+      }
+      .mod-entry.resize {
+        border-color: #ff9800;
+      }
+      .mod-entry.change_activation {
+        border-color: #9c27b0;
+      }
+
+      #info-panel {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid #333;
+        padding: 20px;
+        border-radius: 8px;
+        width: 280px;
+        backdrop-filter: blur(10px);
+      }
+
+      #info-panel h4 {
+        margin-top: 0;
+        color: #4a90e2;
+      }
+
+      .info-item {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .info-label {
+        color: #999;
+        font-size: 12px;
+      }
+
+      .info-value {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      #module-details {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid #333;
+        padding: 15px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        display: none;
+        max-width: 300px;
+      }
+
+      #module-details h5 {
+        margin-top: 0;
+        color: #4a90e2;
+      }
+
+      .layer-detail {
+        font-size: 11px;
+        margin: 4px 0;
+        padding-left: 10px;
+        color: #ccc;
+        font-family: "Monaco", "Consolas", monospace;
+      }
+
+      #legend {
+        position: absolute;
+        bottom: 50px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        border: 1px solid #333;
+        padding: 15px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        font-size: 11px;
+      }
+
+      .legend-item {
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .legend-color {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas"></div>
+
+    <div id="controls">
+      <h3>Architecture Controller</h3>
+
+      <div class="control-group">
+        <label>Playback Speed</label>
+        <input
+          type="range"
+          class="slider"
+          id="speed"
+          min="0.1"
+          max="5"
+          value="1"
+          step="0.1"
+        />
+        <span id="speed-value">1.0x</span>
+      </div>
+
+      <div class="control-group">
+        <label>View Controls</label>
+        <button id="play-pause">⏸ Pause</button>
+        <button id="reset-view">🔄 Reset View</button>
+        <button id="toggle-rotation">🔄 Auto-Rotate</button>
+      </div>
+
+      <div class="control-group">
+        <label>Display Options</label>
+        <button id="toggle-connections">🔗 Connections</button>
+        <button id="toggle-particles">✨ Particles</button>
+        <button id="toggle-labels">🏷 Labels</button>
+      </div>
+    </div>
+
+    <div id="info-panel">
+      <h4>Architecture Metrics</h4>
+      <div class="info-item">
+        <span class="info-label">Generation</span>
+        <span class="info-value" id="generation">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Modules</span>
+        <span class="info-value" id="module-count">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Connections</span>
+        <span class="info-value" id="connection-count">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Total Parameters</span>
+        <span class="info-value" id="param-count">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Fitness</span>
+        <span class="info-value" id="fitness">0.000</span>
+      </div>
+    </div>
+
+    <div id="module-details">
+      <h5 id="module-name">Module Details</h5>
+      <div id="module-layers"></div>
+    </div>
+
+    <div id="modification-log">
+      <h4>Modification History</h4>
+      <div id="log-content"></div>
+    </div>
+
+    <div id="legend">
+      <h5>Activation Functions</h5>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #ff6b6b"></div>
+        <span>ReLU</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #4ecdc4"></div>
+        <span>Tanh</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #f7dc6f"></div>
+        <span>Sigmoid</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #bb8fce"></div>
+        <span>ELU</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #85c1e2"></div>
+        <span>GELU</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #50e3c2"></div>
+        <span>Swish</span>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script>
+      // Self-Modifying Neural Architecture Visualizer
+      class ArchitectureVisualizer {
+        constructor() {
+          this.scene = new THREE.Scene();
+          this.camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+          );
+          this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+          });
+          this.controls = null;
+
+          // Architecture state
+          this.modules = new Map();
+          this.connections = [];
+          this.particles = [];
+          this.labels = [];
+
+          // Modification tracking
+          this.modificationQueue = [];
+          this.isProcessing = false;
+          this.lastModIndex = -1;
+
+          // Display settings
+          this.showConnections = true;
+          this.showParticles = true;
+          this.showLabels = true;
+          this.autoRotate = true;
+          this.isPlaying = true;
+          this.playbackSpeed = 1.0;
+
+          // Animation helpers
+          this.raycaster = new THREE.Raycaster();
+          this.mouse = new THREE.Vector2();
+          this.hoveredModule = null;
+
+          this.init();
+          this.animate();
+          this.startDataPolling();
+        }
+
+        init() {
+          // Renderer setup
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+          this.renderer.setPixelRatio(window.devicePixelRatio);
+          this.renderer.shadowMap.enabled = true;
+          this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          document
+            .getElementById("canvas")
+            .appendChild(this.renderer.domElement);
+
+          // Camera setup
+          this.camera.position.set(15, 10, 15);
+          this.camera.lookAt(0, 0, 0);
+
+          // Controls
+          this.controls = new THREE.OrbitControls(
+            this.camera,
+            this.renderer.domElement
+          );
+          this.controls.enableDamping = true;
+          this.controls.dampingFactor = 0.05;
+          this.controls.autoRotate = this.autoRotate;
+          this.controls.autoRotateSpeed = 0.5;
+
+          // Lighting
+          this.setupLighting();
+
+          // Visual helpers
+          this.addEnvironment();
+
+          // Event listeners
+          this.setupEventListeners();
+        }
+
+        setupLighting() {
+          // Ambient light
+          const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+          this.scene.add(ambientLight);
+
+          // Main directional light
+          const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+          directionalLight.position.set(10, 20, 10);
+          directionalLight.castShadow = true;
+          directionalLight.shadow.camera.near = 0.1;
+          directionalLight.shadow.camera.far = 50;
+          directionalLight.shadow.camera.left = -30;
+          directionalLight.shadow.camera.right = 30;
+          directionalLight.shadow.camera.top = 30;
+          directionalLight.shadow.camera.bottom = -30;
+          directionalLight.shadow.mapSize.width = 2048;
+          directionalLight.shadow.mapSize.height = 2048;
+          this.scene.add(directionalLight);
+
+          // Point lights for accents
+          const pointLight1 = new THREE.PointLight(0x4a90e2, 0.5, 100);
+          pointLight1.position.set(-10, 10, -10);
+          this.scene.add(pointLight1);
+
+          const pointLight2 = new THREE.PointLight(0xff6b6b, 0.3, 100);
+          pointLight2.position.set(10, 5, 10);
+          this.scene.add(pointLight2);
+        }
+
+        addEnvironment() {
+          // Grid
+          const gridHelper = new THREE.GridHelper(30, 30, 0x222222, 0x111111);
+          gridHelper.position.y = -5;
+          this.scene.add(gridHelper);
+
+          // Axes (subtle)
+          const axesHelper = new THREE.AxesHelper(3);
+          axesHelper.position.set(-15, -5, -15);
+          this.scene.add(axesHelper);
+
+          // Fog for depth
+          this.scene.fog = new THREE.Fog(0x000000, 30, 100);
+        }
+
+        setupEventListeners() {
+          // Window resize
+          window.addEventListener("resize", () => this.onWindowResize());
+
+          // Mouse interaction
+          window.addEventListener("mousemove", (e) => this.onMouseMove(e));
+          window.addEventListener("click", (e) => this.onMouseClick(e));
+
+          // Controls
+          document
+            .getElementById("play-pause")
+            .addEventListener("click", () => {
+              this.isPlaying = !this.isPlaying;
+              document.getElementById("play-pause").textContent = this.isPlaying
+                ? "⏸ Pause"
+                : "▶ Play";
+            });
+
+          document
+            .getElementById("reset-view")
+            .addEventListener("click", () => {
+              this.camera.position.set(15, 10, 15);
+              this.camera.lookAt(0, 0, 0);
+              this.controls.reset();
+            });
+
+          document
+            .getElementById("toggle-rotation")
+            .addEventListener("click", () => {
+              this.autoRotate = !this.autoRotate;
+              this.controls.autoRotate = this.autoRotate;
+            });
+
+          document
+            .getElementById("toggle-connections")
+            .addEventListener("click", () => {
+              this.showConnections = !this.showConnections;
+              this.updateConnectionVisibility();
+            });
+
+          document
+            .getElementById("toggle-particles")
+            .addEventListener("click", () => {
+              this.showParticles = !this.showParticles;
+              this.updateParticleVisibility();
+            });
+
+          document
+            .getElementById("toggle-labels")
+            .addEventListener("click", () => {
+              this.showLabels = !this.showLabels;
+              this.updateLabelVisibility();
+            });
+
+          const speedSlider = document.getElementById("speed");
+          speedSlider.addEventListener("input", (e) => {
+            this.playbackSpeed = parseFloat(e.target.value);
+            document.getElementById(
+              "speed-value"
+            ).textContent = `${this.playbackSpeed.toFixed(1)}x`;
+          });
+        }
+
+        onWindowResize() {
+          this.camera.aspect = window.innerWidth / window.innerHeight;
+          this.camera.updateProjectionMatrix();
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        onMouseMove(event) {
+          this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+          this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+          // Check for hover
+          this.raycaster.setFromCamera(this.mouse, this.camera);
+          const moduleObjects = Array.from(this.modules.values()).map(
+            (m) => m.mesh
+          );
+          const intersects = this.raycaster.intersectObjects(moduleObjects);
+
+          if (intersects.length > 0) {
+            const newHovered = intersects[0].object.parent;
+            if (this.hoveredModule !== newHovered) {
+              if (this.hoveredModule) {
+                this.unhoverModule(this.hoveredModule);
+              }
+              this.hoveredModule = newHovered;
+              this.hoverModule(this.hoveredModule);
+            }
+          } else if (this.hoveredModule) {
+            this.unhoverModule(this.hoveredModule);
+            this.hoveredModule = null;
+          }
+        }
+
+        onMouseClick(event) {
+          if (this.hoveredModule && this.hoveredModule.userData) {
+            this.showModuleDetails(this.hoveredModule.userData);
+          }
+        }
+
+        hoverModule(module) {
+          if (module.userData.glowMesh) {
+            new TWEEN.Tween(module.userData.glowMesh.material)
+              .to({ opacity: 0.4 }, 200)
+              .start();
+          }
+          document.body.style.cursor = "pointer";
+        }
+
+        unhoverModule(module) {
+          if (module.userData.glowMesh) {
+            new TWEEN.Tween(module.userData.glowMesh.material)
+              .to({ opacity: 0.1 }, 200)
+              .start();
+          }
+          document.body.style.cursor = "default";
+        }
+
+        showModuleDetails(moduleData) {
+          const detailsPanel = document.getElementById("module-details");
+          const nameEl = document.getElementById("module-name");
+          const layersEl = document.getElementById("module-layers");
+
+          nameEl.textContent = moduleData.name;
+          layersEl.innerHTML = "";
+
+          if (moduleData.layers) {
+            moduleData.layers.forEach((layer) => {
+              const layerDiv = document.createElement("div");
+              layerDiv.className = "layer-detail";
+
+              if (layer.type === "Linear" && layer.params) {
+                layerDiv.textContent = `${layer.type}(${layer.params.in_features} → ${layer.params.out_features})`;
+              } else if (layer.params && Object.keys(layer.params).length > 0) {
+                layerDiv.textContent = `${layer.type}(${JSON.stringify(
+                  layer.params
+                )})`;
+              } else {
+                layerDiv.textContent = layer.type;
+              }
+
+              layersEl.appendChild(layerDiv);
+            });
+          }
+
+          detailsPanel.style.display = "block";
+
+          // Hide after 5 seconds
+          setTimeout(() => {
+            detailsPanel.style.display = "none";
+          }, 5000);
+        }
+
+        createModuleNode(moduleData) {
+          const group = new THREE.Group();
+          group.userData = moduleData;
+
+          // Determine size based on parameters
+          let nodeSize = 0.5;
+          if (moduleData.size) {
+            nodeSize = Math.log(moduleData.size + 1) * 0.15 + 0.5;
+          }
+
+          // Create multi-layer visualization for Sequential modules
+          if (moduleData.type === "sequential" && moduleData.layers) {
+            // Create stacked representation
+            const layerHeight = 0.3;
+            const totalHeight = moduleData.layers.length * layerHeight;
+
+            moduleData.layers.forEach((layer, index) => {
+              const layerGeometry = new THREE.BoxGeometry(
+                nodeSize * 1.5,
+                layerHeight * 0.8,
+                nodeSize * 1.5
+              );
+              let layerMaterial;
+
+              if (layer.type === "Linear") {
+                layerMaterial = new THREE.MeshPhongMaterial({
+                  color: 0x4a90e2,
+                  emissive: 0x4a90e2,
+                  emissiveIntensity: 0.1,
+                });
+              } else if (layer.type === "LayerNorm") {
+                layerMaterial = new THREE.MeshPhongMaterial({
+                  color: 0x50e3c2,
+                  emissive: 0x50e3c2,
+                  emissiveIntensity: 0.1,
+                });
+              } else if (layer.type.includes("Dropout")) {
+                layerMaterial = new THREE.MeshPhongMaterial({
+                  color: 0x666666,
+                  emissive: 0x666666,
+                  emissiveIntensity: 0.1,
+                  transparent: true,
+                  opacity: 0.5,
+                });
+              } else {
+                // Activation layer
+                layerMaterial = new THREE.MeshPhongMaterial({
+                  color: new THREE.Color(moduleData.color || "#FF6B6B"),
+                  emissive: new THREE.Color(moduleData.color || "#FF6B6B"),
+                  emissiveIntensity: 0.2,
+                });
+              }
+
+              const layerMesh = new THREE.Mesh(layerGeometry, layerMaterial);
+              layerMesh.position.y = index * layerHeight - totalHeight / 2;
+              layerMesh.castShadow = true;
+              layerMesh.receiveShadow = true;
+              group.add(layerMesh);
+            });
+          } else {
+            // Simple sphere for linear modules
+            const geometry = new THREE.SphereGeometry(nodeSize, 32, 16);
+            const material = new THREE.MeshPhongMaterial({
+              color: new THREE.Color(moduleData.color || "#4A90E2"),
+              emissive: new THREE.Color(moduleData.color || "#4A90E2"),
+              emissiveIntensity: 0.2,
+              shininess: 100,
+            });
+
+            const mesh = new THREE.Mesh(geometry, material);
+            mesh.castShadow = true;
+            mesh.receiveShadow = true;
+            group.add(mesh);
+            group.mesh = mesh;
+          }
+
+          // Add glow effect
+          const glowGeometry = new THREE.SphereGeometry(nodeSize * 1.5, 16, 8);
+          const glowMaterial = new THREE.MeshBasicMaterial({
+            color: moduleData.color || "#4A90E2",
+            transparent: true,
+            opacity: 0.1,
+          });
+          const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+          group.add(glowMesh);
+          group.userData.glowMesh = glowMesh;
+
+          // Add label
+          if (this.showLabels) {
+            const label = this.createTextLabel(moduleData.name);
+            label.position.y = nodeSize + 0.5;
+            group.add(label);
+            this.labels.push(label);
+          }
+
+          // Position
+          if (moduleData.position) {
+            group.position.set(
+              moduleData.position.x,
+              moduleData.position.y,
+              moduleData.position.z
+            );
+          }
+
+          return group;
+        }
+
+        createTextLabel(text) {
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.width = 256;
+          canvas.height = 64;
+
+          context.fillStyle = "rgba(0,0,0,0.8)";
+          context.fillRect(0, 0, 256, 64);
+
+          context.font = "24px Arial";
+          context.fillStyle = "white";
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.fillText(text, 128, 32);
+
+          const texture = new THREE.CanvasTexture(canvas);
+          const material = new THREE.SpriteMaterial({
+            map: texture,
+            transparent: true,
+          });
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(2, 0.5, 1);
+
+          return sprite;
+        }
+
+        createConnection(fromModule, toModule, connectionType = "sequential") {
+          const from = fromModule.position;
+          const to = toModule.position;
+
+          // Create curve
+          const midPoint = new THREE.Vector3(
+            (from.x + to.x) / 2,
+            Math.max(from.y, to.y) + 2,
+            (from.z + to.z) / 2
+          );
+
+          const curve = new THREE.QuadraticBezierCurve3(from, midPoint, to);
+          const points = curve.getPoints(50);
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+          // Different styles for different connection types
+          let material;
+          if (connectionType === "residual") {
+            material = new THREE.LineDashedMaterial({
+              color: 0x00ff00,
+              dashSize: 0.3,
+              gapSize: 0.1,
+              transparent: true,
+              opacity: 0.6,
+            });
+            geometry.computeLineDistances();
+          } else {
+            material = new THREE.LineBasicMaterial({
+              color: 0x4a90e2,
+              transparent: true,
+              opacity: 0.6,
+              linewidth: 2,
+            });
+          }
+
+          const line = new THREE.Line(geometry, material);
+          line.userData = {
+            from: fromModule.userData.name,
+            to: toModule.userData.name,
+            type: connectionType,
+            curve: curve,
+          };
+
+          // Add flow particles
+          if (this.showParticles) {
+            this.addFlowParticles(line, curve);
+          }
+
+          return line;
+        }
+
+        addFlowParticles(connection, curve) {
+          const particleCount = 3;
+          const particles = new THREE.Group();
+
+          for (let i = 0; i < particleCount; i++) {
+            const particleGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+            const particleMaterial = new THREE.MeshBasicMaterial({
+              color: 0x00ff00,
+              emissive: 0x00ff00,
+              emissiveIntensity: 0.5,
+            });
+            const particle = new THREE.Mesh(particleGeometry, particleMaterial);
+
+            particle.userData = {
+              offset: i / particleCount,
+              curve: curve,
+            };
+
+            particles.add(particle);
+            this.particles.push(particle);
+          }
+
+          connection.add(particles);
+        }
+
+        updateParticles() {
+          this.particles.forEach((particle) => {
+            if (particle.userData.curve) {
+              const time =
+                (Date.now() * 0.001 * this.playbackSpeed +
+                  particle.userData.offset) %
+                1;
+              const point = particle.userData.curve.getPoint(time);
+              particle.position.copy(point);
+            }
+          });
+        }
+
+        // Animation methods for modifications
+        animateAddLayer(moduleData, insertAfter) {
+          const newModule = this.createModuleNode(moduleData);
+          newModule.scale.set(0, 0, 0);
+          this.scene.add(newModule);
+          this.modules.set(moduleData.name, newModule);
+
+          // Scale up animation
+          new TWEEN.Tween(newModule.scale)
+            .to({ x: 1, y: 1, z: 1 }, 1000 / this.playbackSpeed)
+            .easing(TWEEN.Easing.Elastic.Out)
+            .start();
+
+          // Pulse effect
+          this.pulseModule(newModule);
+
+          // Update connections
+          setTimeout(() => {
+            this.updateArchitectureFromState();
+          }, 1000 / this.playbackSpeed);
+        }
+
+        animateRemoveLayer(moduleName) {
+          const module = this.modules.get(moduleName);
+          if (!module) return;
+
+          // Remove connections first
+          this.connections.forEach((conn, index) => {
+            if (
+              conn.userData.from === moduleName ||
+              conn.userData.to === moduleName
+            ) {
+              new TWEEN.Tween(conn.material)
+                .to({ opacity: 0 }, 500 / this.playbackSpeed)
+                .onComplete(() => {
+                  this.scene.remove(conn);
+                })
+                .start();
+            }
+          });
+
+          // Shrink and remove module
+          new TWEEN.Tween(module.scale)
+            .to({ x: 0, y: 0, z: 0 }, 800 / this.playbackSpeed)
+            .easing(TWEEN.Easing.Back.In)
+            .onComplete(() => {
+              this.scene.remove(module);
+              this.modules.delete(moduleName);
+              this.updateArchitectureFromState();
+            })
+            .start();
+
+          // Fade glow
+          if (module.userData.glowMesh) {
+            new TWEEN.Tween(module.userData.glowMesh.material)
+              .to({ opacity: 0 }, 800 / this.playbackSpeed)
+              .start();
+          }
+        }
+
+        animateRewire(source, destination, connectionType) {
+          // Find modules
+          const sourceModule = this.modules.get(source);
+          const destModule = this.modules.get(destination);
+
+          if (!sourceModule || !destModule) return;
+
+          // Create lightning effect
+          this.createLightningEffect(
+            sourceModule.position,
+            destModule.position
+          );
+
+          // Update connections after effect
+          setTimeout(() => {
+            this.updateArchitectureFromState();
+          }, 500 / this.playbackSpeed);
+        }
+
+        animateResize(moduleName, newSize) {
+          const module = this.modules.get(moduleName);
+          if (!module) return;
+
+          const targetSize = Math.log(newSize + 1) * 0.15 + 0.5;
+
+          // Animate size change
+          module.children.forEach((child) => {
+            if (child.geometry) {
+              const scale = targetSize / 0.5;
+              new TWEEN.Tween(child.scale)
+                .to({ x: scale, y: scale, z: scale }, 1000 / this.playbackSpeed)
+                .easing(TWEEN.Easing.Elastic.InOut)
+                .start();
+            }
+          });
+
+          // Update module data
+          module.userData.size = newSize;
+
+          // Pulse effect
+          this.pulseModule(module);
+        }
+
+        animateActivationChange(moduleName, newActivation) {
+          const module = this.modules.get(moduleName);
+          if (!module) return;
+
+          const activationColors = {
+            relu: "#FF6B6B",
+            tanh: "#4ECDC4",
+            sigmoid: "#F7DC6F",
+            elu: "#BB8FCE",
+            gelu: "#85C1E2",
+            swish: "#50E3C2",
+          };
+
+          const newColor = new THREE.Color(
+            activationColors[newActivation] || "#4A90E2"
+          );
+
+          // Update colors
+          module.children.forEach((child) => {
+            if (child.material && child.material.color) {
+              new TWEEN.Tween(child.material.color)
+                .to(
+                  { r: newColor.r, g: newColor.g, b: newColor.b },
+                  800 / this.playbackSpeed
+                )
+                .start();
+
+              if (child.material.emissive) {
+                new TWEEN.Tween(child.material.emissive)
+                  .to(
+                    { r: newColor.r, g: newColor.g, b: newColor.b },
+                    800 / this.playbackSpeed
+                  )
+                  .start();
+              }
+            }
+          });
+
+          // Rotation effect
+          new TWEEN.Tween(module.rotation)
+            .to(
+              { y: module.rotation.y + Math.PI * 2 },
+              1000 / this.playbackSpeed
+            )
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .start();
+
+          // Update module data
+          module.userData.activation = newActivation;
+          module.userData.color = activationColors[newActivation];
+        }
+
+        createLightningEffect(from, to) {
+          const material = new THREE.LineBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 1.0,
+            linewidth: 3,
+          });
+
+          // Create jagged path
+          const points = [];
+          const segments = 8;
+          for (let i = 0; i <= segments; i++) {
+            const t = i / segments;
+            const basePoint = new THREE.Vector3().lerpVectors(from, to, t);
+
+            if (i > 0 && i < segments) {
+              basePoint.x += (Math.random() - 0.5) * 1;
+              basePoint.y += (Math.random() - 0.5) * 1;
+              basePoint.z += (Math.random() - 0.5) * 1;
+            }
+
+            points.push(basePoint);
+          }
+
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+          const lightning = new THREE.Line(geometry, material);
+          this.scene.add(lightning);
+
+          // Animate and remove
+          new TWEEN.Tween(material)
+            .to({ opacity: 0 }, 300 / this.playbackSpeed)
+            .onComplete(() => {
+              this.scene.remove(lightning);
+              geometry.dispose();
+              material.dispose();
+            })
+            .start();
+        }
+
+        pulseModule(module) {
+          if (!module.userData.glowMesh) return;
+
+          const originalOpacity = 0.1;
+
+          new TWEEN.Tween(module.userData.glowMesh.material)
+            .to({ opacity: 0.8 }, 200 / this.playbackSpeed)
+            .yoyo(true)
+            .repeat(2)
+            .onComplete(() => {
+              module.userData.glowMesh.material.opacity = originalOpacity;
+            })
+            .start();
+
+          // Also pulse the main mesh
+          module.children.forEach((child) => {
+            if (
+              child.material &&
+              child.material.emissiveIntensity !== undefined
+            ) {
+              const originalIntensity = child.material.emissiveIntensity;
+              new TWEEN.Tween(child.material)
+                .to({ emissiveIntensity: 1.0 }, 200 / this.playbackSpeed)
+                .yoyo(true)
+                .repeat(2)
+                .onComplete(() => {
+                  child.material.emissiveIntensity = originalIntensity;
+                })
+                .start();
+            }
+          });
+        }
+
+        // Data processing
+        async loadArchitectureState() {
+          try {
+            const response = await fetch(
+              "../../visualization_data/architecture_state.json?t=" + Date.now()
+            );
+            const data = await response.json();
+
+            if (!data.architecture_state) return;
+
+            const state = data.architecture_state;
+
+            // Update info panel
+            this.updateInfoPanel(data);
+
+            // Check for new modifications
+            if (
+              state.modification_history &&
+              state.modification_history.length > 0
+            ) {
+              const newMods = state.modification_history.filter(
+                (mod, index) => index > this.lastModIndex
+              );
+
+              if (newMods.length > 0) {
+                this.lastModIndex = state.modification_history.length - 1;
+                newMods.forEach((mod) => {
+                  this.modificationQueue.push(mod);
+                  this.addModificationToLog(mod);
+                });
+              }
+            }
+
+            // Process modifications
+            if (
+              !this.isProcessing &&
+              this.modificationQueue.length > 0 &&
+              this.isPlaying
+            ) {
+              this.processNextModification();
+            }
+
+            // Update current architecture state
+            this.currentArchitectureState = state;
+
+            // Initial setup if no modules exist
+            if (this.modules.size === 0 && state.modules) {
+              this.setupInitialArchitecture(state);
+            }
+          } catch (error) {
+            console.error("Error loading architecture state:", error);
+          }
+        }
+
+        setupInitialArchitecture(state) {
+          // Create all modules
+          for (const [name, moduleData] of Object.entries(state.modules)) {
+            const module = this.createModuleNode(moduleData);
+            this.scene.add(module);
+            this.modules.set(name, module);
+          }
+
+          // Create connections
+          this.updateConnectionsFromState(state.connections);
+        }
+
+        updateArchitectureFromState() {
+          if (!this.currentArchitectureState) return;
+
+          // Update module positions
+          for (const [name, moduleData] of Object.entries(
+            this.currentArchitectureState.modules
+          )) {
+            const module = this.modules.get(name);
+            if (module && moduleData.position) {
+              new TWEEN.Tween(module.position)
+                .to(moduleData.position, 500 / this.playbackSpeed)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .start();
+            }
+          }
+
+          // Update connections
+          this.updateConnectionsFromState(
+            this.currentArchitectureState.connections
+          );
+        }
+
+        updateConnectionsFromState(connectionData) {
+          // Remove old connections
+          this.connections.forEach((conn) => {
+            this.scene.remove(conn);
+          });
+          this.connections = [];
+
+          // Create new connections
+          for (const [source, targets] of Object.entries(connectionData)) {
+            const sourceModule = this.modules.get(source);
+            if (!sourceModule) continue;
+
+            for (const target of targets) {
+              const targetModule = this.modules.get(target);
+              if (!targetModule) continue;
+
+              // Check if this is a residual connection
+              const isResidual = this.isResidualConnection(source, target);
+              const connection = this.createConnection(
+                sourceModule,
+                targetModule,
+                isResidual ? "residual" : "sequential"
+              );
+
+              this.scene.add(connection);
+              this.connections.push(connection);
+            }
+          }
+        }
+
+        isResidualConnection(source, target) {
+          // Simple heuristic: if target appears before source in the module order,
+          // or if they're not adjacent, it's likely a residual connection
+          const moduleNames = Array.from(this.modules.keys());
+          const sourceIndex = moduleNames.indexOf(source);
+          const targetIndex = moduleNames.indexOf(target);
+
+          return (
+            Math.abs(targetIndex - sourceIndex) > 1 || targetIndex < sourceIndex
+          );
+        }
+
+        processNextModification() {
+          if (this.modificationQueue.length === 0) {
+            this.isProcessing = false;
+            return;
+          }
+
+          this.isProcessing = true;
+          const mod = this.modificationQueue.shift();
+
+          // Process based on type
+          switch (mod.type) {
+            case "add_layer":
+              if (
+                mod.parameters.layer_name &&
+                this.currentArchitectureState.modules[mod.parameters.layer_name]
+              ) {
+                const moduleData =
+                  this.currentArchitectureState.modules[
+                    mod.parameters.layer_name
+                  ];
+                this.animateAddLayer(moduleData, mod.parameters.insert_after);
+              }
+              break;
+
+            case "remove_layer":
+              this.animateRemoveLayer(
+                mod.parameters.removed_layer || mod.target
+              );
+              break;
+
+            case "rewire":
+              this.animateRewire(
+                mod.parameters.source,
+                mod.parameters.destination,
+                mod.parameters.connection_type
+              );
+              break;
+
+            case "resize":
+              this.animateResize(
+                mod.parameters.target || mod.target,
+                mod.parameters.new_size
+              );
+              break;
+
+            case "change_activation":
+              this.animateActivationChange(
+                mod.parameters.target || mod.target,
+                mod.parameters.new_activation
+              );
+              break;
+          }
+
+          // Process next after delay
+          setTimeout(() => {
+            this.isProcessing = false;
+            if (this.modificationQueue.length > 0 && this.isPlaying) {
+              this.processNextModification();
+            }
+          }, 2000 / this.playbackSpeed);
+        }
+
+        addModificationToLog(mod) {
+          const logContent = document.getElementById("log-content");
+          const entry = document.createElement("div");
+          entry.className = `mod-entry ${mod.type}`;
+
+          let description = "";
+          switch (mod.type) {
+            case "add_layer":
+              description = `Added ${
+                mod.parameters.layer_name || "layer"
+              } after ${mod.parameters.insert_after}`;
+              break;
+            case "remove_layer":
+              description = `Removed ${
+                mod.parameters.removed_layer || mod.target
+              }`;
+              break;
+            case "rewire":
+              description = `${
+                mod.parameters.connection_type === "residual"
+                  ? "Added residual"
+                  : "Rewired"
+              } ${mod.parameters.source} → ${mod.parameters.destination}`;
+              break;
+            case "resize":
+              description = `Resized ${
+                mod.parameters.target || mod.target
+              }: → ${mod.parameters.new_size}`;
+              break;
+            case "change_activation":
+              description = `Changed activation in ${
+                mod.parameters.target || mod.target
+              } to ${mod.parameters.new_activation}`;
+              break;
+          }
+
+          entry.textContent = description;
+          logContent.insertBefore(entry, logContent.firstChild);
+
+          // Keep only last 20 entries
+          while (logContent.children.length > 20) {
+            logContent.removeChild(logContent.lastChild);
+          }
+
+          // Fade in
+          entry.style.opacity = "0";
+          setTimeout(() => {
+            entry.style.opacity = "1";
+            entry.style.transition = "opacity 0.3s";
+          }, 10);
+        }
+
+        updateInfoPanel(data) {
+          document.getElementById("generation").textContent =
+            data.generation || "0";
+
+          if (this.currentArchitectureState) {
+            const moduleCount = Object.keys(
+              this.currentArchitectureState.modules
+            ).length;
+            const connectionCount = Object.values(
+              this.currentArchitectureState.connections
+            ).reduce((sum, targets) => sum + targets.length, 0);
+
+            document.getElementById("module-count").textContent = moduleCount;
+            document.getElementById("connection-count").textContent =
+              connectionCount;
+
+            // Calculate total parameters
+            let totalParams = 0;
+            for (const moduleData of Object.values(
+              this.currentArchitectureState.modules
+            )) {
+              if (moduleData.layers) {
+                moduleData.layers.forEach((layer) => {
+                  if (layer.type === "Linear" && layer.params) {
+                    totalParams +=
+                      layer.params.in_features * layer.params.out_features;
+                    totalParams += layer.params.out_features; // bias
+                  }
+                });
+              }
+            }
+            document.getElementById("param-count").textContent =
+              totalParams.toLocaleString();
+          }
+
+          if (data.cells && data.cells.length > 0) {
+            document.getElementById("fitness").textContent =
+              data.cells[0].fitness.toFixed(3);
+          }
+        }
+
+        updateConnectionVisibility() {
+          this.connections.forEach((conn) => {
+            conn.visible = this.showConnections;
+          });
+        }
+
+        updateParticleVisibility() {
+          this.particles.forEach((particle) => {
+            particle.visible = this.showParticles;
+          });
+        }
+
+        updateLabelVisibility() {
+          this.labels.forEach((label) => {
+            label.visible = this.showLabels;
+          });
+        }
+
+        startDataPolling() {
+          // Poll for new data every second
+          setInterval(() => {
+            this.loadArchitectureState();
+          }, 1000);
+
+          // Initial load
+          this.loadArchitectureState();
+        }
+
+        animate() {
+          requestAnimationFrame(() => this.animate());
+
+          // Update controls
+          this.controls.update();
+
+          // Update particles
+          if (this.showParticles) {
+            this.updateParticles();
+          }
+
+          // Update tweens
+          TWEEN.update();
+
+          // Render
+          this.renderer.render(this.scene, this.camera);
+        }
+      }
+
+      // Initialize visualizer
+      const visualizer = new ArchitectureVisualizer();
+    </script>
+  </body>
+</html>

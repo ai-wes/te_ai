@@ -4,7 +4,10 @@
       "Bash(sed:*)",
       "Bash(python:*)",
       "Bash(chmod:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(MPLBACKEND=Agg python therapeutic_real_test.py)",
+      "Bash(grep:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

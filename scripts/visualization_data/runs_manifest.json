@@ -1,0 +1,47 @@
+{
+  "runs": [
+    {
+      "id": "20250715_001231",
+      "generations": 7,
+      "timestamp": 1752564584.457359,
+      "total_files": 7
+    },
+    {
+      "id": "20250715_005213",
+      "generations": 4,
+      "timestamp": 1752566182.1731484,
+      "total_files": 4
+    },
+    {
+      "id": "20250715_005850",
+      "generations": 5,
+      "timestamp": 1752566526.372501,
+      "total_files": 1
+    },
+    {
+      "id": "20250715_011502",
+      "generations": 5,
+      "timestamp": 1752567955.9475927,
+      "total_files": 5
+    },
+    {
+      "id": "20250715_023058",
+      "generations": 1,
+      "timestamp": 1752571896.2184346,
+      "total_files": 1
+    },
+    {
+      "id": "20250715_023211",
+      "generations": 6,
+      "timestamp": 1752572753.8226776,
+      "total_files": 6
+    },
+    {
+      "id": "20250715_055449",
+      "generations": 10,
+      "timestamp": 1752586174.8836534,
+      "total_files": 10
+    }
+  ],
+  "generated_at": 1752565617.866003
+}

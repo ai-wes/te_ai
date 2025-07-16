@@ -1,0 +1,25 @@
+{
+  "patient": {
+    "id": "PT001",
+    "disease": "autoimmune_inflammatory",
+    "severity": 0.8,
+    "age": 45,
+    "comorbidities": [
+      "diabetes"
+    ]
+  },
+  "treatment_duration": 6,
+  "final_state": {
+    "severity": 0.8537811165672365,
+    "improvement": -6.722639570904562,
+    "resistance": 0.0
+  },
+  "metrics": {
+    "total_cycles": 6,
+    "successful_treatments": 0,
+    "adverse_events": 0,
+    "average_efficacy": 0.012715147820076999
+  },
+  "daily_summaries": [],
+  "treatment_log": []
+}
