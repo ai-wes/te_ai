@@ -130,8 +130,8 @@ class OptimizedBatchEvaluator:
                     active_genes = len([g for g in cell.genes if g.is_active])
                     complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
                     
-                    # Diversity bonus (this part is fine)
-                    diversity_bonus = self._compute_cell_diversity(cell) * cfg.diversity_weight
+                    # Diversity bonus - use a simplified calculation for performance
+                    diversity_bonus = len([g for g in cell.genes if g.is_active and g.gene_type != 'V']) * 0.01
                     
                     # Final fitness score
                     final_fitness = fitness - complexity_penalty + diversity_bonus
