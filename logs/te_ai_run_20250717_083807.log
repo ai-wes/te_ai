@@ -1,0 +1,72 @@
+2025-07-17 08:38:07.771 | INFO     | __init__                       | ================================================================================
+2025-07-17 08:38:07.771 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250717_083807
+2025-07-17 08:38:07.771 | INFO     | __init__                       | Log file: logs/te_ai_run_20250717_083807.log
+2025-07-17 08:38:07.771 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-17 08:38:07.771 | INFO     | __init__                       | Backup files: 10
+2025-07-17 08:38:07.771 | INFO     | __init__                       | ================================================================================
+2025-07-17 08:38:07.771 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-17 08:38:07.771 | INFO     | _log_system_info               |   Python version: 3.9.0 (default, Nov 15 2020, 14:28:56) 
+[GCC 7.3.0]
+2025-07-17 08:38:07.771 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-17 08:38:07.771 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-17 08:38:07.782 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-17 08:38:07.782 | INFO     | _log_system_info               |   CUDA memory: 25.44 GB
+2025-07-17 08:38:07.782 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-17 08:38:07.782 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-17 08:38:07.782 | INFO     | info                           | ============================================================
+2025-07-17 08:38:07.782 | INFO     | info                           | Loading BBBP dataset from DeepChem...
+2025-07-17 08:38:09.008 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-17 08:38:11.213 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-17 08:38:16.423 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-17 08:38:16.423 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-17 08:38:16.683 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-17 08:38:16.684 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-17 08:38:16.932 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-17 08:38:16.932 | INFO     | info                           | Converted bbbp:
+2025-07-17 08:38:16.932 | INFO     | info                           |   Train: 1631 antigens
+2025-07-17 08:38:16.932 | INFO     | info                           |   Valid: 204 antigens
+2025-07-17 08:38:16.932 | INFO     | info                           |   Test: 204 antigens
+2025-07-17 08:38:16.946 | INFO     | info                           | Loaded BBBP:
+2025-07-17 08:38:16.946 | INFO     | info                           |   Train: 1631 samples
+2025-07-17 08:38:16.946 | INFO     | info                           |   Valid: 204 samples
+2025-07-17 08:38:16.946 | INFO     | info                           |   Test: 204 samples
+2025-07-17 08:38:16.946 | INFO     | info                           |   Tasks: ['p_np']
+2025-07-17 08:38:16.958 | INFO     | info                           | 
+============================================================
+2025-07-17 08:38:16.958 | INFO     | info                           | Running benchmark: BBBP
+2025-07-17 08:38:16.958 | INFO     | info                           | ============================================================
+2025-07-17 08:38:16.961 | INFO     | info                           | Train samples: 1835, Test samples: 204
+2025-07-17 08:38:17.030 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-17 08:38:17.030 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-17 08:38:19.468 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-17 08:38:20.062 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:20.262 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:23.212 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:24.989 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:25.389 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:25.590 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:25.790 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:26.581 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-17 08:38:29.361 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-17 08:38:29.848 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-17 08:38:29.867 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-17 08:38:29.870 | INFO     | info                           | Added BindingPocketGene to cell 56356b4e-64e0-41c4-97db-6b68e6683cdc
+2025-07-17 08:38:29.873 | INFO     | info                           | Added PharmacophoreGene to cell e8cabd35-7651-47b9-aacb-890f79142876
+2025-07-17 08:38:29.897 | INFO     | info                           | Added AllostericGene to cell 7f59e65e-e249-451f-b337-aefadf48306c
+2025-07-17 08:38:29.899 | INFO     | info                           | Added BindingPocketGene to cell d3c0c80e-ee3a-4bd4-a3b3-0ccb12335a22
+2025-07-17 08:38:29.903 | INFO     | info                           | Added PharmacophoreGene to cell 78297dd2-9555-4bd7-bf0d-0d599091d069
+2025-07-17 08:38:29.908 | INFO     | info                           | Added AllostericGene to cell a4918519-9216-4efc-8ba4-4af774d9fe59
+2025-07-17 08:38:29.910 | INFO     | info                           | Added BindingPocketGene to cell e47f1d71-48ec-483c-a65e-d75179b95131
+2025-07-17 08:38:29.913 | INFO     | info                           | Added PharmacophoreGene to cell e3080d6d-ebeb-4fce-a026-41da10f3b1a3
+2025-07-17 08:38:29.919 | INFO     | info                           | Added AllostericGene to cell d50891cf-8928-4ef7-bfa9-d2540fb7923f
+2025-07-17 08:38:29.920 | INFO     | info                           | Added BindingPocketGene to cell 54383ae3-12a2-4a4c-a9cb-d8ca65f3a089
+2025-07-17 08:38:29.924 | INFO     | info                           | Added PharmacophoreGene to cell 3dc7069c-f3aa-43e5-8f4c-739cfc06be49
+2025-07-17 08:38:29.929 | INFO     | info                           | Added AllostericGene to cell 3a252059-f56a-43f9-9db7-8ebdee94642d
+2025-07-17 08:38:29.931 | INFO     | info                           | Added BindingPocketGene to cell 1580bddd-b428-4662-b295-9ba1099a304d
+2025-07-17 08:38:29.934 | INFO     | info                           | Added PharmacophoreGene to cell 4eec8055-6a97-4c53-a14a-f68f526e023e
+2025-07-17 08:38:29.939 | INFO     | info                           | Added AllostericGene to cell cfff946e-2b33-4537-b44e-b3db1bfa0c57
+2025-07-17 08:38:29.941 | INFO     | info                           | Added BindingPocketGene to cell 56eac5c8-199c-430a-8bb5-742ee70c8a6c
+2025-07-17 08:38:29.944 | INFO     | info                           | Added PharmacophoreGene to cell f270a90b-ca4e-4b28-b01a-ac4d51b898e9
+2025-07-17 08:38:29.949 | INFO     | info                           | Added AllostericGene to cell d2c65ec3-f15c-40cd-a56f-82b9be79e750
+2025-07-17 08:38:29.951 | INFO     | info                           | Added BindingPocketGene to cell a8b87936-83c1-4930-8b21-1842bc16d600
