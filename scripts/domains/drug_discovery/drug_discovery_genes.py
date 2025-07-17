@@ -241,14 +241,9 @@ class AllostericGene(StemGeneModule):
         self.output_dim = output_dim
         self.differentiation_threshold = differentiation_threshold
         
-        # Allosteric site detector
-        self.allosteric_detector = nn.Sequential(
-            GCNConv(input_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(0.1),
-            GCNConv(hidden_dim, hidden_dim),
-            nn.ReLU()
-        )
+        # Allosteric site detector - use separate layers instead of Sequential
+        self.allosteric_conv1 = GCNConv(input_dim, hidden_dim)
+        self.allosteric_conv2 = GCNConv(hidden_dim, hidden_dim)
         
         # Distance-based site analyzer
         self.distance_analyzer = nn.Sequential(
@@ -264,11 +259,16 @@ class AllostericGene(StemGeneModule):
         Process with allosteric site detection.
         """
         # Base stem cell processing
-        stem_output = super().forward(x, edge_index, batch, global_features=global_features)
+        # StemGeneModule doesn't accept global_features
+        stem_output = super().forward(x, edge_index, batch)
         metadata = {}
         
         # Detect potential allosteric sites
-        allosteric_features = self.allosteric_detector(x, edge_index)
+        allosteric_features = self.allosteric_conv1(x, edge_index)
+        allosteric_features = F.relu(allosteric_features)
+        allosteric_features = F.dropout(allosteric_features, p=0.1, training=self.training)
+        allosteric_features = self.allosteric_conv2(allosteric_features, edge_index)
+        allosteric_features = F.relu(allosteric_features)
         
         # Analyze distances from active site
         if hasattr(batch, 'active_site_mask'):

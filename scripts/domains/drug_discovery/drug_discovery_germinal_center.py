@@ -175,7 +175,10 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                 # Add binding pocket gene
                 pocket_gene = BindingPocketGene(
                     variant_id=100 + i,
-                    position=0.15 + np.random.randn() * 0.05
+                    position=0.15 + np.random.randn() * 0.05,
+                    input_dim=cfg.feature_dim,  # Use the configured feature dimension
+                    hidden_dim=cfg.hidden_dim,
+                    output_dim=cfg.hidden_dim
                 )
                 pocket_gene = pocket_gene.to(self.device)
                 cell.genes.append(pocket_gene)
@@ -185,7 +188,8 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                 # Add pharmacophore gene
                 pharma_gene = PharmacophoreGene(
                     variant_id=200 + i,
-                    position=0.45 + np.random.randn() * 0.05
+                    position=0.45 + np.random.randn() * 0.05,
+                    input_dim=cfg.feature_dim  # Use the configured feature dimension
                 )
                 pharma_gene = pharma_gene.to(self.device)
                 cell.genes.append(pharma_gene)
@@ -195,7 +199,8 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                 # Add allosteric gene
                 allo_gene = AllostericGene(
                     variant_id=300 + i,
-                    position=0.5 + np.random.randn() * 0.05
+                    position=0.5 + np.random.randn() * 0.05,
+                    input_dim=cfg.feature_dim  # Use the configured feature dimension
                 )
                 allo_gene = allo_gene.to(self.device)
                 cell.genes.append(allo_gene)

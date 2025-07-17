@@ -159,14 +159,18 @@ class BiologicalAntigen:
         all_features = []
         
         for i, epitope in enumerate(self.epitopes):
-            # Add epitope coordinates
-            all_coords.append(epitope.structure_coords)
-            
             # Create feature vectors for each residue
             conf = self.conformational_states[self.current_conformation]
             exposure = conf['epitope_exposure'][i]
             
             for j, aa in enumerate(epitope.sequence):
+                # Add coordinate for this specific residue
+                if j < len(epitope.structure_coords):
+                    all_coords.append(epitope.structure_coords[j])
+                else:
+                    # If we run out of coords, use the last one
+                    all_coords.append(epitope.structure_coords[-1])
+                
                 features = [
                     epitope.hydrophobicity,
                     epitope.charge,
@@ -179,7 +183,7 @@ class BiologicalAntigen:
                 all_features.append(features)
         
         # Combine all coordinates
-        coords = np.vstack(all_coords)
+        coords = np.array(all_coords)
         features = np.array(all_features)
         
         # Build graph based on spatial proximity
@@ -207,11 +211,12 @@ class BiologicalAntigen:
         # Calculate realistic binding affinity
         affinity = self._calculate_binding_affinity()
         
+        # Ensure num_nodes matches the actual number of feature vectors
         return Data(
             x=torch.tensor(features, dtype=torch.float32),
             edge_index=edge_index,
             affinity=affinity,
-            num_nodes=len(coords),
+            num_nodes=len(features),  # Use len(features) instead of len(coords)
             pos=torch.tensor(coords, dtype=torch.float32)
         )
     

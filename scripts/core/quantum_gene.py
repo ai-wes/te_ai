@@ -290,6 +290,10 @@ class QuantumGeneModule(ContinuousDepthGeneModule):
         # Output projection and pooling
         h_out = self.output_projection(h_final)
         if batch is not None:
+            # Ensure batch tensor matches the number of nodes in h_out
+            if batch.shape[0] != h_out.shape[0]:
+                # Take only the first h_out.shape[0] elements from batch
+                batch = batch[:h_out.shape[0]]
             h_out = global_mean_pool(h_out, batch)
         else:
             h_out = h_out.mean(dim=0, keepdim=True)
