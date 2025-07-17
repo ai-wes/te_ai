@@ -970,14 +970,50 @@ class ProductionGerminalCenter:
         num_from_p1 = random.randint(1, max(1, len(p1_genes) - 1))
         num_from_p2 = random.randint(1, max(1, len(p2_genes) - 1))
         
-        # Select genes
+        # Select genes and clone them efficiently
         if p1_genes:
             selected_p1 = random.sample(p1_genes, min(num_from_p1, len(p1_genes)))
-            all_genes.extend([copy.deepcopy(g) for g in selected_p1])
+            for gene in selected_p1:
+                # Create new gene instance of same type
+                gene_class = type(gene)
+                new_gene = gene_class()
+                
+                # Copy state dict (much faster than deepcopy)
+                new_gene.load_state_dict(gene.state_dict())
+                
+                # Copy non-parameter attributes
+                for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
+                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                    if hasattr(gene, attr):
+                        value = getattr(gene, attr)
+                        if isinstance(value, torch.Tensor):
+                            setattr(new_gene, attr, value.clone())
+                        else:
+                            setattr(new_gene, attr, copy.copy(value))
+                
+                all_genes.append(new_gene)
         
         if p2_genes:
             selected_p2 = random.sample(p2_genes, min(num_from_p2, len(p2_genes)))
-            all_genes.extend([copy.deepcopy(g) for g in selected_p2])
+            for gene in selected_p2:
+                # Create new gene instance of same type
+                gene_class = type(gene)
+                new_gene = gene_class()
+                
+                # Copy state dict (much faster than deepcopy)
+                new_gene.load_state_dict(gene.state_dict())
+                
+                # Copy non-parameter attributes
+                for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
+                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                    if hasattr(gene, attr):
+                        value = getattr(gene, attr)
+                        if isinstance(value, torch.Tensor):
+                            setattr(new_gene, attr, value.clone())
+                        else:
+                            setattr(new_gene, attr, copy.copy(value))
+                
+                all_genes.append(new_gene)
         
         # Create child
         child = ProductionBCell(all_genes[:cfg.max_genes_per_clone])
