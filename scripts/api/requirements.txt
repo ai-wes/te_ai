@@ -1,0 +1,30 @@
+# TE-AI Evolutionary API Requirements
+
+# Core API framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.4.0
+
+# WebSocket support
+websockets>=12.0
+
+# Async support
+asyncio>=3.4.3
+
+# Data handling
+pandas>=1.5.0
+numpy>=1.24.0
+
+# PyTorch (should already be installed)
+torch>=2.0.0
+torch-geometric>=2.3.0
+
+# Additional utilities
+python-multipart>=0.0.6  # For file uploads
+httpx>=0.25.0  # For async HTTP client
+aiofiles>=23.2.0  # For async file operations
+
+# Optional: For production deployment
+gunicorn>=21.2.0
+redis>=5.0.0  # For job queue/caching
+celery>=5.3.0  # For distributed task queue

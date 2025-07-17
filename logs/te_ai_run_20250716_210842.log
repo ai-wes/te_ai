@@ -112,3 +112,18 @@
 2025-07-16 21:11:38.465 | INFO     | info                           | ================================================================================
 2025-07-16 21:11:38.465 | INFO     | info                           | 
 📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-16 21:14:26.877 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-16 21:14:26.913 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 1.083 ± 0.000[0m, [35m🌿 Diversity: 4.528[0m, [33m🧬 Genes: 119[0m
+2025-07-16 21:14:26.913 | INFO     | info                           |    [1m🌱 Stem Genes:[0m Count: 14, Differentiations: 0, Avg Commitment: 0.000
+2025-07-16 21:14:26.913 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-16 21:14:26.913 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-16 21:14:26.913 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-16 21:14:26.913 | INFO     | info                           |    Current stress level: 1.000
+2025-07-16 21:14:26.913 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-16 21:14:26.915 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-16 21:14:26.915 | INFO     | info                           |    Executing stress response protocols:
+2025-07-16 21:14:26.915 | INFO     | info                           |    • Triggering transposition cascade (budgeted)

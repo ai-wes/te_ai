@@ -1,0 +1,80 @@
+2025-07-16 23:57:12.185 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:57:12.185 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_235712
+2025-07-16 23:57:12.185 | INFO     | __init__                       | Log file: logs/te_ai_run_20250716_235712.log
+2025-07-16 23:57:12.185 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 23:57:12.185 | INFO     | __init__                       | Backup files: 10
+2025-07-16 23:57:12.185 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:57:12.185 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 23:57:12.185 | INFO     | _log_system_info               |   Python version: 3.9.0 (default, Nov 15 2020, 14:28:56) 
+[GCC 7.3.0]
+2025-07-16 23:57:12.185 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 23:57:12.185 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 23:57:12.196 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 23:57:12.196 | INFO     | _log_system_info               |   CUDA memory: 25.44 GB
+2025-07-16 23:57:12.196 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 23:57:12.196 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-16 23:57:12.196 | INFO     | info                           | ============================================================
+2025-07-16 23:57:12.196 | INFO     | info                           | Loading BBBP dataset...
+2025-07-16 23:57:12.252 | INFO     | info                           | Loaded 2050 samples with 2048 features
+2025-07-16 23:57:12.750 | INFO     | info                           | 
+============================================================
+2025-07-16 23:57:12.750 | INFO     | info                           | Running benchmark: BBBP
+2025-07-16 23:57:12.750 | INFO     | info                           | ============================================================
+2025-07-16 23:57:12.757 | INFO     | info                           | Train samples: 1640, Test samples: 410
+2025-07-16 23:57:12.981 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 23:57:12.981 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 23:57:13.284 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 23:57:13.423 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:13.450 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:13.820 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.044 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.097 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.124 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.150 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.253 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:57:14.603 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 23:57:14.725 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 23:57:14.733 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-16 23:57:14.734 | INFO     | info                           | Added BindingPocketGene to cell 4a50ded9-a113-4802-a89c-69f1ed7cb0d0
+2025-07-16 23:57:14.736 | INFO     | info                           | Added PharmacophoreGene to cell 63222aae-9102-407f-930a-48995fcef9cb
+2025-07-16 23:57:14.758 | INFO     | info                           | Added AllostericGene to cell 88ae9e8b-ba81-42a6-ad20-89222d36e7ff
+2025-07-16 23:57:14.759 | INFO     | info                           | Added BindingPocketGene to cell 38ceb256-0c8c-408f-9517-a6f719f9c75c
+2025-07-16 23:57:14.761 | INFO     | info                           | Added PharmacophoreGene to cell 6e2d6b8e-7932-44e0-bed8-274c6aecd5d4
+2025-07-16 23:57:14.769 | INFO     | info                           | Added AllostericGene to cell 5cfbc805-68ef-4551-8346-09cf3ee749f7
+2025-07-16 23:57:14.770 | INFO     | info                           | Added BindingPocketGene to cell 0c678ec2-198d-46f2-b237-471b4027dd6f
+2025-07-16 23:57:14.772 | INFO     | info                           | Added PharmacophoreGene to cell fb42eb8e-141f-4dd8-9025-0eca5cc18c6a
+2025-07-16 23:57:14.776 | INFO     | info                           | Added AllostericGene to cell ea9ed832-05b8-4923-8b32-532b8f81dea3
+2025-07-16 23:57:14.777 | INFO     | info                           | Added BindingPocketGene to cell bf42a981-a0a1-4f26-b04f-52bc6ee0767e
+2025-07-16 23:57:14.779 | INFO     | info                           | Added PharmacophoreGene to cell eb13114a-c013-4910-93b9-7de0c474e612
+2025-07-16 23:57:14.782 | INFO     | info                           | Added AllostericGene to cell 4ea9703b-e743-4dd0-b0c5-99a48c2b4543
+2025-07-16 23:57:14.783 | INFO     | info                           | Added BindingPocketGene to cell d64987cf-949d-42c4-a2f8-4a01c626f7c7
+2025-07-16 23:57:14.793 | INFO     | info                           | Added PharmacophoreGene to cell fb33098e-f29d-49fb-9e39-6e925fd1f911
+2025-07-16 23:57:14.797 | INFO     | info                           | Added AllostericGene to cell be6c7de8-db5e-4e52-b3c4-705b8b65a8d4
+2025-07-16 23:57:14.798 | INFO     | info                           | Added BindingPocketGene to cell a567599d-841d-4b9f-861c-73f75655c357
+2025-07-16 23:57:14.800 | INFO     | info                           | Added PharmacophoreGene to cell ec525fb0-ca55-4208-a9c6-e29870a38399
+2025-07-16 23:57:14.803 | INFO     | info                           | Added AllostericGene to cell 8481e1bf-b4e1-4414-9ef4-91a242324fb3
+2025-07-16 23:57:14.804 | INFO     | info                           | Added BindingPocketGene to cell cf884358-67cf-4fd8-8528-5c5d851728e6
+2025-07-16 23:57:14.804 | INFO     | info                           | 
+Training Simple Neural Network...
+2025-07-16 23:57:14.813 | INFO     | info                           | Epoch 0/50, Loss: 0.6936
+2025-07-16 23:57:14.863 | INFO     | info                           | Epoch 10/50, Loss: 0.4974
+2025-07-16 23:57:14.913 | INFO     | info                           | Epoch 20/50, Loss: 0.1401
+2025-07-16 23:57:14.964 | INFO     | info                           | Epoch 30/50, Loss: 0.0109
+2025-07-16 23:57:15.014 | INFO     | info                           | Epoch 40/50, Loss: 0.0015
+2025-07-16 23:57:15.063 | INFO     | info                           | Results for Simple Neural Network:
+2025-07-16 23:57:15.063 | INFO     | info                           |   accuracy: 0.4927
+2025-07-16 23:57:15.063 | INFO     | info                           |   f1_score: 0.4976
+2025-07-16 23:57:15.063 | INFO     | info                           |   roc_auc: 0.5041
+2025-07-16 23:57:15.063 | INFO     | info                           |   Training time: 0.26s
+2025-07-16 23:57:15.063 | INFO     | info                           |   Inference time: 0.0010s
+2025-07-16 23:57:15.063 | INFO     | info                           | 
+Training Random Forest...
+2025-07-16 23:57:18.760 | INFO     | info                           | Results for Random Forest:
+2025-07-16 23:57:18.760 | INFO     | info                           |   accuracy: 0.4537
+2025-07-16 23:57:18.760 | INFO     | info                           |   f1_score: 0.4167
+2025-07-16 23:57:18.760 | INFO     | info                           |   roc_auc: 0.4573
+2025-07-16 23:57:18.760 | INFO     | info                           |   Training time: 3.69s
+2025-07-16 23:57:18.760 | INFO     | info                           |   Inference time: 0.0068s
+2025-07-16 23:57:18.760 | INFO     | info                           | 
+Training TE-AI...

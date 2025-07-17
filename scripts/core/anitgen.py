@@ -84,6 +84,20 @@ class BiologicalAntigen:
                 epitope = AntigenEpitope(seq, coords, hydro, charge)
                 epitopes.append(epitope)
         
+        elif self.antigen_type == "synthetic":
+            # For synthetic antigens, return empty list - will be set externally
+            return []
+        
+        else:
+            # Default fallback
+            default_seq = "ACDEFGHIKLMNPQRSTVWY"
+            coords = self._generate_structure_coords(len(default_seq), region=0)
+            hydro = np.random.uniform(-2, 2)
+            charge = np.random.uniform(-5, 5)
+            
+            epitope = AntigenEpitope(default_seq, coords, hydro, charge)
+            epitopes.append(epitope)
+        
         return epitopes
     
     
@@ -158,29 +172,35 @@ class BiologicalAntigen:
         all_coords = []
         all_features = []
         
-        for i, epitope in enumerate(self.epitopes):
-            # Create feature vectors for each residue
-            conf = self.conformational_states[self.current_conformation]
-            exposure = conf['epitope_exposure'][i]
-            
-            for j, aa in enumerate(epitope.sequence):
-                # Add coordinate for this specific residue
-                if j < len(epitope.structure_coords):
-                    all_coords.append(epitope.structure_coords[j])
-                else:
-                    # If we run out of coords, use the last one
-                    all_coords.append(epitope.structure_coords[-1])
+        if not self.epitopes:
+            # Handle case with no epitopes (synthetic antigens)
+            # Create a minimal graph with one node
+            all_coords = [[0.0, 0.0, 0.0]]
+            all_features = [[0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0]]  # Default features
+        else:
+            for i, epitope in enumerate(self.epitopes):
+                # Create feature vectors for each residue
+                conf = self.conformational_states[self.current_conformation]
+                exposure = conf['epitope_exposure'][i] if i < len(conf['epitope_exposure']) else 0.5
                 
-                features = [
-                    epitope.hydrophobicity,
-                    epitope.charge,
-                    exposure,
-                    float(aa in 'KR'),  # Positive charge
-                    float(aa in 'DE'),  # Negative charge
-                    float(aa in 'AILMFWYV'),  # Hydrophobic
-                    float((i, j) in self.glycosylation_sites)  # Glycosylated
-                ]
-                all_features.append(features)
+                for j, aa in enumerate(epitope.sequence):
+                    # Add coordinate for this specific residue
+                    if j < len(epitope.structure_coords):
+                        all_coords.append(epitope.structure_coords[j])
+                    else:
+                        # If we run out of coords, use the last one
+                        all_coords.append(epitope.structure_coords[-1])
+                    
+                    features = [
+                        epitope.hydrophobicity,
+                        epitope.charge,
+                        exposure,
+                        float(aa in 'KR'),  # Positive charge
+                        float(aa in 'DE'),  # Negative charge
+                        float(aa in 'AILMFWYV'),  # Hydrophobic
+                        float((i, j) in self.glycosylation_sites)  # Glycosylated
+                    ]
+                    all_features.append(features)
         
         # Combine all coordinates
         coords = np.array(all_coords)

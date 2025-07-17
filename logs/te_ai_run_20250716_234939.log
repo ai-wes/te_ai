@@ -1,0 +1,23 @@
+2025-07-16 23:49:39.149 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:49:39.149 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_234939
+2025-07-16 23:49:39.149 | INFO     | __init__                       | Log file: logs/te_ai_run_20250716_234939.log
+2025-07-16 23:49:39.149 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 23:49:39.149 | INFO     | __init__                       | Backup files: 10
+2025-07-16 23:49:39.149 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:49:39.149 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 23:49:39.149 | INFO     | _log_system_info               |   Python version: 3.9.0 (default, Nov 15 2020, 14:28:56) 
+[GCC 7.3.0]
+2025-07-16 23:49:39.149 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 23:49:39.149 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 23:49:39.160 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 23:49:39.160 | INFO     | _log_system_info               |   CUDA memory: 25.44 GB
+2025-07-16 23:49:39.160 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 23:49:39.160 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-16 23:49:39.160 | INFO     | info                           | ============================================================
+2025-07-16 23:49:39.160 | INFO     | info                           | Loading BBBP dataset...
+2025-07-16 23:49:39.209 | INFO     | info                           | Loaded 2050 samples with 2048 features
+2025-07-16 23:49:39.703 | INFO     | info                           | 
+============================================================
+2025-07-16 23:49:39.703 | INFO     | info                           | Running benchmark: BBBP
+2025-07-16 23:49:39.703 | INFO     | info                           | ============================================================
+2025-07-16 23:49:39.709 | INFO     | info                           | Train samples: 1640, Test samples: 410

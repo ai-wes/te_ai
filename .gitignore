@@ -2,4 +2,5 @@ scripts/production_results
 scripts/production_results/*
 scripts/production_results/
 scripts/production_results/
-venv
+venv/
+maia_tcga_pancan/

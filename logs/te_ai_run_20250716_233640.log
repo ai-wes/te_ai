@@ -1,0 +1,88 @@
+2025-07-16 23:36:40.162 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:36:40.162 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_233640
+2025-07-16 23:36:40.162 | INFO     | __init__                       | Log file: logs/te_ai_run_20250716_233640.log
+2025-07-16 23:36:40.162 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 23:36:40.162 | INFO     | __init__                       | Backup files: 10
+2025-07-16 23:36:40.162 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:36:40.162 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 23:36:40.162 | INFO     | _log_system_info               |   Python version: 3.9.0 (default, Nov 15 2020, 14:28:56) 
+[GCC 7.3.0]
+2025-07-16 23:36:40.162 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 23:36:40.162 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 23:36:40.172 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 23:36:40.172 | INFO     | _log_system_info               |   CUDA memory: 25.44 GB
+2025-07-16 23:36:40.172 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 23:36:40.737 | INFO     | info                           | Loading TCGA samples from /home/weslinux/te_ai/maia_tcga_pancan
+2025-07-16 23:36:40.741 | INFO     | info                           | Loading sample 1/500
+2025-07-16 23:36:40.834 | INFO     | info                           | Loading sample 101/500
+2025-07-16 23:36:40.919 | INFO     | info                           | Loading sample 201/500
+2025-07-16 23:36:41.002 | INFO     | info                           | Loading sample 301/500
+2025-07-16 23:36:41.085 | INFO     | info                           | Loading sample 401/500
+2025-07-16 23:36:41.187 | INFO     | info                           | Loaded 500 samples
+2025-07-16 23:36:41.187 | INFO     | info                           | Identifying drug targets from TCGA data
+2025-07-16 23:36:41.300 | INFO     | info                           | Found 30 cancer types: ['THYM', 'LUSC', 'BRCA', 'LGG', 'UCS', 'SARC', 'COAD', 'BLCA', 'ESCA', 'THCA', 'TGCT', 'LUAD', 'MESO', 'KIRC', 'PRAD', 'KIRP', 'STAD', 'PCPG', 'HNSC', 'LIHC', 'UCEC', 'SKCM', 'READ', 'CHOL', 'KICH', 'PAAD', 'ACC', 'UVM', 'CESC', 'DLBC']
+2025-07-16 23:36:41.301 | INFO     | info                           | Identified 20 drug targets
+2025-07-16 23:36:41.301 | INFO     | info                           | Top 10 targets: ['GENE_0', 'GENE_5', 'GENE_7', 'GENE_8', 'GENE_9', 'GENE_10', 'GENE_13', 'GENE_14', 'GENE_15', 'GENE_16']
+2025-07-16 23:36:41.301 | INFO     | info                           | Converting 20 targets to antigens
+2025-07-16 23:36:41.304 | WARNING  | warning                        | Failed to create antigen for GENE_0: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.306 | WARNING  | warning                        | Failed to create antigen for GENE_5: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.309 | WARNING  | warning                        | Failed to create antigen for GENE_7: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.311 | WARNING  | warning                        | Failed to create antigen for GENE_8: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.313 | WARNING  | warning                        | Failed to create antigen for GENE_9: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.316 | WARNING  | warning                        | Failed to create antigen for GENE_10: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.318 | WARNING  | warning                        | Failed to create antigen for GENE_13: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.320 | WARNING  | warning                        | Failed to create antigen for GENE_14: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.325 | WARNING  | warning                        | Failed to create antigen for GENE_15: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.331 | WARNING  | warning                        | Failed to create antigen for GENE_16: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.333 | WARNING  | warning                        | Failed to create antigen for GENE_17: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.336 | WARNING  | warning                        | Failed to create antigen for GENE_18: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.339 | WARNING  | warning                        | Failed to create antigen for GENE_21: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.342 | WARNING  | warning                        | Failed to create antigen for GENE_23: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.344 | WARNING  | warning                        | Failed to create antigen for GENE_24: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.347 | WARNING  | warning                        | Failed to create antigen for GENE_25: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.350 | WARNING  | warning                        | Failed to create antigen for GENE_26: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.353 | WARNING  | warning                        | Failed to create antigen for GENE_30: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.355 | WARNING  | warning                        | Failed to create antigen for GENE_31: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.358 | WARNING  | warning                        | Failed to create antigen for GENE_36: __init__() got an unexpected keyword argument 'epitope_id'
+2025-07-16 23:36:41.358 | INFO     | info                           | Successfully created 0 antigens
+2025-07-16 23:36:41.414 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 23:36:41.414 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 23:36:41.780 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 23:36:41.856 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:41.884 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.255 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.480 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.532 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.560 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.586 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:42.689 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:36:43.115 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 23:36:43.166 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 23:36:43.173 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-16 23:36:43.174 | INFO     | info                           | Added BindingPocketGene to cell 8b1da4cf-3401-4075-b443-89b8e2d92b42
+2025-07-16 23:36:43.176 | INFO     | info                           | Added PharmacophoreGene to cell 5d2bb38b-9e22-4c27-92e6-792d8e906c5d
+2025-07-16 23:36:43.199 | INFO     | info                           | Added AllostericGene to cell 58a11252-4585-46ce-b36c-ac87a093075a
+2025-07-16 23:36:43.200 | INFO     | info                           | Added BindingPocketGene to cell 73ca90b8-eee1-442b-abf0-d272ef6248ae
+2025-07-16 23:36:43.202 | INFO     | info                           | Added PharmacophoreGene to cell 9bf3eca5-86ea-4ae5-ad3c-b199fba0081e
+2025-07-16 23:36:43.207 | INFO     | info                           | Added AllostericGene to cell 48b586c5-a046-4eb9-b0f1-73280b7fdb32
+2025-07-16 23:36:43.212 | INFO     | info                           | Added BindingPocketGene to cell a4b23c4c-8667-4085-a136-9ffbe25fc50a
+2025-07-16 23:36:43.214 | INFO     | info                           | Added PharmacophoreGene to cell 5d18177d-c253-4791-9a9b-98b0fe7639fd
+2025-07-16 23:36:43.218 | INFO     | info                           | Added AllostericGene to cell a95cdca1-c74e-4ed8-9cbb-dbc5288a1501
+2025-07-16 23:36:43.219 | INFO     | info                           | Added BindingPocketGene to cell fdf8f0b4-039f-44de-bbf5-8cb19b444a99
+2025-07-16 23:36:43.222 | INFO     | info                           | Added PharmacophoreGene to cell 2fef38fa-d9c2-4998-b6f3-4b4b12120a0e
+2025-07-16 23:36:43.228 | INFO     | info                           | Added AllostericGene to cell 461da394-dec8-4e5f-92e4-d12a99439839
+2025-07-16 23:36:43.229 | INFO     | info                           | Added BindingPocketGene to cell 27e16e61-7f5a-48f1-a2d6-c8be7562e28b
+2025-07-16 23:36:43.231 | INFO     | info                           | Added PharmacophoreGene to cell f140b4cd-6ce6-4306-bb6d-ef85745b5c04
+2025-07-16 23:36:43.234 | INFO     | info                           | Added AllostericGene to cell 7d87ac17-5af3-4857-b6d4-2a5796c1fbef
+2025-07-16 23:36:43.235 | INFO     | info                           | Added BindingPocketGene to cell 88593448-df62-4b6f-9214-2aee597208ca
+2025-07-16 23:36:43.237 | INFO     | info                           | Added PharmacophoreGene to cell 4b5e83d0-1c7f-4c64-a0f1-89f9664f3604
+2025-07-16 23:36:43.245 | INFO     | info                           | Added AllostericGene to cell 36705c74-40f5-4794-9a2b-722451c4dca7
+2025-07-16 23:36:43.246 | INFO     | info                           | Added BindingPocketGene to cell e32b9dfb-2e56-4832-963a-f0a8a81c189e
+2025-07-16 23:36:43.346 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 23:36:43.346 | INFO     | info                           | 
+================================================================================
+2025-07-16 23:36:43.346 | INFO     | info                           | GENERATION 1
+2025-07-16 23:36:43.346 | INFO     | info                           | ================================================================================
+2025-07-16 23:36:43.346 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
