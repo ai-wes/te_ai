@@ -12,6 +12,7 @@ import deepchem.models
 import torch
 from typing import Dict, Any, Optional
 from scripts.core.utils.detailed_logger import get_logger
+from scripts.core.utils.robust_multitask import RobustMultitaskClassifier
 
 logger = get_logger()
 
@@ -143,7 +144,7 @@ class RobustMultitaskClassifierWrapper(DeepChemModelWrapper):
     
     def __init__(self):
         super().__init__(
-            dc.models.RobustMultitaskClassifier,
+            RobustMultitaskClassifier,
             {
                 'layer_sizes': [1000, 500],
                 'bypass_layer_sizes': [100],

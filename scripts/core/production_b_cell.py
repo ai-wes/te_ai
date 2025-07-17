@@ -368,7 +368,31 @@ class ProductionBCell(nn.Module):
         plasmid_genes = []
         for gene in selected_genes:
             gene_class = type(gene)
-            new_gene = gene_class()
+            
+            # Handle different gene types with their specific constructor requirements
+            if gene_class == ContinuousDepthGeneModule:
+                new_gene = gene_class(gene.gene_type, gene.variant_id)
+            elif gene_class == QuantumGeneModule:
+                new_gene = gene_class(gene.gene_type, gene.variant_id)
+            elif gene_class == StemGeneModule:
+                # StemGeneModule can take optional gene_types parameter
+                new_gene = gene_class(getattr(gene, 'gene_types', None))
+            else:
+                # For any other gene types, try to get constructor args from the gene
+                try:
+                    # Try to extract constructor arguments from the gene's attributes
+                    if hasattr(gene, 'gene_type') and hasattr(gene, 'variant_id'):
+                        new_gene = gene_class(gene.gene_type, gene.variant_id)
+                    elif hasattr(gene, 'gene_types'):
+                        new_gene = gene_class(gene.gene_types)
+                    else:
+                        # Fallback: try calling with no arguments
+                        new_gene = gene_class()
+                except Exception as e:
+                    logger.warning(f"Could not clone gene of type {gene_class.__name__}: {e}")
+                    continue
+            
+            # Copy state dict
             new_gene.load_state_dict(gene.state_dict())
             
             # Copy non-parameter attributes
