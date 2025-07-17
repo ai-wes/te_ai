@@ -116,7 +116,7 @@ class CFG:
     # 11. Training Parameters
     epochs: int = 500
     batch_size: int = 64
-    gpu_batch_size: int = 32  # For GPU parallel processing
+    gpu_batch_size: int = 128  # Increased from 32 for better GPU utilization
     learning_rate: float = 0.001
     weight_decay: float = 1e-5
 

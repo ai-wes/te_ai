@@ -71,6 +71,8 @@ class ProductionGerminalCenter:
         # Performance optimization
         self.gpu_cache = {}
         self.parallel_executor = ThreadPoolExecutor(max_workers=cfg.num_workers)
+        self.diversity_cache = None
+        self.diversity_cache_generation = -1
 
 
         self.mutation_log = deque(maxlen=500)
@@ -259,10 +261,10 @@ class ProductionGerminalCenter:
         logger.info(f"GENERATION {self.generation}")
         logger.info(f"{'='*80}")
         
-        # --- Store input history for replay/HGT ---
+        # Store input history for replay/HGT
         self.input_batch_history.append([a.to('cpu') for a in antigens])
         
-        logger.info("\n📊 Phase 1: Fitness Evaluation")
+        # Phase 1: Fitness evaluation (optimized)
         fitness_scores = self._evaluate_population_parallel(antigens)
         
         # Phase 2: Compute metrics and detect stress
@@ -292,9 +294,9 @@ class ProductionGerminalCenter:
         # # The code seems to be a comment in a Python script, indicating that it is part of Phase 5
         # which involves selection and reproduction. It is likely describing a specific phase or
         # step in a larger program or project.
-        #Phase 5: Selection and reproduction
-        logger.info("\n🧬🧬 Phase 5: Selection and Reproduction 🧬🧬")
-        self._selection_and_reproduction(fitness_scores)
+        # Phase 5: Selection and reproduction (optimized)
+        logger.info("\n🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬")
+        self._selection_and_reproduction_fast(fitness_scores)
     
         if self.generation % 10 == 0: # Every 15 generations, try to entangle
             logger.info("\n🌀🌀 Entanglement Phase  🌀🌀")
@@ -319,8 +321,8 @@ class ProductionGerminalCenter:
         # Optional: Explicitly clear large variables from this generation's scope
         del fitness_scores, metrics, population_state
         
-        # Run cleanup every few generations to balance performance and memory
-        if self.generation % 2 == 0: 
+        # Run cleanup every generation for better memory management
+        if self.generation % 1 == 0:
             import gc
             
             # Suggest to Python's garbage collector to run
@@ -345,59 +347,14 @@ class ProductionGerminalCenter:
     
     def _evaluate_population_parallel(self, antigens: List[Data]) -> Dict[str, float]:
         """
-        True parallel GPU evaluation of the population.
-        MODIFIED: Processes the population in batches to manage memory, but evaluates
-                  each cell independently within the batch to prevent cross-talk and
-                  ensure accurate, distinct fitness scores.
+        Optimized parallel GPU evaluation using batch evaluator.
         """
-        antigen_batch = Batch.from_data_list([a.to(cfg.device) for a in antigens])
-        fitness_scores = {}
+        logger.info("📊 Phase 1: Fitness Evaluation (Optimized)")
         
-        cell_ids = list(self.population.keys())
-        num_batches = (len(cell_ids) + cfg.gpu_batch_size - 1) // cfg.gpu_batch_size
+        # Use the optimized batch evaluator for true parallel processing
+        fitness_scores = self.batch_evaluator.evaluate_population_batch(self.population, antigens)
         
-        with torch.no_grad(): # No gradients needed for fitness evaluation
-            with torch.cuda.amp.autocast(enabled=cfg.use_amp):
-                
-                for batch_idx in range(num_batches):
-                    start_idx = batch_idx * cfg.gpu_batch_size
-                    end_idx = min((batch_idx + 1) * cfg.gpu_batch_size, len(cell_ids))
-                    batch_cell_ids = cell_ids[start_idx:end_idx]
-
-                    for cell_id in batch_cell_ids:
-                        cell = self.population[cell_id]
-                        
-                        # Each cell processes the entire batch of antigens independently.
-                        # This is parallel at the antigen level, which is highly efficient on GPU.
-                        affinity, cell_representation, _ = cell(antigen_batch)
-                        
-                        # Average affinity across the antigen batch
-                        mean_affinity = affinity.mean().item()
-                        
-                        # Compute fitness with complexity penalty
-                        active_genes = len([g for g in cell.genes if g.is_active])
-                        complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
-                        
-                        # Diversity bonus - pass the entire population, not just one cell
-                        diversity_metrics = self.vectorized_ops.compute_population_diversity_vectorized(self.population)
-                        diversity_bonus = diversity_metrics['shannon_index'] * cfg.diversity_weight
-                        
-                        fitness = mean_affinity - complexity_penalty + diversity_bonus
-                        fitness_scores[cell_id] = fitness
-                        
-                        # Update cell records
-                        cell.fitness_history.append(fitness)
-                        for gene in cell.genes:
-                            if gene.is_active:
-                                gene.fitness_contribution = fitness
-                        
-                        # Store successful responses
-                        if fitness > 0.8:
-                            # Move the representation to CPU before storing to prevent leaks
-                            representation_cpu = cell_representation.mean(dim=0).detach().cpu()
-                            cell.store_memory(representation_cpu, fitness)
-
-        logger.info(f"   Evaluated {len(fitness_scores)} cells in {num_batches} batches.")
+        logger.info(f"   Evaluated {len(fitness_scores)} cells (drug discovery fitness).")
         return fitness_scores
     
     
@@ -417,8 +374,8 @@ class ProductionGerminalCenter:
             'fitness_kurtosis': stats.kurtosis(fitness_values)
         }
 
-        # Diversity metrics
-        diversity = self._compute_population_diversity()
+        # Diversity metrics (cached for performance)
+        diversity = self._get_cached_diversity()
         metrics.update(diversity)
         
         # Gene statistics
@@ -1183,8 +1140,8 @@ class ProductionGerminalCenter:
         # Execute scheduled tasks
         self._execute_scheduled_tasks()
         
-        # Memory cleanup
-        if self.generation % 2 == 0:
+        # Memory cleanup every generation
+        if self.generation % 1 == 0:
             self._cleanup_memory()
         
         gen_time = time.time() - generation_start
@@ -1238,9 +1195,11 @@ class ProductionGerminalCenter:
         
         logger.info(f"   New population size: {len(self.population)}")
         
-        # Clear cache
+        # Clear caches
         self._parallel_batch_cache = None
         self._cached_cell_ids_hash = None
+        self.diversity_cache = None
+        self.diversity_cache_generation = -1
         logger.info("   - Parallel batch cache cleared.")
     
     
@@ -1265,6 +1224,14 @@ class ProductionGerminalCenter:
 
 
 
+    
+    def _get_cached_diversity(self) -> Dict[str, float]:
+        """Get cached diversity metrics or compute if cache is invalid"""
+        if (self.diversity_cache is None or 
+            self.diversity_cache_generation != self.generation):
+            self.diversity_cache = self.vectorized_ops.compute_population_diversity_vectorized(self.population)
+            self.diversity_cache_generation = self.generation
+        return self.diversity_cache
     
     def _create_random_cell_with_quantum(self) -> ProductionBCell:
         """Create cell with random gene configuration, including quantum genes"""
