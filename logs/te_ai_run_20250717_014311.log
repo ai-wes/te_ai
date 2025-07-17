@@ -1,0 +1,17 @@
+2025-07-17 01:43:11.613 | INFO     | __init__                       | ================================================================================
+2025-07-17 01:43:11.613 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250717_014311
+2025-07-17 01:43:11.613 | INFO     | __init__                       | Log file: logs\te_ai_run_20250717_014311.log
+2025-07-17 01:43:11.613 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-17 01:43:11.613 | INFO     | __init__                       | Backup files: 10
+2025-07-17 01:43:11.613 | INFO     | __init__                       | ================================================================================
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               |   Python version: 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-17 01:43:11.617 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-17 01:43:11.617 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-17 01:43:11.617 | INFO     | info                           | ============================================================
+2025-07-17 01:43:11.617 | INFO     | info                           | Loading BBBP dataset from DeepChem...
+2025-07-17 01:43:14.725 | ERROR    | error                          | Failed to load BBBP: Cannot find DGL C++ graphbolt library at C:\Users\wes\Desktop\te_ai\venv\lib\site-packages\dgl\graphbolt\graphbolt_pytorch_2.5.1.dll

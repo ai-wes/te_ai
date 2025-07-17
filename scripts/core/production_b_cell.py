@@ -246,9 +246,36 @@ class ProductionBCell(nn.Module):
         memory_tensors = torch.stack([m['representation'] for m in 
                                      list(self.immunological_memory)[-50:]])
         
-        # Compute similarity
-        similarities = F.cosine_similarity(representation.unsqueeze(0), 
-                                         memory_tensors, dim=1)
+        # Ensure tensor dimensions match
+        if representation.dim() == 1:
+            representation = representation.unsqueeze(0)
+        if memory_tensors.dim() == 1:
+            memory_tensors = memory_tensors.unsqueeze(0)
+            
+        # Handle dimension mismatch
+        if representation.size(-1) != memory_tensors.size(-1):
+            # Project both to common dimension using adaptive pooling
+            common_dim = min(representation.size(-1), memory_tensors.size(-1))
+            if representation.size(-1) != common_dim:
+                # Use adaptive pooling to resize
+                representation = F.adaptive_avg_pool1d(
+                    representation.unsqueeze(1), common_dim
+                ).squeeze(1)
+            if memory_tensors.size(-1) != common_dim:
+                memory_tensors = F.adaptive_avg_pool1d(
+                    memory_tensors.transpose(0, 1).unsqueeze(0), common_dim
+                ).squeeze(0).transpose(0, 1)
+        
+        # Compute similarity - ensure proper broadcasting
+        if representation.size(0) == 1 and memory_tensors.size(0) > 1:
+            # representation: [1, D], memory_tensors: [N, D]
+            similarities = F.cosine_similarity(
+                representation.expand(memory_tensors.size(0), -1),
+                memory_tensors, 
+                dim=1
+            )
+        else:
+            similarities = F.cosine_similarity(representation, memory_tensors, dim=1)
         
         # If high similarity found, return memory response
         max_similarity, max_idx = similarities.max(dim=0)
@@ -322,8 +349,9 @@ class ProductionBCell(nn.Module):
     
     def extract_plasmid(self) -> Optional[Dict]:
         """Extract plasmid with high-fitness genes.
-        MODIFIED: Ensures the extracted plasmid's genes are on the CPU.
+        OPTIMIZED: Uses state_dict copying, stays on GPU.
         """
+        device = next(self.parameters()).device
         high_fitness_genes = [
             g for g in self.genes 
             if g.is_active and g.fitness_contribution > 0.7
@@ -332,29 +360,38 @@ class ProductionBCell(nn.Module):
         if not high_fitness_genes:
             return None
         
-        # --- FIX APPLIED HERE ---
-        # Temporarily move the cell to CPU to ensure deepcopy is safe and clean.
-        original_device = next(self.parameters()).device
-        self.to('cpu')
-        
         # Select genes for plasmid
         plasmid_size = min(3, len(high_fitness_genes))
-        # The genes are now on the CPU, so deepcopy is safe.
-        plasmid_genes = [copy.deepcopy(g) for g in random.sample(high_fitness_genes, plasmid_size)]
+        selected_genes = random.sample(high_fitness_genes, plasmid_size)
         
-        # The conjugation signal is a new tensor, so it's fine to create on the original device.
+        # Clone genes efficiently using state_dict
+        plasmid_genes = []
+        for gene in selected_genes:
+            gene_class = type(gene)
+            new_gene = gene_class()
+            new_gene.load_state_dict(gene.state_dict())
+            
+            # Copy non-parameter attributes
+            for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
+                        'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                if hasattr(gene, attr):
+                    value = getattr(gene, attr)
+                    if isinstance(value, torch.Tensor):
+                        setattr(new_gene, attr, value.clone())
+                    else:
+                        setattr(new_gene, attr, copy.copy(value))
+            
+            plasmid_genes.append(new_gene)
+        
+        # Generate conjugation signal on correct device
         conjugation_signal = self.conjugation_pilus(
-            torch.randn(cfg.hidden_dim)
+            torch.randn(cfg.hidden_dim, device=device)
         ).detach()
-
-        # Move the parent cell back to its original device
-        self.to(original_device)
-        # --- END FIX ---
 
         plasmid = {
             'id': str(uuid.uuid4()),
             'donor_cell': self.cell_id,
-            'genes': plasmid_genes, # These are now CPU-based gene modules
+            'genes': plasmid_genes,
             'fitness': sum(g.fitness_contribution for g in plasmid_genes) / len(plasmid_genes),
             'timestamp': datetime.now(),
             'conjugation_signal': conjugation_signal
@@ -373,15 +410,9 @@ class ProductionBCell(nn.Module):
             return self._signature_cache
         
         with torch.no_grad():
-            # Ensure the cell is on the correct device for the forward pass
-            original_device = next(self.parameters()).device
-            self.to(cfg.device)
-            
+            # No device transfers - assume everything is on the correct device
             _, cell_representation, _ = self.forward(calibration_batch)
-            self._signature_cache = cell_representation.mean(dim=0).detach().cpu()
-            
-            # Move back to original device if it was different
-            self.to(original_device)
+            self._signature_cache = cell_representation.mean(dim=0).detach()
             
         return self._signature_cache
 
@@ -464,84 +495,62 @@ class ProductionBCell(nn.Module):
     
     def clone(self) -> 'ProductionBCell':
         """Create offspring with mutations and epigenetic inheritance.
-        MODIFIED: Uses a 'CPU-First' strategy to prevent memory leaks from deepcopy on GPU.
+        OPTIMIZED: Uses state_dict copying instead of deepcopy, stays on GPU.
         """
-       # print(f"[DEBUG] clone: Starting clone for cell {self.cell_id[:8]}")
-       # print(f"[DEBUG] clone: Current device: {next(self.parameters()).device}")
-      #  print(f"[DEBUG] clone: Number of genes: {len(self.genes)}")
+        device = next(self.parameters()).device
         
-        # --- FIX APPLIED HERE: Move parent to CPU before copying ---
-    #    print(f"[DEBUG] clone: Moving parent to CPU...")
-        self.to('cpu')
-     #   print(f"[DEBUG] clone: Parent moved to CPU, new device: {next(self.parameters()).device}")
-
+        # Clone genes efficiently without deepcopy
         child_genes = []
-        active_gene_count = 0
         
-        for i, gene in enumerate(self.genes):
+        for gene in self.genes:
             if gene.is_active:
-                active_gene_count += 1
-               # print(f"[DEBUG] clone: Processing active gene {i}/{len(self.genes)} (type: {gene.gene_type})")
+                # Create new gene instance of same type
+                gene_class = type(gene)
+                child_gene = gene_class()
                 
-                # Now, deepcopy happens on CPU objects, which is much safer.
-              #  print(f"[DEBUG] clone: Deep copying gene {i}...")
-                child_gene = copy.deepcopy(gene)
-              #  print(f"[DEBUG] clone: Deep copy completed for gene {i}")
+                # Copy state dict (much faster than deepcopy)
+                child_gene.load_state_dict(gene.state_dict())
                 
-                # Epigenetic inheritance (all on CPU)
-             #   print(f"[DEBUG] clone: Applying epigenetic inheritance to gene {i}...")
-                child_gene.methylation_state.data *= cfg.methylation_inheritance
-                child_gene.histone_modifications.data *= cfg.methylation_inheritance
-             #   print(f"[DEBUG] clone: Epigenetic inheritance applied to gene {i}")
+                # Copy non-parameter attributes
+                for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
+                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                    if hasattr(gene, attr):
+                        value = getattr(gene, attr)
+                        if isinstance(value, torch.Tensor):
+                            setattr(child_gene, attr, value.clone())
+                        else:
+                            setattr(child_gene, attr, copy.copy(value))
                 
-                # Chance of spontaneous transposition (all on CPU)
+                # Epigenetic inheritance
+                if hasattr(child_gene, 'methylation_state'):
+                    child_gene.methylation_state.data *= cfg.methylation_inheritance
+                if hasattr(child_gene, 'histone_modifications'):
+                    child_gene.histone_modifications.data *= cfg.methylation_inheritance
+                
+                # Chance of spontaneous transposition
                 if random.random() < 0.05:
-                   # print(f"[DEBUG] clone: Attempting spontaneous transposition for gene {i}...")
-                    transposed_child, transposed_action = child_gene.transpose(0.1, 0.5)
+                    transposed_child, _ = child_gene.transpose(0.1, 0.5)
                     if transposed_child:
-             #           print(f"[DEBUG] clone: Transposition successful for gene {i}, action: {transposed_action}")
                         child_genes.append(transposed_child)
-                    else:
-                        # print(f"[DEBUG] clone: Transposition failed for gene {i}")
-                        pass
+                
                 child_genes.append(child_gene)
-              #  print(f"[DEBUG] clone: Added child gene {i} to collection")
         
-     #   print(f"[DEBUG] clone: Processed {active_gene_count} active genes, created {len(child_genes)} child genes")
+        # Create the new child directly on correct device
+        child = ProductionBCell(child_genes).to(device)
         
-        # Create the new child (on CPU)
-       # print(f"[DEBUG] clone: Creating new ProductionBCell with {len(child_genes)} genes...")
-        child = ProductionBCell(child_genes)
-       # print(f"[DEBUG] clone: New child created with ID: {child.cell_id[:8]}")
-        
+        # Inherit attributes
         child.lineage = self.lineage + [self.cell_id]
-      #  print(f"[DEBUG] clone: Child lineage set, length: {len(child.lineage)}")
         
-        # Inherit regulatory matrix (all on CPU)
-     #   print(f"[DEBUG] clone: Inheriting regulatory matrix...")
+        # Inherit regulatory matrix with noise
         with torch.no_grad():
             child.gene_regulatory_matrix.data = \
                 self.gene_regulatory_matrix.data * 0.9 + \
-                torch.randn_like(child.gene_regulatory_matrix) * 0.1
-      #  print(f"[DEBUG] clone: Regulatory matrix inherited")
+                torch.randn_like(child.gene_regulatory_matrix, device=device) * 0.1
         
-        # Apply mutations (on CPU)
-      #  print(f"[DEBUG] clone: Applying mutations to child...")
+        # Apply mutations
         child._mutate()
-      #  print(f"[DEBUG] clone: Mutations applied")
         
-        # --- CRITICAL: Move the parent back to the GPU ---
-     #   print(f"[DEBUG] clone: Moving parent back to GPU ({cfg.device})...")
-        self.to(cfg.device)
-      #  print(f"[DEBUG] clone: Parent moved back to device: {next(self.parameters()).device}")
-        
-        # Return the new child, moved to the GPU in a single, clean operation.
-      #  print(f"[DEBUG] clone: Moving child to GPU ({cfg.device})...")
-        result = child.to(cfg.device)
-      #  print(f"[DEBUG] clone: Child moved to device: {next(result.parameters()).device}")
-        print(f"[DEBUG] clone: Clone operation completed successfully")
-        
-        return result
+        return child
 
     
     
@@ -549,22 +558,41 @@ class ProductionBCell(nn.Module):
         logger.debug("Entering ProductionBCell.recycle_as_child")
         """
         Overwrites this cell's state with a mutated copy of the parent's state.
-        This is an in-place, memory-efficient alternative to deepcopy-based cloning.
+        OPTIMIZED: In-place operation without CPU transfers.
         """
-        # Ensure both are on the CPU for the operation
-        parent.to('cpu')
-        self.to('cpu')
-
+        device = next(self.parameters()).device
+        
         # Clear existing genes
-        # --- FIX APPLIED HERE ---
-        # Re-initialize self.genes to clear it, instead of using .clear()
-        self.genes = nn.ModuleList()        
-        # Create new genes by copying the parent's (still using deepcopy here, but on CPU)
+        self.genes = nn.ModuleList()
+        
+        # Create new genes using state_dict copying
         child_genes = []
         for gene in parent.genes:
             if gene.is_active:
-                child_gene = copy.deepcopy(gene)
-                # ... (epigenetic inheritance and spontaneous transposition logic) ...
+                # Create new gene instance
+                gene_class = type(gene)
+                child_gene = gene_class()
+                
+                # Copy state efficiently
+                child_gene.load_state_dict(gene.state_dict())
+                
+                # Copy non-parameter attributes
+                for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
+                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                    if hasattr(gene, attr):
+                        value = getattr(gene, attr)
+                        if isinstance(value, torch.Tensor):
+                            setattr(child_gene, attr, value.clone())
+                        else:
+                            setattr(child_gene, attr, copy.copy(value))
+                
+                # Epigenetic inheritance
+                if hasattr(child_gene, 'methylation_state'):
+                    child_gene.methylation_state.data *= cfg.methylation_inheritance
+                if hasattr(child_gene, 'histone_modifications'):
+                    child_gene.histone_modifications.data *= cfg.methylation_inheritance
+                
+                # Spontaneous transposition
                 if random.random() < 0.05:
                     transposed_child, _ = child_gene.transpose(0.1, 0.5)
                     if transposed_child:
@@ -573,26 +601,20 @@ class ProductionBCell(nn.Module):
         
         # Assign the new list of gene modules
         for i, gene in enumerate(child_genes):
-            self.genes.add_module(str(i), gene)
+            self.genes.add_module(str(i), gene.to(device))
 
         # Copy parent's other attributes
         self.lineage = parent.lineage + [parent.cell_id]
         self.generation = parent.generation + 1
         
-        # Inherit regulatory matrix
+        # Inherit regulatory matrix with noise
         with torch.no_grad():
             self.gene_regulatory_matrix.data = \
                 parent.gene_regulatory_matrix.data * 0.9 + \
-                torch.randn_like(self.gene_regulatory_matrix) * 0.1
+                torch.randn_like(self.gene_regulatory_matrix, device=device) * 0.1
         
         # Apply mutations
         self._mutate()
-        
-        # Move both back to the GPU
-        parent.to(cfg.device)
-        self.to(cfg.device)
-        
-        #print(f"[DEBUG] recycle_as_child: Recycled cell {self.cell_id[:8]} from parent {parent.cell_id[:8]}")
     
     
     def _mutate(self):

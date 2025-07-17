@@ -80,75 +80,81 @@ class OptimizedBatchEvaluator:
         
         fitness_scores = {}
         
+        # Extract target scores from batch
+        true_score = None
+        if hasattr(antigen_batch, 'y') and antigen_batch.y is not None:
+            true_score = antigen_batch.y
+        elif hasattr(antigen_batch, 'druggability') and antigen_batch.druggability is not None:
+            true_score = antigen_batch.druggability
+        
+        if true_score is None:
+            true_score = torch.ones(antigen_batch.num_graphs, device=self.device) * 0.5
+        
         with torch.no_grad():
             with torch.cuda.amp.autocast(enabled=cfg.use_amp):
-                for i, (cell_id, cell) in enumerate(zip(cell_ids, cells)):
-                    # Forward pass for this cell
-                    # The cell now predicts a score.
-                    predicted_score, cell_representation, _ = cell(antigen_batch)
+                # Process cells in batches for better GPU utilization
+                batch_size = min(32, len(cells))  # Process up to 32 cells at once
+                
+                for batch_start in range(0, len(cells), batch_size):
+                    batch_end = min(batch_start + batch_size, len(cells))
+                    batch_cells = cells[batch_start:batch_end]
+                    batch_cell_ids = cell_ids[batch_start:batch_end]
                     
-                    # --- START OF FIX ---
-                    # The target value is stored in the batch. Let's assume it's 'druggability'
-                    # You need to ensure your DrugTargetAntigen.to_graph() sets this attribute.
-                    # Let's check for 'y' or 'druggability'.
-                    true_score = None
-                    if hasattr(antigen_batch, 'y') and antigen_batch.y is not None:
-                        true_score = antigen_batch.y
-                    elif hasattr(antigen_batch, 'druggability') and antigen_batch.druggability is not None:
-                        true_score = antigen_batch.druggability
+                    # Collect predictions from this batch of cells
+                    batch_predictions = []
+                    batch_representations = []
                     
-                    if true_score is None:
-                        # Fallback if no target is defined in the graph
-                        true_score = torch.ones_like(predicted_score) * 0.5 
-
-                    # Ensure shapes are compatible for loss calculation
-                    pred_squeezed = predicted_score.squeeze()
-                    true_squeezed = true_score.squeeze()
-
-                    # Handle the case where the batch size is 1, which might lead to 0-dim tensors
-                    if pred_squeezed.dim() == 0:
-                        pred_squeezed = pred_squeezed.unsqueeze(0)
-                    if true_squeezed.dim() == 0:
-                        true_squeezed = true_squeezed.unsqueeze(0)
+                    for cell in batch_cells:
+                        predicted_score, cell_representation, _ = cell(antigen_batch)
+                        batch_predictions.append(predicted_score)
+                        batch_representations.append(cell_representation)
                     
-                    # Handle shape mismatch due to batch truncation
-                    if pred_squeezed.shape[0] < true_squeezed.shape[0]:
-                        # Take only the first N true scores to match predicted
-                        true_squeezed = true_squeezed[:pred_squeezed.shape[0]]
-                    elif pred_squeezed.shape[0] > true_squeezed.shape[0]:
-                        # This shouldn't happen, but handle it anyway
-                        pred_squeezed = pred_squeezed[:true_squeezed.shape[0]]
+                    # Stack predictions for vectorized loss computation
+                    if batch_predictions:
+                        pred_stack = torch.stack([p.squeeze() for p in batch_predictions])
+                        repr_stack = torch.stack(batch_representations)
                         
-                    # Calculate a loss (e.g., Mean Squared Error)
-                    loss = F.mse_loss(pred_squeezed, true_squeezed.to(pred_squeezed.device))
-
-                    # Fitness is inversely proportional to the loss
-                    fitness = 1.0 / (1.0 + loss.item())
-                    # --- END OF FIX ---
-
-                    # Complexity penalty (this part is fine)
-                    active_genes = len([g for g in cell.genes if g.is_active])
-                    complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
-                    
-                    # Diversity bonus (this part is fine)
-                    diversity_bonus = self._compute_cell_diversity(cell) * cfg.diversity_weight
-                    
-                    # Final fitness score
-                    final_fitness = fitness - complexity_penalty + diversity_bonus
-                    fitness_scores[cell_id] = final_fitness
-                    
-                    # Update cell records
-                    cell.fitness_history.append(final_fitness)
-                    for gene in cell.genes:
-                        if gene.is_active:
-                            gene.fitness_contribution = final_fitness
-                    
-                    # Store successful responses (use final_fitness now)
-                    if final_fitness > 0.8:
-                        representation_cpu = cell_representation.mean(dim=0).detach().cpu()
-                        # The store_memory method might need to be checked if it exists
-                        if hasattr(cell, 'store_memory'):
-                           cell.store_memory(representation_cpu, final_fitness)
+                        # Ensure true_score matches prediction shape
+                        true_squeezed = true_score.squeeze()
+                        if true_squeezed.dim() == 0:
+                            true_squeezed = true_squeezed.unsqueeze(0)
+                        
+                        # Expand true_score for each cell in batch
+                        true_expanded = true_squeezed.unsqueeze(0).expand(pred_stack.shape[0], -1)
+                        
+                        # Handle shape mismatch
+                        min_size = min(pred_stack.shape[1], true_expanded.shape[1])
+                        pred_stack = pred_stack[:, :min_size]
+                        true_expanded = true_expanded[:, :min_size]
+                        
+                        # Vectorized loss computation
+                        losses = F.mse_loss(pred_stack, true_expanded, reduction='none').mean(dim=1)
+                        fitnesses = 1.0 / (1.0 + losses)
+                        
+                        # Process results for each cell
+                        for i, (cell_id, cell, fitness) in enumerate(zip(batch_cell_ids, batch_cells, fitnesses)):
+                            # Complexity penalty
+                            active_genes = len([g for g in cell.genes if g.is_active])
+                            complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
+                            
+                            # Diversity bonus
+                            diversity_bonus = self._compute_cell_diversity(cell) * cfg.diversity_weight
+                            
+                            # Final fitness score
+                            final_fitness = fitness.item() - complexity_penalty + diversity_bonus
+                            fitness_scores[cell_id] = final_fitness
+                            
+                            # Update cell records
+                            cell.fitness_history.append(final_fitness)
+                            for gene in cell.genes:
+                                if gene.is_active:
+                                    gene.fitness_contribution = final_fitness
+                            
+                            # Store successful responses
+                            if final_fitness > 0.8:
+                                representation_cpu = repr_stack[i].mean(dim=0).detach().cpu()
+                                if hasattr(cell, 'store_memory'):
+                                    cell.store_memory(representation_cpu, final_fitness)
         
         print(f"   Evaluated {len(fitness_scores)} cells (drug discovery fitness).")
         return fitness_scores

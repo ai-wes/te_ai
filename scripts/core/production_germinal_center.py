@@ -913,7 +913,7 @@ class ProductionGerminalCenter:
         current_pop_size = len(self.population)
         while current_pop_size < cfg.max_population and current_pop_size < len(fitness_scores) * 1.5:
             parent = random.choice(parents)
-            child = parent.clone() # Use the old clone method just for population growth
+            child = self.clone_pool.fast_clone(parent) # Use fast clone for all operations
             self.population[child.cell_id] = child
             current_pop_size += 1
             if current_pop_size >= cfg.max_population:

@@ -211,49 +211,25 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
     
     
     def _evaluate_population_parallel(self, antigens: List[Data]) -> Dict[str, float]:
-        # 'antigens' is a list of Data objects from DrugTargetAntigen.to_graph()
-        antigen_batch = Batch.from_data_list([a.to(cfg.device) for a in antigens])
+        """Use OptimizedBatchEvaluator for massive speedup"""
+        # Use the inherited OptimizedBatchEvaluator from ProductionGerminalCenter
+        base_fitness_scores = self.batch_evaluator.evaluate_population_batch(
+            self.population, antigens
+        )
+        
+        # Add drug-specific fitness bonuses on top of base fitness
         fitness_scores = {}
+        for cell_id, base_fitness in base_fitness_scores.items():
+            cell = self.population[cell_id]
+            
+            # Add druggability bonus for cells with specialized drug genes
+            drug_bonus = 0.0
+            for gene in cell.genes:
+                if isinstance(gene, (BindingPocketGene, PharmacophoreGene, AllostericGene)):
+                    drug_bonus += 0.1
+            
+            fitness_scores[cell_id] = base_fitness + drug_bonus
         
-        cell_ids = list(self.population.keys())
-        
-        with torch.no_grad():
-            with torch.cuda.amp.autocast(enabled=cfg.use_amp):
-                for cell_id in cell_ids:
-                    cell = self.population[cell_id]
-                    
-                    # The model now outputs a PREDICTION of a property (e.g., druggability or binding affinity)
-                    # Let's assume the 'y' in your graph is the target druggability score.
-                    predicted_score, cell_representation, _ = cell(antigen_batch)
-                    
-                    # Get the TRUE value from the data batch
-                    true_score = antigen_batch.druggability # Or antigen_batch.y, depending on what you set in to_graph()
-
-                    # Calculate a loss (e.g., Mean Squared Error)
-                    # Ensure tensors are compatible for loss calculation
-                    loss = F.mse_loss(predicted_score.squeeze(), true_score.squeeze())
-
-                    # Fitness is INVERSELY proportional to the loss. A perfect prediction (loss=0) gives fitness=1.
-                    fitness = 1.0 / (1.0 + loss.item())
-
-                    # The rest of your fitness logic (complexity penalty, etc.) can stay the same!
-                    active_genes = len([g for g in cell.genes if g.is_active])
-                    complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
-                    
-                    # Diversity bonus can also stay
-                    diversity_metrics = self.vectorized_ops.compute_population_diversity_vectorized(self.population)
-                    diversity_bonus = diversity_metrics.get('shannon_index', 0) * cfg.diversity_weight
-
-                    final_fitness = fitness - complexity_penalty + diversity_bonus
-                    fitness_scores[cell_id] = final_fitness
-                    
-                    # Update cell records
-                    cell.fitness_history.append(final_fitness)
-                    for gene in cell.genes:
-                        if gene.is_active:
-                            gene.fitness_contribution = final_fitness
-
-        logger.info(f"   Evaluated {len(fitness_scores)} cells against drug targets.")
         return fitness_scores
         
         

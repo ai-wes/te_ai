@@ -13,18 +13,28 @@ class CFG:
     # 1. Device and Performance
     device: str = field(default_factory=lambda: "cuda" if torch.cuda.is_available() else "cpu")
     use_mixed_precision: bool = True  # AMP for speed
-    gradient_checkpointing: bool = True  # Memory efficiency
-    num_workers: int = 1
+    gradient_checkpointing: bool = False  # Disable for A100 - we have memory
+    num_workers: int = 6  # Increase for A100
     pin_memory: bool = True
     use_jit_compilation: bool = True
     use_amp: bool = True  # Automatic Mixed Precision
+    
+    # Performance Optimization Settings
+    use_fast_clone: bool = True  # Use FastClonePool instead of deepcopy
+    batch_process_cells: int = 32  # Number of cells to process in parallel
+    cache_gene_outputs: bool = True  # Cache gene forward passes
+    vectorize_mutations: bool = True  # Apply mutations in parallel
+    async_visualization: bool = True  # Non-blocking visualization updates
+    compile_mode: str = "reduce-overhead"  # torch.compile mode
+    memory_efficient_clone: bool = True  # Use state_dict copying
+    prefetch_batches: int = 2  # Number of batches to prefetch
 
 
 
     # 2. Neural Architecture & ODEs
-    feature_dim: int = 64
-    hidden_dim: int = 128
-    num_heads: int = 8  # For multi-head attention
+    feature_dim: int = 128  # Double for A100
+    hidden_dim: int = 256  # Double for A100
+    num_heads: int = 16  # Double for A100 multi-head attention
     ode_solver: str = "dopri5"
     ode_rtol: float = 1e-3
     ode_atol: float = 1e-4
@@ -33,8 +43,8 @@ class CFG:
     max_depth: float = 3.0
 
     # 3. Genome and Transposon Dynamics
-    genome_size: int = 10000
-    num_genes: int = 100
+    genome_size: int = 100
+    num_genes: int = 10
     gene_min_len: int = 50
     gene_max_len: int = 200
     num_transposons: int = 50
@@ -82,16 +92,16 @@ class CFG:
     dream_frequency: int = 5  # Generations between dream consolidation
     dream_learning_rate: float = 0.001
     nightmare_adversarial_strength: float = 0.1
-    memory_replay_batch_size: int = 64
+    memory_replay_batch_size: int = 128  # 4x for A100
 
     # 8. Population Dynamics & Evolution
-    initial_population: int = 64  # Renamed from population_size
-    max_population: int = 256
-    num_generations: int = 50
+    initial_population: int = 64  # Double for A100
+    max_population: int = 256  # Double for A100
+    num_generations: int = 20
     selection_pressure: float = 0.4  # Updated value
     mutation_rate: float = 0.02
     crossover_rate: float = 0.1  # Updated value
-    elite_size: int = 5
+    elite_size: int = 10  # Double for A100
     diversity_weight: float = 0.15
     shannon_entropy_target: float = 0.8
     niche_pressure: float = 0.1
@@ -114,9 +124,9 @@ class CFG:
     critical_slowing_threshold: float = 0.8
 
     # 11. Training Parameters
-    epochs: int = 500
-    batch_size: int = 64
-    gpu_batch_size: int = 32  # For GPU parallel processing
+    epochs: int = 30
+    batch_size: int = 256  # 4x for A100
+    gpu_batch_size: int = 128  # 4x for A100 parallel processing
     learning_rate: float = 0.001
     weight_decay: float = 1e-5
 

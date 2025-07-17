@@ -1,0 +1,5 @@
+tensorflow
+jax
+transformers
+lightning
+deepchem

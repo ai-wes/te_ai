@@ -35,6 +35,7 @@ from scripts.core.stem_gene_module import StemGeneModule
 from scripts.core.parallel_batch_evaluation import OptimizedBatchEvaluator
 from scripts.core.population_operations import VectorizedPopulationOps
 from scripts.core.phase_transition_detector import PhaseTransitionDetector
+from scripts.core.production_germinal_center import ProductionGerminalCenter
 from scripts.core.utils.detailed_logger import get_logger
 from scripts.config import cfg
 
@@ -241,11 +242,11 @@ class CyberDefenseGene(QuantumGeneModule):
                     self.threshold.data = torch.clamp(self.threshold.data, 0.1, 0.9)
 
 
-class CyberSecurityGerminalCenter(nn.Module):
+class CyberSecurityGerminalCenter(ProductionGerminalCenter):
     """Germinal center specialized for evolving cybersecurity defenses"""
     
     def __init__(self, cfg: cfg):
-        super().__init__()
+        super().__init__(initial_population_size=cfg.initial_population)
         self.cfg = cfg
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
