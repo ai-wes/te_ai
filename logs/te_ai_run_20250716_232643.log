@@ -1,0 +1,151 @@
+2025-07-16 23:26:43.057 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:26:43.057 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_232643
+2025-07-16 23:26:43.057 | INFO     | __init__                       | Log file: logs\te_ai_run_20250716_232643.log
+2025-07-16 23:26:43.057 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 23:26:43.057 | INFO     | __init__                       | Backup files: 10
+2025-07-16 23:26:43.059 | INFO     | __init__                       | ================================================================================
+2025-07-16 23:26:43.059 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               |   Python version: 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-16 23:26:43.060 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 23:26:43.060 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-16 23:26:43.060 | INFO     | info                           | ============================================================
+2025-07-16 23:26:43.060 | INFO     | info                           | Loading BBBP dataset...
+2025-07-16 23:26:43.118 | INFO     | info                           | Loaded 2050 samples with 2048 features
+2025-07-16 23:26:43.765 | INFO     | info                           | 
+============================================================
+2025-07-16 23:26:43.765 | INFO     | info                           | Running benchmark: BBBP
+2025-07-16 23:26:43.765 | INFO     | info                           | ============================================================
+2025-07-16 23:26:43.776 | INFO     | info                           | Train samples: 1640, Test samples: 410
+2025-07-16 23:26:44.117 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 23:26:44.117 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 23:26:44.479 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 23:26:44.571 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:44.601 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:44.978 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.195 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.258 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.290 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.321 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.431 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 23:26:45.868 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 23:26:45.916 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 23:26:45.932 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-16 23:26:45.932 | INFO     | info                           | Added BindingPocketGene to cell 5a6bc96c-42b2-473b-99a4-22d6a52a14fc
+2025-07-16 23:26:45.932 | INFO     | info                           | Added PharmacophoreGene to cell fc0c8844-d5a9-4917-965b-6cea29cf6c53
+2025-07-16 23:26:45.963 | INFO     | info                           | Added AllostericGene to cell 009ca103-0ea4-4b0a-806c-39a66fd4e7f0
+2025-07-16 23:26:45.963 | INFO     | info                           | Added BindingPocketGene to cell ba72870d-efd0-4655-93af-f85fe85ba610
+2025-07-16 23:26:45.963 | INFO     | info                           | Added PharmacophoreGene to cell a14ece6a-97c2-480b-bd36-aec9cce2eade
+2025-07-16 23:26:45.963 | INFO     | info                           | Added AllostericGene to cell 80044806-884f-4c1c-abcc-42029775da0a
+2025-07-16 23:26:45.963 | INFO     | info                           | Added BindingPocketGene to cell 5178f7f7-c5ff-4ebd-a783-a47f51e58554
+2025-07-16 23:26:45.963 | INFO     | info                           | Added PharmacophoreGene to cell 45f0bfe6-a248-4248-819a-246f5dde4dc9
+2025-07-16 23:26:45.979 | INFO     | info                           | Added AllostericGene to cell 20c0ee04-995d-4e73-93c5-9140b8d71baf
+2025-07-16 23:26:45.979 | INFO     | info                           | Added BindingPocketGene to cell 4a32f388-fe5e-40ad-b92f-9e97fff05f1f
+2025-07-16 23:26:45.979 | INFO     | info                           | Added PharmacophoreGene to cell d86f79e6-0275-4e58-8b42-0f69d98909a1
+2025-07-16 23:26:45.979 | INFO     | info                           | Added AllostericGene to cell 1c78e320-37b3-4cfa-b0cf-b4a7ae9eea84
+2025-07-16 23:26:45.979 | INFO     | info                           | Added BindingPocketGene to cell d13924e2-fd49-4230-8323-c2e199fc091d
+2025-07-16 23:26:45.979 | INFO     | info                           | Added PharmacophoreGene to cell 9b1072e8-a84b-45c8-b88d-66a285a2ac81
+2025-07-16 23:26:45.995 | INFO     | info                           | Added AllostericGene to cell aded4edb-0a4a-416c-9079-c34209e32596
+2025-07-16 23:26:45.995 | INFO     | info                           | Added BindingPocketGene to cell 2770073a-2f5b-4701-8eaf-87c718794cb4
+2025-07-16 23:26:45.995 | INFO     | info                           | Added PharmacophoreGene to cell 7bcdf060-1d2d-49de-8a4c-27ae2fc7bd54
+2025-07-16 23:26:45.995 | INFO     | info                           | Added AllostericGene to cell 1c15a790-0cf1-46fc-be14-f3aa79b95acd
+2025-07-16 23:26:45.995 | INFO     | info                           | Added BindingPocketGene to cell 87c5b21f-77ad-4fef-ae4e-d1be3dee837a
+2025-07-16 23:26:45.995 | INFO     | info                           | 
+Training Simple Neural Network...
+2025-07-16 23:26:46.011 | INFO     | info                           | Epoch 0/50, Loss: 0.6939
+2025-07-16 23:26:46.079 | INFO     | info                           | Epoch 10/50, Loss: 0.4597
+2025-07-16 23:26:46.117 | INFO     | info                           | Epoch 20/50, Loss: 0.1044
+2025-07-16 23:26:46.164 | INFO     | info                           | Epoch 30/50, Loss: 0.0100
+2025-07-16 23:26:46.196 | INFO     | info                           | Epoch 40/50, Loss: 0.0014
+2025-07-16 23:26:46.243 | INFO     | info                           | Results for Simple Neural Network:
+2025-07-16 23:26:46.243 | INFO     | info                           |   accuracy: 0.5049
+2025-07-16 23:26:46.243 | INFO     | info                           |   f1_score: 0.5224
+2025-07-16 23:26:46.243 | INFO     | info                           |   roc_auc: 0.4991
+2025-07-16 23:26:46.243 | INFO     | info                           |   Training time: 0.25s
+2025-07-16 23:26:46.243 | INFO     | info                           |   Inference time: 0.0000s
+2025-07-16 23:26:46.243 | INFO     | info                           | 
+Training Random Forest...
+2025-07-16 23:26:49.632 | INFO     | info                           | Results for Random Forest:
+2025-07-16 23:26:49.632 | INFO     | info                           |   accuracy: 0.5098
+2025-07-16 23:26:49.632 | INFO     | info                           |   f1_score: 0.5379
+2025-07-16 23:26:49.632 | INFO     | info                           |   roc_auc: 0.4895
+2025-07-16 23:26:49.632 | INFO     | info                           |   Training time: 3.37s
+2025-07-16 23:26:49.632 | INFO     | info                           |   Inference time: 0.0000s
+2025-07-16 23:26:49.632 | INFO     | info                           | 
+Training TE-AI...
+2025-07-16 23:26:49.648 | INFO     | info                           | Starting TE-AI evolution...
+2025-07-16 23:26:49.821 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 23:26:49.821 | INFO     | info                           | 
+================================================================================
+2025-07-16 23:26:49.821 | INFO     | info                           | GENERATION 1
+2025-07-16 23:26:49.821 | INFO     | info                           | ================================================================================
+2025-07-16 23:26:49.821 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-16 23:27:22.753 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-16 23:27:22.795 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.877 ± 0.001[0m, [35m🌿 Diversity: 4.909[0m, [33m🧬 Genes: 176[0m
+2025-07-16 23:27:22.795 | INFO     | info                           |    [1m🌱 Stem Genes:[0m Count: 6, Differentiations: 0, Avg Commitment: 0.000
+2025-07-16 23:27:22.795 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-16 23:27:22.795 | INFO     | info                           |    Combined amplified stress: 0.001
+2025-07-16 23:27:22.795 | INFO     | info                           |    Current stress level: 0.001
+2025-07-16 23:27:22.795 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-16 23:27:22.795 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-16 23:27:22.795 | INFO     | info                           |    Selection complete: 38 survivors, 26 to be replaced.
+2025-07-16 23:27:23.657 | INFO     | info                           |    Replaced 26 cells with optimized cloning.
+2025-07-16 23:27:25.036 | INFO     | info                           |    New population size: 96
+2025-07-16 23:27:25.036 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-16 23:27:25.036 | INFO     | info                           | 
+⏱️  Generation 1 completed in 35.39s. Population: 96
+2025-07-16 23:27:25.353 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 23:27:25.353 | INFO     | info                           | 
+================================================================================
+2025-07-16 23:27:25.353 | INFO     | info                           | GENERATION 2
+2025-07-16 23:27:25.353 | INFO     | info                           | ================================================================================
+2025-07-16 23:27:25.353 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-16 23:28:10.086 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-16 23:28:10.121 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.888 ± 0.000[0m, [35m🌿 Diversity: 4.690[0m, [33m🧬 Genes: 140[0m
+2025-07-16 23:28:10.121 | INFO     | info                           |    [1m🌱 Stem Genes:[0m Count: 10, Differentiations: 0, Avg Commitment: 0.000
+2025-07-16 23:28:10.121 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-16 23:28:10.121 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-16 23:28:10.121 | INFO     | info                           |    Current stress level: 0.000
+2025-07-16 23:28:10.121 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-16 23:28:10.132 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-16 23:28:10.132 | INFO     | info                           |    Selection complete: 57 survivors, 39 to be replaced.
+2025-07-16 23:28:11.853 | INFO     | info                           |    Replaced 39 cells with optimized cloning.
+2025-07-16 23:28:12.929 | INFO     | info                           |    New population size: 120
+2025-07-16 23:28:12.929 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-16 23:28:13.070 | INFO     | info                           |    - Cleared CUDA memory cache. Usage now: 3.75 GB
+2025-07-16 23:28:13.070 | INFO     | info                           | 
+⏱️  Generation 2 completed in 48.03s. Population: 120
+2025-07-16 23:28:13.486 | WARNING  | warning                        | write_visualization_state failed: 'bool' object is not callable
+2025-07-16 23:28:13.486 | INFO     | info                           | 
+================================================================================
+2025-07-16 23:28:13.486 | INFO     | info                           | GENERATION 3
+2025-07-16 23:28:13.486 | INFO     | info                           | ================================================================================
+2025-07-16 23:28:13.497 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-16 23:29:15.257 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-16 23:29:15.309 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.891 ± 0.000[0m, [35m🌿 Diversity: 4.558[0m, [33m🧬 Genes: 126[0m
+2025-07-16 23:29:15.310 | INFO     | info                           |    [1m🌱 Stem Genes:[0m Count: 10, Differentiations: 0, Avg Commitment: 0.000
+2025-07-16 23:29:15.310 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-16 23:29:15.310 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-16 23:29:15.310 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-16 23:29:15.310 | INFO     | info                           |    Current stress level: 1.000
+2025-07-16 23:29:15.310 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-16 23:29:15.313 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-16 23:29:15.313 | INFO     | info                           |    Executing stress response protocols:
+2025-07-16 23:29:15.313 | INFO     | info                           |    • Triggering transposition cascade (budgeted)

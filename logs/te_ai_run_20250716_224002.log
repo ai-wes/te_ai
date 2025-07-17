@@ -1,0 +1,109 @@
+2025-07-16 22:40:02.956 | INFO     | __init__                       | ================================================================================
+2025-07-16 22:40:02.956 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_224002
+2025-07-16 22:40:02.959 | INFO     | __init__                       | Log file: logs\te_ai_run_20250716_224002.log
+2025-07-16 22:40:02.959 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 22:40:02.959 | INFO     | __init__                       | Backup files: 10
+2025-07-16 22:40:02.959 | INFO     | __init__                       | ================================================================================
+2025-07-16 22:40:02.959 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 22:40:02.959 | INFO     | _log_system_info               |   Python version: 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
+2025-07-16 22:40:02.959 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cpu
+2025-07-16 22:40:02.959 | INFO     | _log_system_info               |   CUDA available: False
+2025-07-16 22:40:02.959 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 22:40:02.959 | INFO     | info                           | Starting TE-AI Benchmark Suite
+2025-07-16 22:40:02.959 | INFO     | info                           | ============================================================
+2025-07-16 22:40:02.959 | INFO     | info                           | Loading BBBP dataset...
+2025-07-16 22:40:03.003 | INFO     | info                           | Loaded 2050 samples with 2048 features
+2025-07-16 22:40:03.782 | INFO     | info                           | 
+============================================================
+2025-07-16 22:40:03.782 | INFO     | info                           | Running benchmark: BBBP
+2025-07-16 22:40:03.782 | INFO     | info                           | ============================================================
+2025-07-16 22:40:03.798 | INFO     | info                           | Train samples: 1640, Test samples: 410
+2025-07-16 22:40:04.002 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 22:40:04.002 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 22:40:04.344 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 22:40:04.409 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:04.444 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:04.777 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:04.992 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:05.040 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:05.065 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:05.090 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:05.170 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 22:40:05.596 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 22:40:05.640 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 22:40:05.640 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-16 22:40:05.640 | INFO     | info                           | Added BindingPocketGene to cell 4ccb92d0-0161-4a88-b6bd-36f05c304b5d
+2025-07-16 22:40:05.640 | INFO     | info                           | Added PharmacophoreGene to cell 2003abad-4e8f-42b1-94a8-4301e470ce8c
+2025-07-16 22:40:05.672 | INFO     | info                           | Added AllostericGene to cell 20a794c8-81f1-40c0-a99e-c166ee8b7a59
+2025-07-16 22:40:05.672 | INFO     | info                           | Added BindingPocketGene to cell 0d858e36-8950-4030-9f8b-0275949289e5
+2025-07-16 22:40:05.672 | INFO     | info                           | Added PharmacophoreGene to cell 910aa3a9-d9d6-4f49-8277-53538e8c4784
+2025-07-16 22:40:05.672 | INFO     | info                           | Added AllostericGene to cell 03b61e9f-0d5b-44c3-b765-4ccfc547f814
+2025-07-16 22:40:05.672 | INFO     | info                           | Added BindingPocketGene to cell 95320698-284b-429d-85cf-111aa79ffb8d
+2025-07-16 22:40:05.672 | INFO     | info                           | Added PharmacophoreGene to cell 1139d899-3084-4665-901e-239d0a012451
+2025-07-16 22:40:05.688 | INFO     | info                           | Added AllostericGene to cell 15f24f2c-bdba-411b-89a0-73a7a1c4f9cd
+2025-07-16 22:40:05.688 | INFO     | info                           | Added BindingPocketGene to cell dda7b947-c23b-482d-82dc-0ff19cc7f7b6
+2025-07-16 22:40:05.688 | INFO     | info                           | Added PharmacophoreGene to cell 60fc2797-20b5-42c3-9cef-ee037a411c63
+2025-07-16 22:40:05.688 | INFO     | info                           | Added AllostericGene to cell d07dfe56-9790-4ae1-be7f-1918cc14600f
+2025-07-16 22:40:05.688 | INFO     | info                           | Added BindingPocketGene to cell 1897043a-c6b6-466e-9d29-c54c8e62040f
+2025-07-16 22:40:05.688 | INFO     | info                           | Added PharmacophoreGene to cell 4f5314c7-affe-4918-89ee-c50a2411b2bc
+2025-07-16 22:40:05.688 | INFO     | info                           | Added AllostericGene to cell 9925dd9a-0340-4a5d-83ee-7d020b3bed64
+2025-07-16 22:40:05.688 | INFO     | info                           | Added BindingPocketGene to cell 7cec3962-e311-46a9-b3f3-288f8662ca41
+2025-07-16 22:40:05.688 | INFO     | info                           | Added PharmacophoreGene to cell a44e7f68-f420-4b5d-9e69-2b640b8f60cd
+2025-07-16 22:40:05.703 | INFO     | info                           | Added AllostericGene to cell e976aa2c-279a-4ee9-85f0-5ae91fe3b9e0
+2025-07-16 22:40:05.703 | INFO     | info                           | Added BindingPocketGene to cell 7cc3aec9-a0b2-4600-b222-cce6b3b33349
+2025-07-16 22:40:05.703 | INFO     | info                           | 
+Training Simple Neural Network...
+2025-07-16 22:40:05.719 | INFO     | info                           | Epoch 0/50, Loss: 0.6941
+2025-07-16 22:40:05.782 | INFO     | info                           | Epoch 10/50, Loss: 0.4795
+2025-07-16 22:40:05.844 | INFO     | info                           | Epoch 20/50, Loss: 0.1319
+2025-07-16 22:40:05.926 | INFO     | info                           | Epoch 30/50, Loss: 0.0130
+2025-07-16 22:40:06.001 | INFO     | info                           | Epoch 40/50, Loss: 0.0017
+2025-07-16 22:40:06.052 | INFO     | info                           | Results for Simple Neural Network:
+2025-07-16 22:40:06.052 | INFO     | info                           |   accuracy: 0.4780
+2025-07-16 22:40:06.052 | INFO     | info                           |   f1_score: 0.5000
+2025-07-16 22:40:06.052 | INFO     | info                           |   roc_auc: 0.4630
+2025-07-16 22:40:06.052 | INFO     | info                           |   Training time: 0.35s
+2025-07-16 22:40:06.052 | INFO     | info                           |   Inference time: 0.0000s
+2025-07-16 22:40:06.052 | INFO     | info                           | 
+Training Random Forest...
+2025-07-16 22:40:09.485 | INFO     | info                           | Results for Random Forest:
+2025-07-16 22:40:09.485 | INFO     | info                           |   accuracy: 0.5000
+2025-07-16 22:40:09.485 | INFO     | info                           |   f1_score: 0.5773
+2025-07-16 22:40:09.485 | INFO     | info                           |   roc_auc: 0.4831
+2025-07-16 22:40:09.485 | INFO     | info                           |   Training time: 3.43s
+2025-07-16 22:40:09.485 | INFO     | info                           |   Inference time: 0.0000s
+2025-07-16 22:40:09.485 | INFO     | info                           | 
+Training TE-AI...
+2025-07-16 22:40:09.501 | INFO     | info                           | Starting TE-AI evolution...
+2025-07-16 22:40:09.600 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 22:40:09.600 | INFO     | info                           | 
+================================================================================
+2025-07-16 22:40:09.600 | INFO     | info                           | GENERATION 1
+2025-07-16 22:40:09.600 | INFO     | info                           | ================================================================================
+2025-07-16 22:40:09.601 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-16 22:41:26.890 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-16 22:41:26.890 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.877 ± 0.001[0m, [35m🌿 Diversity: 4.909[0m, [33m🧬 Genes: 176[0m
+2025-07-16 22:41:26.890 | INFO     | info                           |    [1m🌱 Stem Genes:[0m Count: 6, Differentiations: 0, Avg Commitment: 0.000
+2025-07-16 22:41:26.890 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-16 22:41:26.890 | INFO     | info                           |    Combined amplified stress: 0.001
+2025-07-16 22:41:26.890 | INFO     | info                           |    Current stress level: 0.001
+2025-07-16 22:41:26.890 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-16 22:41:26.890 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-16 22:41:26.890 | INFO     | info                           |    Selection complete: 38 survivors, 26 to be replaced.
+2025-07-16 22:41:27.454 | INFO     | info                           |    Replaced 26 cells with optimized cloning.
+2025-07-16 22:41:28.343 | INFO     | info                           |    New population size: 96
+2025-07-16 22:41:28.343 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-16 22:41:28.343 | INFO     | info                           | 
+⏱️  Generation 1 completed in 78.84s. Population: 96
+2025-07-16 22:41:28.470 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 22:41:28.470 | INFO     | info                           | 
+================================================================================
+2025-07-16 22:41:28.470 | INFO     | info                           | GENERATION 2
+2025-07-16 22:41:28.470 | INFO     | info                           | ================================================================================
+2025-07-16 22:41:28.473 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)

@@ -53,7 +53,18 @@ class OptimizedBatchEvaluator:
         # Create single batch for all antigens
         antigen_graphs = []
         for i, a in enumerate(antigens):
-            graph = a.to(self.device)
+            # Check if it's already a graph object or an antigen object
+            if hasattr(a, 'to_graph'):
+                # It's an antigen object
+                graph = a.to(self.device)
+            else:
+                # It's already a graph object
+                graph = a
+            
+            # Ensure graph is on the correct device
+            if hasattr(graph, 'to'):
+                graph = graph.to(self.device)
+                
             # Remove any existing batch attribute to let from_data_list handle it
             if hasattr(graph, 'batch'):
                 delattr(graph, 'batch')
@@ -80,11 +91,13 @@ class OptimizedBatchEvaluator:
                     # The target value is stored in the batch. Let's assume it's 'druggability'
                     # You need to ensure your DrugTargetAntigen.to_graph() sets this attribute.
                     # Let's check for 'y' or 'druggability'.
-                    if hasattr(antigen_batch, 'y'):
+                    true_score = None
+                    if hasattr(antigen_batch, 'y') and antigen_batch.y is not None:
                         true_score = antigen_batch.y
-                    elif hasattr(antigen_batch, 'druggability'):
+                    elif hasattr(antigen_batch, 'druggability') and antigen_batch.druggability is not None:
                         true_score = antigen_batch.druggability
-                    else:
+                    
+                    if true_score is None:
                         # Fallback if no target is defined in the graph
                         true_score = torch.ones_like(predicted_score) * 0.5 
 

@@ -1,8 +1,8 @@
 {
-  "current_run_id": "20250717_000303",
-  "current_generation": 1,
-  "data_directory": "visualization_data/20250717_000303",
-  "latest_state_file": "visualization_data/20250717_000303/generation_0001_state.json",
+  "current_run_id": "20250716_232649",
+  "current_generation": 3,
+  "data_directory": "visualization_data\\20250716_232649",
+  "latest_state_file": "visualization_data\\20250716_232649\\generation_0003_state.json",
   "te_ai_state_file": "te_ai_state.json",
-  "timestamp": 1752728583.554297
+  "timestamp": 1752733693.254345
 }

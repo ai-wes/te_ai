@@ -110,14 +110,15 @@ class BindingPocketGene(ContinuousDepthGeneModule):
             
         return output, base_metadata
     
-    def transpose(self, target_position: Optional[float] = None, diversity_metric: Optional[float] = None) -> Tuple['BindingPocketGene', Optional[str]]:
+    def transpose(self, stress_level: float, population_diversity: float) -> Tuple[Optional['BindingPocketGene'], Optional[str]]:
         """Maintain pocket recognition during transposition"""
-        new_gene = super().transpose(target_position)
-        # Preserve pocket-specific components
-        new_gene.pocket_encoder = self.pocket_encoder
-        new_gene.pocket_attention = self.pocket_attention
-        new_gene.volume_processor = self.volume_processor
-        return new_gene, 'transpose'  # Return tuple with action
+        new_gene, action = super().transpose(stress_level, population_diversity)
+        if new_gene is not None:
+            # Preserve pocket-specific components
+            new_gene.pocket_encoder = self.pocket_encoder
+            new_gene.pocket_attention = self.pocket_attention
+            new_gene.volume_processor = self.volume_processor
+        return new_gene, action
 
 
 class PharmacophoreGene(QuantumGeneModule):

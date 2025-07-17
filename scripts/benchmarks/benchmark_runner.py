@@ -434,8 +434,14 @@ class TEAIBenchmarkAdapter:
             antigen.epitopes = [epitope]  # Replace default epitopes with our synthetic one
             antigens.append(antigen)
         
-        # Convert to graphs
-        antigen_graphs = [a.to_graph() for a in antigens]
+        # Convert to graphs and add target values
+        antigen_graphs = []
+        for i, a in enumerate(antigens):
+            graph = a.to_graph()
+            # Add the target value to the graph
+            target_val = float(y_train[i]) if y_train.ndim == 1 else y_train[i, 0]
+            graph.y = torch.tensor([target_val], dtype=torch.float32)
+            antigen_graphs.append(graph)
         
         # Evolve
         logger.info("Starting TE-AI evolution...")
