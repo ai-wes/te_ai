@@ -1,0 +1,39 @@
+2025-07-16 20:40:02.579 | INFO     | __init__                       | ================================================================================
+2025-07-16 20:40:02.579 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_204002
+2025-07-16 20:40:02.579 | INFO     | __init__                       | Log file: logs/te_ai_run_20250716_204002.log
+2025-07-16 20:40:02.579 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 20:40:02.579 | INFO     | __init__                       | Backup files: 10
+2025-07-16 20:40:02.579 | INFO     | __init__                       | ================================================================================
+2025-07-16 20:40:02.579 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 20:40:02.579 | INFO     | _log_system_info               |   Python version: 3.9.0 (default, Nov 15 2020, 14:28:56) 
+[GCC 7.3.0]
+2025-07-16 20:40:02.579 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 20:40:02.579 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 20:40:02.589 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 20:40:02.589 | INFO     | _log_system_info               |   CUDA memory: 25.44 GB
+2025-07-16 20:40:02.589 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 20:40:03.176 | WARNING  | warning                        | No metadata file found, using defaults
+2025-07-16 20:40:03.176 | INFO     | info                           | Loading TCGA samples from /home/weslinux/te_ai/maia_tcga_pancan
+2025-07-16 20:40:03.176 | INFO     | info                           | Loading sample 1/10
+2025-07-16 20:40:03.190 | INFO     | info                           | Loaded 10 samples
+2025-07-16 20:40:03.190 | INFO     | info                           | Identifying drug targets from TCGA data
+2025-07-16 20:40:03.216 | INFO     | info                           | Found 3 cancer types: ['OV', 'LUSC', 'BRCA']
+2025-07-16 20:40:03.225 | INFO     | info                           | Identified 20 drug targets
+2025-07-16 20:40:03.225 | INFO     | info                           | Top 10 targets: ['MUT_134', 'MUT_579', 'MUT_735', 'MUT_1522', 'MUT_1902', 'MUT_2142', 'MUT_3219', 'MUT_3331', 'MUT_4793', 'MUT_5487']
+2025-07-16 20:40:03.226 | INFO     | info                           | Converting 20 targets to antigens
+2025-07-16 20:40:03.265 | INFO     | info                           | Successfully created 20 antigens
+2025-07-16 20:40:03.331 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 20:40:03.331 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 20:40:03.701 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 20:40:03.778 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:03.805 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.180 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.405 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.458 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.485 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.513 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:04.615 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 20:40:05.047 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 20:40:05.097 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 20:40:05.105 | INFO     | info                           | Adding specialized drug discovery genes to population...

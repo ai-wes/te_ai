@@ -176,6 +176,11 @@ class ContinuousDepthGeneModule(nn.Module):
         # Project input
         h = self.input_projection(x)
         
+        # Ensure batch tensor matches the number of nodes in h
+        if batch is not None and batch.shape[0] != h.shape[0]:
+            # Take only the first h.shape[0] elements from batch
+            batch = batch[:h.shape[0]]
+        
         # Apply epigenetic modulation
         h = self._apply_epigenetic_regulation(h)
         

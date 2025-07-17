@@ -27,7 +27,6 @@ from .drug_target_antigen import DrugTargetAntigen
 
 logger = get_logger()
 
-
 class DrugDiscoveryBCell(ProductionBCell):
     """
     B-Cell specialized for drug discovery with enhanced tracking
@@ -148,7 +147,7 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
         self.druggability_rankings = defaultdict(list)
         self.mutation_resistance_data = defaultdict(dict)
         self.selectivity_matrix = None  # Cross-target selectivity
-        
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         # Quantum dream state for drug discovery
         if enable_quantum_dreams:
             self.drug_dream_engine = QuantumDreamConsolidationEngine( )
@@ -178,6 +177,7 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                     variant_id=100 + i,
                     position=0.15 + np.random.randn() * 0.05
                 )
+                pocket_gene = pocket_gene.to(self.device)
                 cell.genes.append(pocket_gene)
                 logger.info(f"Added BindingPocketGene to cell {cell.cell_id}")
                 
@@ -187,6 +187,7 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                     variant_id=200 + i,
                     position=0.45 + np.random.randn() * 0.05
                 )
+                pharma_gene = pharma_gene.to(self.device)
                 cell.genes.append(pharma_gene)
                 logger.info(f"Added PharmacophoreGene to cell {cell.cell_id}")
                 
@@ -196,6 +197,7 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
                     variant_id=300 + i,
                     position=0.5 + np.random.randn() * 0.05
                 )
+                allo_gene = allo_gene.to(self.device)
                 cell.genes.append(allo_gene)
                 logger.info(f"Added AllostericGene to cell {cell.cell_id}")
     

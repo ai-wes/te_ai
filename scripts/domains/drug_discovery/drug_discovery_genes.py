@@ -77,7 +77,8 @@ class BindingPocketGene(ContinuousDepthGeneModule):
         Process antigen with focus on binding pocket features.
         """
         # Get base processing from parent
-        base_output, base_metadata = super().forward(x, edge_index, batch, global_features)
+        base_output = super().forward(x, edge_index, batch, global_features=global_features)
+        base_metadata = {}
         
         # Extract pocket features if available
         if hasattr(batch, 'pocket_features') and batch.pocket_features is not None:
@@ -182,7 +183,9 @@ class PharmacophoreGene(QuantumGeneModule):
         Quantum processing with pharmacophore recognition.
         """
         # Base quantum processing
-        quantum_output, metadata = super().forward(x, edge_index, batch, global_features)
+        # QuantumGeneModule doesn't accept global_features
+        quantum_output = super().forward(x, edge_index, batch)
+        metadata = {}
         
         # Extract pharmacophore features
         hydrophobic = self.hydrophobic_detector(x)
@@ -261,7 +264,8 @@ class AllostericGene(StemGeneModule):
         Process with allosteric site detection.
         """
         # Base stem cell processing
-        stem_output, metadata = super().forward(x, edge_index, batch, global_features)
+        stem_output = super().forward(x, edge_index, batch, global_features=global_features)
+        metadata = {}
         
         # Detect potential allosteric sites
         allosteric_features = self.allosteric_detector(x, edge_index)

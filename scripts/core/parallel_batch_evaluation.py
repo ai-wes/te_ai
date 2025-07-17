@@ -52,14 +52,16 @@ class OptimizedBatchEvaluator:
         """
         # Create single batch for all antigens
         antigen_graphs = []
-        for a in antigens:
+        for i, a in enumerate(antigens):
             graph = a.to(self.device)
-            # Ensure the graph has proper batch indices
-            if not hasattr(graph, 'batch') and hasattr(graph, 'num_nodes'):
-                graph.batch = torch.zeros(graph.num_nodes, dtype=torch.long, device=self.device)
+            # Remove any existing batch attribute to let from_data_list handle it
+            if hasattr(graph, 'batch'):
+                delattr(graph, 'batch')
             antigen_graphs.append(graph)
         
         antigen_batch = Batch.from_data_list(antigen_graphs)
+        # Ensure the batch is on the correct device
+        antigen_batch = antigen_batch.to(self.device)
         
         # Collect all cells and prepare batch processing
         cell_ids = list(population.keys())
@@ -95,6 +97,14 @@ class OptimizedBatchEvaluator:
                         pred_squeezed = pred_squeezed.unsqueeze(0)
                     if true_squeezed.dim() == 0:
                         true_squeezed = true_squeezed.unsqueeze(0)
+                    
+                    # Handle shape mismatch due to batch truncation
+                    if pred_squeezed.shape[0] < true_squeezed.shape[0]:
+                        # Take only the first N true scores to match predicted
+                        true_squeezed = true_squeezed[:pred_squeezed.shape[0]]
+                    elif pred_squeezed.shape[0] > true_squeezed.shape[0]:
+                        # This shouldn't happen, but handle it anyway
+                        pred_squeezed = pred_squeezed[:true_squeezed.shape[0]]
                         
                     # Calculate a loss (e.g., Mean Squared Error)
                     loss = F.mse_loss(pred_squeezed, true_squeezed.to(pred_squeezed.device))

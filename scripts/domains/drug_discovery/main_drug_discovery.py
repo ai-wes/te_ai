@@ -13,7 +13,7 @@ def main():
     print("Initializing TCGA Data Converter...")
     # 1. Initialize the Domain Adapter
     # Convert Windows path to WSL path
-    tcga_data_dir = "C:\\Users\\wes\\Desktop\\te_ai\\maia_tcga_pancan"
+    tcga_data_dir = "/home/weslinux/te_ai/maia_tcga_pancan"
     # Check if directory exists
     if not os.path.exists(tcga_data_dir):
         print(f"ERROR: TCGA data directory not found at {tcga_data_dir}")
