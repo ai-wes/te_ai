@@ -1,7 +1,4 @@
 {
-  "timestamp": 1752760720.7856734,
-  "generation": 3,
-  "current_cell_id": "f8b13334-cbaf-494c-a2e5-3c249bfc9288",
   "cells": [
     {
       "cell_id": "f8b13334-cbaf-494c-a2e5-3c249bfc9288",
@@ -101,159 +98,13 @@
         }
       ],
       "architecture": {
-        "modules": {
-          "transform_0": {
-            "name": "transform_0",
-            "type": "sequential",
-            "layers": [
-              {
-                "index": 0,
-                "type": "Linear",
-                "params": {
-                  "in_features": 128,
-                  "out_features": 128
-                }
-              },
-              {
-                "index": 1,
-                "type": "LayerNorm",
-                "params": {
-                  "normalized_shape": [
-                    128
-                  ]
-                }
-              },
-              {
-                "index": 2,
-                "type": "ReLU",
-                "params": {}
-              },
-              {
-                "index": 3,
-                "type": "Dropout",
-                "params": {
-                  "p": 0.1
-                }
-              }
-            ],
-            "position": {
-              "x": 0.0,
-              "y": -0.5,
-              "z": 0.5
-            },
-            "size": 128,
-            "activation": "relu",
-            "color": "#FF6B6B"
-          },
-          "transform_1": {
-            "name": "transform_1",
-            "type": "sequential",
-            "layers": [
-              {
-                "index": 0,
-                "type": "Linear",
-                "params": {
-                  "in_features": 128,
-                  "out_features": 128
-                }
-              },
-              {
-                "index": 1,
-                "type": "LayerNorm",
-                "params": {
-                  "normalized_shape": [
-                    128
-                  ]
-                }
-              },
-              {
-                "index": 2,
-                "type": "ReLU",
-                "params": {}
-              },
-              {
-                "index": 3,
-                "type": "Dropout",
-                "params": {
-                  "p": 0.1
-                }
-              }
-            ],
-            "position": {
-              "x": 3.0,
-              "y": -0.5,
-              "z": 0.0
-            },
-            "size": 128,
-            "activation": "relu",
-            "color": "#FF6B6B"
-          },
-          "transform_2": {
-            "name": "transform_2",
-            "type": "sequential",
-            "layers": [
-              {
-                "index": 0,
-                "type": "Linear",
-                "params": {
-                  "in_features": 128,
-                  "out_features": 128
-                }
-              },
-              {
-                "index": 1,
-                "type": "LayerNorm",
-                "params": {
-                  "normalized_shape": [
-                    128
-                  ]
-                }
-              },
-              {
-                "index": 2,
-                "type": "ReLU",
-                "params": {}
-              },
-              {
-                "index": 3,
-                "type": "Dropout",
-                "params": {
-                  "p": 0.1
-                }
-              }
-            ],
-            "position": {
-              "x": 6.0,
-              "y": -0.5,
-              "z": 0.0
-            },
-            "size": 128,
-            "activation": "relu",
-            "color": "#FF6B6B"
-          },
-          "output": {
-            "name": "output",
-            "type": "linear",
-            "layers": [
-              {
-                "index": 0,
-                "type": "Linear",
-                "params": {
-                  "in_features": 128,
-                  "out_features": 128
-                }
-              }
-            ],
-            "position": {
-              "x": 9.0,
-              "y": -0.5,
-              "z": -0.5
-            },
-            "size": 128,
-            "activation": null,
-            "color": "#4A90E2"
-          }
-        },
+        "dna": "START-DIM:128-LAYERS:3-CONN:SEQUENTIAL-ACT:RELU-NORM:LAYER-END",
+        "modules": [
+          "transform_0",
+          "transform_1",
+          "transform_2",
+          "output"
+        ],
         "connections": {
           "transform_0": [
             "transform_1"
@@ -265,7 +116,7 @@
             "output"
           ]
         },
-        "modification_history": []
+        "modifications": 0
       },
       "connections": [
         {
@@ -24803,171 +24654,69 @@
       ]
     }
   ],
-  "architecture_state": {
-    "modules": {
-      "transform_0": {
-        "name": "transform_0",
-        "type": "sequential",
-        "layers": [
-          {
-            "index": 0,
-            "type": "Linear",
-            "params": {
-              "in_features": 128,
-              "out_features": 128
-            }
-          },
-          {
-            "index": 1,
-            "type": "LayerNorm",
-            "params": {
-              "normalized_shape": [
-                128
-              ]
-            }
-          },
-          {
-            "index": 2,
-            "type": "ReLU",
-            "params": {}
-          },
-          {
-            "index": 3,
-            "type": "Dropout",
-            "params": {
-              "p": 0.1
-            }
-          }
-        ],
-        "position": {
-          "x": 0.0,
-          "y": -0.5,
-          "z": 0.5
-        },
-        "size": 128,
-        "activation": "relu",
-        "color": "#FF6B6B"
-      },
-      "transform_1": {
-        "name": "transform_1",
-        "type": "sequential",
-        "layers": [
-          {
-            "index": 0,
-            "type": "Linear",
-            "params": {
-              "in_features": 128,
-              "out_features": 128
-            }
-          },
-          {
-            "index": 1,
-            "type": "LayerNorm",
-            "params": {
-              "normalized_shape": [
-                128
-              ]
-            }
-          },
-          {
-            "index": 2,
-            "type": "ReLU",
-            "params": {}
-          },
-          {
-            "index": 3,
-            "type": "Dropout",
-            "params": {
-              "p": 0.1
-            }
-          }
-        ],
-        "position": {
-          "x": 3.0,
-          "y": -0.5,
-          "z": 0.0
-        },
-        "size": 128,
-        "activation": "relu",
-        "color": "#FF6B6B"
-      },
-      "transform_2": {
-        "name": "transform_2",
-        "type": "sequential",
-        "layers": [
-          {
-            "index": 0,
-            "type": "Linear",
-            "params": {
-              "in_features": 128,
-              "out_features": 128
-            }
-          },
-          {
-            "index": 1,
-            "type": "LayerNorm",
-            "params": {
-              "normalized_shape": [
-                128
-              ]
-            }
-          },
-          {
-            "index": 2,
-            "type": "ReLU",
-            "params": {}
-          },
-          {
-            "index": 3,
-            "type": "Dropout",
-            "params": {
-              "p": 0.1
-            }
-          }
-        ],
-        "position": {
-          "x": 6.0,
-          "y": -0.5,
-          "z": 0.0
-        },
-        "size": 128,
-        "activation": "relu",
-        "color": "#FF6B6B"
-      },
-      "output": {
-        "name": "output",
-        "type": "linear",
-        "layers": [
-          {
-            "index": 0,
-            "type": "Linear",
-            "params": {
-              "in_features": 128,
-              "out_features": 128
-            }
-          }
-        ],
-        "position": {
-          "x": 9.0,
-          "y": -0.5,
-          "z": -0.5
-        },
-        "size": 128,
-        "activation": null,
-        "color": "#4A90E2"
-      }
+  "cell_id": "f8b13334-cbaf-494c-a2e5-3c249bfc9288",
+  "nodes": [
+    {
+      "id": "transform_0",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 0,
+      "fy": 0,
+      "fz": 0
     },
-    "connections": {
-      "transform_0": [
-        "transform_1"
-      ],
-      "transform_1": [
-        "transform_2"
-      ],
-      "transform_2": [
-        "output"
-      ]
+    {
+      "id": "transform_1",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 150,
+      "fy": 0,
+      "fz": 0
     },
-    "modification_history": []
-  }
+    {
+      "id": "transform_2",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 300,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "output",
+      "size": 128,
+      "activation": "Linear",
+      "fx": 450,
+      "fy": 0,
+      "fz": 0
+    }
+  ],
+  "links": [
+    {
+      "source": "transform_0",
+      "target": "transform_1"
+    },
+    {
+      "source": "transform_1",
+      "target": "transform_2"
+    },
+    {
+      "source": "transform_2",
+      "target": "output"
+    }
+  ],
+  "generation": 3,
+  "population_size": 120,
+  "total_genes": 849,
+  "active_genes": 849,
+  "quantum_genes": 25,
+  "cell_types": {
+    "V_genes": 242,
+    "D_genes": 213,
+    "J_genes": 154,
+    "Q_genes": 25,
+    "S_genes": 209
+  },
+  "phase": "normal",
+  "stress_level": 0.00026084346985417263,
+  "mean_fitness": 0.5,
+  "timestamp": 1752760720.7256198
 }
