@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hybrid Cellular & Architecture 3D Visualization</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #0a0a0a;
+        color: #fff;
+      }
+      #canvas-container {
+        width: 100%;
+        height: 100vh;
+      }
+      .ui-panel {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.85);
+        border: 1px solid #333;
+        padding: 15px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        font-size: 13px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      #info-panel {
+        top: 20px;
+        left: 20px;
+        width: 280px;
+      }
+      #details-panel {
+        top: 220px;
+        left: 20px;
+        width: 280px;
+        display: none;
+      }
+      #legend {
+        bottom: 20px;
+        right: 20px;
+        width: 240px;
+      }
+      h4,
+      h5 {
+        margin-top: 0;
+        color: #4a90e2;
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+      }
+      .info-item {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .info-label {
+        color: #999;
+        font-size: 12px;
+      }
+      .info-value {
+        font-weight: bold;
+        font-size: 14px;
+        text-align: right;
+      }
+      .legend-item {
+        margin: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+      .legend-color {
+        width: 15px;
+        height: 15px;
+        margin-right: 10px;
+        border-radius: 3px;
+        border: 1px solid #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+
+    <div id="info-panel" class="ui-panel">
+      <h4>Global Metrics</h4>
+      <div class="info-item">
+        <span class="info-label">Generation</span
+        ><span class="info-value" id="generation">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Cell Population</span
+        ><span class="info-value" id="cell-count">0</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Active Cell ID</span
+        ><span class="info-value" id="active-cell-id">...</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Architecture Modules</span
+        ><span class="info-value" id="module-count">0</span>
+      </div>
+    </div>
+
+    <div id="details-panel" class="ui-panel">
+      <h5 id="details-header">Hovered Details</h5>
+      <div id="details-content"></div>
+    </div>
+
+    <div id="legend" class="ui-panel">
+      <h5>Legend</h5>
+      <b>Architecture Modules</b>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #ff6b6b"></div>
+        <span>Transform (ReLU)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #4a90e2"></div>
+        <span>Output (Linear)</span>
+      </div>
+      <hr style="border-color: #333" />
+      <b>Cell Types</b>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #cccccc"></div>
+        <span>Stem</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #4a90e2"></div>
+        <span>Biosensor</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #d0021b"></div>
+        <span>Effector</span>
+      </div>
+      <hr style="border-color: #333" />
+      <b>Gene Types</b>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #bdc3c7"></div>
+        <span>S (Structural)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #2ecc71"></div>
+        <span>V (Variable)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #9b59b6"></div>
+        <span>D (Diversity)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #e67e22"></div>
+        <span>J (Joining)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #f1c40f"></div>
+        <span>Q (Quantum)</span>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script>
+      class HybridVisualizer {
+        constructor() {
+          this.scene = new THREE.Scene();
+          this.camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            5000
+          );
+          this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+          });
+          this.controls = null;
+          this.raycaster = new THREE.Raycaster();
+          this.mouse = new THREE.Vector2();
+
+          this.architectureContainer = new THREE.Group();
+          this.cellContainer = new THREE.Group();
+          this.scene.add(this.architectureContainer, this.cellContainer);
+
+          this.hoveredObject = null;
+          this.interactiveObjects = [];
+          this.activeCellTether = null;
+
+          this.init();
+          this.animate();
+          this.loadData();
+        }
+
+        init() {
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+          this.renderer.setPixelRatio(window.devicePixelRatio);
+          document
+            .getElementById("canvas-container")
+            .appendChild(this.renderer.domElement);
+
+          this.camera.position.set(0, 40, 120);
+          this.controls = new THREE.OrbitControls(
+            this.camera,
+            this.renderer.domElement
+          );
+          this.controls.enableDamping = true;
+          this.controls.autoRotate = true;
+          this.controls.autoRotateSpeed = 0.2;
+
+          this.scene.add(new THREE.AmbientLight(0xcccccc, 0.4));
+          const dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+          dirLight.position.set(50, 80, 50);
+          this.scene.add(dirLight);
+          this.scene.fog = new THREE.Fog(0x0a0a0a, 150, 400);
+
+          window.addEventListener("resize", () => this.onWindowResize());
+          window.addEventListener("mousemove", (e) => this.onMouseMove(e));
+        }
+
+        async loadData() {
+          try {
+            const filepath = "../../visualization_data/architecture_state.json";
+            console.log("Fetching data from:", filepath);
+            const response = await fetch(filepath);
+
+            if (!response.ok) {
+              throw new Error(
+                `HTTP error! status: ${response.status} - Could not fetch file.`
+              );
+            }
+
+            const data = await response.json();
+            console.log("Data loaded successfully:", data);
+
+            if (!data.architecture_state || !data.cells) {
+              throw new Error(
+                "JSON data is missing 'architecture_state' or 'cells' keys."
+              );
+            }
+
+            this.buildScene(data);
+          } catch (error) {
+            console.error("Could not load or process data:", error);
+            document.getElementById(
+              "canvas-container"
+            ).innerHTML = `<div style="padding: 20px; text-align: center;"><h2>Error Loading Data</h2><p>Could not load or parse the file at <code>../../visualization_data/architecture_state.json</code>.</p><p><b>Please ensure you are running this from a local web server, not as a local file.</b></p><p><i>Error details: ${error.message}</i></p></div>`;
+          }
+        }
+
+        buildScene(data) {
+          this.interactiveObjects = [];
+          [this.architectureContainer, this.cellContainer].forEach(
+            (container) => {
+              while (container.children.length > 0)
+                container.remove(container.children[0]);
+            }
+          );
+          if (this.activeCellTether) this.scene.remove(this.activeCellTether);
+
+          const moduleMap = this.createArchitectureVisual(
+            data.architecture_state
+          );
+          const cellMap = this.createCellPopulationVisual(data.cells);
+
+          const activeCellObject = cellMap.get(data.current_cell_id);
+          if (activeCellObject) {
+            this.highlightActiveCell(activeCellObject);
+          } else {
+            console.warn(
+              "Active cell ID not found in cell population:",
+              data.current_cell_id
+            );
+          }
+
+          this.updateGlobalInfo(data, moduleMap.size);
+        }
+
+        createArchitectureVisual(archData) {
+          const moduleMap = new Map();
+          if (!archData || !archData.modules) return moduleMap;
+
+          Object.values(archData.modules).forEach((moduleData) => {
+            const moduleGroup = new THREE.Group();
+            moduleGroup.position.set(
+              moduleData.position.x,
+              moduleData.position.y,
+              moduleData.position.z
+            );
+            moduleGroup.userData = { ...moduleData, vizType: "module" };
+
+            const nodeSize = Math.log(moduleData.size + 1) * 0.2 + 0.5;
+
+            if (moduleData.type === "sequential" && moduleData.layers) {
+              const layerHeight = 0.4;
+              const totalHeight = moduleData.layers.length * layerHeight;
+              moduleData.layers.forEach((layer, index) => {
+                const layerGeo = new THREE.BoxGeometry(
+                  nodeSize * 1.2,
+                  layerHeight * 0.8,
+                  nodeSize * 1.2
+                );
+                const layerMat = new THREE.MeshPhongMaterial({
+                  color: moduleData.color || "#FF6B6B",
+                });
+                const layerMesh = new THREE.Mesh(layerGeo, layerMat);
+                layerMesh.position.y =
+                  index * layerHeight - totalHeight / 2 + layerHeight / 2;
+                moduleGroup.add(layerMesh);
+              });
+            } else {
+              const geo = new THREE.SphereGeometry(nodeSize, 32, 16);
+              const mat = new THREE.MeshPhongMaterial({
+                color: moduleData.color || "#4A90E2",
+              });
+              const mesh = new THREE.Mesh(geo, mat);
+              moduleGroup.add(mesh);
+            }
+
+            this.architectureContainer.add(moduleGroup);
+            moduleMap.set(moduleData.name, moduleGroup);
+            this.interactiveObjects.push(moduleGroup);
+          });
+
+          Object.entries(archData.connections).forEach(
+            ([sourceName, targets]) => {
+              const sourceModule = moduleMap.get(sourceName);
+              if (!sourceModule) return;
+              targets.forEach((targetName) => {
+                const targetModule = moduleMap.get(targetName);
+                if (!targetModule) return;
+
+                const curve = new THREE.QuadraticBezierCurve3(
+                  sourceModule.position,
+                  new THREE.Vector3()
+                    .addVectors(sourceModule.position, targetModule.position)
+                    .multiplyScalar(0.5)
+                    .add(new THREE.Vector3(0, 5, 0)),
+                  targetModule.position
+                );
+                const points = curve.getPoints(20);
+                const geo = new THREE.BufferGeometry().setFromPoints(points);
+                const mat = new THREE.LineBasicMaterial({
+                  color: 0x666666,
+                  transparent: true,
+                  opacity: 0.8,
+                });
+                const line = new THREE.Line(geo, mat);
+                this.architectureContainer.add(line);
+              });
+            }
+          );
+          return moduleMap;
+        }
+
+        createCellPopulationVisual(cellsData) {
+          const cellMap = new Map();
+          const cellTypeColors = {
+            stem: 0xcccccc,
+            biosensor: 0x4a90e2,
+            effector: 0xd0021b,
+          };
+          const n = cellsData.length;
+          const radius = 80;
+          const phi = Math.PI * (3 - Math.sqrt(5));
+
+          cellsData.forEach((cellData, i) => {
+            const cellGroup = new THREE.Group();
+
+            // --- BUG FIX 1: Handle the single-cell case ---
+            if (n === 1) {
+              cellGroup.position.set(0, 0, radius); // Place single cell in front
+            } else {
+              const y = 1 - (i / (n - 1)) * 2;
+              const r = Math.sqrt(1 - y * y);
+              const theta = phi * i;
+              cellGroup.position.set(
+                Math.cos(theta) * r * radius,
+                y * radius,
+                Math.sin(theta) * r * radius
+              );
+            }
+
+            cellGroup.userData = { ...cellData, vizType: "cell" };
+
+            const membraneSize = 4;
+            const membraneGeo = new THREE.SphereGeometry(membraneSize, 16, 16);
+            const membraneMat = new THREE.MeshPhongMaterial({
+              color: cellTypeColors[cellData.type] || 0xffffff,
+              transparent: true,
+              opacity: 0.2,
+            });
+            const membrane = new THREE.Mesh(membraneGeo, membraneMat);
+            cellGroup.add(membrane);
+            cellGroup.userData.membrane = membrane;
+
+            this.cellContainer.add(cellGroup);
+            cellMap.set(cellData.cell_id, cellGroup);
+            this.interactiveObjects.push(membrane);
+          });
+          return cellMap;
+        }
+
+        highlightActiveCell(cellObject) {
+          const haloSize =
+            cellObject.userData.membrane.geometry.parameters.radius * 1.5;
+          const haloGeo = new THREE.SphereGeometry(haloSize, 16, 16);
+          const haloMat = new THREE.MeshBasicMaterial({
+            color: 0xffff00,
+            transparent: true,
+            opacity: 0.3,
+            side: THREE.BackSide,
+          });
+          const halo = new THREE.Mesh(haloGeo, haloMat);
+          cellObject.add(halo);
+          cellObject.userData.halo = halo;
+
+          const points = [cellObject.position, new THREE.Vector3(0, 0, 0)];
+          const geo = new THREE.BufferGeometry().setFromPoints(points);
+          const mat = new THREE.LineBasicMaterial({
+            color: 0xffff00,
+            transparent: true,
+            opacity: 0.7,
+            linewidth: 2,
+          });
+          this.activeCellTether = new THREE.Line(geo, mat);
+          this.scene.add(this.activeCellTether);
+        }
+
+        updateGlobalInfo(data, moduleCount) {
+          document.getElementById("generation").textContent = data.generation;
+          document.getElementById("cell-count").textContent = data.cells.length;
+          document.getElementById(
+            "active-cell-id"
+          ).textContent = `${data.current_cell_id.substring(0, 8)}...`;
+          document.getElementById("module-count").textContent = moduleCount;
+        }
+
+        updateDetailsPanel(object) {
+          const panel = document.getElementById("details-panel");
+          const header = document.getElementById("details-header");
+          const content = document.getElementById("details-content");
+
+          if (!object) {
+            panel.style.display = "none";
+            return;
+          }
+
+          panel.style.display = "block";
+          content.innerHTML = "";
+          const data = object.userData;
+
+          if (data.vizType === "module") {
+            header.textContent = `Module: ${data.name}`;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Type</span><span class="info-value">${data.type}</span></div>`;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Size</span><span class="info-value">${data.size}</span></div>`;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Activation</span><span class="info-value">${
+              data.activation || "N/A"
+            }</span></div>`;
+          } else if (data.vizType === "cell") {
+            header.textContent = `Cell: ${data.cell_id.substring(0, 8)}...`;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Type</span><span class="info-value">${data.type}</span></div>`;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Fitness</span><span class="info-value">${data.fitness.toFixed(
+              4
+            )}</span></div>`;
+
+            // --- BUG FIX 2: Safely access genes.length ---
+            const geneCount = data.genes ? data.genes.length : 0;
+            content.innerHTML += `<div class="info-item"><span class="info-label">Genes</span><span class="info-value">${geneCount}</span></div>`;
+          }
+        }
+
+        handleInteractions() {
+          this.raycaster.setFromCamera(this.mouse, this.camera);
+          const intersects = this.raycaster.intersectObjects(
+            this.interactiveObjects,
+            false
+          );
+
+          let newHoveredObject = null;
+          if (intersects.length > 0) {
+            let obj = intersects[0].object;
+            while (obj.parent && !obj.userData.vizType) {
+              obj = obj.parent;
+            }
+            newHoveredObject = obj;
+          }
+
+          if (this.hoveredObject !== newHoveredObject) {
+            if (this.hoveredObject) {
+              new TWEEN.Tween(this.hoveredObject.scale)
+                .to({ x: 1, y: 1, z: 1 }, 200)
+                .start();
+            }
+            this.hoveredObject = newHoveredObject;
+            if (this.hoveredObject) {
+              new TWEEN.Tween(this.hoveredObject.scale)
+                .to({ x: 1.2, y: 1.2, z: 1.2 }, 200)
+                .start();
+            }
+            this.updateDetailsPanel(this.hoveredObject);
+          }
+        }
+
+        onWindowResize() {
+          this.camera.aspect = window.innerWidth / window.innerHeight;
+          this.camera.updateProjectionMatrix();
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        onMouseMove(event) {
+          this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+          this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+        animate() {
+          requestAnimationFrame(() => this.animate());
+          this.controls.update();
+          TWEEN.update();
+          this.handleInteractions();
+
+          this.cellContainer.children.forEach((cell) => {
+            if (cell.userData.halo) {
+              const time = Date.now() * 0.005;
+              cell.userData.halo.material.opacity = 0.2 + Math.sin(time) * 0.15;
+            }
+          });
+
+          this.renderer.render(this.scene, this.camera);
+        }
+      }
+
+      const visualizer = new HybridVisualizer();
+    </script>
+  </body>
+</html>

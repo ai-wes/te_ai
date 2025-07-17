@@ -98,7 +98,7 @@ class CFG:
 
     # 9. Horizontal Gene Transfer
     use_horizontal_transfer: bool = True
-    horizontal_transfer_prob: float = 0.002  # Renamed and updated
+    horizontal_transfer_prob: float = 0.05  # Increased from 0.002 to allow more gene transfers
     plasmid_stability: float = 0.95
     conjugation_efficiency: float = 0.8
     transformation_rate: float = 0.001

@@ -36,8 +36,8 @@ from scipy import stats
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import hashlib
-from config import cfg
-from core.utils.telemetry import write_visualization_state, _write_enhanced_visualization_state
+from scripts.core.utils.telemetry import write_visualization_state
+from scripts.config import cfg
 
 # Removed circular import - StemGeneModule will be imported dynamically when needed
 # Suppress warnings for clean output
@@ -49,6 +49,9 @@ np.random.seed(42)
 random.seed(42)
 
 
+from scripts.core.utils.detailed_logger import get_logger, trace
+
+logger = get_logger()
 
 # ============================================================================# ============================================================================
 # Self-Modifying Neural Architecture with Complete Implementation
@@ -102,6 +105,7 @@ class SelfModifyingArchitecture(nn.Module):
         self.performance_history = deque(maxlen=100)
         self.gradient_history = deque(maxlen=50)
         
+    
     def _generate_architecture_dna(self) -> str:
         """Generate unique DNA string representing architecture"""
         # DNA encodes layer types, connections, and parameters
@@ -116,6 +120,7 @@ class SelfModifyingArchitecture(nn.Module):
         ]
         return '-'.join(dna_segments)
     
+    
     def _create_layer_addition_network(self) -> nn.Module:
         """Network that generates new layer parameters"""
         return nn.Sequential(
@@ -124,6 +129,7 @@ class SelfModifyingArchitecture(nn.Module):
             nn.Linear(self.base_dim * 2, self.base_dim * self.base_dim + self.base_dim),
             # Output is flattened weights + bias for new layer
         )
+    
     
     def _create_layer_removal_network(self) -> nn.Module:
         """Network that decides which layers to remove"""
@@ -134,6 +140,7 @@ class SelfModifyingArchitecture(nn.Module):
             nn.Sigmoid()  # Removal probability
         )
     
+    
     def _create_rewiring_network(self) -> nn.Module:
         """Network that modifies connections between layers"""
         return nn.Sequential(
@@ -143,6 +150,7 @@ class SelfModifyingArchitecture(nn.Module):
             nn.Tanh()  # Connection weight matrix
         )
     
+    
     def _create_resizing_network(self) -> nn.Module:
         """Network that changes layer dimensions"""
         return nn.Sequential(
@@ -151,6 +159,7 @@ class SelfModifyingArchitecture(nn.Module):
             nn.Linear(64, 4)  # Min size, max size, expand factor, contract factor
         )
     
+    
     def _create_activation_network(self) -> nn.Module:
         """Network that selects activation functions"""
         return nn.Sequential(
@@ -158,6 +167,7 @@ class SelfModifyingArchitecture(nn.Module):
             nn.ReLU(),
             nn.Linear(32, 6)  # ReLU, Tanh, Sigmoid, ELU, GELU, Swish
         )
+    
     
     def _initialize_base_architecture(self):
         """Create initial architecture"""
@@ -179,6 +189,7 @@ class SelfModifyingArchitecture(nn.Module):
         # Output projection
         self.dynamic_modules['output'] = nn.Linear(self.base_dim, self.base_dim)
         self.module_connections['transform_2'] = ['output']
+    
     
     def analyze_performance(self, loss_history: List[float], 
                           gradient_norms: List[float]) -> Dict[str, float]:
@@ -217,6 +228,7 @@ class SelfModifyingArchitecture(nn.Module):
         }
         
         
+    
     def decide_modification(self, performance_metrics: Dict[str, float],
                         current_state: torch.Tensor) -> ArchitectureModification:
         """Decide what architectural modification to make"""
@@ -277,6 +289,7 @@ class SelfModifyingArchitecture(nn.Module):
 
 
     
+    
     def _compute_gradient_statistics(self) -> torch.Tensor:
         """Compute gradient flow statistics"""
         grad_stats = []
@@ -300,6 +313,7 @@ class SelfModifyingArchitecture(nn.Module):
         
         return torch.tensor(grad_stats).to(cfg.device)
     
+    
     def _generate_layer_addition_params(self, state: torch.Tensor) -> Dict:
         """Generate parameters for adding a new layer"""
         # Generate layer parameters
@@ -322,6 +336,7 @@ class SelfModifyingArchitecture(nn.Module):
             'activation': 'relu'
         }
     
+    
     def _generate_layer_removal_params(self) -> Dict:
         """Decide which layer to remove"""
         removal_probs = {}
@@ -340,6 +355,7 @@ class SelfModifyingArchitecture(nn.Module):
             target = None
         
         return {'target': target}
+    
     
     def _generate_rewiring_params(self, state: torch.Tensor) -> Dict:
         """Generate new connection patterns"""
@@ -370,6 +386,7 @@ class SelfModifyingArchitecture(nn.Module):
             'connection_type': 'residual' if random.random() > 0.5 else 'sequential'
         }
     
+    
     def _generate_resizing_params(self, state: torch.Tensor) -> Dict:
         """Generate layer resizing parameters"""
         resize_params = self.mod_networks['dimension_resizing'](state.flatten())
@@ -390,6 +407,7 @@ class SelfModifyingArchitecture(nn.Module):
             'contract_factor': contract_factor
         }
     
+    
     def _generate_activation_params(self, state: torch.Tensor) -> Dict:
         """Select new activation function"""
         activation_logits = self.mod_networks['activation_change'](state.flatten())
@@ -404,6 +422,7 @@ class SelfModifyingArchitecture(nn.Module):
             'target': target,
             'activation': activations[act_idx]
         }
+    
     
     def apply_modification(self, modification: ArchitectureModification, cell_id: str = None) -> bool:
         """Apply architectural modification and emit telemetry."""
@@ -430,7 +449,6 @@ class SelfModifyingArchitecture(nn.Module):
                 # Broadcast the new state after a successful change
                 if cell_id:
                     write_visualization_state(cell_id, self)
-                    _write_enhanced_visualization_state(cell_id, self)
                 # --- END TELEMETRY ---
             
             return success
@@ -450,6 +468,7 @@ class SelfModifyingArchitecture(nn.Module):
             return False
             
 
+    
     
     def _add_layer(self, params: Dict) -> bool:
         """Add new layer to architecture"""
@@ -486,6 +505,7 @@ class SelfModifyingArchitecture(nn.Module):
         print(f"Added layer {layer_name} after {insert_after}")
         return True
     
+    
     def _remove_layer(self, params: Dict) -> bool:
         """Remove layer from architecture"""
         target = params.get('target')
@@ -509,6 +529,7 @@ class SelfModifyingArchitecture(nn.Module):
         
         print(f"Removed layer {target}")
         return True
+    
     
     def _rewire_connections(self, params: Dict) -> bool:
         """Modify connections between layers"""
@@ -536,6 +557,7 @@ class SelfModifyingArchitecture(nn.Module):
                 print(f"Rewired {source} -> {destination}")
         
         return True
+    
     
     def _resize_layer(self, params: Dict) -> bool:
         """Resize layer dimensions"""
@@ -607,6 +629,7 @@ class SelfModifyingArchitecture(nn.Module):
             print(f"Resized {target}: {old_out} -> {new_size}")
         return True
     
+    
     def _change_activation(self, params: Dict) -> bool:
         """Change activation function"""
         target = params.get('target')
@@ -631,6 +654,7 @@ class SelfModifyingArchitecture(nn.Module):
         # If it's just a Linear layer (like 'output'), we can't change activation
         return False
     
+    
     def _get_activation(self, name: str) -> nn.Module:
         """Get activation function by name"""
         activations = {
@@ -642,6 +666,7 @@ class SelfModifyingArchitecture(nn.Module):
             'swish': nn.SiLU()
         }
         return activations.get(name, nn.ReLU())
+    
     
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass through dynamic architecture"""

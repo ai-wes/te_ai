@@ -1,0 +1,56 @@
+{
+  "cells": [],
+  "cell_id": "0da1f9e9-bccd-4a0d-bb80-a43b27b52934",
+  "nodes": [
+    {
+      "id": "transform_0",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 0,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "transform_1",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 150,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "output",
+      "size": 128,
+      "activation": "Linear",
+      "fx": 300,
+      "fy": 0,
+      "fz": 0
+    }
+  ],
+  "links": [
+    {
+      "source": "transform_0",
+      "target": "transform_1"
+    },
+    {
+      "source": "transform_1",
+      "target": "output"
+    }
+  ],
+  "generation": 0,
+  "population_size": 1,
+  "total_genes": 0,
+  "active_genes": 0,
+  "quantum_genes": 0,
+  "cell_types": {
+    "V_genes": 0,
+    "D_genes": 0,
+    "J_genes": 0,
+    "Q_genes": 0,
+    "S_genes": 0
+  },
+  "phase": "normal",
+  "stress_level": 0,
+  "mean_fitness": 0.0,
+  "timestamp": 1752678599.3416526
+}

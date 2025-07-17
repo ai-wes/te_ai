@@ -1810,6 +1810,16 @@ class GerminalCenterLayout {
   }
 
   positionCell(cellData, index, population) {
+    // Use position from Python if provided (it already handles zone assignment)
+    if (cellData.position && cellData.position.x !== undefined) {
+      return new THREE.Vector3(
+        cellData.position.x,
+        cellData.position.y,
+        cellData.position.z
+      );
+    }
+    
+    // Fallback to zone-based positioning if no position provided
     const zone = this.determineZone(cellData);
     const zoneData = this.zones[zone];
 
@@ -3283,9 +3293,9 @@ class LiveNeuralClockwork {
     // const typeMapping = { ... };
     // const mappedPrimary = typeMapping[primary] || "balanced";
 
-    // --- CORRECTION 2: UPDATE GENE COUNTING FOR NEW TYPES ---
-    // This object now counts the actual therapeutic gene types (BS, TE, AC, TS).
-    const geneTypes = { BS: 0, TE: 0, AC: 0, TS: 0 };
+    // --- CORRECTION 2: UPDATE GENE COUNTING FOR CORRECT TYPES ---
+    // Count the actual gene types (V, D, J, S, Q)
+    const geneTypes = { V: 0, D: 0, J: 0, S: 0, Q: 0 };
 
     if (Array.isArray(cellData.genes)) {
       cellData.genes.forEach((gene) => {
@@ -3351,22 +3361,18 @@ class LiveNeuralClockwork {
       const indicatorSize = 0.2 + (gene.depth || 1.0) * 0.07;
       let geometry;
 
-      // Use new therapeutic gene types
+      // Use original gene types mapped to therapeutic functions
       switch (gene.gene_type) {
-        case "BS": // Biosensor - sharp, sensing shape
-          geometry = new THREE.TetrahedronGeometry(indicatorSize);
+        case "V": // Variable/Biosensor - hexagonal sensing shape
+          geometry = new THREE.CylinderGeometry(indicatorSize, indicatorSize, indicatorSize * 0.5, 6);
           break;
-        case "TE": // Effector - solid, functional shape
-          geometry = new THREE.BoxGeometry(
-            indicatorSize,
-            indicatorSize,
-            indicatorSize
-          );
+        case "D": // Diversity/Effector - octagonal functional shape
+          geometry = new THREE.CylinderGeometry(indicatorSize, indicatorSize, indicatorSize * 0.5, 8);
           break;
-        case "AC": // Controller - complex, coordinating shape
-          geometry = new THREE.IcosahedronGeometry(indicatorSize);
+        case "J": // Joining/Controller - dodecagonal coordinating shape
+          geometry = new THREE.CylinderGeometry(indicatorSize, indicatorSize, indicatorSize * 0.5, 12);
           break;
-        case "TS": // Stem - star shape for potential
+        case "S": // Stem - star shape for potential
           const starShape = new THREE.Shape();
           const starSize = indicatorSize;
           const spikes = 5; // 5-pointed star

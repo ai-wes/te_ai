@@ -1,0 +1,138 @@
+{
+  "timestamp": 1752683649.1615393,
+  "generation": 0,
+  "current_cell_id": "5f620b38-2f43-440b-9b92-dd5d39c014ac",
+  "cells": [],
+  "architecture_state": {
+    "modules": {
+      "transform_0": {
+        "name": "transform_0",
+        "type": "sequential",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          },
+          {
+            "index": 1,
+            "type": "LayerNorm",
+            "params": {
+              "normalized_shape": [
+                128
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "ReLU",
+            "params": {}
+          },
+          {
+            "index": 3,
+            "type": "Dropout",
+            "params": {
+              "p": 0.1
+            }
+          }
+        ],
+        "position": {
+          "x": 0.0,
+          "y": -0.5,
+          "z": 0.5
+        },
+        "size": 128,
+        "activation": "relu",
+        "color": "#FF6B6B"
+      },
+      "transform_1": {
+        "name": "transform_1",
+        "type": "sequential",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          },
+          {
+            "index": 1,
+            "type": "LayerNorm",
+            "params": {
+              "normalized_shape": [
+                128
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "ReLU",
+            "params": {}
+          },
+          {
+            "index": 3,
+            "type": "Dropout",
+            "params": {
+              "p": 0.1
+            }
+          }
+        ],
+        "position": {
+          "x": 3.0,
+          "y": -0.5,
+          "z": 0.0
+        },
+        "size": 128,
+        "activation": "relu",
+        "color": "#FF6B6B"
+      },
+      "output": {
+        "name": "output",
+        "type": "linear",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          }
+        ],
+        "position": {
+          "x": 6.0,
+          "y": -0.5,
+          "z": -0.5
+        },
+        "size": 128,
+        "activation": null,
+        "color": "#4A90E2"
+      }
+    },
+    "connections": {
+      "transform_0": [
+        "transform_1"
+      ],
+      "transform_1": [
+        "output"
+      ]
+    },
+    "modification_history": [
+      {
+        "index": 0,
+        "type": "remove_layer",
+        "target": "transform_2",
+        "success": true,
+        "timestamp": 1752683624.1615393,
+        "parameters": {
+          "removed_layer": "transform_2"
+        }
+      }
+    ]
+  }
+}

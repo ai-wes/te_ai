@@ -2,48 +2,29 @@
 import matplotlib
 matplotlib.use('Agg')
 
-import asyncio
-import websockets
-import json
 import os
-from threading import Thread
-import queue
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 from torch_geometric.data import Data, Batch
-from torch_geometric.nn import GCNConv, global_mean_pool, MessagePassing
-from torch_geometric.utils import to_undirected, add_self_loops
-from torchdiffeq import odeint_adjoint as odeint
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import networkx as nx
 import random
 import copy
 import uuid
-import json
-from collections import defaultdict, deque, OrderedDict
-from dataclasses import dataclass, field
-from typing import List, Dict, Tuple, Optional, Set, Any
+from collections import defaultdict, deque
+from typing import List, Dict
 import os
 from datetime import datetime
 import time
 from concurrent.futures import ThreadPoolExecutor
-import threading
 import warnings
 from scipy import stats
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
 import hashlib
-from config import cfg
+from scripts.config import cfg
 from scripts.core.quantum_gene import QuantumGeneModule
 from scripts.core.production_b_cell import ProductionBCell
 from scripts.core.phase_transition_detector import PhaseTransitionDetector
 from scripts.core.dreamer import DreamConsolidationEngine
-from scripts.core.utils.telemetry import TermColors
+from scripts.core.utils.telemetry import TermColors, write_visualization_state, set_germinal_center
 from scripts.core.ode import ContinuousDepthGeneModule
-
 warnings.filterwarnings('ignore')
 
 # Set random seeds for reproducibility
@@ -52,6 +33,9 @@ np.random.seed(42)
 random.seed(42)
 
 
+from scripts.core.utils.detailed_logger import get_logger
+
+logger = get_logger()
 
 
 
@@ -62,6 +46,10 @@ class ProductionGerminalCenter:
     """Production-ready population manager with all features"""
     
     def __init__(self):
+        from scripts.core.parallel_batch_evaluation import OptimizedBatchEvaluator
+        from scripts.core.clone_operation import FastClonePool
+        from scripts.core.population_operations import VectorizedPopulationOps
+        
         self.population: Dict[str, ProductionBCell] = {}
         self.generation = 0
         self.current_stress = 0.0
@@ -104,15 +92,26 @@ class ProductionGerminalCenter:
 
         self._parallel_batch_cache = None
         self._cached_cell_ids_hash = None
+        # Add optimized components
+        self.batch_evaluator = OptimizedBatchEvaluator(cfg.device)
+        self.clone_pool = FastClonePool(device=cfg.device)
+        self.vectorized_ops = VectorizedPopulationOps()
+        self.cached_phase_detector = PhaseTransitionDetector()
+        
+        # Set global reference for visualization
+        import scripts.depricated.transposable_immune_ai_production_complete as prod
+        prod._current_germinal_center = self
+        
 
-
+    
     def _initialize_population(self):
+        logger.debug("Entering ProductionGerminalCenter._initialize_population")
         """Create initial diverse population with proper stem cell representation"""
-        print(f"\n🧬 Initializing production population with {cfg.initial_population} cells...")
+        logger.info(f"\n🧬 Initializing production population with {cfg.initial_population} cells...")
         
         # Create dedicated stem cells (20% of initial population)
         num_stem_cells = int(cfg.initial_population * 0.2)
-        print(f"   Creating {num_stem_cells} dedicated stem cells...")
+        logger.info(f"   Creating {num_stem_cells} dedicated stem cells...")
         
         for i in range(num_stem_cells):
             cell = self._create_stem_cell()
@@ -120,16 +119,17 @@ class ProductionGerminalCenter:
         
         # Create remaining cells with mixed types
         remaining_cells = cfg.initial_population - num_stem_cells
-        print(f"   Creating {remaining_cells} mixed-type cells...")
+        logger.info(f"   Creating {remaining_cells} mixed-type cells...")
         
         for i in range(remaining_cells):
             cell = self._create_random_cell()
             self.population[cell.cell_id] = cell
             
             if (i + 1) % 50 == 0:
-                print(f"   Created {i + 1}/{remaining_cells} mixed cells...")
+                logger.info(f"   Created {i + 1}/{remaining_cells} mixed cells...")
         
-        print(f"✅✅  Population initialized with {len(self.population)} cells ({num_stem_cells} stem cells + {remaining_cells} mixed)  ✅✅ ")
+        logger.info(f"✅✅  Population initialized with {len(self.population)} cells ({num_stem_cells} stem cells + {remaining_cells} mixed)  ✅✅ ")
+    
     
     def _create_random_cell(self) -> ProductionBCell:
         """Create cell with random gene configuration"""
@@ -165,7 +165,7 @@ class ProductionGerminalCenter:
         
         # --- NEW: Small chance to add a Quantum Gene ---
         if random.random() < 0.1: # 10% chance for a new cell to have a quantum gene
-            print("   ✨✨ A Quantum Gene has emerged!  ✨✨")
+            logger.info("   ✨✨ A Quantum Gene has emerged!  ✨✨")
             q_gene = QuantumGeneModule('Q', random.randint(1, 5))
             q_gene.position = random.random() # Place it anywhere
             genes.append(q_gene)
@@ -178,7 +178,7 @@ class ProductionGerminalCenter:
                 try:
                     # Try to use StemGeneModule if available, otherwise use ContinuousDepthGeneModule
                     try:
-                        from scripts.core.stem_gene_module import StemGeneModule
+                        from stem_gene_module import StemGeneModule
                         s_gene = StemGeneModule('S', random.randint(1, 20))
                     except ImportError:
                         s_gene = ContinuousDepthGeneModule('S', random.randint(1, 20))
@@ -194,6 +194,7 @@ class ProductionGerminalCenter:
         
         return ProductionBCell(genes).to(cfg.device)
     
+    
     def _create_stem_cell(self) -> ProductionBCell:
         """Create a dedicated stem cell with majority stem genes"""
         genes = []
@@ -203,7 +204,7 @@ class ProductionGerminalCenter:
         for _ in range(num_s):
             try:
                 try:
-                    from scripts.core.stem_gene_module import StemGeneModule
+                    from stem_gene_module import StemGeneModule
                     s_gene = StemGeneModule('S', random.randint(1, 20))
                 except ImportError:
                     s_gene = ContinuousDepthGeneModule('S', random.randint(1, 20))
@@ -236,7 +237,9 @@ class ProductionGerminalCenter:
     
     
         
+    
     def _add_random_individuals(self, count: int):
+        logger.debug("Entering ProductionGerminalCenter._add_random_individuals")
         """Add new random individuals to population"""
         for _ in range(count):
             if len(self.population) < cfg.max_population:
@@ -245,34 +248,36 @@ class ProductionGerminalCenter:
                 
                 
     
+    
     def evolve_generation(self, antigens: List[Data]):
+        logger.debug("Entering ProductionGerminalCenter.evolve_generation")
         """Complete evolution cycle with all systems"""
         generation_start = time.time()
         self.generation += 1
         
-        print(f"\n{'='*80}")
-        print(f"GENERATION {self.generation}")
-        print(f"{'='*80}")
+        logger.info(f"\n{'='*80}")
+        logger.info(f"GENERATION {self.generation}")
+        logger.info(f"{'='*80}")
         
         # --- Store input history for replay/HGT ---
         self.input_batch_history.append([a.to('cpu') for a in antigens])
         
-        print("\n📊 Phase 1: Fitness Evaluation")
+        logger.info("\n📊 Phase 1: Fitness Evaluation")
         fitness_scores = self._evaluate_population_parallel(antigens)
         
         # Phase 2: Compute metrics and detect stress
-        print("\n📈 Phase 2: Metrics and Stress Detection")
+        logger.info("\n📈 Phase 2: Metrics and Stress Detection")
         metrics = self._compute_comprehensive_metrics(fitness_scores)
         self.current_stress = self._detect_population_stress(metrics)
         
         # --- CHANGE 1: FORCE STRESS AT GENERATION 3 ---
         if self.generation == 3:
-            print("\n🔥 DEBUG: Forcing maximum stress at Generation 3.")
+            logger.info("\n🔥 DEBUG: Forcing maximum stress at Generation 3.")
             self.current_stress = 1.0
-        print(f"   Current stress level: {self.current_stress:.3f}")
+        logger.info(f"   Current stress level: {self.current_stress:.3f}")
                 
         # Phase 3: Phase transition detection and intervention
-        print("\n🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍")
+        logger.info("\n🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍")
         population_state = self._get_population_state()
         intervention = self.phase_detector.update(metrics, population_state)
         
@@ -281,18 +286,18 @@ class ProductionGerminalCenter:
         
         # Phase 4: Stress response
         if self.current_stress > cfg.stress_threshold:
-            print(f"\n⚠️⚠️   Phase 4: High Stress Response (stress={self.current_stress:.3f})  ⚠️ ⚠️ ")
+            logger.info(f"\n⚠️⚠️   Phase 4: High Stress Response (stress={self.current_stress:.3f})  ⚠️ ⚠️ ")
             self._execute_stress_response()
         
         # # The code seems to be a comment in a Python script, indicating that it is part of Phase 5
         # which involves selection and reproduction. It is likely describing a specific phase or
         # step in a larger program or project.
         #Phase 5: Selection and reproduction
-        print("\n🧬🧬 Phase 5: Selection and Reproduction 🧬🧬")
+        logger.info("\n🧬🧬 Phase 5: Selection and Reproduction 🧬🧬")
         self._selection_and_reproduction(fitness_scores)
     
         if self.generation % 10 == 0: # Every 15 generations, try to entangle
-            print("\n🌀🌀 Entanglement Phase  🌀🌀")
+            logger.info("\n🌀🌀 Entanglement Phase  🌀🌀")
             for cell in self.population.values():
                 if hasattr(cell, 'attempt_entanglement'):
                     cell.attempt_entanglement()
@@ -300,7 +305,7 @@ class ProductionGerminalCenter:
                     
         # Phase 6: Dream consolidation (periodic)
         if self.generation % 5 == 0:
-            print("\n💤 Phase 6: Dream Consolidation")
+            logger.info("\n💤 Phase 6: Dream Consolidation")
             self._execute_dream_phase()
         
         # Phase 7: Record and visualize
@@ -326,17 +331,18 @@ class ProductionGerminalCenter:
                 torch.cuda.empty_cache()
                 # Log memory usage AFTER cleanup
                 mem_after_cleanup = torch.cuda.memory_allocated() / 1e9
-                print(f"   - Cleared CUDA memory cache. Usage now: {mem_after_cleanup:.2f} GB")
+                logger.info(f"   - Cleared CUDA memory cache. Usage now: {mem_after_cleanup:.2f} GB")
 
         # Final generation summary log
         gen_time = time.time() - generation_start
-        print(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
+        logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
         
         
         
             
 # In the ProductionGerminalCenter class:
 
+    
     def _evaluate_population_parallel(self, antigens: List[Data]) -> Dict[str, float]:
         """
         True parallel GPU evaluation of the population.
@@ -372,8 +378,9 @@ class ProductionGerminalCenter:
                         active_genes = len([g for g in cell.genes if g.is_active])
                         complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
                         
-                        # Diversity bonus
-                        diversity_bonus = self._compute_cell_diversity(cell) * cfg.diversity_weight
+                        # Diversity bonus - pass the entire population, not just one cell
+                        diversity_metrics = self.vectorized_ops.compute_population_diversity_vectorized(self.population)
+                        diversity_bonus = diversity_metrics['shannon_index'] * cfg.diversity_weight
                         
                         fitness = mean_affinity - complexity_penalty + diversity_bonus
                         fitness_scores[cell_id] = fitness
@@ -390,8 +397,9 @@ class ProductionGerminalCenter:
                             representation_cpu = cell_representation.mean(dim=0).detach().cpu()
                             cell.store_memory(representation_cpu, fitness)
 
-        print(f"   Evaluated {len(fitness_scores)} cells in {num_batches} batches.")
+        logger.info(f"   Evaluated {len(fitness_scores)} cells in {num_batches} batches.")
         return fitness_scores
+    
     
     
     
@@ -442,7 +450,7 @@ class ProductionGerminalCenter:
         metrics.update(stem_metrics)
         
         # --- MODIFIED PRINT STATEMENT ---
-        print(
+        logger.info(
             f"   {TermColors.BOLD}📊 Metrics:{TermColors.RESET} "
             f"{TermColors.CYAN}💪 Fitness: {metrics['mean_fitness']:.3f} ± {metrics['fitness_variance']:.3f}{TermColors.RESET}, "
             f"{TermColors.MAGENTA}🌿 Diversity: {metrics['shannon_index']:.3f}{TermColors.RESET}, "
@@ -451,7 +459,7 @@ class ProductionGerminalCenter:
         
         # Print stem gene metrics if present
         if metrics.get('stem_gene_count', 0) > 0:
-            print(
+            logger.info(
                 f"   {TermColors.BOLD}🌱 Stem Genes:{TermColors.RESET} "
                 f"Count: {metrics['stem_gene_count']}, "
                 f"Differentiations: {metrics['differentiation_events']}, "
@@ -464,6 +472,7 @@ class ProductionGerminalCenter:
 
     # In ProductionGerminalCenter class:
 
+    
     def _compute_population_diversity(self) -> Dict[str, float]:
         """Compute multiple diversity metrics.
         MODIFIED: Optimized with vectorized operations.
@@ -528,6 +537,7 @@ class ProductionGerminalCenter:
         
         return (type_diversity + position_spread + depth_diversity) / 3
     
+    
     def _compute_stem_gene_metrics(self) -> Dict[str, float]:
         """Compute metrics for stem genes in the population"""
         stem_gene_count = 0
@@ -568,6 +578,7 @@ class ProductionGerminalCenter:
     
 # In the ProductionGerminalCenter class:
 
+    
     def _detect_population_stress(self, metrics: Dict[str, float]) -> float:
         """Sophisticated stress detection
         MODIFIED: Made more sensitive to fitness drops and amplified.
@@ -579,7 +590,7 @@ class ProductionGerminalCenter:
         #     current_fitness = self.fitness_landscape[-1]['mean_fitness']
         #     previous_fitness = self.fitness_landscape[-2]['mean_fitness']
         #     if current_fitness < previous_fitness:
-        #         print("   Hair-trigger stress detected due to fitness drop!")
+        #         logger.info("   Hair-trigger stress detected due to fitness drop!")
         #         return 1.0
 
         stress_factors = []
@@ -597,13 +608,13 @@ class ProductionGerminalCenter:
             stagnation_stress = 0.0
             if abs(delta) < STAGNATION_DELTA:
                 stagnation_stress = 1.0  # Full stress for stagnation
-                print(f"   Stagnation detected: Δfitness={delta:.4f} < {STAGNATION_DELTA}. Triggering panic transposition!")
+                logger.info(f"   Stagnation detected: Δfitness={delta:.4f} < {STAGNATION_DELTA}. Triggering panic transposition!")
             else:
                 # Also check for sustained decline
                 slope, intercept, r_value, p_value, std_err = stats.linregress(range(len(recent_fitness)), recent_fitness)
                 if slope < 0 and p_value < 0.05:
                     stagnation_stress = max(0, -slope * 100)
-                    print(f"   Sustained fitness decline detected (p={p_value:.3f}). Stress: {stagnation_stress:.2f}")
+                    logger.info(f"   Sustained fitness decline detected (p={p_value:.3f}). Stress: {stagnation_stress:.2f}")
 
             stress_factors.append(stagnation_stress)
         # Factor 2: Low diversity
@@ -633,21 +644,21 @@ class ProductionGerminalCenter:
         # --- CORRECTED PRINTING LOGIC ---
         if len(stress_factors) == 4:
             # This happens after generation cfg.stress_window
-            print(f"   Stress factors: stagnation={stress_factors[0]:.2f}, "
+            logger.info(f"   Stress factors: stagnation={stress_factors[0]:.2f}, "
                   f"diversity={stress_factors[1]:.2f}, "
                   f"variance={stress_factors[2]:.2f}, "
                   f"phase={stress_factors[3]:.2f}")
         elif len(stress_factors) == 3:
             # This happens in early generations (no stagnation factor)
-            print(f"   Stress factors: stagnation=N/A, "
+            logger.info(f"   Stress factors: stagnation=N/A, "
                   f"diversity={stress_factors[0]:.2f}, "
                   f"variance={stress_factors[1]:.2f}, "
                   f"phase={stress_factors[2]:.2f}")
         else:
             # Fallback for any other case
-            print(f"   Stress factors: {stress_factors}")
+            logger.info(f"   Stress factors: {stress_factors}")
 
-        print(f"   Combined amplified stress: {stress:.3f}")
+        logger.info(f"   Combined amplified stress: {stress:.3f}")
         
         return stress
 
@@ -672,7 +683,11 @@ class ProductionGerminalCenter:
             'generation': self.generation
         }
     
+    
+    
+    
     def _execute_stress_response(self):
+        logger.debug("Entering ProductionGerminalCenter._execute_stress_response")
         """
         Comprehensive stress response, incorporating a token budget for mutations,
         epigenetic modifications, and horizontal gene transfer.
@@ -681,11 +696,11 @@ class ProductionGerminalCenter:
         - Mitigation #3 (Mutation-Budget Token Bucket): Controls the rate of mutations.
         - Mitigation #5 (Deterministic Graph-Diff): Logs all successful mutations.
         """
-        print("   Executing stress response protocols:")
+        logger.info("   Executing stress response protocols:")
         
         # 1. Increase transposition rate (with token budget)
         # ========================================================================
-        print("   • Triggering transposition cascade (budgeted)")
+        logger.info("   • Triggering transposition cascade (budgeted)")
         
         # Refill tokens at the start of the stress response
         self.mutation_tokens = min(self.max_mutation_tokens, self.mutation_tokens + self.token_refill_rate)
@@ -736,11 +751,11 @@ class ProductionGerminalCenter:
                 if len(cell.genes) < cfg.max_genes_per_clone:
                     cell.genes.append(new_gene)
         
-        print(f"     - {transposition_success}/{transposition_attempts} mutations executed. Tokens remaining: {self.mutation_tokens:.1f}")
+        logger.info(f"     - {transposition_success}/{transposition_attempts} mutations executed. Tokens remaining: {self.mutation_tokens:.1f}")
 
         # 2. Epigenetic stress response
         # ========================================================================
-        print("   • Applying epigenetic modifications")
+        logger.info("   • Applying epigenetic modifications")
         epigenetic_count = 0
         # Limit to a subset for efficiency
         for cell in list(self.population.values())[:100]:
@@ -750,25 +765,25 @@ class ProductionGerminalCenter:
                     gene.add_methylation(sites, self.current_stress * 0.5)
                     epigenetic_count += 1
         
-        print(f"     - {epigenetic_count} genes epigenetically modified.")
+        logger.info(f"     - {epigenetic_count} genes epigenetically modified.")
 
         # 3. Horizontal gene transfer
         # ========================================================================
-        print("   • Facilitating horizontal gene transfer")
+        logger.info("   • Facilitating horizontal gene transfer")
         
         # Fetch the last input batch to use for signature calculation (Mitigation #4)
         if self.input_batch_history:
             calibration_antigens = [a.to(cfg.device) for a in self.input_batch_history[-1]]
             calibration_batch = Batch.from_data_list(calibration_antigens)
             transfer_count = self._execute_horizontal_transfer(calibration_batch)
-            print(f"     - {transfer_count} successful gene transfers.")
+            logger.info(f"     - {transfer_count} successful gene transfers.")
         else:
-            print("     - Skipping HGT (no input history for calibration).")
+            logger.info("     - Skipping HGT (no input history for calibration).")
 
         # 4. Inject diversity if critically low
         # ========================================================================
         if self.diversity_metrics and self.diversity_metrics[-1]['shannon_index'] < 0.5:
-            print("   • Injecting new diverse individuals due to low diversity.")
+            logger.info("   • Injecting new diverse individuals due to low diversity.")
             self._add_random_individuals(50)
             
         
@@ -776,6 +791,7 @@ class ProductionGerminalCenter:
 
 
 
+    
     def _execute_horizontal_transfer(self, calibration_batch: Data) -> int:
         """
         Execute horizontal gene transfer between cells, with signature-based compatibility checks.
@@ -792,13 +808,20 @@ class ProductionGerminalCenter:
             cell.fitness_history[-1] for cell in self.population.values() if cell.fitness_history
         ]
         if not all_fitness_scores:
+            logger.debug(f"     HGT DEBUG: No fitness scores available, returning 0")
             return 0 # Cannot proceed without fitness scores
             
         fitness_threshold = np.percentile(all_fitness_scores, 70)
+        logger.debug(f"     HGT DEBUG: Fitness threshold (70th percentile): {fitness_threshold:.3f}")
+        
+        # Count high-fitness cells
+        high_fitness_cells = 0
+        plasmids_extracted = 0
         
         # Donor cells release plasmids into the shared pool
         for cell in self.population.values():
             if cell.fitness_history and cell.fitness_history[-1] > fitness_threshold:
+                high_fitness_cells += 1
                 # The extract_plasmid method needs to be updated to add the signature
                 
                 # First, ensure the cell has a signature
@@ -808,11 +831,15 @@ class ProductionGerminalCenter:
                 # Now, extract the plasmid
                 plasmid = cell.extract_plasmid()
                 if plasmid:
+                    plasmids_extracted += 1
                     # Add the signature to the plasmid for the handshake
                     plasmid['signature'] = cell._signature_cache
                     self.plasmid_pool.append(plasmid)
 
+        logger.debug(f"     HGT DEBUG: {high_fitness_cells} high-fitness cells, {plasmids_extracted} plasmids extracted, pool size: {len(self.plasmid_pool)}")
+
         if not self.plasmid_pool:
+            logger.debug(f"     HGT DEBUG: No plasmids in pool, returning 0")
             return 0 # No plasmids were created
 
         # --- 2. Recipient Cells Attempt to Integrate Plasmids ---
@@ -823,21 +850,28 @@ class ProductionGerminalCenter:
             min(100, len(self.population)) # Limit to 100 attempts for efficiency
         )
         
+        integration_attempts = 0
+        
         for cell in recipient_cells:
             # Check if this cell will attempt to take up a plasmid
-            if random.random() < cfg.horizontal_transfer_prob * (1 + self.current_stress):
+            hgt_prob = cfg.horizontal_transfer_prob * (1 + self.current_stress)
+            if random.random() < hgt_prob:
+                integration_attempts += 1
                 # Pick a random plasmid from the pool
                 plasmid_to_integrate = random.choice(list(self.plasmid_pool))
                 
                 # The integrate_plasmid method performs the handshake
                 if cell.integrate_plasmid(plasmid_to_integrate, calibration_batch):
                     transfer_count += 1
-                    print(f"   - Successful HGT: Cell {cell.cell_id[:8]} integrated plasmid from {plasmid_to_integrate['donor_cell'][:8]}")
+                    logger.info(f"   - Successful HGT: Cell {cell.cell_id[:8]} integrated plasmid from {plasmid_to_integrate['donor_cell'][:8]}")
 
+        logger.debug(f"     HGT DEBUG: {integration_attempts} integration attempts, HGT probability: {hgt_prob:.3f}")
         return transfer_count
 
 
+    
     def _selection_and_reproduction(self, fitness_scores: Dict[str, float]):
+        logger.debug("Entering ProductionGerminalCenter._selection_and_reproduction")
         """
         Natural selection with multiple strategies.
         MODIFIED: Uses a memory-efficient 'recycling' strategy to prevent OOM errors.
@@ -857,7 +891,7 @@ class ProductionGerminalCenter:
         if not parents: # Edge case if all cells are eliminated
             parents = [self.population[sorted_cells[0][0]]]
 
-        print(f"   Selection complete: {len(survivor_ids)} survivors, {len(eliminated_ids)} to be recycled.")
+        logger.info(f"   Selection complete: {len(survivor_ids)} survivors, {len(eliminated_ids)} to be recycled.")
 
         # Recycle eliminated cells into children of survivors
         recycled_count = 0
@@ -872,28 +906,27 @@ class ProductionGerminalCenter:
             recycled_cell.recycle_as_child(parent)
             recycled_count += 1
 
-        print(f"   Recycled {recycled_count} cells as new offspring.")
+        logger.info(f"   Recycled {recycled_count} cells as new offspring.")
         
         # The population dictionary itself remains the same size, but its contents are updated.
         # We just need to handle the case where the population needs to grow.
         current_pop_size = len(self.population)
         while current_pop_size < cfg.max_population and current_pop_size < len(fitness_scores) * 1.5:
-             parent = random.choice(parents)
-             child = parent.clone() # Use the old clone method just for population growth
-             self.population[child.cell_id] = child
-             current_pop_size += 1
-             if current_pop_size >= cfg.max_population:
-                 break
+            parent = random.choice(parents)
+            child = parent.clone() # Use the old clone method just for population growth
+            self.population[child.cell_id] = child
+            current_pop_size += 1
+            if current_pop_size >= cfg.max_population:
+                break
         
-        print(f"   New population size: {len(self.population)}")
+        logger.info(f"   New population size: {len(self.population)}")
         
         # Clear the cache to force a rebuild with the new (recycled) cell states
         self._parallel_batch_cache = None
         self._cached_cell_ids_hash = None
-        print("   - Parallel batch cache cleared.")
+        logger.info("   - Parallel batch cache cleared.")
     
-    
-    
+        
     def _tournament_selection(self, fitness_scores: Dict[str, float], 
                             num_survivors: int) -> List[str]:
         """Tournament selection for diversity"""
@@ -964,8 +997,8 @@ class ProductionGerminalCenter:
         return child
     
     
-        
     def _execute_dream_phase(self):
+        logger.debug("Entering ProductionGerminalCenter._execute_dream_phase")
         """Execute dream consolidation"""
         # Record experiences
         for cell in random.sample(list(self.population.values()), 
@@ -991,7 +1024,9 @@ class ProductionGerminalCenter:
         # Run dream consolidation
         self.dream_engine.dream_phase(self.population, cfg.dream_cycles_per_generation)
     
+    
     def _record_generation_data(self, metrics: Dict[str, float], generation_time: float):
+        logger.debug("Entering ProductionGerminalCenter._record_generation_data")
         """Record comprehensive generation data"""
         # Update histories
         self.fitness_landscape.append({
@@ -1010,7 +1045,9 @@ class ProductionGerminalCenter:
         if self.generation % cfg.checkpoint_interval == 0:
             self._save_checkpoint()
     
+    
     def _execute_scheduled_tasks(self):
+        logger.debug("Entering ProductionGerminalCenter._execute_scheduled_tasks")
         """Execute any scheduled tasks"""
         completed_tasks = []
         
@@ -1023,7 +1060,9 @@ class ProductionGerminalCenter:
         for task in completed_tasks:
             self.scheduled_tasks.remove(task)
     
+    
     def _save_checkpoint(self):
+        logger.debug("Entering ProductionGerminalCenter._save_checkpoint")
         """Save population checkpoint"""
         checkpoint_path = os.path.join(cfg.save_dir, f'checkpoint_gen_{self.generation}.pt')
         
@@ -1070,4 +1109,208 @@ class ProductionGerminalCenter:
                 }
         
         torch.save(checkpoint, checkpoint_path)
-        print(f"   💾 Saved checkpoint to {checkpoint_path}")
+        logger.info(f"   💾 Saved checkpoint to {checkpoint_path}")
+
+
+
+    
+    def evolve_generation(self, antigens: List[Data]):
+        """Optimized evolution with minimal overhead"""
+        generation_start = time.time()
+        
+        # Get logger instance
+        self.generation += 1
+        
+        # Write visualization state for every generation
+        set_germinal_center(self)  # Set the global reference
+        
+        # Write state for the first cell (or best cell) in population
+        if self.population:
+            first_cell_id = list(self.population.keys())[0]
+            first_cell = self.population[first_cell_id]
+            if hasattr(first_cell, 'architecture_modifier'):
+                write_visualization_state(first_cell_id, first_cell.architecture_modifier)
+        
+        logger.info(f"\n{'='*80}")
+        logger.info(f"GENERATION {self.generation}")
+        logger.info(f"{'='*80}")
+        
+        # Store input history for replay/HGT
+        self.input_batch_history.append([a.to('cpu') for a in antigens])
+        
+        # Phase 1: Fast fitness evaluation
+        logger.info("\n📊 Phase 1: Fitness Evaluation (Optimized)")
+        fitness_scores = self.batch_evaluator.evaluate_population_batch(
+            self.population, antigens
+        )
+        
+        # Phase 2: Compute metrics and detect stress
+        logger.info("\n📈 Phase 2: Metrics and Stress Detection")
+        metrics = self._compute_comprehensive_metrics(fitness_scores)
+        self.current_stress = self._detect_population_stress(metrics)
+        
+        # Force stress at generation 3 (from original)
+        if self.generation == 3:
+            logger.info("\n🔥 DEBUG: Forcing maximum stress at Generation 3.")
+            self.current_stress = 1.0
+        logger.info(f"   Current stress level: {self.current_stress:.3f}")
+        
+        # Phase 3: Phase transition detection
+        logger.info("\n🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍")
+        population_state = self._get_population_state()
+        intervention_func = self.phase_detector.update(metrics, population_state)
+        
+        if intervention_func:
+            intervention_func(self)
+        
+        # Phase 4: Stress response
+        if self.current_stress > cfg.stress_threshold:
+            logger.info(f"\n⚠️⚠️   Phase 4: High Stress Response (stress={self.current_stress:.3f})  ⚠️ ⚠️ ")
+            self._execute_stress_response()
+        
+        # Phase 5: Fast selection and reproduction
+        logger.info("\n🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬")
+        self._selection_and_reproduction_fast(fitness_scores)
+        
+        # Phase 6: Dream consolidation (periodic)
+        if self.generation % 5 == 0:
+            logger.info("\n💤 Phase 6: Dream Consolidation")
+            self._execute_dream_phase()
+        
+        # Record and visualize
+        self._record_generation_data(metrics, time.time() - generation_start)
+        
+        # Execute scheduled tasks
+        self._execute_scheduled_tasks()
+        
+        # Memory cleanup
+        if self.generation % 2 == 0:
+            self._cleanup_memory()
+        
+        gen_time = time.time() - generation_start
+        logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
+    
+    
+    def _selection_and_reproduction_fast(self, fitness_scores: Dict[str, float]):
+        logger.debug("Entering ProductionGerminalCenter._selection_and_reproduction_fast")
+        """Optimized selection using fast cloning"""
+        if not fitness_scores:
+            return
+        
+        sorted_cells = sorted(fitness_scores.items(), key=lambda x: x[1], reverse=True)
+        
+        # Identify survivors and those to be eliminated
+        num_survivors = int(len(sorted_cells) * (1 - cfg.selection_pressure))
+        survivor_ids = {cid for cid, _ in sorted_cells[:num_survivors]}
+        eliminated_ids = [cid for cid, _ in sorted_cells[num_survivors:]]
+        
+        # Get parent cells
+        parents = [self.population[cid] for cid in survivor_ids]
+        if not parents:
+            parents = [self.population[sorted_cells[0][0]]]
+        
+        logger.info(f"   Selection complete: {len(survivor_ids)} survivors, {len(eliminated_ids)} to be replaced.")
+        
+        # Replace eliminated cells with fast clones
+        replaced_count = 0
+        for i, cell_id_to_replace in enumerate(eliminated_ids):
+            parent = parents[i % len(parents)]
+            
+            # Use fast clone
+            child = self.clone_pool.fast_clone(parent)
+            
+            # Replace in population
+            del self.population[cell_id_to_replace]
+            self.population[child.cell_id] = child
+            replaced_count += 1
+        
+        logger.info(f"   Replaced {replaced_count} cells with optimized cloning.")
+        
+        # Handle population growth if needed
+        current_pop_size = len(self.population)
+        while current_pop_size < cfg.max_population and current_pop_size < len(fitness_scores) * 1.5:
+            parent = random.choice(parents)
+            child = self.clone_pool.fast_clone(parent)
+            self.population[child.cell_id] = child
+            current_pop_size += 1
+            if current_pop_size >= cfg.max_population:
+                break
+        
+        logger.info(f"   New population size: {len(self.population)}")
+        
+        # Clear cache
+        self._parallel_batch_cache = None
+        self._cached_cell_ids_hash = None
+        logger.info("   - Parallel batch cache cleared.")
+    
+    
+    def _cleanup_memory(self):
+        logger.debug("Entering ProductionGerminalCenter._cleanup_memory")
+        """Aggressive memory cleanup"""
+        # Clear old history
+        for cell in self.population.values():
+            if len(cell.fitness_history) > 50:
+                cell.fitness_history = deque(list(cell.fitness_history)[-50:], maxlen=100)
+        
+        # Force garbage collection
+        import gc
+        gc.collect()
+        
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            mem_usage = torch.cuda.memory_allocated() / 1e9
+            logger.info(f"   - Cleared CUDA memory cache. Usage now: {mem_usage:.2f} GB")
+
+
+
+
+
+    
+    def _create_random_cell_with_quantum(self) -> ProductionBCell:
+        """Create cell with random gene configuration, including quantum genes"""
+        genes = []
+        
+        # V genes (variable region)
+        num_v = random.randint(1, 4)
+        for _ in range(num_v):
+            # 20% chance of quantum gene
+            if random.random() < 0.2:
+                gene = QuantumGeneModule('V', random.randint(1, 100))
+                logger.info("   ✨✨ A Quantum Gene has emerged!  ✨✨")
+            else:
+                gene = ContinuousDepthGeneModule('V', random.randint(1, 100))
+            
+            gene.position = np.clip(np.random.normal(0.15, 0.1), 0, 0.3)
+            gene.log_depth.data = torch.tensor(np.random.normal(0, 0.3))
+            genes.append(gene)
+        
+        # D genes (diversity region)
+        num_d = random.randint(1, 3)
+        for _ in range(num_d):
+            # 20% chance of quantum gene
+            if random.random() < 0.2:
+                gene = QuantumGeneModule('D', random.randint(1, 50))
+                logger.info("   ✨✨ A Quantum Gene has emerged!  ✨✨")
+            else:
+                gene = ContinuousDepthGeneModule('D', random.randint(1, 50))
+            
+            gene.position = np.clip(np.random.normal(0.45, 0.1), 0.3, 0.6)
+            gene.log_depth.data = torch.tensor(np.random.normal(0, 0.2))
+            genes.append(gene)
+        
+        # J genes (joining region)
+        num_j = random.randint(1, 2)
+        for _ in range(num_j):
+            # 20% chance of quantum gene
+            if random.random() < 0.2:
+                gene = QuantumGeneModule('J', random.randint(1, 10))
+                logger.info("   ✨✨ A Quantum Gene has emerged!  ✨✨")
+            else:
+                gene = ContinuousDepthGeneModule('J', random.randint(1, 10))
+            
+            gene.position = np.clip(np.random.normal(0.8, 0.1), 0.6, 1.0)
+            gene.log_depth.data = torch.tensor(np.random.normal(0, 0.2))
+            genes.append(gene)
+        
+        return ProductionBCell(genes).to(cfg.device)
+

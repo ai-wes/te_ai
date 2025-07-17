@@ -1,0 +1,2039 @@
+{
+  "cells": [
+    {
+      "cell_id": "ca5bfbc6-a8e7-4afe-81ed-159b1c16cda3",
+      "index": 0,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S4-a250d4e4",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9488998651504517,
+          "activation": 0.0,
+          "variant_id": 4,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S9-65838d34",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.031333088874817,
+          "activation": 0.0,
+          "variant_id": 9,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S5-4dd8c06b",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.035416603088379,
+          "activation": 0.0,
+          "variant_id": 5,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S18-46066075",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1218593120574951,
+          "activation": 0.0,
+          "variant_id": 18,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V4-edb44747",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9069821238517761,
+          "activation": 0.0,
+          "variant_id": 4,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D39-954d22bc",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.421812891960144,
+          "activation": 0.0,
+          "variant_id": 39,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J9-977bce4d",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0321122407913208,
+          "activation": 0.0,
+          "variant_id": 9,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V100-75d5b28a",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 100,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": {
+        "dna": "START-DIM:128-LAYERS:3-CONN:SEQUENTIAL-ACT:RELU-NORM:LAYER-END",
+        "modules": [
+          "transform_0",
+          "transform_1",
+          "transform_2",
+          "output"
+        ],
+        "connections": {
+          "transform_0": [
+            "transform_1"
+          ],
+          "transform_1": [
+            "transform_2"
+          ],
+          "transform_2": [
+            "output"
+          ]
+        },
+        "modifications": 0
+      },
+      "connections": [
+        {
+          "source": "S4-a250d4e4",
+          "target": "S9-65838d34",
+          "strength": 0.125
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "S5-4dd8c06b",
+          "strength": 0.25
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "S18-46066075",
+          "strength": 0.375
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "V4-edb44747",
+          "strength": 0.5
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "D39-954d22bc",
+          "strength": 0.625
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "J9-977bce4d",
+          "strength": 0.75
+        },
+        {
+          "source": "S4-a250d4e4",
+          "target": "V100-75d5b28a",
+          "strength": 0.875
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "S5-4dd8c06b",
+          "strength": 0.125
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "S18-46066075",
+          "strength": 0.25
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "V4-edb44747",
+          "strength": 0.375
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "D39-954d22bc",
+          "strength": 0.5
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "J9-977bce4d",
+          "strength": 0.625
+        },
+        {
+          "source": "S9-65838d34",
+          "target": "V100-75d5b28a",
+          "strength": 0.75
+        },
+        {
+          "source": "S5-4dd8c06b",
+          "target": "S18-46066075",
+          "strength": 0.125
+        },
+        {
+          "source": "S5-4dd8c06b",
+          "target": "V4-edb44747",
+          "strength": 0.25
+        },
+        {
+          "source": "S5-4dd8c06b",
+          "target": "D39-954d22bc",
+          "strength": 0.375
+        },
+        {
+          "source": "S5-4dd8c06b",
+          "target": "J9-977bce4d",
+          "strength": 0.5
+        },
+        {
+          "source": "S5-4dd8c06b",
+          "target": "V100-75d5b28a",
+          "strength": 0.625
+        },
+        {
+          "source": "S18-46066075",
+          "target": "V4-edb44747",
+          "strength": 0.125
+        },
+        {
+          "source": "S18-46066075",
+          "target": "D39-954d22bc",
+          "strength": 0.25
+        },
+        {
+          "source": "S18-46066075",
+          "target": "J9-977bce4d",
+          "strength": 0.375
+        },
+        {
+          "source": "S18-46066075",
+          "target": "V100-75d5b28a",
+          "strength": 0.5
+        },
+        {
+          "source": "V4-edb44747",
+          "target": "D39-954d22bc",
+          "strength": 0.125
+        },
+        {
+          "source": "V4-edb44747",
+          "target": "J9-977bce4d",
+          "strength": 0.25
+        },
+        {
+          "source": "V4-edb44747",
+          "target": "V100-75d5b28a",
+          "strength": 0.375
+        },
+        {
+          "source": "D39-954d22bc",
+          "target": "J9-977bce4d",
+          "strength": 0.125
+        },
+        {
+          "source": "D39-954d22bc",
+          "target": "V100-75d5b28a",
+          "strength": 0.25
+        },
+        {
+          "source": "J9-977bce4d",
+          "target": "V100-75d5b28a",
+          "strength": 0.125
+        }
+      ]
+    },
+    {
+      "cell_id": "7515c756-efe0-41c4-b231-1ea3af25e6a5",
+      "index": 1,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S19-63c16852",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9872289896011353,
+          "activation": 0.0,
+          "variant_id": 19,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S1-b990292a",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9104019999504089,
+          "activation": 0.0,
+          "variant_id": 1,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S6-0051a8dc",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9394638538360596,
+          "activation": 0.0,
+          "variant_id": 6,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V20-6fae1698",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9612846970558167,
+          "activation": 0.0,
+          "variant_id": 20,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J7-95162e24",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1675819158554077,
+          "activation": 0.0,
+          "variant_id": 7,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D201-ccd7e43c",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 201,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S19-63c16852",
+          "target": "S1-b990292a",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S19-63c16852",
+          "target": "S6-0051a8dc",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S19-63c16852",
+          "target": "V20-6fae1698",
+          "strength": 0.5
+        },
+        {
+          "source": "S19-63c16852",
+          "target": "J7-95162e24",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S19-63c16852",
+          "target": "D201-ccd7e43c",
+          "strength": 0.8333333333333334
+        },
+        {
+          "source": "S1-b990292a",
+          "target": "S6-0051a8dc",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S1-b990292a",
+          "target": "V20-6fae1698",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S1-b990292a",
+          "target": "J7-95162e24",
+          "strength": 0.5
+        },
+        {
+          "source": "S1-b990292a",
+          "target": "D201-ccd7e43c",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S6-0051a8dc",
+          "target": "V20-6fae1698",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S6-0051a8dc",
+          "target": "J7-95162e24",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S6-0051a8dc",
+          "target": "D201-ccd7e43c",
+          "strength": 0.5
+        },
+        {
+          "source": "V20-6fae1698",
+          "target": "J7-95162e24",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "V20-6fae1698",
+          "target": "D201-ccd7e43c",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "J7-95162e24",
+          "target": "D201-ccd7e43c",
+          "strength": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "cell_id": "5ed0bbcd-278d-4a9f-a2b4-d4d1771d6d37",
+      "index": 2,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S20-4dc4159d",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9416922926902771,
+          "activation": 0.0,
+          "variant_id": 20,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S2-f35134d3",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9141746759414673,
+          "activation": 0.0,
+          "variant_id": 2,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S18-db6eae61",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9330309629440308,
+          "activation": 0.0,
+          "variant_id": 18,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D19-856f58ef",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9046042561531067,
+          "activation": 0.0,
+          "variant_id": 19,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J6-d02e9a15",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8499677777290344,
+          "activation": 0.0,
+          "variant_id": 6,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "A0-ae0ce27d",
+          "gene_type": "A",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 302,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S20-4dc4159d",
+          "target": "S2-f35134d3",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S20-4dc4159d",
+          "target": "S18-db6eae61",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S20-4dc4159d",
+          "target": "D19-856f58ef",
+          "strength": 0.5
+        },
+        {
+          "source": "S20-4dc4159d",
+          "target": "J6-d02e9a15",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S20-4dc4159d",
+          "target": "A0-ae0ce27d",
+          "strength": 0.8333333333333334
+        },
+        {
+          "source": "S2-f35134d3",
+          "target": "S18-db6eae61",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S2-f35134d3",
+          "target": "D19-856f58ef",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S2-f35134d3",
+          "target": "J6-d02e9a15",
+          "strength": 0.5
+        },
+        {
+          "source": "S2-f35134d3",
+          "target": "A0-ae0ce27d",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S18-db6eae61",
+          "target": "D19-856f58ef",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S18-db6eae61",
+          "target": "J6-d02e9a15",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S18-db6eae61",
+          "target": "A0-ae0ce27d",
+          "strength": 0.5
+        },
+        {
+          "source": "D19-856f58ef",
+          "target": "J6-d02e9a15",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "D19-856f58ef",
+          "target": "A0-ae0ce27d",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "J6-d02e9a15",
+          "target": "A0-ae0ce27d",
+          "strength": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "cell_id": "3486e9ce-5164-4e66-90b2-52b7f421aa99",
+      "index": 3,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S3-3855f916",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9736857414245605,
+          "activation": 0.0,
+          "variant_id": 3,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S8-cb457656",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9244162440299988,
+          "activation": 0.0,
+          "variant_id": 8,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S3-0875a50a",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1497902870178223,
+          "activation": 0.0,
+          "variant_id": 3,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S4-b49b78c6",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9266219735145569,
+          "activation": 0.0,
+          "variant_id": 4,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V47-4ce455f4",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1510043144226074,
+          "activation": 0.0,
+          "variant_id": 47,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D43-519bab15",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9180492162704468,
+          "activation": 0.0,
+          "variant_id": 43,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V103-b515cfcf",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 103,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S3-3855f916",
+          "target": "S8-cb457656",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S3-3855f916",
+          "target": "S3-0875a50a",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S3-3855f916",
+          "target": "S4-b49b78c6",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S3-3855f916",
+          "target": "V47-4ce455f4",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S3-3855f916",
+          "target": "D43-519bab15",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S3-3855f916",
+          "target": "V103-b515cfcf",
+          "strength": 0.8571428571428571
+        },
+        {
+          "source": "S8-cb457656",
+          "target": "S3-0875a50a",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S8-cb457656",
+          "target": "S4-b49b78c6",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S8-cb457656",
+          "target": "V47-4ce455f4",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S8-cb457656",
+          "target": "D43-519bab15",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S8-cb457656",
+          "target": "V103-b515cfcf",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S3-0875a50a",
+          "target": "S4-b49b78c6",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S3-0875a50a",
+          "target": "V47-4ce455f4",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S3-0875a50a",
+          "target": "D43-519bab15",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S3-0875a50a",
+          "target": "V103-b515cfcf",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S4-b49b78c6",
+          "target": "V47-4ce455f4",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S4-b49b78c6",
+          "target": "D43-519bab15",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S4-b49b78c6",
+          "target": "V103-b515cfcf",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "V47-4ce455f4",
+          "target": "D43-519bab15",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "V47-4ce455f4",
+          "target": "V103-b515cfcf",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "D43-519bab15",
+          "target": "V103-b515cfcf",
+          "strength": 0.14285714285714285
+        }
+      ]
+    },
+    {
+      "cell_id": "1f9e654e-9134-48a7-948b-5cc7596a95ac",
+      "index": 4,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S3-58141021",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1910184621810913,
+          "activation": 0.0,
+          "variant_id": 3,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S6-2c37824c",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0783804655075073,
+          "activation": 0.0,
+          "variant_id": 6,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S8-f750f757",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.948982834815979,
+          "activation": 0.0,
+          "variant_id": 8,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S13-a9b60866",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8992546200752258,
+          "activation": 0.0,
+          "variant_id": 13,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D15-7ed92b4c",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9100962281227112,
+          "activation": 0.0,
+          "variant_id": 15,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D204-8c865e9e",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 204,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S3-58141021",
+          "target": "S6-2c37824c",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S3-58141021",
+          "target": "S8-f750f757",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S3-58141021",
+          "target": "S13-a9b60866",
+          "strength": 0.5
+        },
+        {
+          "source": "S3-58141021",
+          "target": "D15-7ed92b4c",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S3-58141021",
+          "target": "D204-8c865e9e",
+          "strength": 0.8333333333333334
+        },
+        {
+          "source": "S6-2c37824c",
+          "target": "S8-f750f757",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S6-2c37824c",
+          "target": "S13-a9b60866",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S6-2c37824c",
+          "target": "D15-7ed92b4c",
+          "strength": 0.5
+        },
+        {
+          "source": "S6-2c37824c",
+          "target": "D204-8c865e9e",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S8-f750f757",
+          "target": "S13-a9b60866",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S8-f750f757",
+          "target": "D15-7ed92b4c",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S8-f750f757",
+          "target": "D204-8c865e9e",
+          "strength": 0.5
+        },
+        {
+          "source": "S13-a9b60866",
+          "target": "D15-7ed92b4c",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S13-a9b60866",
+          "target": "D204-8c865e9e",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "D15-7ed92b4c",
+          "target": "D204-8c865e9e",
+          "strength": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "cell_id": "f5c943c4-9acf-4f31-a739-e1081440c455",
+      "index": 5,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S8-40701fc2",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9117742776870728,
+          "activation": 0.0,
+          "variant_id": 8,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S11-9a64b836",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.3774315118789673,
+          "activation": 0.0,
+          "variant_id": 11,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V73-10cf987b",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.7932512164115906,
+          "activation": 0.0,
+          "variant_id": 73,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D42-eb9981fd",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1166366338729858,
+          "activation": 0.0,
+          "variant_id": 42,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "A0-d39b92c4",
+          "gene_type": "A",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 305,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S8-40701fc2",
+          "target": "S11-9a64b836",
+          "strength": 0.2
+        },
+        {
+          "source": "S8-40701fc2",
+          "target": "V73-10cf987b",
+          "strength": 0.4
+        },
+        {
+          "source": "S8-40701fc2",
+          "target": "D42-eb9981fd",
+          "strength": 0.6
+        },
+        {
+          "source": "S8-40701fc2",
+          "target": "A0-d39b92c4",
+          "strength": 0.8
+        },
+        {
+          "source": "S11-9a64b836",
+          "target": "V73-10cf987b",
+          "strength": 0.2
+        },
+        {
+          "source": "S11-9a64b836",
+          "target": "D42-eb9981fd",
+          "strength": 0.4
+        },
+        {
+          "source": "S11-9a64b836",
+          "target": "A0-d39b92c4",
+          "strength": 0.6
+        },
+        {
+          "source": "V73-10cf987b",
+          "target": "D42-eb9981fd",
+          "strength": 0.2
+        },
+        {
+          "source": "V73-10cf987b",
+          "target": "A0-d39b92c4",
+          "strength": 0.4
+        },
+        {
+          "source": "D42-eb9981fd",
+          "target": "A0-d39b92c4",
+          "strength": 0.2
+        }
+      ]
+    },
+    {
+      "cell_id": "9dcd22ee-7080-4576-87fb-5cd96d8deca0",
+      "index": 6,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S15-ac541b75",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8858036398887634,
+          "activation": 0.0,
+          "variant_id": 15,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S5-ae391fb1",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0427178144454956,
+          "activation": 0.0,
+          "variant_id": 5,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S18-814d6fea",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0023084878921509,
+          "activation": 0.0,
+          "variant_id": 18,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S19-addca6ff",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9245169162750244,
+          "activation": 0.0,
+          "variant_id": 19,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V47-bd0419f3",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.7773360013961792,
+          "activation": 0.0,
+          "variant_id": 47,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J2-9874a592",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.4640626907348633,
+          "activation": 0.0,
+          "variant_id": 2,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V106-27463518",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 106,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S15-ac541b75",
+          "target": "S5-ae391fb1",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S15-ac541b75",
+          "target": "S18-814d6fea",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S15-ac541b75",
+          "target": "S19-addca6ff",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S15-ac541b75",
+          "target": "V47-bd0419f3",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S15-ac541b75",
+          "target": "J2-9874a592",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S15-ac541b75",
+          "target": "V106-27463518",
+          "strength": 0.8571428571428571
+        },
+        {
+          "source": "S5-ae391fb1",
+          "target": "S18-814d6fea",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S5-ae391fb1",
+          "target": "S19-addca6ff",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S5-ae391fb1",
+          "target": "V47-bd0419f3",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S5-ae391fb1",
+          "target": "J2-9874a592",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S5-ae391fb1",
+          "target": "V106-27463518",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S18-814d6fea",
+          "target": "S19-addca6ff",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S18-814d6fea",
+          "target": "V47-bd0419f3",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S18-814d6fea",
+          "target": "J2-9874a592",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S18-814d6fea",
+          "target": "V106-27463518",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S19-addca6ff",
+          "target": "V47-bd0419f3",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S19-addca6ff",
+          "target": "J2-9874a592",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S19-addca6ff",
+          "target": "V106-27463518",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "V47-bd0419f3",
+          "target": "J2-9874a592",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "V47-bd0419f3",
+          "target": "V106-27463518",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "J2-9874a592",
+          "target": "V106-27463518",
+          "strength": 0.14285714285714285
+        }
+      ]
+    },
+    {
+      "cell_id": "b6629f8c-9add-40ac-a4fd-c830fe64c23f",
+      "index": 7,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S5-2de46b3e",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9954776763916016,
+          "activation": 0.0,
+          "variant_id": 5,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S14-8b25ad21",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8729998469352722,
+          "activation": 0.0,
+          "variant_id": 14,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V77-14dbd23d",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9143463969230652,
+          "activation": 0.0,
+          "variant_id": 77,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D36-0fc315b7",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1279290914535522,
+          "activation": 0.0,
+          "variant_id": 36,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J2-d697969b",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.156638741493225,
+          "activation": 0.0,
+          "variant_id": 2,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D207-f7be0935",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 207,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S5-2de46b3e",
+          "target": "S14-8b25ad21",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S5-2de46b3e",
+          "target": "V77-14dbd23d",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S5-2de46b3e",
+          "target": "D36-0fc315b7",
+          "strength": 0.5
+        },
+        {
+          "source": "S5-2de46b3e",
+          "target": "J2-d697969b",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S5-2de46b3e",
+          "target": "D207-f7be0935",
+          "strength": 0.8333333333333334
+        },
+        {
+          "source": "S14-8b25ad21",
+          "target": "V77-14dbd23d",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S14-8b25ad21",
+          "target": "D36-0fc315b7",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S14-8b25ad21",
+          "target": "J2-d697969b",
+          "strength": 0.5
+        },
+        {
+          "source": "S14-8b25ad21",
+          "target": "D207-f7be0935",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "V77-14dbd23d",
+          "target": "D36-0fc315b7",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "V77-14dbd23d",
+          "target": "J2-d697969b",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "V77-14dbd23d",
+          "target": "D207-f7be0935",
+          "strength": 0.5
+        },
+        {
+          "source": "D36-0fc315b7",
+          "target": "J2-d697969b",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "D36-0fc315b7",
+          "target": "D207-f7be0935",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "J2-d697969b",
+          "target": "D207-f7be0935",
+          "strength": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "cell_id": "327f7e30-2e34-4d6d-87ae-1d8d4ba32092",
+      "index": 8,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S9-f8a5447d",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9045571088790894,
+          "activation": 0.0,
+          "variant_id": 9,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S11-23f60ea2",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8895729184150696,
+          "activation": 0.0,
+          "variant_id": 11,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S14-307e818e",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9965943098068237,
+          "activation": 0.0,
+          "variant_id": 14,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S1-d3b519c6",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0892598628997803,
+          "activation": 0.0,
+          "variant_id": 1,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D33-c62ed6d2",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.3496222496032715,
+          "activation": 0.0,
+          "variant_id": 33,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J2-f8be8435",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0175011157989502,
+          "activation": 0.0,
+          "variant_id": 2,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "A0-6306df8c",
+          "gene_type": "A",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 308,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S9-f8a5447d",
+          "target": "S11-23f60ea2",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S9-f8a5447d",
+          "target": "S14-307e818e",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S9-f8a5447d",
+          "target": "S1-d3b519c6",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S9-f8a5447d",
+          "target": "D33-c62ed6d2",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S9-f8a5447d",
+          "target": "J2-f8be8435",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S9-f8a5447d",
+          "target": "A0-6306df8c",
+          "strength": 0.8571428571428571
+        },
+        {
+          "source": "S11-23f60ea2",
+          "target": "S14-307e818e",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S11-23f60ea2",
+          "target": "S1-d3b519c6",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S11-23f60ea2",
+          "target": "D33-c62ed6d2",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S11-23f60ea2",
+          "target": "J2-f8be8435",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S11-23f60ea2",
+          "target": "A0-6306df8c",
+          "strength": 0.7142857142857143
+        },
+        {
+          "source": "S14-307e818e",
+          "target": "S1-d3b519c6",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S14-307e818e",
+          "target": "D33-c62ed6d2",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S14-307e818e",
+          "target": "J2-f8be8435",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "S14-307e818e",
+          "target": "A0-6306df8c",
+          "strength": 0.5714285714285714
+        },
+        {
+          "source": "S1-d3b519c6",
+          "target": "D33-c62ed6d2",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "S1-d3b519c6",
+          "target": "J2-f8be8435",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "S1-d3b519c6",
+          "target": "A0-6306df8c",
+          "strength": 0.42857142857142855
+        },
+        {
+          "source": "D33-c62ed6d2",
+          "target": "J2-f8be8435",
+          "strength": 0.14285714285714285
+        },
+        {
+          "source": "D33-c62ed6d2",
+          "target": "A0-6306df8c",
+          "strength": 0.2857142857142857
+        },
+        {
+          "source": "J2-f8be8435",
+          "target": "A0-6306df8c",
+          "strength": 0.14285714285714285
+        }
+      ]
+    },
+    {
+      "cell_id": "cbaf1d17-c2f2-49af-ae51-b57e85aff8fe",
+      "index": 9,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S17-ad5ff393",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9770090579986572,
+          "activation": 0.0,
+          "variant_id": 17,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S5-f3775bf5",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.01400625705719,
+          "activation": 0.0,
+          "variant_id": 5,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S6-05db00f1",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9768831729888916,
+          "activation": 0.0,
+          "variant_id": 6,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D1-479de2a6",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.075305700302124,
+          "activation": 0.0,
+          "variant_id": 1,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J2-adf0fec7",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.2225866317749023,
+          "activation": 0.0,
+          "variant_id": 2,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "V109-321b139c",
+          "gene_type": "V",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 109,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S17-ad5ff393",
+          "target": "S5-f3775bf5",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S17-ad5ff393",
+          "target": "S6-05db00f1",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S17-ad5ff393",
+          "target": "D1-479de2a6",
+          "strength": 0.5
+        },
+        {
+          "source": "S17-ad5ff393",
+          "target": "J2-adf0fec7",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S17-ad5ff393",
+          "target": "V109-321b139c",
+          "strength": 0.8333333333333334
+        },
+        {
+          "source": "S5-f3775bf5",
+          "target": "S6-05db00f1",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S5-f3775bf5",
+          "target": "D1-479de2a6",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S5-f3775bf5",
+          "target": "J2-adf0fec7",
+          "strength": 0.5
+        },
+        {
+          "source": "S5-f3775bf5",
+          "target": "V109-321b139c",
+          "strength": 0.6666666666666666
+        },
+        {
+          "source": "S6-05db00f1",
+          "target": "D1-479de2a6",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "S6-05db00f1",
+          "target": "J2-adf0fec7",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "S6-05db00f1",
+          "target": "V109-321b139c",
+          "strength": 0.5
+        },
+        {
+          "source": "D1-479de2a6",
+          "target": "J2-adf0fec7",
+          "strength": 0.16666666666666666
+        },
+        {
+          "source": "D1-479de2a6",
+          "target": "V109-321b139c",
+          "strength": 0.3333333333333333
+        },
+        {
+          "source": "J2-adf0fec7",
+          "target": "V109-321b139c",
+          "strength": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "cell_id": "c4da1e7f-c3cd-45c4-8397-ceab997077a8",
+      "index": 10,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S8-c0945004",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.9891679883003235,
+          "activation": 0.0,
+          "variant_id": 8,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S19-188fb430",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1215112209320068,
+          "activation": 0.0,
+          "variant_id": 19,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S3-9ce0dd27",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1232166290283203,
+          "activation": 0.0,
+          "variant_id": 3,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J3-65f67197",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8858956694602966,
+          "activation": 0.0,
+          "variant_id": 3,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "D210-8c98a16a",
+          "gene_type": "D",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 210,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S8-c0945004",
+          "target": "S19-188fb430",
+          "strength": 0.2
+        },
+        {
+          "source": "S8-c0945004",
+          "target": "S3-9ce0dd27",
+          "strength": 0.4
+        },
+        {
+          "source": "S8-c0945004",
+          "target": "J3-65f67197",
+          "strength": 0.6
+        },
+        {
+          "source": "S8-c0945004",
+          "target": "D210-8c98a16a",
+          "strength": 0.8
+        },
+        {
+          "source": "S19-188fb430",
+          "target": "S3-9ce0dd27",
+          "strength": 0.2
+        },
+        {
+          "source": "S19-188fb430",
+          "target": "J3-65f67197",
+          "strength": 0.4
+        },
+        {
+          "source": "S19-188fb430",
+          "target": "D210-8c98a16a",
+          "strength": 0.6
+        },
+        {
+          "source": "S3-9ce0dd27",
+          "target": "J3-65f67197",
+          "strength": 0.2
+        },
+        {
+          "source": "S3-9ce0dd27",
+          "target": "D210-8c98a16a",
+          "strength": 0.4
+        },
+        {
+          "source": "J3-65f67197",
+          "target": "D210-8c98a16a",
+          "strength": 0.2
+        }
+      ]
+    },
+    {
+      "cell_id": "b0cc7ae9-8c52-408b-b1af-e293a5fac85e",
+      "index": 11,
+      "fitness": 0.5,
+      "generation": 0,
+      "lineage": [],
+      "type": "stem",
+      "genes": [
+        {
+          "gene_id": "S18-6220f6da",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 0.8733152151107788,
+          "activation": 0.0,
+          "variant_id": 18,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S17-ce5b02bf",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.223055362701416,
+          "activation": 0.0,
+          "variant_id": 17,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "S14-9922a0b4",
+          "gene_type": "S",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.1115964651107788,
+          "activation": 0.0,
+          "variant_id": 14,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "J5-51d8df90",
+          "gene_type": "J",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.2956472635269165,
+          "activation": 0.0,
+          "variant_id": 5,
+          "methylation": 0.0
+        },
+        {
+          "gene_id": "A0-479812d2",
+          "gene_type": "A",
+          "position": 0,
+          "is_active": true,
+          "is_quantum": false,
+          "depth": 1.0,
+          "activation": 0.0,
+          "variant_id": 311,
+          "methylation": 0.0
+        }
+      ],
+      "architecture": null,
+      "connections": [
+        {
+          "source": "S18-6220f6da",
+          "target": "S17-ce5b02bf",
+          "strength": 0.2
+        },
+        {
+          "source": "S18-6220f6da",
+          "target": "S14-9922a0b4",
+          "strength": 0.4
+        },
+        {
+          "source": "S18-6220f6da",
+          "target": "J5-51d8df90",
+          "strength": 0.6
+        },
+        {
+          "source": "S18-6220f6da",
+          "target": "A0-479812d2",
+          "strength": 0.8
+        },
+        {
+          "source": "S17-ce5b02bf",
+          "target": "S14-9922a0b4",
+          "strength": 0.2
+        },
+        {
+          "source": "S17-ce5b02bf",
+          "target": "J5-51d8df90",
+          "strength": 0.4
+        },
+        {
+          "source": "S17-ce5b02bf",
+          "target": "A0-479812d2",
+          "strength": 0.6
+        },
+        {
+          "source": "S14-9922a0b4",
+          "target": "J5-51d8df90",
+          "strength": 0.2
+        },
+        {
+          "source": "S14-9922a0b4",
+          "target": "A0-479812d2",
+          "strength": 0.4
+        },
+        {
+          "source": "J5-51d8df90",
+          "target": "A0-479812d2",
+          "strength": 0.2
+        }
+      ]
+    }
+  ],
+  "cell_id": "ca5bfbc6-a8e7-4afe-81ed-159b1c16cda3",
+  "nodes": [
+    {
+      "id": "transform_0",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 0,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "transform_1",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 150,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "transform_2",
+      "size": 128,
+      "activation": "ReLU",
+      "fx": 300,
+      "fy": 0,
+      "fz": 0
+    },
+    {
+      "id": "output",
+      "size": 128,
+      "activation": "Linear",
+      "fx": 450,
+      "fy": 0,
+      "fz": 0
+    }
+  ],
+  "links": [
+    {
+      "source": "transform_0",
+      "target": "transform_1"
+    },
+    {
+      "source": "transform_1",
+      "target": "transform_2"
+    },
+    {
+      "source": "transform_2",
+      "target": "output"
+    }
+  ],
+  "generation": 1,
+  "population_size": 12,
+  "total_genes": 74,
+  "active_genes": 74,
+  "quantum_genes": 0,
+  "cell_types": {
+    "V_genes": 10,
+    "D_genes": 12,
+    "J_genes": 9,
+    "Q_genes": 0,
+    "S_genes": 39
+  },
+  "phase": "normal",
+  "stress_level": 0.0,
+  "mean_fitness": 0.5,
+  "timestamp": 1752712708.2202318
+}

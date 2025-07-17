@@ -1,0 +1,187 @@
+{
+  "timestamp": 1752684053.4836593,
+  "generation": 0,
+  "current_cell_id": "b1a339ba-6481-43e8-84a7-5d99e5184b15",
+  "cells": [],
+  "architecture_state": {
+    "modules": {
+      "transform_0": {
+        "name": "transform_0",
+        "type": "sequential",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          },
+          {
+            "index": 1,
+            "type": "LayerNorm",
+            "params": {
+              "normalized_shape": [
+                128
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "ReLU",
+            "params": {}
+          },
+          {
+            "index": 3,
+            "type": "Dropout",
+            "params": {
+              "p": 0.1
+            }
+          }
+        ],
+        "position": {
+          "x": 0.0,
+          "y": -0.5,
+          "z": 1.0
+        },
+        "size": 128,
+        "activation": "relu",
+        "color": "#FF6B6B"
+      },
+      "transform_1": {
+        "name": "transform_1",
+        "type": "sequential",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          },
+          {
+            "index": 1,
+            "type": "LayerNorm",
+            "params": {
+              "normalized_shape": [
+                128
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "ReLU",
+            "params": {}
+          },
+          {
+            "index": 3,
+            "type": "Dropout",
+            "params": {
+              "p": 0.1
+            }
+          }
+        ],
+        "position": {
+          "x": 3.0,
+          "y": -1.0,
+          "z": 0.0
+        },
+        "size": 128,
+        "activation": "relu",
+        "color": "#FF6B6B"
+      },
+      "transform_2": {
+        "name": "transform_2",
+        "type": "sequential",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          },
+          {
+            "index": 1,
+            "type": "LayerNorm",
+            "params": {
+              "normalized_shape": [
+                128
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "ReLU",
+            "params": {}
+          },
+          {
+            "index": 3,
+            "type": "Dropout",
+            "params": {
+              "p": 0.1
+            }
+          }
+        ],
+        "position": {
+          "x": 3.0,
+          "y": 1.0,
+          "z": -0.5
+        },
+        "size": 128,
+        "activation": "relu",
+        "color": "#FF6B6B"
+      },
+      "output": {
+        "name": "output",
+        "type": "linear",
+        "layers": [
+          {
+            "index": 0,
+            "type": "Linear",
+            "params": {
+              "in_features": 128,
+              "out_features": 128
+            }
+          }
+        ],
+        "position": {
+          "x": 6.0,
+          "y": -0.5,
+          "z": -0.5
+        },
+        "size": 128,
+        "activation": null,
+        "color": "#4A90E2"
+      }
+    },
+    "connections": {
+      "transform_0": [
+        "transform_1",
+        "transform_2"
+      ],
+      "transform_1": [
+        "transform_2"
+      ],
+      "transform_2": [
+        "output"
+      ]
+    },
+    "modification_history": [
+      {
+        "index": 0,
+        "type": "rewire",
+        "target": "transform_0",
+        "success": true,
+        "timestamp": 1752684028.4836593,
+        "parameters": {
+          "source": "transform_0",
+          "destination": "transform_2",
+          "connection_type": "residual"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+2025-07-16 18:03:42.199 | INFO     | __init__                       | ================================================================================
+2025-07-16 18:03:42.199 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250716_180342
+2025-07-16 18:03:42.200 | INFO     | __init__                       | Log file: logs\te_ai_run_20250716_180342.log
+2025-07-16 18:03:42.200 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-16 18:03:42.201 | INFO     | __init__                       | Backup files: 10
+2025-07-16 18:03:42.201 | INFO     | __init__                       | ================================================================================
+2025-07-16 18:03:42.201 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-16 18:03:42.202 | INFO     | _log_system_info               |   Python version: 3.11.11 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:34:19) [MSC v.1929 64 bit (AMD64)]
+2025-07-16 18:03:42.202 | INFO     | _log_system_info               |   PyTorch version: 2.5.1+cu121
+2025-07-16 18:03:42.202 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-16 18:03:42.204 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-16 18:03:42.204 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-16 18:03:42.204 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-16 18:03:43.295 | WARNING  | warning                        | No metadata file found, using defaults
+2025-07-16 18:03:43.295 | INFO     | info                           | Loading TCGA samples from C:\Users\wes\Desktop\te_ai\maia_tcga_pancan
+2025-07-16 18:03:43.296 | INFO     | info                           | Loading sample 1/10
+2025-07-16 18:03:43.310 | INFO     | info                           | Loaded 10 samples
+2025-07-16 18:03:43.310 | INFO     | info                           | Identifying drug targets from TCGA data
+2025-07-16 18:03:43.337 | INFO     | info                           | Found 3 cancer types: ['BRCA', 'LUSC', 'OV']
+2025-07-16 18:03:43.344 | INFO     | info                           | Identified 20 drug targets
+2025-07-16 18:03:43.344 | INFO     | info                           | Top 10 targets: ['MUT_134', 'MUT_579', 'MUT_735', 'MUT_1522', 'MUT_1902', 'MUT_2142', 'MUT_3219', 'MUT_3331', 'MUT_4793', 'MUT_5487']
+2025-07-16 18:03:43.345 | INFO     | info                           | Converting 20 targets to antigens
+2025-07-16 18:03:43.388 | INFO     | info                           | Successfully created 20 antigens
+2025-07-16 18:03:43.501 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-16 18:03:43.502 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-16 18:03:43.923 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-16 18:03:44.013 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.049 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.467 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.742 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.803 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.834 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.865 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:44.990 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-16 18:03:45.490 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-16 18:03:45.553 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-16 18:03:45.563 | INFO     | info                           | Adding specialized drug discovery genes to population...
+2025-07-16 18:03:45.565 | INFO     | info                           | Added BindingPocketGene to cell 718e5d76-9f2b-49e5-b2cc-48ac49d8cde6
+2025-07-16 18:03:45.566 | INFO     | info                           | Added PharmacophoreGene to cell 11b4357d-7898-42f6-8b4f-723f4b004fee
+2025-07-16 18:03:45.599 | INFO     | info                           | Added AllostericGene to cell 017eaaf3-d62b-4592-8509-7c60e5101c30
+2025-07-16 18:03:45.600 | INFO     | info                           | Added BindingPocketGene to cell c57a66d7-97e6-4c79-83b2-63cd524c7fcd
+2025-07-16 18:03:45.602 | INFO     | info                           | Added PharmacophoreGene to cell adb7cfa7-c85c-4761-bba9-b284fd1f7174
+2025-07-16 18:03:45.605 | INFO     | info                           | Added AllostericGene to cell d8a4f52c-dbba-432a-a1ce-2b08d0d33e8f
+2025-07-16 18:03:45.607 | INFO     | info                           | Added BindingPocketGene to cell 7e3cce3c-478a-4fa7-94a6-b3f96eee565d
+2025-07-16 18:03:45.608 | INFO     | info                           | Added PharmacophoreGene to cell 9b6802ad-29c5-40ca-8072-e065f27750be
+2025-07-16 18:03:45.611 | INFO     | info                           | Added AllostericGene to cell ab1663dc-8455-4816-a3db-baaef088a426
+2025-07-16 18:03:45.613 | INFO     | info                           | Added BindingPocketGene to cell 774d1f7f-f723-476b-97c4-49402dda1098
+2025-07-16 18:03:45.614 | INFO     | info                           | Added PharmacophoreGene to cell b827dc1b-416f-4b0e-bdde-3c48ecd6128c
+2025-07-16 18:03:45.618 | INFO     | info                           | Added AllostericGene to cell 11770636-ad80-4bff-bcb6-74bc7974c99d
+2025-07-16 18:03:45.619 | INFO     | info                           | Added BindingPocketGene to cell 2e258460-a598-444e-9143-e3c63312e72d
+2025-07-16 18:03:45.621 | INFO     | info                           | Added PharmacophoreGene to cell 5e20e284-1f2f-4753-9c4e-fca8a3f03621
+2025-07-16 18:03:45.624 | INFO     | info                           | Added AllostericGene to cell abb59cfa-0c9f-4440-b703-e74a8a945daf
+2025-07-16 18:03:45.626 | INFO     | info                           | Added BindingPocketGene to cell 235944a2-4535-494e-908b-28482dd9bb42
+2025-07-16 18:03:45.627 | INFO     | info                           | Added PharmacophoreGene to cell bd30f089-9634-4613-a327-9b05ee07ce19
+2025-07-16 18:03:45.630 | INFO     | info                           | Added AllostericGene to cell 1cff9caf-e63c-45d9-b425-468a639168c2
+2025-07-16 18:03:45.632 | INFO     | info                           | Added BindingPocketGene to cell 9b9b9e36-eda6-4e8d-bfa1-e535de5d1754
+2025-07-16 18:03:51.091 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-16 18:03:51.091 | INFO     | info                           | 
+================================================================================
+2025-07-16 18:03:51.092 | INFO     | info                           | GENERATION 1
+2025-07-16 18:03:51.092 | INFO     | info                           | ================================================================================
+2025-07-16 18:03:51.093 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
