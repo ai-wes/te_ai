@@ -633,9 +633,12 @@ class ProductionBCell(nn.Module):
         
         # Inherit regulatory matrix with noise
         with torch.no_grad():
+            # Use pre-allocated tensor pool for efficiency
+            from scripts.core.tensor_pool import get_pooled_random
+            noise = get_pooled_random(self.gene_regulatory_matrix.shape, 
+                                    dtype=self.gene_regulatory_matrix.dtype)
             self.gene_regulatory_matrix.data = \
-                parent.gene_regulatory_matrix.data * 0.9 + \
-                torch.randn_like(self.gene_regulatory_matrix, device=device) * 0.1
+                parent.gene_regulatory_matrix.data * 0.9 + noise * 0.1
         
         # Apply mutations
         self._mutate()

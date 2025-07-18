@@ -28,6 +28,8 @@ class CFG:
     compile_mode: str = "reduce-overhead"  # torch.compile mode
     memory_efficient_clone: bool = True  # Use state_dict copying
     prefetch_batches: int = 1  # Number of batches to prefetch
+    use_cuda_streams: bool = True  # Use CUDA streams for parallel execution
+    gradient_clip_val: float = 1.0  # Gradient clipping value
 
 
 
