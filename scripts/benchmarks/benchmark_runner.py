@@ -426,6 +426,7 @@ class TEAIBenchmarkAdapter:
         
         cfg.population_size = 30  # Smaller for benchmarking
         cfg.generations = 20
+        cfg.num_generations = 10  # How many to actually run in benchmark
         
         if self.task_type == "molecular_property":
             # Use drug discovery germinal center
@@ -483,6 +484,9 @@ class TEAIBenchmarkAdapter:
         
         # Evolve
         logger.info("Starting TE-AI evolution...")
+        logger.info("=" * 60)
+        logger.info("BENCHMARK RUNNER: Starting training loop")
+        logger.info("=" * 60)
         for generation in range(generations):
             # Sample batch
             batch_indices = np.random.choice(len(antigen_graphs), 
@@ -494,13 +498,15 @@ class TEAIBenchmarkAdapter:
             batch_targets = np.array([y_train[i] for i in batch_indices])
             
             # Evolve one generation
+            logger.info(f"BENCHMARK: Generation {generation+1}/{generations}")
             if hasattr(self.model, 'evolve_generation'):
                 stats = self.model.evolve_generation(batch)
+                logger.info(f"BENCHMARK: evolve_generation returned stats? {stats is not None}")
                 if stats:
                     self.evolution_history.append(stats)
                     
                     # Calculate training accuracy on this batch
-                    logger.info(f"[METRICS DEBUG] Generation {generation}: Has population? {hasattr(self.model, 'population')}, "
+                    logger.info(f"[METRICS] Generation {generation}: Has population? {hasattr(self.model, 'population')}, "
                               f"Population size: {len(self.model.population) if hasattr(self.model, 'population') else 'N/A'}")
                     if hasattr(self.model, 'population') and self.model.population:
                         logger.debug(f"Population size: {len(self.model.population)}")
@@ -515,7 +521,7 @@ class TEAIBenchmarkAdapter:
                             batch_rec = recall_score(batch_targets, pred_binary, average='binary', zero_division=0)
                             batch_f1 = f1_score(batch_targets, pred_binary, average='binary', zero_division=0)
                             
-                            logger.info(f"Generation {generation}: Fitness={stats.get('best_fitness', 0):.4f}, "
+                            logger.info(f"Generation {generation}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}, "
                                       f"Acc={batch_acc:.3f}, P={batch_prec:.3f}, R={batch_rec:.3f}, F1={batch_f1:.3f}")
                             
                             # Store metrics
@@ -524,7 +530,7 @@ class TEAIBenchmarkAdapter:
                             stats['batch_recall'] = batch_rec
                             stats['batch_f1'] = batch_f1
                     else:
-                        logger.info(f"Generation {generation}: Fitness={stats.get('best_fitness', 0):.4f}")
+                        logger.info(f"Generation {generation}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}")
         
         # Store best cells for prediction
         if hasattr(self.model, 'population'):

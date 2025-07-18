@@ -363,6 +363,9 @@ class ProductionGerminalCenter:
         gen_time = time.time() - generation_start
         logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
         
+        # Return metrics for the benchmark runner
+        return metrics
+        
         
         
             
@@ -1269,6 +1272,9 @@ class ProductionGerminalCenter:
         
         gen_time = time.time() - generation_start
         logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
+        
+        # Return metrics for the benchmark runner
+        return metrics
     
     
     def _selection_and_reproduction_fast(self, fitness_scores: Dict[str, float]):
