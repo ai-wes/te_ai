@@ -410,7 +410,7 @@ class ProductionBCell(nn.Module):
         plasmid_size = min(3, len(high_fitness_genes))
         selected_genes = random.sample(high_fitness_genes, plasmid_size)
         
-        # Clone genes efficiently
+        # Clone genes efficiently and ensure they stay on the correct device
         plasmid_genes = []
         for gene in selected_genes:
             try:
@@ -420,6 +420,9 @@ class ProductionBCell(nn.Module):
                 else:
                     # Fallback for genes without clone method
                     new_gene = copy.deepcopy(gene)
+                
+                # CRITICAL: Ensure the cloned gene is on the same device
+                new_gene = new_gene.to(device)
                 plasmid_genes.append(new_gene)
             except Exception as e:
                 logger.warning(f"Could not clone gene of type {type(gene).__name__}: {e}")

@@ -513,7 +513,7 @@ class TEAIBenchmarkAdapter:
                     self.evolution_history.append(stats)
                     
                     # Calculate training accuracy on this batch
-                    logger.info(f"[METRICS] Generation {generation}: Has population? {hasattr(self.model, 'population')}, "
+                    logger.info(f"[METRICS] Generation {generation + 1}: Has population? {hasattr(self.model, 'population')}, "
                               f"Population size: {len(self.model.population) if hasattr(self.model, 'population') else 'N/A'}")
                     if hasattr(self.model, 'population') and self.model.population:
                         logger.debug(f"Population size: {len(self.model.population)}")
@@ -528,7 +528,7 @@ class TEAIBenchmarkAdapter:
                             batch_rec = recall_score(batch_targets, pred_binary, average='binary', zero_division=0)
                             batch_f1 = f1_score(batch_targets, pred_binary, average='binary', zero_division=0)
                             
-                            logger.info(f"Generation {generation}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}, "
+                            logger.info(f"Generation {generation + 1}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}, "
                                       f"Acc={batch_acc:.3f}, P={batch_prec:.3f}, R={batch_rec:.3f}, F1={batch_f1:.3f}")
                             
                             # Store metrics
@@ -561,7 +561,7 @@ class TEAIBenchmarkAdapter:
                                     }
                                     self.best_model_generation = generation
                     else:
-                        logger.info(f"Generation {generation}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}")
+                        logger.info(f"Generation {generation + 1}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}")
         
         # Store best cells for prediction
         if hasattr(self.model, 'population'):
