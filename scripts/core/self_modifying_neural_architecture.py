@@ -445,11 +445,6 @@ class SelfModifyingArchitecture(nn.Module):
             
             if success:
                 self.architecture_dna = self._generate_architecture_dna()
-                # --- TELEMETRY EMITTER ---
-                # Broadcast the new state after a successful change
-                if cell_id:
-                    write_visualization_state(cell_id, self)
-                # --- END TELEMETRY ---
             
             return success
                 

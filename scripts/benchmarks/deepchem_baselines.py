@@ -85,6 +85,12 @@ class DeepChemModelWrapper:
         # Handle multi-dimensional output
         if len(predictions.shape) > 2:
             predictions = predictions.squeeze()
+        
+        # Ensure predictions match test set size
+        if len(predictions) != len(X_test):
+            logger.warning(f"Prediction shape mismatch: got {len(predictions)}, expected {len(X_test)}")
+            # Take only the first len(X_test) predictions
+            predictions = predictions[:len(X_test)]
             
         self.inference_time = time.time() - start_time
         
