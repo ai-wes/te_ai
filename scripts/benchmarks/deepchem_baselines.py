@@ -5,6 +5,10 @@ DeepChem Baseline Models for Benchmarking
 Provides wrappers for state-of-the-art DeepChem models to benchmark against TE-AI.
 """
 
+import os
+# Fix Keras 3 compatibility issue with DeepChem
+os.environ['TF_USE_LEGACY_KERAS'] = '1'
+
 import numpy as np
 import time
 import deepchem as dc

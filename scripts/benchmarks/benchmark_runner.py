@@ -9,6 +9,7 @@ standard datasets and competing methods.
 import os
 import sys
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+os.environ['TF_USE_LEGACY_KERAS'] = '1'  # Fix Keras 3 compatibility with DeepChem
 
 
 import torch
