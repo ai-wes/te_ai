@@ -49,6 +49,7 @@ class ProductionGerminalCenter:
         from scripts.core.parallel_batch_evaluation import OptimizedBatchEvaluator
         from scripts.core.clone_operation import FastClonePool
         from scripts.core.population_operations import VectorizedPopulationOps
+        from scripts.core.gpu_optimizer import GPUOptimizer
         
         self.population: Dict[str, ProductionBCell] = {}
         self.generation = 0
@@ -71,6 +72,10 @@ class ProductionGerminalCenter:
         # Performance optimization
         self.gpu_cache = {}
         self.parallel_executor = ThreadPoolExecutor(max_workers=cfg.num_workers)
+        
+        # GPU optimization
+        self.gpu_optimizer = GPUOptimizer(torch.device(cfg.device))
+        self._setup_gpu_optimization()
 
 
         self.mutation_log = deque(maxlen=500)
@@ -102,6 +107,27 @@ class ProductionGerminalCenter:
         import scripts.depricated.transposable_immune_ai_production_complete as prod
         prod._current_germinal_center = self
         
+    def _setup_gpu_optimization(self):
+        """Configure GPU memory and performance optimizations"""
+        if not torch.cuda.is_available():
+            return
+            
+        # Configure CUDA allocator
+        if cfg.enable_cuda_allocator_conf:
+            self.gpu_optimizer.setup_cuda_allocator(cfg.max_split_size_mb)
+        
+        # Set memory fraction
+        self.gpu_optimizer.set_memory_fraction(cfg.cuda_memory_fraction)
+        
+        # Enable mixed precision if requested
+        self.amp_scaler = None
+        if cfg.use_amp:
+            self.amp_scaler = self.gpu_optimizer.enable_mixed_precision()
+        
+        # Log initial memory stats
+        stats = self.gpu_optimizer.get_memory_stats()
+        if stats:
+            logger.info(f"GPU Memory: {stats['allocated']:.2f}/{stats['total']:.2f} GB ({stats['utilization']:.1%})")
 
     
     def _initialize_population(self):
@@ -1176,9 +1202,20 @@ class ProductionGerminalCenter:
         
         # Phase 1: Fast fitness evaluation
         logger.info("\n📊 Phase 1: Fitness Evaluation (Optimized)")
+        
+        # Monitor GPU memory before evaluation
+        if hasattr(self, 'gpu_optimizer') and torch.cuda.is_available():
+            pre_stats = self.gpu_optimizer.get_memory_stats()
+            logger.debug(f"   GPU Memory before eval: {pre_stats['allocated']:.2f} GB")
+        
         fitness_scores = self.batch_evaluator.evaluate_population_batch(
             self.population, antigens
         )
+        
+        # Monitor GPU memory after evaluation
+        if hasattr(self, 'gpu_optimizer') and torch.cuda.is_available():
+            post_stats = self.gpu_optimizer.get_memory_stats()
+            logger.debug(f"   GPU Memory after eval: {post_stats['allocated']:.2f} GB ({post_stats['utilization']:.1%})")
         
         # Phase 2: Compute metrics and detect stress
         logger.info("\n📈 Phase 2: Metrics and Stress Detection")
@@ -1282,20 +1319,39 @@ class ProductionGerminalCenter:
     
     def _cleanup_memory(self):
         logger.debug("Entering ProductionGerminalCenter._cleanup_memory")
-        """Aggressive memory cleanup"""
+        """Aggressive memory cleanup with GPU optimization"""
         # Clear old history
         for cell in self.population.values():
             if len(cell.fitness_history) > 50:
                 cell.fitness_history = deque(list(cell.fitness_history)[-50:], maxlen=100)
+        
+        # Clear GPU cache if available
+        if hasattr(self, 'gpu_cache'):
+            self.gpu_cache.clear()
         
         # Force garbage collection
         import gc
         gc.collect()
         
         if torch.cuda.is_available():
+            # Get memory stats before cleanup
+            if hasattr(self, 'gpu_optimizer'):
+                pre_stats = self.gpu_optimizer.get_memory_stats()
+            
+            # Clear CUDA cache
             torch.cuda.empty_cache()
-            mem_usage = torch.cuda.memory_allocated() / 1e9
-            logger.info(f"   - Cleared CUDA memory cache. Usage now: {mem_usage:.2f} GB")
+            
+            # Synchronize to ensure all operations complete
+            torch.cuda.synchronize()
+            
+            # Get memory stats after cleanup
+            if hasattr(self, 'gpu_optimizer'):
+                post_stats = self.gpu_optimizer.get_memory_stats()
+                logger.info(f"   - Cleared CUDA memory: {pre_stats['allocated']:.2f} -> {post_stats['allocated']:.2f} GB")
+                logger.info(f"   - GPU utilization: {post_stats['utilization']:.1%}")
+            else:
+                mem_usage = torch.cuda.memory_allocated() / 1e9
+                logger.info(f"   - Cleared CUDA memory cache. Usage now: {mem_usage:.2f} GB")
 
 
 

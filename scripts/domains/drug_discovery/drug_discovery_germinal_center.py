@@ -162,6 +162,45 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
         # Enable drug discovery genes
         if enable_drug_genes:
             self._add_drug_discovery_genes()
+        
+        # Optimize batch size if requested
+        if cfg.auto_batch_size and torch.cuda.is_available():
+            self._optimize_batch_size()
+            
+    def _optimize_batch_size(self):
+        """Automatically find optimal batch size for GPU"""
+        logger.info("Optimizing batch size for GPU memory...")
+        
+        # Create a sample cell for testing
+        sample_cell = list(self.population.values())[0]
+        
+        # Create sample antigen data
+        sample_data = torch.randn(1, cfg.feature_dim).to(self.device)
+        edge_index = torch.tensor([[0], [0]], dtype=torch.long).to(self.device)
+        batch = torch.zeros(1, dtype=torch.long).to(self.device)
+        
+        from torch_geometric.data import Data
+        sample_antigen = Data(x=sample_data, edge_index=edge_index, batch=batch)
+        
+        # Find optimal batch size
+        optimal_batch = self.gpu_optimizer.find_optimal_batch_size(
+            model=sample_cell,
+            sample_input=sample_antigen,
+            start_batch=cfg.batch_size,
+            growth_factor=cfg.batch_size_growth,
+            max_batch=cfg.batch_size * 8
+        )
+        
+        # Update configuration
+        old_batch = cfg.batch_size
+        cfg.batch_size = optimal_batch
+        cfg.gpu_batch_size = min(optimal_batch, 64)  # For parallel processing
+        
+        logger.info(f"Batch size optimized: {old_batch} -> {optimal_batch}")
+        
+        # Log memory stats
+        stats = self.gpu_optimizer.get_memory_stats()
+        logger.info(f"GPU Memory after optimization: {stats['allocated']:.2f}/{stats['total']:.2f} GB")
             
     def _add_drug_discovery_genes(self):
         """Add specialized drug discovery genes to initial population"""

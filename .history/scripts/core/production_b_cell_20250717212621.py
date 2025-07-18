@@ -584,29 +584,12 @@ class ProductionBCell(nn.Module):
         child_genes = []
         for gene in parent.genes:
             if gene.is_active:
-                # Create new gene instance with required arguments
+                # Create new gene instance
                 gene_class = type(gene)
-                
-                # Get required arguments from the original gene
-                if hasattr(gene, 'gene_type') and hasattr(gene, 'variant_id'):
-                    child_gene = gene_class(
-                        gene_type=gene.gene_type,
-                        variant_id=gene.variant_id
-                    )
-                elif hasattr(gene, 'variant_id'):
-                    # For genes that only need variant_id
-                    child_gene = gene_class(variant_id=gene.variant_id)
-                else:
-                    # Fallback for genes with no required arguments
-                    child_gene = gene_class()
+                child_gene = gene_class()
                 
                 # Copy state efficiently
-                try:
-                    child_gene.load_state_dict(gene.state_dict())
-                except RuntimeError as e:
-                    # If state dict doesn't match, skip copying and continue
-                    logger.warning(f"State dict mismatch for {gene_class.__name__}: {e}")
-                    # Continue with the new gene without copying state
+                child_gene.load_state_dict(gene.state_dict())
                 
                 # Copy non-parameter attributes
                 for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
