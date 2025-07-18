@@ -213,10 +213,19 @@ class DeepChemToTEAI:
         """
         logger.info(f"Loading {dataset_name} from MoleculeNet...")
         
+        # Create the proper featurizer object to avoid deprecation warning
+        if featurizer == 'ECFP':
+            # Use MorganGenerator instead of deprecated CircularFingerprint
+            from deepchem.feat import MorganGenerator
+            featurizer_obj = MorganGenerator(radius=2, size=1024)
+        else:
+            # For other featurizers, let DeepChem handle it
+            featurizer_obj = featurizer
+        
         # Load the dataset
         loader_fn = getattr(dc.molnet, f'load_{dataset_name.lower()}')
         tasks, datasets, transformers = loader_fn(
-            featurizer=featurizer,
+            featurizer=featurizer_obj,
             splitter=splitter
         )
         

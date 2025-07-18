@@ -89,8 +89,10 @@ class MolecularPropertyDataset(BenchmarkDataset):
                 )
             
             # Also store raw features for baseline models
+            from deepchem.feat import MorganGenerator
+            morgan_featurizer = MorganGenerator(radius=2, size=1024)
             loader_fn = getattr(dc.molnet, f'load_{self.dataset_name.lower()}')
-            tasks, datasets, transformers = loader_fn(featurizer='ECFP', splitter='scaffold')
+            tasks, datasets, transformers = loader_fn(featurizer=morgan_featurizer, splitter='scaffold')
             train, valid, test = datasets
             
             # Store both representations

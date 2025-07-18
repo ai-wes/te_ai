@@ -11,7 +11,7 @@ class CFG:
     # --- Merged Configuration from CFG and ProductionConfig ---
 
     # 1. Device and Performance
-    device: str = field(default_factory=lambda: "cuda" if torch.cuda.is_available() else "cpu")
+    device: str = field(default_factory=lambda: "cuda:1" if torch.cuda.is_available() else "cpu")
     use_mixed_precision: bool = True  # AMP for speed
     gradient_checkpointing: bool = True    # Disable for A100 - we have memory
     num_workers: int = 1  # Increase for A100
