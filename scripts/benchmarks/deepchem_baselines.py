@@ -86,18 +86,23 @@ class DeepChemModelWrapper:
         logger.info(f"DeepNN raw predictions shape: {predictions.shape}")
         
         # Handle multi-dimensional output
-        if len(predictions.shape) > 2:
+        if len(predictions.shape) == 3 and predictions.shape[2] == 2:
+            # Binary classification with probabilities for both classes
+            # Take only the positive class (index 1)
+            logger.info("Binary classification output detected, taking positive class probabilities")
+            predictions = predictions[:, 0, 1]  # Shape: (n_samples,)
+        elif len(predictions.shape) > 2:
             predictions = predictions.squeeze()
         elif len(predictions.shape) == 2 and predictions.shape[1] == 1:
             predictions = predictions.squeeze(1)
+        elif len(predictions.shape) == 2 and predictions.shape[1] == 2:
+            # 2D array with probabilities for both classes
+            logger.info("2D binary classification output, taking positive class")
+            predictions = predictions[:, 1]
             
-        # Check for doubled predictions (common DeepChem issue)
-        if len(predictions) == 2 * len(X_test):
-            logger.warning(f"DeepChem returned doubled predictions ({len(predictions)} for {len(X_test)} samples), taking first half")
-            predictions = predictions[:len(X_test)]
-        elif len(predictions) != len(X_test):
-            logger.warning(f"Prediction shape mismatch: got {len(predictions)}, expected {len(X_test)}")
-            # Take only the first len(X_test) predictions
+        # Final safety check
+        if len(predictions) != len(X_test):
+            logger.warning(f"Prediction shape mismatch after processing: got {len(predictions)}, expected {len(X_test)}")
             predictions = predictions[:len(X_test)]
             
         self.inference_time = time.time() - start_time
