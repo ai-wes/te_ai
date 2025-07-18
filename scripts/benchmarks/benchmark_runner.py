@@ -538,7 +538,23 @@ class TEAIBenchmarkAdapter:
                             stats['batch_recall'] = batch_rec
                             stats['batch_f1'] = batch_f1
                             
-                            # Check if this model meets our strict criteria
+                            # Store cells from best validation accuracy generation
+                            # (not just those meeting 90% threshold)
+                            if batch_acc > 0.65:  # Lower threshold for cell storage
+                                # Sort cells by their individual performance
+                                sorted_cells = sorted(self.model.population.items(), 
+                                                    key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
+                                                    reverse=True)
+                                # Store top cells from this generation
+                                current_best_cells = [cell for _, cell in sorted_cells[:10]]
+                                
+                                # Update best cells if this generation has better validation accuracy
+                                if not hasattr(self, 'best_validation_acc') or batch_acc > self.best_validation_acc:
+                                    self.best_validation_acc = batch_acc
+                                    self.best_cells = current_best_cells
+                                    logger.info(f"Updated best cells from generation {gen} with validation accuracy {batch_acc:.3f}")
+                            
+                            # Check if this model meets our strict criteria for saving
                             if batch_acc >= 0.9 and batch_prec >= 0.9:
                                 current_fitness = stats.get('max_fitness', stats.get('mean_fitness', 0))
                                 
@@ -564,8 +580,10 @@ class TEAIBenchmarkAdapter:
                     else:
                         logger.info(f"Generation {generation + 1}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}")
         
-        # Store best cells for prediction
-        if hasattr(self.model, 'population'):
+        # Don't override best_cells here - we want to keep the cells from best validation generation
+        # Only set if we haven't found good cells during training
+        if not self.best_cells and hasattr(self.model, 'population'):
+            logger.warning("No good validation cells found during training, using final population")
             # Sort cells by latest fitness from fitness_history
             sorted_cells = sorted(self.model.population.items(), 
                                 key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
@@ -685,6 +703,19 @@ class TEAIBenchmarkAdapter:
         
         all_predictions = []
         
+        # Filter cells to only use the best performing ones
+        if hasattr(cells[0], 'fitness_history') and cells[0].fitness_history:
+            # Sort by most recent fitness
+            sorted_cells = sorted(cells, 
+                                key=lambda c: c.fitness_history[-1] if c.fitness_history else 0, 
+                                reverse=True)
+            # Use only top performing cells
+            top_cells = sorted_cells[:min(5, len(sorted_cells))]
+        else:
+            top_cells = cells[:5]
+        
+        logger.info(f"Using {len(top_cells)} top cells for prediction")
+        
         # Process in batches
         batch_size = 32
         for i in range(0, len(test_graphs), batch_size):
@@ -693,20 +724,53 @@ class TEAIBenchmarkAdapter:
             
             # Get predictions from each cell
             batch_predictions = []
+            cell_weights = []
             with torch.no_grad():
-                for cell in cells:
+                for cell in top_cells:
                     try:
-                        affinity, _, _ = cell(batch_data)
-                        # Convert affinity to probability
-                        prob = torch.sigmoid(affinity).cpu().numpy()
-                        batch_predictions.append(prob)
+                        # Get raw affinity without fitness adjustments
+                        affinity, _, metadata = cell(batch_data)
+                        
+                        # Use raw affinity for classification
+                        if isinstance(affinity, torch.Tensor):
+                            affinity_np = affinity.cpu().numpy()
+                        else:
+                            affinity_np = affinity
+                        
+                        # Ensure proper shape
+                        if affinity_np.ndim == 0:
+                            affinity_np = np.array([affinity_np])
+                        
+                        batch_predictions.append(affinity_np)
+                        
+                        # Weight by cell's historical performance
+                        weight = 1.0
+                        if hasattr(cell, 'fitness_history') and len(cell.fitness_history) > 0:
+                            # Use average fitness as weight
+                            weight = np.mean(list(cell.fitness_history)[-10:])
+                        cell_weights.append(weight)
+                        
                     except Exception as e:
                         logger.warning(f"Error predicting with cell: {e}")
                         continue
             
             if batch_predictions:
-                # Average predictions from all cells
-                avg_predictions = np.mean(batch_predictions, axis=0)
+                # Weighted average based on cell performance
+                batch_predictions = np.array(batch_predictions)
+                cell_weights = np.array(cell_weights)
+                
+                # Normalize weights
+                if cell_weights.sum() > 0:
+                    cell_weights = cell_weights / cell_weights.sum()
+                else:
+                    cell_weights = np.ones_like(cell_weights) / len(cell_weights)
+                
+                # Compute weighted predictions
+                avg_predictions = np.average(batch_predictions, axis=0, weights=cell_weights)
+                
+                # Apply sigmoid for probability conversion
+                avg_predictions = 1 / (1 + np.exp(-avg_predictions))
+                
                 # Ensure we're getting the right shape
                 if avg_predictions.ndim == 0:
                     # Single prediction, expand to match batch size

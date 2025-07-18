@@ -106,13 +106,13 @@ class CFG:
 
     # 8. Population Dynamics & Evolution
     initial_population: int = 64  # Double for A100
-    max_population: int = 256  # Double for A100
+    max_population: int = 120  # Reduced to prevent overfitting
     num_generations: int = 20
-    selection_pressure: float = 0.4  # Updated value
-    mutation_rate: float = 0.02
+    selection_pressure: float = 0.3  # Reduced to maintain diversity
+    mutation_rate: float = 0.05  # Increased for more exploration
     crossover_rate: float = 0.1  # Updated value
-    elite_size: int = 10  # Double for A100
-    diversity_weight: float = 0.15
+    elite_size: int = 5  # Reduced to prevent overfitting to best solutions
+    diversity_weight: float = 0.2  # Increased to encourage diversity
     shannon_entropy_target: float = 0.8
     niche_pressure: float = 0.1
 
@@ -139,6 +139,14 @@ class CFG:
     gpu_batch_size: int = 64  # 4x for A100 parallel processing
     learning_rate: float = 0.001
     weight_decay: float = 1e-5
+    
+    # 11.1 Regularization Parameters
+    dropout_rate: float = 0.3  # Dropout for gene integrator
+    affinity_dropout: float = 0.2  # Dropout for affinity maturation
+    attention_dropout: float = 0.1  # Dropout for attention mechanisms
+    l2_regularization: float = 0.01  # L2 penalty for weights
+    gradient_clip_value: float = 1.0  # Gradient clipping threshold
+    early_stopping_patience: int = 5  # Generations without improvement before stopping
 
     # 12. Domain-Specific Settings (Immunology Example)
     use_domain_adaptation: bool = True

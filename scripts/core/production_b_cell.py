@@ -85,16 +85,17 @@ class ProductionBCell(nn.Module):
         # Attention-based gene integration
         self.gene_attention = nn.MultiheadAttention(
             cfg.hidden_dim, num_heads=cfg.num_heads, 
-            dropout=0.1, batch_first=True
+            dropout=cfg.attention_dropout, batch_first=True
         )
         
         self.gene_integrator = nn.Sequential(
             nn.Linear(cfg.hidden_dim, cfg.hidden_dim * 2),
             nn.LayerNorm(cfg.hidden_dim * 2),
             nn.ReLU(),
-            nn.Dropout(0.1),
+            nn.Dropout(0.3),  # Increased dropout for regularization
             nn.Linear(cfg.hidden_dim * 2, cfg.hidden_dim),
-            nn.LayerNorm(cfg.hidden_dim)
+            nn.LayerNorm(cfg.hidden_dim),
+            nn.Dropout(0.2)  # Additional dropout layer
         )
         
         # Affinity maturation network
@@ -102,10 +103,12 @@ class ProductionBCell(nn.Module):
             nn.Linear(cfg.hidden_dim, cfg.hidden_dim),
             nn.LayerNorm(cfg.hidden_dim),
             nn.ReLU(),
+            nn.Dropout(0.3),  # Add dropout for regularization
             nn.Linear(cfg.hidden_dim, cfg.hidden_dim // 2),
             nn.ReLU(),
-            nn.Linear(cfg.hidden_dim // 2, 1),
-            nn.Sigmoid()
+            nn.Dropout(0.2),  # Add dropout before final layer
+            nn.Linear(cfg.hidden_dim // 2, 1)
+            # Removed Sigmoid - will apply in prediction for better numerical stability
         )
         
         # Self-modifying architecture
