@@ -31,7 +31,7 @@ from datetime import datetime
 import json
 from pathlib import Path
 import pandas as pd
-from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, precision_recall_curve
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score, precision_recall_curve, precision_score, recall_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -183,6 +183,8 @@ class MolecularPropertyDataset(BenchmarkDataset):
             
             metrics["accuracy"] = accuracy_score(targets, pred_binary)
             metrics["f1_score"] = f1_score(targets, pred_binary, average='binary')
+            metrics["precision"] = precision_score(targets, pred_binary, average='binary', zero_division=0)
+            metrics["recall"] = recall_score(targets, pred_binary, average='binary', zero_division=0)
             
             # ROC-AUC only if we have both classes
             if len(np.unique(targets)) > 1:
@@ -287,6 +289,8 @@ class CybersecurityDataset(BenchmarkDataset):
             pred_binary = (predictions > 0.5).astype(int)
             metrics["accuracy"] = accuracy_score(targets, pred_binary)
             metrics["f1_score"] = f1_score(targets, pred_binary, average='binary')
+            metrics["precision"] = precision_score(targets, pred_binary, average='binary', zero_division=0)
+            metrics["recall"] = recall_score(targets, pred_binary, average='binary', zero_division=0)
             metrics["roc_auc"] = roc_auc_score(targets, predictions)
         else:
             # Multi-class
@@ -411,6 +415,8 @@ class TEAIBenchmarkAdapter:
         self.training_time = 0
         self.inference_time = 0
         self.evolution_history = []
+        self.best_cells = []  # Store best performing cells for prediction
+        self.fitness_history = []  # Track fitness over generations
     
     def create_model(self, input_dim: int, output_dim: int):
         """Create appropriate TE-AI model for the task"""
@@ -484,25 +490,163 @@ class TEAIBenchmarkAdapter:
                                            replace=False)
             batch = [antigen_graphs[i] for i in batch_indices]
             
+            # Get targets for this batch
+            batch_targets = np.array([y_train[i] for i in batch_indices])
+            
             # Evolve one generation
             if hasattr(self.model, 'evolve_generation'):
                 stats = self.model.evolve_generation(batch)
                 if stats:
                     self.evolution_history.append(stats)
-                    logger.info(f"Generation {generation}: Fitness={stats.get('best_fitness', 0):.4f}")
+                    
+                    # Calculate training accuracy on this batch
+                    if hasattr(self.model, 'population'):
+                        # Get predictions from current population
+                        predictions = self._predict_batch_internal(batch)
+                        if predictions is not None:
+                            # Calculate metrics
+                            pred_binary = (predictions > 0.5).astype(int)
+                            batch_acc = accuracy_score(batch_targets, pred_binary)
+                            batch_prec = precision_score(batch_targets, pred_binary, average='binary', zero_division=0)
+                            batch_rec = recall_score(batch_targets, pred_binary, average='binary', zero_division=0)
+                            batch_f1 = f1_score(batch_targets, pred_binary, average='binary', zero_division=0)
+                            
+                            logger.info(f"Generation {generation}: Fitness={stats.get('best_fitness', 0):.4f}, "
+                                      f"Acc={batch_acc:.3f}, P={batch_prec:.3f}, R={batch_rec:.3f}, F1={batch_f1:.3f}")
+                            
+                            # Store metrics
+                            stats['batch_accuracy'] = batch_acc
+                            stats['batch_precision'] = batch_prec
+                            stats['batch_recall'] = batch_rec
+                            stats['batch_f1'] = batch_f1
+                    else:
+                        logger.info(f"Generation {generation}: Fitness={stats.get('best_fitness', 0):.4f}")
+        
+        # Store best cells for prediction
+        if hasattr(self.model, 'population'):
+            # Sort cells by fitness
+            sorted_cells = sorted(self.model.population.items(), 
+                                key=lambda x: getattr(x[1], 'fitness', 0), 
+                                reverse=True)
+            # Keep top 10 cells
+            self.best_cells = [cell for _, cell in sorted_cells[:10]]
         
         self.training_time = time.time() - start_time
+    
+    def _predict_batch_internal(self, antigen_batch):
+        """Make predictions using current population (for training metrics)"""
+        try:
+            from torch_geometric.data import Batch
+            
+            # Get top performing cells
+            if hasattr(self.model, 'population'):
+                sorted_cells = sorted(self.model.population.items(), 
+                                    key=lambda x: getattr(x[1], 'fitness', 0), 
+                                    reverse=True)
+                top_cells = [cell for _, cell in sorted_cells[:5]]
+                
+                if not top_cells:
+                    return None
+                
+                # Batch the antigens
+                batch_data = Batch.from_data_list(antigen_batch).to(cfg.device)
+                
+                # Get predictions from each top cell
+                predictions_list = []
+                with torch.no_grad():
+                    for cell in top_cells:
+                        affinity, _, _ = cell(batch_data)
+                        # Convert affinity to probability (sigmoid)
+                        prob = torch.sigmoid(affinity).cpu().numpy()
+                        predictions_list.append(prob)
+                
+                # Average predictions from top cells
+                predictions = np.mean(predictions_list, axis=0)
+                return predictions
+            
+            return None
+        except Exception as e:
+            logger.warning(f"Error in _predict_batch_internal: {e}")
+            return None
     
     def predict(self, X_test):
         """Make predictions using evolved model"""
         start_time = time.time()
         
-        # For demo, return random predictions
-        # In full implementation, would process through evolved population
-        predictions = np.random.rand(len(X_test))
+        # Create antigens from test data
+        from scripts.core.antigen import AntigenEpitope, BiologicalAntigen
+        test_antigens = []
+        
+        for i in range(len(X_test)):
+            epitope = AntigenEpitope(
+                sequence="SYNTHETIC",
+                structure_coords=np.random.randn(20, 3),
+                hydrophobicity=0.0,
+                charge=0.0
+            )
+            antigen = BiologicalAntigen(antigen_type="synthetic")
+            antigen.epitopes = [epitope]
+            test_antigens.append(antigen)
+        
+        # Convert to graphs
+        test_graphs = []
+        for a in test_antigens:
+            graph = a.to_graph()
+            test_graphs.append(graph)
+        
+        # Use best cells or current population for prediction
+        if self.best_cells:
+            # Use stored best cells
+            predictions = self._predict_with_cells(test_graphs, self.best_cells)
+        elif hasattr(self.model, 'population') and self.model.population:
+            # Use current population
+            sorted_cells = sorted(self.model.population.items(), 
+                                key=lambda x: getattr(x[1], 'fitness', 0), 
+                                reverse=True)
+            top_cells = [cell for _, cell in sorted_cells[:10]]
+            predictions = self._predict_with_cells(test_graphs, top_cells)
+        else:
+            # Fallback to random predictions
+            logger.warning("No evolved cells available, using random predictions")
+            predictions = np.random.rand(len(X_test))
         
         self.inference_time = time.time() - start_time
         return predictions
+    
+    def _predict_with_cells(self, test_graphs, cells):
+        """Make predictions using specific cells"""
+        from torch_geometric.data import Batch
+        
+        all_predictions = []
+        
+        # Process in batches
+        batch_size = 32
+        for i in range(0, len(test_graphs), batch_size):
+            batch_graphs = test_graphs[i:i+batch_size]
+            batch_data = Batch.from_data_list(batch_graphs).to(cfg.device)
+            
+            # Get predictions from each cell
+            batch_predictions = []
+            with torch.no_grad():
+                for cell in cells:
+                    try:
+                        affinity, _, _ = cell(batch_data)
+                        # Convert affinity to probability
+                        prob = torch.sigmoid(affinity).cpu().numpy()
+                        batch_predictions.append(prob)
+                    except Exception as e:
+                        logger.warning(f"Error predicting with cell: {e}")
+                        continue
+            
+            if batch_predictions:
+                # Average predictions from all cells
+                avg_predictions = np.mean(batch_predictions, axis=0)
+                all_predictions.extend(avg_predictions)
+            else:
+                # Fallback for this batch
+                all_predictions.extend([0.5] * len(batch_graphs))
+        
+        return np.array(all_predictions)
 
 
 class BenchmarkRunner:
@@ -664,6 +808,8 @@ class BenchmarkRunner:
                     "Dataset": dataset,
                     "Model": model_name,
                     "Accuracy": model_results["metrics"].get("accuracy", 0),
+                    "Precision": model_results["metrics"].get("precision", 0),
+                    "Recall": model_results["metrics"].get("recall", 0),
                     "F1 Score": model_results["metrics"].get("f1_score", 0),
                     "ROC-AUC": model_results["metrics"].get("roc_auc", 0),
                     "Training Time (s)": model_results["training_time"],

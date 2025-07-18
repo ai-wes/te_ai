@@ -202,6 +202,7 @@ class ProductionBCell(nn.Module):
         # Check immunological memory
         memory_response = self._check_memory(cell_representation)
         if memory_response is not None:
+            # memory_response has same shape as cell_representation
             cell_representation = cell_representation + 0.3 * memory_response
         
         # Affinity prediction with maturation
@@ -285,23 +286,44 @@ class ProductionBCell(nn.Module):
                     memory_tensors.transpose(0, 1).unsqueeze(0), common_dim
                 ).squeeze(0).transpose(0, 1)
         
-        # Compute similarity - ensure proper broadcasting
-        if representation.size(0) == 1 and memory_tensors.size(0) > 1:
-            # representation: [1, D], memory_tensors: [N, D]
-            similarities = F.cosine_similarity(
-                representation.expand(memory_tensors.size(0), -1),
-                memory_tensors, 
-                dim=1
-            )
+        # Compute similarity - handle batch dimension properly
+        if representation.dim() == 2 and memory_tensors.dim() == 2:
+            # representation: [B, D], memory_tensors: [N, D]
+            # We need to compute similarity for each item in batch
+            batch_size = representation.size(0)
+            n_memories = memory_tensors.size(0)
+            
+            # Expand for broadcasting: [B, 1, D] and [1, N, D]
+            rep_expanded = representation.unsqueeze(1)  # [B, 1, D]
+            mem_expanded = memory_tensors.unsqueeze(0)  # [1, N, D]
+            
+            # Compute cosine similarity for all pairs
+            similarities = F.cosine_similarity(rep_expanded, mem_expanded, dim=2)  # [B, N]
+            
+            # Find best match for each item in batch
+            max_similarities, max_indices = similarities.max(dim=1)  # [B]
+            
+            # Return memory response for items with high similarity
+            memory_responses = []
+            for b in range(batch_size):
+                if max_similarities[b] > 0.8:
+                    memory_responses.append(memory_tensors[max_indices[b]])
+                else:
+                    memory_responses.append(None)
+            
+            # If any memory responses found, stack them
+            if any(r is not None for r in memory_responses):
+                # Create a tensor with zeros for items without memory response
+                result = torch.zeros_like(representation)
+                for i, resp in enumerate(memory_responses):
+                    if resp is not None:
+                        result[i] = resp
+                return result
+            else:
+                return None
         else:
-            similarities = F.cosine_similarity(representation, memory_tensors, dim=1)
-        
-        # If high similarity found, return memory response
-        max_similarity, max_idx = similarities.max(dim=0)
-        if max_similarity > 0.8:
-            return memory_tensors[max_idx]
-        
-        return None
+            # Fallback for unexpected dimensions
+            return None
     
     
     def _attempt_architecture_modification(self):
