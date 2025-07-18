@@ -135,8 +135,8 @@ class BindingPocketGene(ContinuousDepthGeneModule):
             depth_max=self.depth_max
         )
         
-        # Copy state dict
-        new_gene.load_state_dict(self.state_dict())
+        # Copy state dict with strict=False to handle mismatches
+        new_gene.load_state_dict(self.state_dict(), strict=False)
         
         # Generate new unique ID
         new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"

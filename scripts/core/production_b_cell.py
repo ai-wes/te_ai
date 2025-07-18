@@ -528,13 +528,26 @@ class ProductionBCell(nn.Module):
                 
                 # Copy non-parameter attributes
                 for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
-                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                            'fitness_contribution']:
                     if hasattr(gene, attr):
                         value = getattr(gene, attr)
                         if isinstance(value, torch.Tensor):
                             setattr(child_gene, attr, value.clone())
                         else:
                             setattr(child_gene, attr, copy.copy(value))
+                
+                # Handle parameter attributes separately
+                if hasattr(gene, 'methylation_state') and hasattr(child_gene, 'methylation_state'):
+                    if isinstance(gene.methylation_state, nn.Parameter):
+                        child_gene.methylation_state.data.copy_(gene.methylation_state.data)
+                    else:
+                        setattr(child_gene, 'methylation_state', gene.methylation_state.clone())
+                        
+                if hasattr(gene, 'histone_modifications') and hasattr(child_gene, 'histone_modifications'):
+                    if isinstance(gene.histone_modifications, nn.Parameter):
+                        child_gene.histone_modifications.data.copy_(gene.histone_modifications.data)
+                    else:
+                        setattr(child_gene, 'histone_modifications', gene.histone_modifications.clone())
                 
                 # Epigenetic inheritance
                 if hasattr(child_gene, 'methylation_state'):
@@ -610,13 +623,26 @@ class ProductionBCell(nn.Module):
                 
                 # Copy non-parameter attributes
                 for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
-                            'fitness_contribution', 'methylation_state', 'histone_modifications']:
+                            'fitness_contribution']:
                     if hasattr(gene, attr):
                         value = getattr(gene, attr)
                         if isinstance(value, torch.Tensor):
                             setattr(child_gene, attr, value.clone())
                         else:
                             setattr(child_gene, attr, copy.copy(value))
+                
+                # Handle parameter attributes separately
+                if hasattr(gene, 'methylation_state') and hasattr(child_gene, 'methylation_state'):
+                    if isinstance(gene.methylation_state, nn.Parameter):
+                        child_gene.methylation_state.data.copy_(gene.methylation_state.data)
+                    else:
+                        setattr(child_gene, 'methylation_state', gene.methylation_state.clone())
+                        
+                if hasattr(gene, 'histone_modifications') and hasattr(child_gene, 'histone_modifications'):
+                    if isinstance(gene.histone_modifications, nn.Parameter):
+                        child_gene.histone_modifications.data.copy_(gene.histone_modifications.data)
+                    else:
+                        setattr(child_gene, 'histone_modifications', gene.histone_modifications.clone())
                 
                 # Epigenetic inheritance
                 if hasattr(child_gene, 'methylation_state'):
