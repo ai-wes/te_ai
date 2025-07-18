@@ -82,12 +82,20 @@ class DeepChemModelWrapper:
         # Predict
         predictions = self.model.predict(test_dataset)
         
+        # Debug shape issues
+        logger.info(f"DeepNN raw predictions shape: {predictions.shape}")
+        
         # Handle multi-dimensional output
         if len(predictions.shape) > 2:
             predictions = predictions.squeeze()
-        
-        # Ensure predictions match test set size
-        if len(predictions) != len(X_test):
+        elif len(predictions.shape) == 2 and predictions.shape[1] == 1:
+            predictions = predictions.squeeze(1)
+            
+        # Check for doubled predictions (common DeepChem issue)
+        if len(predictions) == 2 * len(X_test):
+            logger.warning(f"DeepChem returned doubled predictions ({len(predictions)} for {len(X_test)} samples), taking first half")
+            predictions = predictions[:len(X_test)]
+        elif len(predictions) != len(X_test):
             logger.warning(f"Prediction shape mismatch: got {len(predictions)}, expected {len(X_test)}")
             # Take only the first len(X_test) predictions
             predictions = predictions[:len(X_test)]
