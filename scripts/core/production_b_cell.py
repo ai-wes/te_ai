@@ -43,7 +43,6 @@ from scripts.core.self_modifying_neural_architecture import SelfModifyingArchite
 from scripts.core.utils.detailed_logger import get_logger, trace
 from scripts.core.ode import ContinuousDepthGeneModule
 from scripts.core.utils.telemetry import TermColors
-from scripts.core.stem_gene_module import
 # Removed circular import - StemGeneModule will be imported dynamically when needed
 # Suppress warnings for clean output
 warnings.filterwarnings('ignore')
@@ -367,48 +366,20 @@ class ProductionBCell(nn.Module):
         plasmid_size = min(3, len(high_fitness_genes))
         selected_genes = random.sample(high_fitness_genes, plasmid_size)
         
-        # Clone genes efficiently using state_dict
+        # Clone genes efficiently
         plasmid_genes = []
         for gene in selected_genes:
-            gene_class = type(gene)
-            
-            # Handle different gene types with their specific constructor requirements
-            if gene_class == ContinuousDepthGeneModule:
-                new_gene = gene_class(gene.gene_type, gene.variant_id)
-            elif gene_class == QuantumGeneModule:
-                new_gene = gene_class(gene.gene_type, gene.variant_id)
-            elif gene_class == StemGeneModule:
-                # StemGeneModule can take optional gene_types parameter
-                new_gene = gene_class(getattr(gene, 'gene_types', None))
-            else:
-                # For any other gene types, try to get constructor args from the gene
-                try:
-                    # Try to extract constructor arguments from the gene's attributes
-                    if hasattr(gene, 'gene_type') and hasattr(gene, 'variant_id'):
-                        new_gene = gene_class(gene.gene_type, gene.variant_id)
-                    elif hasattr(gene, 'gene_types'):
-                        new_gene = gene_class(gene.gene_types)
-                    else:
-                        # Fallback: try calling with no arguments
-                        new_gene = gene_class()
-                except Exception as e:
-                    logger.warning(f"Could not clone gene of type {gene_class.__name__}: {e}")
-                    continue
-            
-            # Copy state dict
-            new_gene.load_state_dict(gene.state_dict())
-            
-            # Copy non-parameter attributes
-            for attr in ['gene_id', 'gene_type', 'variant_id', 'position', 'is_active', 
-                        'fitness_contribution', 'methylation_state', 'histone_modifications']:
-                if hasattr(gene, attr):
-                    value = getattr(gene, attr)
-                    if isinstance(value, torch.Tensor):
-                        setattr(new_gene, attr, value.clone())
-                    else:
-                        setattr(new_gene, attr, copy.copy(value))
-            
-            plasmid_genes.append(new_gene)
+            try:
+                # Use clone method if available, otherwise fall back to deepcopy
+                if hasattr(gene, 'clone'):
+                    new_gene = gene.clone()
+                else:
+                    # Fallback for genes without clone method
+                    new_gene = copy.deepcopy(gene)
+                plasmid_genes.append(new_gene)
+            except Exception as e:
+                logger.warning(f"Could not clone gene of type {type(gene).__name__}: {e}")
+                continue
         
         # Generate conjugation signal on correct device
         conjugation_signal = self.conjugation_pilus(

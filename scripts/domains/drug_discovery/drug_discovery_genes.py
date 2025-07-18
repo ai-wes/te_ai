@@ -12,6 +12,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch_geometric.nn import GCNConv, global_mean_pool
 import numpy as np
+import uuid
 from typing import Dict, Optional, Tuple, List
 from dataclasses import dataclass
 
@@ -43,6 +44,7 @@ class BindingPocketGene(ContinuousDepthGeneModule):
         )
         
         # Store the additional parameters as instance variables
+        self.variant_id = variant_id
         self.input_dim = input_dim
         self.hidden_dim = hidden_dim
         self.output_dim = output_dim
@@ -119,6 +121,44 @@ class BindingPocketGene(ContinuousDepthGeneModule):
             new_gene.pocket_attention = self.pocket_attention
             new_gene.volume_processor = self.volume_processor
         return new_gene, action
+    
+    def clone(self) -> 'BindingPocketGene':
+        """Efficient cloning method for BindingPocketGene"""
+        # Create new instance with stored constructor parameters
+        new_gene = BindingPocketGene(
+            variant_id=self.variant_id,
+            input_dim=self.input_dim,
+            hidden_dim=self.hidden_dim,
+            output_dim=self.output_dim,
+            position=self.position,
+            depth_min=self.depth_min,
+            depth_max=self.depth_max
+        )
+        
+        # Copy state dict
+        new_gene.load_state_dict(self.state_dict())
+        
+        # Generate new unique ID
+        new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
+        
+        # Copy non-parameter attributes from parent
+        attrs_to_copy = [
+            'is_active', 'fitness_contribution',
+            'transposition_history', 'activation_count',
+            'total_gradient_norm', 'last_update_generation'
+        ]
+        
+        for attr in attrs_to_copy:
+            if hasattr(self, attr):
+                value = getattr(self, attr)
+                if isinstance(value, torch.Tensor):
+                    setattr(new_gene, attr, value.clone())
+                elif isinstance(value, list):
+                    setattr(new_gene, attr, value.copy())
+                else:
+                    setattr(new_gene, attr, value)
+        
+        return new_gene
 
 
 class PharmacophoreGene(QuantumGeneModule):

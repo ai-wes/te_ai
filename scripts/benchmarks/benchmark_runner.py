@@ -12,6 +12,16 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 
 import torch
+
+# Fix for torchao compatibility issue with DeepChem
+if not hasattr(torch._C, 'Tag') or not hasattr(torch._C.Tag, 'needs_fixed_stride_order'):
+    class FakeTag:
+        needs_fixed_stride_order = None
+    if not hasattr(torch._C, 'Tag'):
+        torch._C.Tag = FakeTag()
+    else:
+        torch._C.Tag.needs_fixed_stride_order = None
+
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np

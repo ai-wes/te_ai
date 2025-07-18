@@ -291,6 +291,36 @@ class ContinuousDepthGeneModule(nn.Module):
                     self.histone_modifications.data, -1, 1
                 )
     
+    def clone(self) -> 'ContinuousDepthGeneModule':
+        """Efficient cloning method that preserves all gene state"""
+        # Create new instance with same constructor args
+        new_gene = self.__class__(self.gene_type, self.variant_id)
+        
+        # Copy state dict
+        new_gene.load_state_dict(self.state_dict())
+        
+        # Generate new unique ID
+        new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
+        
+        # Copy non-parameter attributes
+        attrs_to_copy = [
+            'position', 'is_active', 'fitness_contribution',
+            'transposition_history', 'activation_count',
+            'total_gradient_norm', 'last_update_generation'
+        ]
+        
+        for attr in attrs_to_copy:
+            if hasattr(self, attr):
+                value = getattr(self, attr)
+                if isinstance(value, torch.Tensor):
+                    setattr(new_gene, attr, value.clone())
+                elif isinstance(value, list):
+                    setattr(new_gene, attr, value.copy())
+                else:
+                    setattr(new_gene, attr, value)
+        
+        return new_gene
+    
 # In the ContinuousDepthGeneModule class:
 
     
@@ -388,8 +418,7 @@ class ContinuousDepthGeneModule(nn.Module):
                 # ============================================================================
 
             # If it's not a quantum leap, proceed with a normal duplication
-            child = copy.deepcopy(self)
-            child.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
+            child = self.clone()
             child.position = np.clip(self.position + np.random.normal(0, 0.05), 0, 1)
             
             # Mutate child's parameters

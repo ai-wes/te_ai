@@ -1,5 +1,5 @@
 {
-  "device": "cuda",
+  "device": "cpu",
   "use_mixed_precision": true,
   "gradient_checkpointing": true,
   "num_workers": 1,
