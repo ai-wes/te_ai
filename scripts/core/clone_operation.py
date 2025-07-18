@@ -50,41 +50,50 @@ class FastClonePool:
                         # ============================================================================
                         # FIX: Instantiate the correct gene type (Quantum or Continuous)
                         # ============================================================================
+                        used_clone_method = False
                         if isinstance(gene, QuantumGeneModule):
                             new_gene = QuantumGeneModule(gene.gene_type, gene.variant_id)
                         elif isinstance(gene, StemGeneModule):
                             new_gene = StemGeneModule(gene.gene_types)
                         else:
-                            # For ContinuousDepthGeneModule (the base class)
-                            from scripts.core.quantum_gene import ContinuousDepthGeneModule
-                            new_gene = ContinuousDepthGeneModule(gene.gene_type, gene.variant_id)
+                            # Try to use the gene's own clone method if available
+                            if hasattr(gene, 'clone'):
+                                new_gene = gene.clone()
+                                used_clone_method = True
+                            else:
+                                # Fallback to deepcopy for unknown gene types
+                                new_gene = copy.deepcopy(gene)
+                                used_clone_method = True
                         # ============================================================================
                         
                         new_gene.to(self.device)
                         
-                        try:
-                            # Load the state dict. strict=False allows it to ignore
-                            # parameters that might not exist in one version vs another.
-                            new_gene.load_state_dict(gene_state, strict=False)
-                        except Exception as e_load:
-                            # Fallback for safety
-                            print(f"Warning: Could not load state dict for gene {gene.gene_id}. Error: {e_load}. Copying manually.")
-                            for key, value in gene_state.items():
-                                if key in new_gene.state_dict():
-                                    target_param = new_gene.state_dict()[key]
-                                    if value.shape == target_param.shape:
-                                        new_gene.state_dict()[key].copy_(value)
+                        # Only load state dict if we didn't use clone method
+                        if not used_clone_method:
+                            try:
+                                # Load the state dict. strict=False allows it to ignore
+                                # parameters that might not exist in one version vs another.
+                                new_gene.load_state_dict(gene_state, strict=False)
+                            except Exception as e_load:
+                                # Fallback for safety
+                                print(f"Warning: Could not load state dict for gene {gene.gene_id}. Error: {e_load}. Copying manually.")
+                                for key, value in gene_state.items():
+                                    if key in new_gene.state_dict():
+                                        target_param = new_gene.state_dict()[key]
+                                        if value.shape == target_param.shape:
+                                            new_gene.state_dict()[key].copy_(value)
                         
-                        # Copy non-parameter attributes
-                        new_gene.position = gene.position
-                        new_gene.is_active = gene.is_active
-                        new_gene.is_inverted = gene.is_inverted
-                        new_gene.fitness_contribution = gene.fitness_contribution
-                        new_gene.chromatin_accessibility = gene.chromatin_accessibility
-                        new_gene.is_cold = gene.is_cold
-                        new_gene.activation_ema = gene.activation_ema
-                        
-                        new_gene.transposition_history = copy.deepcopy(gene.transposition_history)
+                        # Copy non-parameter attributes (only if we didn't use clone method)
+                        if not used_clone_method:
+                            new_gene.position = gene.position
+                            new_gene.is_active = gene.is_active
+                            new_gene.is_inverted = gene.is_inverted
+                            new_gene.fitness_contribution = gene.fitness_contribution
+                            new_gene.chromatin_accessibility = gene.chromatin_accessibility
+                            new_gene.is_cold = gene.is_cold
+                            new_gene.activation_ema = gene.activation_ema
+                            
+                            new_gene.transposition_history = copy.deepcopy(gene.transposition_history)
                         
                         # Epigenetic inheritance
                         if hasattr(gene, 'methylation_state') and hasattr(new_gene, 'methylation_state'):

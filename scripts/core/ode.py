@@ -293,33 +293,39 @@ class ContinuousDepthGeneModule(nn.Module):
     
     def clone(self) -> 'ContinuousDepthGeneModule':
         """Efficient cloning method that preserves all gene state"""
-        # Create new instance with same constructor args
-        new_gene = self.__class__(self.gene_type, self.variant_id)
-        
-        # Copy state dict
-        new_gene.load_state_dict(self.state_dict())
-        
-        # Generate new unique ID
-        new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
-        
-        # Copy non-parameter attributes
-        attrs_to_copy = [
-            'position', 'is_active', 'fitness_contribution',
-            'transposition_history', 'activation_count',
-            'total_gradient_norm', 'last_update_generation'
-        ]
-        
-        for attr in attrs_to_copy:
-            if hasattr(self, attr):
-                value = getattr(self, attr)
-                if isinstance(value, torch.Tensor):
-                    setattr(new_gene, attr, value.clone())
-                elif isinstance(value, list):
-                    setattr(new_gene, attr, value.copy())
-                else:
-                    setattr(new_gene, attr, value)
-        
-        return new_gene
+        try:
+            # Try to create new instance with same constructor args
+            new_gene = self.__class__(self.gene_type, self.variant_id)
+            
+            # Copy state dict
+            new_gene.load_state_dict(self.state_dict())
+            
+            # Generate new unique ID
+            new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
+            
+            # Copy non-parameter attributes
+            attrs_to_copy = [
+                'position', 'is_active', 'fitness_contribution',
+                'transposition_history', 'activation_count',
+                'total_gradient_norm', 'last_update_generation'
+            ]
+            
+            for attr in attrs_to_copy:
+                if hasattr(self, attr):
+                    value = getattr(self, attr)
+                    if isinstance(value, torch.Tensor):
+                        setattr(new_gene, attr, value.clone())
+                    elif isinstance(value, list):
+                        setattr(new_gene, attr, value.copy())
+                    else:
+                        setattr(new_gene, attr, value)
+            
+            return new_gene
+        except (RuntimeError, TypeError):
+            # Fall back to deepcopy if state dict doesn't match or constructor fails
+            new_gene = copy.deepcopy(self)
+            new_gene.gene_id = f"{self.gene_type}{self.variant_id}-{uuid.uuid4().hex[:8]}"
+            return new_gene
     
 # In the ContinuousDepthGeneModule class:
 

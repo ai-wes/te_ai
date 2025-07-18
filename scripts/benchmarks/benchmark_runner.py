@@ -99,8 +99,16 @@ class MolecularPropertyDataset(BenchmarkDataset):
                 )
             
             # Also store raw features for baseline models
-            from deepchem.feat import MorganGenerator
-            morgan_featurizer = MorganGenerator(radius=2, size=1024)
+            try:
+                from deepchem.feat import CircularFingerprint
+                morgan_featurizer = CircularFingerprint(radius=2, size=1024)
+            except ImportError:
+                try:
+                    from deepchem.feat import MorganGenerator
+                    morgan_featurizer = MorganGenerator(radius=2, size=1024)
+                except ImportError:
+                    # Fallback to string name
+                    morgan_featurizer = 'ECFP'
             loader_fn = getattr(dc.molnet, f'load_{self.dataset_name.lower()}')
             tasks, datasets, transformers = loader_fn(featurizer=morgan_featurizer, splitter='scaffold')
             train, valid, test = datasets

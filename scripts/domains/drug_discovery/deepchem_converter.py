@@ -215,9 +215,17 @@ class DeepChemToTEAI:
         
         # Create the proper featurizer object to avoid deprecation warning
         if featurizer == 'ECFP':
-            # Use MorganGenerator instead of deprecated CircularFingerprint
-            from deepchem.feat import MorganGenerator
-            featurizer_obj = MorganGenerator(radius=2, size=1024)
+            # Try different import names for different DeepChem versions
+            try:
+                from deepchem.feat import CircularFingerprint
+                featurizer_obj = CircularFingerprint(radius=2, size=1024)
+            except ImportError:
+                try:
+                    from deepchem.feat import MorganGenerator
+                    featurizer_obj = MorganGenerator(radius=2, size=1024)
+                except ImportError:
+                    # Fallback to string name
+                    featurizer_obj = featurizer
         else:
             # For other featurizers, let DeepChem handle it
             featurizer_obj = featurizer
