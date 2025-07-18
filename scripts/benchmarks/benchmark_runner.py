@@ -417,6 +417,9 @@ class TEAIBenchmarkAdapter:
         self.evolution_history = []
         self.best_cells = []  # Store best performing cells for prediction
         self.fitness_history = []  # Track fitness over generations
+        self.best_model_metrics = None  # Track best model that meets criteria
+        self.best_model_generation = None
+        self.model_save_dir = None
     
     def create_model(self, input_dim: int, output_dim: int):
         """Create appropriate TE-AI model for the task"""
@@ -439,15 +442,19 @@ class TEAIBenchmarkAdapter:
             self.model = CyberSecurityGerminalCenter(cfg)
         else:
             # Generic germinal center
-            self.model = ProductionGerminalCenter(
-                initial_population_size=cfg.population_size
-            )
+            self.model = ProductionGerminalCenter()
         
         self.cfg = cfg
     
     def fit(self, X_train, y_train, antigens=None, generations: int = 20):
         """Train using evolutionary process with real or converted antigens"""
         start_time = time.time()
+        
+        # Create unique directory for this run
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.model_save_dir = Path(f"benchmark_results/te_ai_models/{self.task_type}_{timestamp}")
+        self.model_save_dir.mkdir(parents=True, exist_ok=True)
+        logger.info(f"Model save directory: {self.model_save_dir}")
         
         # Use provided antigens or create from features
         if antigens is not None:
@@ -529,6 +536,30 @@ class TEAIBenchmarkAdapter:
                             stats['batch_precision'] = batch_prec
                             stats['batch_recall'] = batch_rec
                             stats['batch_f1'] = batch_f1
+                            
+                            # Check if this model meets our strict criteria
+                            if batch_acc >= 0.9 and batch_prec >= 0.9:
+                                current_fitness = stats.get('max_fitness', stats.get('mean_fitness', 0))
+                                
+                                # Save if this is the first model meeting criteria or has better fitness
+                                if (self.best_model_metrics is None or 
+                                    current_fitness > self.best_model_metrics.get('fitness', 0)):
+                                    
+                                    logger.info(f"🎯 Model meets criteria! Acc={batch_acc:.3f}, P={batch_prec:.3f}, Fitness={current_fitness:.4f}")
+                                    
+                                    # Save model state
+                                    self._save_model_checkpoint(generation, stats, batch_acc, batch_prec, batch_rec, batch_f1)
+                                    
+                                    # Update best model tracking
+                                    self.best_model_metrics = {
+                                        'generation': generation,
+                                        'fitness': current_fitness,
+                                        'accuracy': batch_acc,
+                                        'precision': batch_prec,
+                                        'recall': batch_rec,
+                                        'f1': batch_f1
+                                    }
+                                    self.best_model_generation = generation
                     else:
                         logger.info(f"Generation {generation}: Fitness={stats.get('max_fitness', stats.get('mean_fitness', 0)):.4f}")
         
@@ -542,6 +573,17 @@ class TEAIBenchmarkAdapter:
             self.best_cells = [cell for _, cell in sorted_cells[:10]]
         
         self.training_time = time.time() - start_time
+        
+        # Log final results
+        if self.best_model_metrics:
+            logger.info(f"\n✨ Best model saved from generation {self.best_model_generation}:")
+            logger.info(f"   Accuracy: {self.best_model_metrics['accuracy']:.3f}")
+            logger.info(f"   Precision: {self.best_model_metrics['precision']:.3f}")
+            logger.info(f"   Recall: {self.best_model_metrics['recall']:.3f}")
+            logger.info(f"   F1 Score: {self.best_model_metrics['f1']:.3f}")
+            logger.info(f"   Fitness: {self.best_model_metrics['fitness']:.4f}")
+        else:
+            logger.warning("⚠️ No model met the 90% accuracy and precision criteria - nothing saved!")
     
     def _predict_batch_internal(self, antigen_batch):
         """Make predictions using current population (for training metrics)"""
@@ -622,6 +664,18 @@ class TEAIBenchmarkAdapter:
             predictions = np.random.rand(len(X_test))
         
         self.inference_time = time.time() - start_time
+        
+        # Ensure predictions match test set size
+        if len(predictions) != len(X_test):
+            logger.warning(f"Prediction count mismatch: expected {len(X_test)}, got {len(predictions)}")
+            # Truncate or pad predictions to match expected size
+            if len(predictions) > len(X_test):
+                predictions = predictions[:len(X_test)]
+            else:
+                # Pad with default predictions
+                padding = np.full(len(X_test) - len(predictions), 0.5)
+                predictions = np.concatenate([predictions, padding])
+        
         return predictions
     
     def _predict_with_cells(self, test_graphs, cells):
@@ -652,12 +706,81 @@ class TEAIBenchmarkAdapter:
             if batch_predictions:
                 # Average predictions from all cells
                 avg_predictions = np.mean(batch_predictions, axis=0)
+                # Ensure we're getting the right shape
+                if avg_predictions.ndim == 0:
+                    # Single prediction, expand to match batch size
+                    avg_predictions = np.array([avg_predictions] * len(batch_graphs))
+                elif len(avg_predictions) != len(batch_graphs):
+                    logger.warning(f"Prediction shape mismatch: expected {len(batch_graphs)}, got {len(avg_predictions)}")
+                    # Take only the predictions for this batch
+                    avg_predictions = avg_predictions[:len(batch_graphs)]
                 all_predictions.extend(avg_predictions)
             else:
                 # Fallback for this batch
                 all_predictions.extend([0.5] * len(batch_graphs))
         
         return np.array(all_predictions)
+    
+    def _save_model_checkpoint(self, generation, stats, accuracy, precision, recall, f1):
+        """Save model checkpoint when criteria are met"""
+        checkpoint = {
+            'generation': generation,
+            'model_state': self.model.state_dict() if hasattr(self.model, 'state_dict') else None,
+            'population': {},  # Save population data
+            'metrics': {
+                'accuracy': accuracy,
+                'precision': precision,
+                'recall': recall,
+                'f1': f1,
+                'fitness': stats.get('max_fitness', stats.get('mean_fitness', 0)),
+                'generation_stats': stats
+            },
+            'config': {
+                'task_type': self.task_type,
+                'population_size': len(self.model.population) if hasattr(self.model, 'population') else 0,
+                'generation': generation
+            }
+        }
+        
+        # Save top cells
+        if hasattr(self.model, 'population'):
+            sorted_cells = sorted(self.model.population.items(), 
+                                key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
+                                reverse=True)
+            
+            # Save top 10 cells
+            for i, (cell_id, cell) in enumerate(sorted_cells[:10]):
+                checkpoint['population'][f'top_{i+1}'] = {
+                    'cell_id': cell_id,
+                    'fitness': cell.fitness_history[-1] if hasattr(cell, 'fitness_history') and cell.fitness_history else 0,
+                    'gene_count': len(cell.genes) if hasattr(cell, 'genes') else 0,
+                    'state_dict': cell.state_dict() if hasattr(cell, 'state_dict') else None
+                }
+        
+        # Save checkpoint
+        checkpoint_path = self.model_save_dir / f"checkpoint_gen_{generation}_acc_{accuracy:.3f}_prec_{precision:.3f}.pt"
+        torch.save(checkpoint, checkpoint_path)
+        logger.info(f"   💾 Saved checkpoint to: {checkpoint_path}")
+        
+        # Also save a "best_model.pt" link that always points to the best
+        best_model_path = self.model_save_dir / "best_model.pt"
+        if best_model_path.exists():
+            best_model_path.unlink()
+        torch.save(checkpoint, best_model_path)
+        
+        # Save metrics summary
+        metrics_path = self.model_save_dir / "metrics_summary.json"
+        metrics_summary = {
+            'best_generation': generation,
+            'best_metrics': checkpoint['metrics'],
+            'save_time': datetime.now().isoformat(),
+            'training_history': self.evolution_history[-10:]  # Last 10 generations
+        }
+        
+        with open(metrics_path, 'w') as f:
+            json.dump(metrics_summary, f, indent=2)
+        
+        logger.info(f"   📊 Saved metrics summary to: {metrics_path}")
 
 
 class BenchmarkRunner:
