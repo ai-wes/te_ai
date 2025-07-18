@@ -321,7 +321,17 @@ class StemGeneModule(ContinuousDepthGeneModule):
     def divide_asymmetrically(self, population_stats: Dict) -> Optional['StemGeneModule']:
         """Create a differentiated daughter while maintaining self as stem"""
         if random.random() < self.plasticity.item() * 0.5:  # Probability based on plasticity
-            daughter = copy.deepcopy(self)
+            # Get parent device
+            parent_device = next(self.parameters()).device
+            
+            # Use clone method if available, otherwise deepcopy and move to device
+            if hasattr(self, 'clone'):
+                daughter = self.clone()
+            else:
+                daughter = copy.deepcopy(self)
+                # Ensure daughter is on same device as parent
+                daughter = daughter.to(parent_device)
+            
             daughter.gene_id = f"{self.gene_id}_daughter_{len(self.differentiation_history)}"
             daughter.differentiate(population_stats=population_stats)  # Daughter differentiates
             daughter.commitment_level = min(1.0, daughter.commitment_level + 0.2)  # Accelerate commitment

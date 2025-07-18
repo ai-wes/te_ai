@@ -799,8 +799,15 @@ class ProductionGerminalCenter:
         
         # Fetch the last input batch to use for signature calculation (Mitigation #4)
         if self.input_batch_history:
-            calibration_antigens = [a.to(cfg.device) for a in self.input_batch_history[-1]]
-            calibration_batch = Batch.from_data_list(calibration_antigens)
+            # Ensure all antigens are fully on the correct device
+            device = torch.device(cfg.device)
+            calibration_antigens = []
+            for a in self.input_batch_history[-1]:
+                # Create a new Data object with all attributes on the correct device
+                a_gpu = a.to(device)
+                calibration_antigens.append(a_gpu)
+            
+            calibration_batch = Batch.from_data_list(calibration_antigens).to(device)
             transfer_count = self._execute_horizontal_transfer(calibration_batch)
             logger.info(f"     - {transfer_count} successful gene transfers.")
         else:

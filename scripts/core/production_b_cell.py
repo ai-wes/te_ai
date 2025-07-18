@@ -123,6 +123,9 @@ class ProductionBCell(nn.Module):
     
     def forward(self, antigen: Data) -> Tuple[torch.Tensor, torch.Tensor, Dict]:
         """Complete forward pass with all features"""
+        # Validate all genes are on correct device before processing
+        self._validate_device_consistency()
+        
         device = next(self.parameters()).device
         active_genes = [g for g in self.genes if g.is_active]
         
@@ -224,12 +227,19 @@ class ProductionBCell(nn.Module):
             return torch.tensor([])
             
         # Create dynamic regulatory matrix for current active genes
-        # Get device from first gene's parameters
-        device = next(active_genes[0].parameters()).device
+        # Get device from the cell, not individual genes
+        device = next(self.parameters()).device
         reg_matrix = torch.randn(n, n, device=device)
         
-        # Get gene activities (assuming genes have an activity attribute)
-        activities = torch.stack([getattr(g, 'activity', torch.tensor(1.0, device=device)) for g in active_genes])
+        # Get gene activities, ensuring all are on the same device
+        activities = []
+        for g in active_genes:
+            activity = getattr(g, 'activity', torch.tensor(1.0))
+            if not isinstance(activity, torch.Tensor):
+                activity = torch.tensor(activity)
+            activities.append(activity.to(device))
+        
+        activities = torch.stack(activities)
         
         # Apply regulation
         regulated = torch.sigmoid(reg_matrix @ activities)
@@ -242,9 +252,18 @@ class ProductionBCell(nn.Module):
         if len(self.immunological_memory) < 10:
             return None
         
-        # Encode memories
-        memory_tensors = torch.stack([m['representation'] for m in 
-                                     list(self.immunological_memory)[-50:]])
+        # Get device from representation
+        device = representation.device
+        
+        # Encode memories and ensure they're on the correct device
+        memory_list = []
+        for m in list(self.immunological_memory)[-50:]:
+            mem_tensor = m['representation']
+            if mem_tensor.device != device:
+                mem_tensor = mem_tensor.to(device)
+            memory_list.append(mem_tensor)
+        
+        memory_tensors = torch.stack(memory_list)
         
         # Ensure tensor dimensions match
         if representation.dim() == 1:
@@ -320,8 +339,11 @@ class ProductionBCell(nn.Module):
                     new_genes.append(child)
         
         # Add new genes
+        device = next(self.parameters()).device
         for gene in new_genes:
             if len(self.genes) < cfg.max_genes_per_clone:
+                # Ensure gene is on the same device as the cell
+                gene = gene.to(device)
                 self.genes.append(gene)
         
         # Update generation
@@ -455,6 +477,10 @@ class ProductionBCell(nn.Module):
                 new_gene = copy.deepcopy(gene)
                 new_gene.gene_id = f"{new_gene.gene_id}-HGT-{self.cell_id[:8]}"
                 
+                # Ensure new gene is on the same device as the cell
+                device = next(self.parameters()).device
+                new_gene = new_gene.to(device)
+                
                 with torch.no_grad():
                     for param in new_gene.parameters():
                         param.data += torch.randn_like(param) * cfg.mutation_rate
@@ -489,6 +515,15 @@ class ProductionBCell(nn.Module):
             signature_parts.append(f"{gene.gene_type}{gene.variant_id}:{gene.position:.2f}")
         
         return "-".join(signature_parts)
+    
+    def _validate_device_consistency(self):
+        """Ensure all genes are on the same device as the cell"""
+        cell_device = next(self.parameters()).device
+        for i, gene in enumerate(self.genes):
+            gene_device = next(gene.parameters()).device
+            if gene_device != cell_device:
+                logger.warning(f"Gene {i} ({gene.gene_id}) on {gene_device}, moving to {cell_device}")
+                self.genes[i] = gene.to(cell_device)
       
     
     def clone(self) -> 'ProductionBCell':
