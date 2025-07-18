@@ -16,6 +16,7 @@ from collections import defaultdict
 
 from scripts.core.production_germinal_center import ProductionGerminalCenter
 from scripts.core.production_b_cell import ProductionBCell
+from scripts.core.utils.telemetry import write_visualization_state, set_germinal_center
 from scripts.config import cfg
 from scripts.core.utils.detailed_logger import get_logger
 

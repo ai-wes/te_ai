@@ -314,15 +314,7 @@ class DrugDiscoveryGerminalCenter(ProductionGerminalCenter):
             # Evolve population on this target
             initial_fitness = None
             for gen in range(generations_per_target):
-                # Write visualization state
-                set_germinal_center(self)
-                if self.population:
-                    first_cell_id = list(self.population.keys())[0]
-                    first_cell = self.population[first_cell_id]
-                    if hasattr(first_cell, 'architecture_modifier'):
-                        write_visualization_state(first_cell_id, first_cell.architecture_modifier)
-                
-                # Evolve
+                # Evolve - this will call write_visualization_state internally
                 self.evolve_generation(target_batch)
                 
                 # Track initial fitness

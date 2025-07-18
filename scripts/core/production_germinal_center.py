@@ -275,100 +275,6 @@ class ProductionGerminalCenter:
                 
     
     
-    def evolve_generation(self, antigens: List[Data]):
-        logger.debug("Entering ProductionGerminalCenter.evolve_generation")
-        """Complete evolution cycle with all systems"""
-        generation_start = time.time()
-        self.generation += 1
-        
-        logger.info(f"\n{'='*80}")
-        logger.info(f"GENERATION {self.generation}")
-        logger.info(f"{'='*80}")
-        
-        # --- Store input history for replay/HGT ---
-        self.input_batch_history.append([a.to('cpu') for a in antigens])
-        
-        logger.info("\n📊 Phase 1: Fitness Evaluation")
-        fitness_scores = self._evaluate_population_parallel(antigens)
-        
-        # Phase 2: Compute metrics and detect stress
-        logger.info("\n📈 Phase 2: Metrics and Stress Detection")
-        metrics = self._compute_comprehensive_metrics(fitness_scores)
-        self.current_stress = self._detect_population_stress(metrics)
-        
-        # --- CHANGE 1: FORCE STRESS AT GENERATION 3 ---
-        if self.generation == 3:
-            logger.info("\n🔥 DEBUG: Forcing maximum stress at Generation 3.")
-            self.current_stress = 1.0
-        logger.info(f"   Current stress level: {self.current_stress:.3f}")
-                
-        # Phase 3: Phase transition detection and intervention
-        logger.info("\n🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍")
-        population_state = self._get_population_state()
-        intervention = self.phase_detector.update(metrics, population_state)
-        
-        if intervention:
-            intervention(self)
-        
-        # Phase 4: Stress response
-        if self.current_stress > cfg.stress_threshold:
-            logger.info(f"\n⚠️⚠️   Phase 4: High Stress Response (stress={self.current_stress:.3f})  ⚠️ ⚠️ ")
-            self._execute_stress_response()
-        
-        # # The code seems to be a comment in a Python script, indicating that it is part of Phase 5
-        # which involves selection and reproduction. It is likely describing a specific phase or
-        # step in a larger program or project.
-        #Phase 5: Selection and reproduction
-        logger.info("\n🧬🧬 Phase 5: Selection and Reproduction 🧬🧬")
-        self._selection_and_reproduction(fitness_scores)
-    
-        if self.generation % 10 == 0: # Every 15 generations, try to entangle
-            logger.info("\n🌀🌀 Entanglement Phase  🌀🌀")
-            for cell in self.population.values():
-                if hasattr(cell, 'attempt_entanglement'):
-                    cell.attempt_entanglement()
-                    
-                    
-        # Phase 6: Dream consolidation (periodic)
-        if self.generation % 5 == 0:
-            logger.info("\n💤 Phase 6: Dream Consolidation")
-            self._execute_dream_phase()
-        
-        # Phase 7: Record and visualize
-        self._record_generation_data(metrics, time.time() - generation_start)
-        
-        # Execute scheduled tasks
-        self._execute_scheduled_tasks()
-        
-        # --- FINAL STEP: Memory Cleanup and Logging ---
-        
-        # Optional: Explicitly clear large variables from this generation's scope
-        del fitness_scores, metrics, population_state
-        
-        # Run cleanup every few generations to balance performance and memory
-        if self.generation % 2 == 0: 
-            import gc
-            
-            # Suggest to Python's garbage collector to run
-            gc.collect()
-            
-            # Tell PyTorch to release all unused cached memory
-            if torch.cuda.is_available():
-                torch.cuda.empty_cache()
-                # Log memory usage AFTER cleanup
-                mem_after_cleanup = torch.cuda.memory_allocated() / 1e9
-                logger.info(f"   - Cleared CUDA memory cache. Usage now: {mem_after_cleanup:.2f} GB")
-
-        # Final generation summary log
-        gen_time = time.time() - generation_start
-        logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
-        
-        # Return metrics for the benchmark runner
-        return metrics
-        
-        
-        
-            
 # In the ProductionGerminalCenter class:
 
     
@@ -1187,21 +1093,12 @@ class ProductionGerminalCenter:
 
     
     def evolve_generation(self, antigens: List[Data]):
+        logger.debug("Entering ProductionGerminalCenter.evolve_generation")
         """Optimized evolution with minimal overhead"""
         generation_start = time.time()
         
         # Get logger instance
         self.generation += 1
-        
-        # Write visualization state for every generation
-        set_germinal_center(self)  # Set the global reference
-        
-        # Write state for the first cell (or best cell) in population
-        if self.population:
-            first_cell_id = list(self.population.keys())[0]
-            first_cell = self.population[first_cell_id]
-            if hasattr(first_cell, 'architecture_modifier'):
-                write_visualization_state(first_cell_id, first_cell.architecture_modifier)
         
         logger.info(f"\n{'='*80}")
         logger.info(f"GENERATION {self.generation}")
@@ -1255,6 +1152,13 @@ class ProductionGerminalCenter:
         logger.info("\n🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬")
         self._selection_and_reproduction_fast(fitness_scores)
         
+        # Entanglement phase (every 10 generations)
+        if self.generation % 10 == 0:
+            logger.info("\n🌀🌀 Entanglement Phase  🌀🌀")
+            for cell in self.population.values():
+                if hasattr(cell, 'attempt_entanglement'):
+                    cell.attempt_entanglement()
+        
         # Phase 6: Dream consolidation (periodic)
         if self.generation % 5 == 0:
             logger.info("\n💤 Phase 6: Dream Consolidation")
@@ -1272,6 +1176,15 @@ class ProductionGerminalCenter:
         
         gen_time = time.time() - generation_start
         logger.info(f"\n⏱️  Generation {self.generation} completed in {gen_time:.2f}s. Population: {len(self.population)}")
+        
+        # Write visualization state once at the end of generation
+        set_germinal_center(self)  # Set the global reference
+        if self.population:
+            # Get the best cell from this generation
+            best_cell_id = max(fitness_scores.keys(), key=lambda k: fitness_scores[k]) if fitness_scores else list(self.population.keys())[0]
+            best_cell = self.population.get(best_cell_id)
+            if best_cell and hasattr(best_cell, 'architecture_modifier'):
+                write_visualization_state(best_cell_id, best_cell.architecture_modifier)
         
         # Return metrics for the benchmark runner
         return metrics
