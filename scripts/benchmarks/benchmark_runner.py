@@ -500,9 +500,13 @@ class TEAIBenchmarkAdapter:
                     self.evolution_history.append(stats)
                     
                     # Calculate training accuracy on this batch
-                    if hasattr(self.model, 'population'):
+                    logger.info(f"[METRICS DEBUG] Generation {generation}: Has population? {hasattr(self.model, 'population')}, "
+                              f"Population size: {len(self.model.population) if hasattr(self.model, 'population') else 'N/A'}")
+                    if hasattr(self.model, 'population') and self.model.population:
+                        logger.debug(f"Population size: {len(self.model.population)}")
                         # Get predictions from current population
                         predictions = self._predict_batch_internal(batch)
+                        logger.debug(f"Predictions shape: {predictions.shape if predictions is not None else 'None'}")
                         if predictions is not None:
                             # Calculate metrics
                             pred_binary = (predictions > 0.5).astype(int)
@@ -524,9 +528,9 @@ class TEAIBenchmarkAdapter:
         
         # Store best cells for prediction
         if hasattr(self.model, 'population'):
-            # Sort cells by fitness
+            # Sort cells by latest fitness from fitness_history
             sorted_cells = sorted(self.model.population.items(), 
-                                key=lambda x: getattr(x[1], 'fitness', 0), 
+                                key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
                                 reverse=True)
             # Keep top 10 cells
             self.best_cells = [cell for _, cell in sorted_cells[:10]]
@@ -540,8 +544,9 @@ class TEAIBenchmarkAdapter:
             
             # Get top performing cells
             if hasattr(self.model, 'population'):
+                # Sort by latest fitness from fitness_history
                 sorted_cells = sorted(self.model.population.items(), 
-                                    key=lambda x: getattr(x[1], 'fitness', 0), 
+                                    key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
                                     reverse=True)
                 top_cells = [cell for _, cell in sorted_cells[:5]]
                 
@@ -601,7 +606,7 @@ class TEAIBenchmarkAdapter:
         elif hasattr(self.model, 'population') and self.model.population:
             # Use current population
             sorted_cells = sorted(self.model.population.items(), 
-                                key=lambda x: getattr(x[1], 'fitness', 0), 
+                                key=lambda x: x[1].fitness_history[-1] if hasattr(x[1], 'fitness_history') and x[1].fitness_history else 0, 
                                 reverse=True)
             top_cells = [cell for _, cell in sorted_cells[:10]]
             predictions = self._predict_with_cells(test_graphs, top_cells)
