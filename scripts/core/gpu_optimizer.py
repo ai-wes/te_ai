@@ -39,7 +39,7 @@ class GPUOptimizer:
     def find_optimal_batch_size(
         self, 
         model: torch.nn.Module,
-        sample_input: torch.Tensor,
+        sample_input,  # Can be torch.Tensor or torch_geometric.data.Data
         start_batch: int = 32,
         growth_factor: float = 1.5,
         max_batch: Optional[int] = None
@@ -49,7 +49,7 @@ class GPUOptimizer:
         
         Args:
             model: The model to test
-            sample_input: A sample input tensor (single item)
+            sample_input: A sample input (tensor or torch_geometric Data object)
             start_batch: Starting batch size
             growth_factor: Growth factor for batch size search
             max_batch: Maximum batch size to try
@@ -65,6 +65,10 @@ class GPUOptimizer:
         
         logger.info("Starting batch size optimization...")
         
+        # Check if input is a torch_geometric Data object
+        from torch_geometric.data import Data, Batch
+        is_graph_data = isinstance(sample_input, Data)
+        
         while True:
             if max_batch and batch_size > max_batch:
                 break
@@ -74,13 +78,19 @@ class GPUOptimizer:
                 torch.cuda.empty_cache()
                 torch.cuda.reset_peak_memory_stats()
                 
-                # Create batch
-                if sample_input.dim() == 1:
-                    test_input = sample_input.unsqueeze(0).repeat(batch_size, 1)
+                # Create batch based on input type
+                if is_graph_data:
+                    # For graph data, create a batch by repeating the sample
+                    test_input = Batch.from_data_list([sample_input] * batch_size)
+                    test_input = test_input.to(self.device)
                 else:
-                    test_input = sample_input.repeat(batch_size, *[1] * (sample_input.dim() - 1))
-                
-                test_input = test_input.to(self.device)
+                    # For regular tensors
+                    if sample_input.dim() == 1:
+                        test_input = sample_input.unsqueeze(0).repeat(batch_size, 1)
+                    else:
+                        test_input = sample_input.repeat(batch_size, *[1] * (sample_input.dim() - 1))
+                    
+                    test_input = test_input.to(self.device)
                 
                 # Forward pass
                 with torch.cuda.amp.autocast(enabled=True):

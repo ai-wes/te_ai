@@ -20,7 +20,7 @@ class CFG:
     use_amp: bool = True  # Automatic Mixed Precision
     
     # GPU Memory Optimization
-    auto_batch_size: bool = True  # Automatically find optimal batch size
+    auto_batch_size: bool = False  # Automatically find optimal batch size (disabled for now)
     batch_size_growth: float = 1.5  # Growth factor for batch size search
     cuda_memory_fraction: float = 0.95  # Use 95% of available VRAM
     enable_cuda_allocator_conf: bool = True  # Set PYTORCH_CUDA_ALLOC_CONF
