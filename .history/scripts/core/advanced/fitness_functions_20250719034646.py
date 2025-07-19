@@ -131,5 +131,5 @@ def clear_cuda_memory():
     print("[CUDA] Cleared CUDA cache and ran garbage collection.")
 
 # Example usage (call at the end of each generation or after large batch operations):
-print_cuda_memory_usage()
-clear_cuda_memory()
+# print_cuda_memory_usage()
+# clear_cuda_memory()

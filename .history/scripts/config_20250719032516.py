@@ -1,46 +1,50 @@
-# ============================================================================
-# THERAPEUTIC DOMAIN CONFIGURATION
-# ============================================================================
-
+# c:\Users\wes\Desktop\te_ai\scripts\config.py
 import torch
 from dataclasses import dataclass, field
+from typing import List, Tuple, Dict
 import os
 import json
 import logging
 
-def get_device():
-    """Get the best available device"""
-    return "cuda" if torch.cuda.is_available() else "cpu"
-
-# Network configuration presets
-NETWORK_CONFIGS = {
-    'biosensor': {'layers': 3, 'hidden_dim': 128},
-    'effector': {'layers': 4, 'hidden_dim': 256},
-    'controller': {'layers': 3, 'hidden_dim': 128}
-}
-
 @dataclass
-class TherapeuticConfig:
+class CFG:
     # --- Merged Configuration from CFG and ProductionConfig ---
-    
-############################# MAIN TE-AI CONFIGURATION ############################################
 
     # 1. Device and Performance
-    device: str = field(default_factory=lambda: "cuda" if torch.cuda.is_available() else "cpu")
+    device: str = field(default_factory=lambda: "cuda:0" if torch.cuda.is_available() else "cpu")
     use_mixed_precision: bool = True  # AMP for speed
-    gradient_checkpointing: bool = True  # Memory efficiency
-    num_workers: int = 1
+    gradient_checkpointing: bool = True    # Disable for A100 - we have memory
+    num_workers: int = 1  # Increase for A100
     pin_memory: bool = True
     use_jit_compilation: bool = True
     use_amp: bool = True  # Automatic Mixed Precision
-    gpu_batch_size: int = 32  # Missing parameter for GPU batching
+    
+    # GPU Memory Optimization
+    auto_batch_size: bool = False  # Automatically find optimal batch size (disabled for now)
+    batch_size_growth: float = 1.5  # Growth factor for batch size search
+    cuda_memory_fraction: float = 0.95  # Use 95% of available VRAM
+    enable_cuda_allocator_conf: bool = True  # Set PYTORCH_CUDA_ALLOC_CONF
+    max_split_size_mb: int = 512  # For CUDA allocator
+    enable_mps: bool = False  # Multi-Process Service for sharing GPU
+    
+    # Performance Optimization Settings
+    use_fast_clone: bool = True  # Use FastClonePool instead of deepcopy
+    batch_process_cells: int = 16  # Number of cells to process in parallel
+    cache_gene_outputs: bool = True  # Cache gene forward passes
+    vectorize_mutations: bool = True  # Apply mutations in parallel
+    async_visualization: bool = True  # Non-blocking visualization updates
+    compile_mode: str = "reduce-overhead"  # torch.compile mode
+    memory_efficient_clone: bool = True  # Use state_dict copying
+    prefetch_batches: int = 1  # Number of batches to prefetch
+    use_cuda_streams: bool = True  # Use CUDA streams for parallel execution
+    gradient_clip_val: float = 1.0  # Gradient clipping value
 
 
 
     # 2. Neural Architecture & ODEs
-    feature_dim: int = 64
-    hidden_dim: int = 128
-    num_heads: int = 8  # For multi-head attention
+    feature_dim: int = 64  # Double for A100
+    hidden_dim: int = 128  # Double for A100
+    num_heads: int = 8  # Double for A100 multi-head attention
     ode_solver: str = "dopri5"
     ode_rtol: float = 1e-3
     ode_atol: float = 1e-4
@@ -49,8 +53,8 @@ class TherapeuticConfig:
     max_depth: float = 3.0
 
     # 3. Genome and Transposon Dynamics
-    genome_size: int = 10000
-    num_genes: int = 100
+    genome_size: int = 100
+    num_genes: int = 10
     gene_min_len: int = 50
     gene_max_len: int = 200
     num_transposons: int = 50
@@ -92,29 +96,29 @@ class TherapeuticConfig:
     num_h_qubits: int = 10
     num_v_qubits: int = 10
     rbm_learning_rate: float = 0.1
-    rbm_epochs: int = 50
+    rbm_epochs: int = 20
     rbm_batch_size: int = 16
     dream_cycles_per_generation: int = 5
+    dream_frequency: int = 5  # Generations between dream consolidation
     dream_learning_rate: float = 0.001
     nightmare_adversarial_strength: float = 0.1
-    memory_replay_batch_size: int = 64
+    memory_replay_batch_size: int = 128  # 4x for A100
 
     # 8. Population Dynamics & Evolution
-    initial_population: int = 64  # Renamed from population_size
-    max_population: int = 512
-    num_generations: int = 50
-    selection_pressure: float = 0.4  # Updated value
-    mutation_rate: float = 0.02
+    initial_population: int = 64  # Double for A100
+    max_population: int = 120  # Reduced to prevent overfitting
+    num_generations: int = 20
+    selection_pressure: float = 0.3  # Reduced to maintain diversity
+    mutation_rate: float = 0.05  # Increased for more exploration
     crossover_rate: float = 0.1  # Updated value
-    elite_size: int = 5
-    diversity_weight: float = 0.15
+    elite_size: int = 5  # Reduced to prevent overfitting to best solutions
+    diversity_weight: float = 0.2  # Increased to encourage diversity
     shannon_entropy_target: float = 0.8
     niche_pressure: float = 0.1
-    dream_frequency: int = 5  # Generations between dream consolidation
 
     # 9. Horizontal Gene Transfer
     use_horizontal_transfer: bool = True
-    horizontal_transfer_prob: float = 0.002  # Renamed and updated
+    horizontal_transfer_prob: float = 0.05  # Increased from 0.002 to allow more gene transfers
     plasmid_stability: float = 0.95
     conjugation_efficiency: float = 0.8
     transformation_rate: float = 0.001
@@ -130,10 +134,19 @@ class TherapeuticConfig:
     critical_slowing_threshold: float = 0.8
 
     # 11. Training Parameters
-    epochs: int = 500
-    batch_size: int = 64
+    epochs: int = 30
+    batch_size: int = 128  # 4x for A100
+    gpu_batch_size: int = 64  # 4x for A100 parallel processing
     learning_rate: float = 0.001
     weight_decay: float = 1e-5
+    
+    # 11.1 Regularization Parameters
+    dropout_rate: float = 0.3  # Dropout for gene integrator
+    affinity_dropout: float = 0.2  # Dropout for affinity maturation
+    attention_dropout: float = 0.1  # Dropout for attention mechanisms
+    l2_regularization: float = 0.01  # L2 penalty for weights
+    gradient_clip_value: float = 1.0  # Gradient clipping threshold
+    early_stopping_patience: int = 5  # Generations without improvement before stopping
 
     # 12. Domain-Specific Settings (Immunology Example)
     use_domain_adaptation: bool = True
@@ -154,27 +167,35 @@ class TherapeuticConfig:
     seed: int = 42
 
 
-    ############################# THERAPEUTIC CONFIGURATION ############################################
-    num_biomarkers = 50  # cytokines, metabolites, etc.
-    critical_biomarkers = ['IL-6', 'TNF-α', 'CRP', 'glucose', 'pH']
-    
-    # Therapeutic targets
-    therapeutic_modes = ['anti-inflammatory', 'immunomodulation', 
-                        'metabolic_regulation', 'tissue_repair', 'targeted_killing']
-    
-    # Safety thresholds
-    toxicity_threshold = 0.3
-    max_therapeutic_strength = 0.9
-    
-    # Patient response dynamics
-    response_time_constant = 6.0  # hours
-    circadian_period = 24.0  # hours
+    intelligent_recombination_rate: float = 0.05
+
+    dataset_name: str = 'bbbp'
+    generations: int = 30
+    num_islands: int = 5
+    population_per_island: int = 128
+    island_devices: List[str] = field(default_factory=lambda: ["cuda:0", "cuda:0", "cuda:0", "cuda:0"])
+    num_migrants: int = 5  # Number of individuals to migrate between islands
+    breeding_summit_frequency: int = 3  # The number of generations between each Archipelago Breeding Summit.
+    migration_frequency: int = 6  # How often migrations happen (every N generations)
+
+
+
+    island_specializations: Dict[str, str] = field(default_factory=lambda: {
+        # Core Performers
+        "accuracy": "cuda:0",   # The Scientist
+        "speed": "cuda:0",      # The Engineer
+        "constrained": "cuda:0", # The Biologist
+
+        # Advanced Specialists
+        "novelty": "cuda:0",    # The Innovator
+        #"robustness": "cuda:1"# The Adversary
+     #  "parsimony": "cuda:1",  # The Minimalist
+    })
 
 
 
 
-
-
+    deepchem_data_dir: str = "deepchem_data"
 
     def __post_init__(self):
         """Validate and initialize derived configuration parameters."""
@@ -212,7 +233,6 @@ class TherapeuticConfig:
                 json.dump(self.__dict__, f, indent=2, default=custom_encoder)
             logging.info(f"Configuration saved to {config_path}")
         except Exception as e:
-            logging.error(f"Failed to save configuration: {e}")
+            logging.error(f"Failed to save configuration: {e}", exc_info=True)
             
-
-THERAPY_CFG = TherapeuticConfig()
+cfg = CFG()

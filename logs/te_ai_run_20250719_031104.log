@@ -299,3 +299,951 @@
 2025-07-19 03:15:39.536 | INFO     | info                           |    Evaluated 64 cells using 'calculate_constrained_fitness':
 2025-07-19 03:15:39.537 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.537, Best=0.720
 2025-07-19 03:15:39.537 | INFO     | info                           |       • Inference Time: Avg=12.62ms, Best=5.63ms
+2025-07-19 03:16:09.124 | INFO     | info                           |    Evaluated 64 cells using 'calculate_balanced_fitness':
+2025-07-19 03:16:09.126 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.542, Best=0.720
+2025-07-19 03:16:09.126 | INFO     | info                           |       • Inference Time: Avg=13.37ms, Best=6.05ms
+2025-07-19 03:16:09.126 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-19 03:16:09.127 | INFO     | info                           |    Baselines established. Starting evolution.
+2025-07-19 03:16:09.127 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-19 03:16:09.131 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-19 03:16:09.132 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-19 03:16:09.132 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-19 03:16:09.133 | INFO     | info                           |    🏝️ Submitting task for 'CONSTRAINED' Island on cuda:0...
+2025-07-19 03:16:09.133 | INFO     | info                           |    🏝️ Submitting task for 'NOVELTY' Island on cuda:0...
+2025-07-19 03:16:09.134 | INFO     | info                           |    🏝️ Submitting task for 'ROBUSTNESS' Island on cuda:1...
+2025-07-19 03:16:09.135 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-19 03:16:09.210 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:16:09.210 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:16:09.210 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:16:09.210 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:16:09.210 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:16:09.210 | INFO     | info                           | GENERATION 1 on cuda:0 [🏝️ NOVELTY]
+2025-07-19 03:16:09.211 | INFO     | info                           | GENERATION 1 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-19 03:16:09.211 | INFO     | info                           | GENERATION 1 on cuda:1 [🏝️ ROBUSTNESS]
+2025-07-19 03:16:09.211 | INFO     | info                           | GENERATION 1 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-19 03:16:09.211 | INFO     | info                           | GENERATION 1 on cuda:0 [🏝️ CONSTRAINED]
+2025-07-19 03:16:09.211 | INFO     | info                           | ================================================================================
+2025-07-19 03:16:09.211 | INFO     | info                           | ================================================================================
+2025-07-19 03:16:09.212 | INFO     | info                           | ================================================================================
+2025-07-19 03:16:09.212 | INFO     | info                           | ================================================================================
+2025-07-19 03:16:09.212 | INFO     | info                           | ================================================================================
+2025-07-19 03:16:09.259 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:16:09.259 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:16:09.259 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:16:09.260 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:16:09.260 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:20:32.661 | INFO     | info                           |    Evaluated 64 cells using 'calculate_novelty_fitness':
+2025-07-19 03:20:32.662 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.542, Best=0.700
+2025-07-19 03:20:32.664 | INFO     | info                           |       • Inference Time: Avg=120.55ms, Best=50.30ms
+2025-07-19 03:20:32.666 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on NOVELTY! Cell c5258e23 with fitness 0.9400🏆🏆🏆🏆
+2025-07-19 03:20:32.672 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:20:32.895 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.908 ± 0.000[0m, [35m🌿 Diversity: 4.712[0m, [33m🧬 Genes: 146[0m
+2025-07-19 03:20:32.895 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-19 03:20:32.896 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-19 03:20:32.896 | INFO     | info                           |    Current stress level: 0.000
+2025-07-19 03:20:32.896 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:20:32.900 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:20:32.901 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:20:37.497 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-19 03:20:45.702 | INFO     | info                           |    Evaluated 64 cells using 'calculate_robustness_fitness':
+2025-07-19 03:20:45.703 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.532, Best=0.709
+2025-07-19 03:20:45.703 | INFO     | info                           |       • Inference Time: Avg=125.90ms, Best=51.60ms
+2025-07-19 03:20:45.706 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ROBUSTNESS! Cell 4308d56d with fitness 0.7086🏆🏆🏆🏆
+2025-07-19 03:20:45.708 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:20:45.752 | INFO     | info                           |    Evaluated 64 cells using 'calculate_accuracy_fitness':
+2025-07-19 03:20:45.752 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.544, Best=0.757
+2025-07-19 03:20:45.753 | INFO     | info                           |       • Inference Time: Avg=125.92ms, Best=57.00ms
+2025-07-19 03:20:45.753 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-19 03:20:45.755 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell 4c050892 with fitness 0.7574🏆🏆🏆🏆
+2025-07-19 03:20:45.757 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:20:45.971 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.526 ± 0.007[0m, [35m🌿 Diversity: 4.777[0m, [33m🧬 Genes: 151[0m
+2025-07-19 03:20:45.972 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-19 03:20:45.972 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-19 03:20:45.972 | INFO     | info                           |    Current stress level: 0.009
+2025-07-19 03:20:45.973 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:20:45.975 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:20:45.975 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:20:46.012 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.538 ± 0.008[0m, [35m🌿 Diversity: 4.811[0m, [33m🧬 Genes: 159[0m
+2025-07-19 03:20:46.013 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.02, phase=0.00
+2025-07-19 03:20:46.013 | INFO     | info                           |    Combined amplified stress: 0.011
+2025-07-19 03:20:46.014 | INFO     | info                           |    Current stress level: 0.011
+2025-07-19 03:20:46.014 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:20:46.017 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:20:46.017 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:20:46.846 | INFO     | info                           |    New population size: 96
+2025-07-19 03:20:46.846 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-19 03:20:46.848 | INFO     | info                           | 
+⏱️  Generation 1 completed in 277.64s. Population: 96
+2025-07-19 03:20:48.464 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-19 03:20:48.485 | INFO     | info                           | 
+   🏝️ Island 'NOVELTY' completed:
+2025-07-19 03:20:48.487 | INFO     | info                           |       • Mean Fitness: 0.908
+2025-07-19 03:20:48.488 | INFO     | info                           |       • Champion Fitness: 0.940
+2025-07-19 03:20:48.489 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-19 03:20:50.767 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-19 03:20:50.953 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-19 03:20:55.788 | INFO     | info                           |    Evaluated 64 cells using 'calculate_speed_fitness':
+2025-07-19 03:20:55.789 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.546, Best=0.732
+2025-07-19 03:20:55.789 | INFO     | info                           |       • Inference Time: Avg=130.82ms, Best=69.66ms
+2025-07-19 03:20:55.789 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-19 03:20:55.793 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell cc3d3d34 with fitness 0.0732🏆🏆🏆🏆
+2025-07-19 03:20:55.794 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:20:56.080 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.053 ± 0.000[0m, [35m🌿 Diversity: 4.796[0m, [33m🧬 Genes: 158[0m
+2025-07-19 03:20:56.081 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-19 03:20:56.081 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-19 03:20:56.082 | INFO     | info                           |    Current stress level: 0.000
+2025-07-19 03:20:56.082 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:20:56.085 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:20:56.085 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:21:02.877 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 20.92 GiB is allocated by PyTorch, and 1.87 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1328, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:21:02.885 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 20.91 GiB is allocated by PyTorch, and 1.88 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1315, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:21:02.891 | ERROR    | error                          |    Island 'ROBUSTNESS' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 20.92 GiB is allocated by PyTorch, and 1.87 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1328, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:21:03.854 | INFO     | info                           |    Evaluated 64 cells using 'calculate_constrained_fitness':
+2025-07-19 03:21:03.854 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.552, Best=0.737
+2025-07-19 03:21:03.854 | INFO     | info                           |       • Inference Time: Avg=134.75ms, Best=18.45ms
+2025-07-19 03:21:03.854 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on CONSTRAINED! Cell a7ccf621 with fitness 0.7369🏆🏆🏆🏆
+2025-07-19 03:21:03.855 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:21:03.888 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.541 ± 0.007[0m, [35m🌿 Diversity: 4.767[0m, [33m🧬 Genes: 153[0m
+2025-07-19 03:21:03.888 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-19 03:21:03.888 | INFO     | info                           |    Combined amplified stress: 0.010
+2025-07-19 03:21:03.888 | INFO     | info                           |    Current stress level: 0.010
+2025-07-19 03:21:03.889 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:21:03.890 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:21:03.890 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:21:03.939 | ERROR    | error                          |    Island 'CONSTRAINED' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 20.91 GiB is allocated by PyTorch, and 1.88 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1315, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:21:03.939 | INFO     | info                           | 
+   All islands have completed Generation 1.
+2025-07-19 03:21:03.944 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-19 03:21:03.944 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-19 03:21:03.944 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-19 03:21:03.944 | INFO     | info                           |    🏝️ Submitting task for 'CONSTRAINED' Island on cuda:0...
+2025-07-19 03:21:03.945 | INFO     | info                           |    🏝️ Submitting task for 'NOVELTY' Island on cuda:0...
+2025-07-19 03:21:03.945 | INFO     | info                           |    🏝️ Submitting task for 'ROBUSTNESS' Island on cuda:1...
+2025-07-19 03:21:03.946 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-19 03:21:03.981 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:03.981 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:03.981 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:03.981 | INFO     | info                           | GENERATION 2 on cuda:0 [🏝️ CONSTRAINED]
+2025-07-19 03:21:03.981 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:03.981 | INFO     | info                           | GENERATION 2 on cuda:0 [🏝️ NOVELTY]
+2025-07-19 03:21:03.982 | INFO     | info                           | GENERATION 2 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-19 03:21:03.982 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:03.982 | INFO     | info                           | GENERATION 2 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-19 03:21:03.983 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:03.983 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:03.983 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:04.010 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:04.010 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:04.010 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:04.010 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:04.011 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:04.013 | INFO     | info                           | GENERATION 2 on cuda:1 [🏝️ ROBUSTNESS]
+2025-07-19 03:21:04.014 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:04.017 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:04.051 | ERROR    | error                          |    Island 'NOVELTY' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 56, in evaluate_population_batch
+    antigen_batch = Batch.from_data_list(antigens).to(self.device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/batch.py", line 97, in from_data_list
+    batch, slice_dict, inc_dict = collate(
+                                  ^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 109, in collate
+    value, slices, incs = _collate(attr, values, data_list, stores,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 205, in _collate
+    value = torch.cat(values, dim=cat_dim or 0, out=out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+
+2025-07-19 03:21:04.056 | ERROR    | error                          |    Island 'CONSTRAINED' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 56, in evaluate_population_batch
+    antigen_batch = Batch.from_data_list(antigens).to(self.device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/batch.py", line 97, in from_data_list
+    batch, slice_dict, inc_dict = collate(
+                                  ^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 109, in collate
+    value, slices, incs = _collate(attr, values, data_list, stores,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 205, in _collate
+    value = torch.cat(values, dim=cat_dim or 0, out=out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+
+2025-07-19 03:21:04.061 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 56, in evaluate_population_batch
+    antigen_batch = Batch.from_data_list(antigens).to(self.device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/batch.py", line 97, in from_data_list
+    batch, slice_dict, inc_dict = collate(
+                                  ^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 109, in collate
+    value, slices, incs = _collate(attr, values, data_list, stores,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 205, in _collate
+    value = torch.cat(values, dim=cat_dim or 0, out=out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+
+2025-07-19 03:21:04.064 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 56, in evaluate_population_batch
+    antigen_batch = Batch.from_data_list(antigens).to(self.device)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/batch.py", line 97, in from_data_list
+    batch, slice_dict, inc_dict = collate(
+                                  ^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 109, in collate
+    value, slices, incs = _collate(attr, values, data_list, stores,
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch_geometric/data/collate.py", line 205, in _collate
+    value = torch.cat(values, dim=cat_dim or 0, out=out)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:1! (when checking argument for argument tensors in method wrapper_CUDA_cat)
+
+2025-07-19 03:21:47.931 | INFO     | info                           |    Evaluated 95 cells using 'calculate_robustness_fitness':
+2025-07-19 03:21:47.932 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.546, Best=0.778
+2025-07-19 03:21:47.932 | INFO     | info                           |       • Inference Time: Avg=14.15ms, Best=5.89ms
+2025-07-19 03:21:47.932 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ROBUSTNESS! Cell f51f57b9 with fitness 0.7783🏆🏆🏆🏆
+2025-07-19 03:21:47.934 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:21:47.993 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.543 ± 0.005[0m, [35m🌿 Diversity: 4.634[0m, [33m🧬 Genes: 133[0m
+2025-07-19 03:21:47.993 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-19 03:21:47.993 | INFO     | info                           |    Combined amplified stress: 0.006
+2025-07-19 03:21:47.994 | INFO     | info                           |    Current stress level: 0.006
+2025-07-19 03:21:47.994 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:21:47.995 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:21:47.996 | INFO     | info                           |    Selection complete: 66 survivors, 29 to be replaced.
+2025-07-19 03:21:48.054 | ERROR    | error                          |    Island 'ROBUSTNESS' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.05 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1315, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:21:48.054 | INFO     | info                           | 
+   All islands have completed Generation 2.
+2025-07-19 03:21:48.063 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 3 ==============================
+2025-07-19 03:21:48.064 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-19 03:21:48.064 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-19 03:21:48.064 | INFO     | info                           |    🏝️ Submitting task for 'CONSTRAINED' Island on cuda:0...
+2025-07-19 03:21:48.065 | INFO     | info                           |    🏝️ Submitting task for 'NOVELTY' Island on cuda:0...
+2025-07-19 03:21:48.066 | INFO     | info                           |    🏝️ Submitting task for 'ROBUSTNESS' Island on cuda:1...
+2025-07-19 03:21:48.066 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-19 03:21:48.098 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:48.098 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:48.098 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:48.098 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:48.099 | INFO     | info                           | GENERATION 3 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-19 03:21:48.102 | INFO     | info                           | 
+================================================================================
+2025-07-19 03:21:48.102 | INFO     | info                           | GENERATION 3 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-19 03:21:48.103 | INFO     | info                           | GENERATION 3 on cuda:0 [🏝️ CONSTRAINED]
+2025-07-19 03:21:48.104 | INFO     | info                           | GENERATION 3 on cuda:0 [🏝️ NOVELTY]
+2025-07-19 03:21:48.104 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:48.104 | INFO     | info                           | GENERATION 3 on cuda:1 [🏝️ ROBUSTNESS]
+2025-07-19 03:21:48.104 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:48.105 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:48.105 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:48.105 | INFO     | info                           | ================================================================================
+2025-07-19 03:21:48.135 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:48.135 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:48.135 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:48.135 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:48.135 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-19 03:21:48.220 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.07 GiB is allocated by PyTorch, and 1.72 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 72, in evaluate_population_batch
+    predicted_score, _, _ = cell(antigen_batch)
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 176, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/ode.py", line 209, in forward
+    h_trajectory = odeint(
+                   ^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 206, in odeint_adjoint
+    ans = OdeintAdjointMethod.apply(shapes, func, y0, t, rtol, atol, method, options, event_fn, adjoint_rtol, adjoint_atol,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 24, in forward
+    ans = odeint(func, y0, t, rtol=rtol, atol=atol, method=method, options=options, event_fn=event_fn)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/odeint.py", line 80, in odeint
+    solution = solver.integrate(t)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/solvers.py", line 29, in integrate
+    solution = torch.empty(len(t), *self.y0.shape, dtype=self.y0.dtype, device=self.y0.device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.07 GiB is allocated by PyTorch, and 1.72 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-07-19 03:21:48.231 | ERROR    | error                          |    Island 'ROBUSTNESS' evolution task failed: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.07 GiB is allocated by PyTorch, and 1.72 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 72, in evaluate_population_batch
+    predicted_score, _, _ = cell(antigen_batch)
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 176, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/ode.py", line 209, in forward
+    h_trajectory = odeint(
+                   ^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 206, in odeint_adjoint
+    ans = OdeintAdjointMethod.apply(shapes, func, y0, t, rtol, atol, method, options, event_fn, adjoint_rtol, adjoint_atol,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 24, in forward
+    ans = odeint(func, y0, t, rtol=rtol, atol=atol, method=method, options=options, event_fn=event_fn)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/odeint.py", line 80, in odeint
+    solution = solver.integrate(t)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/solvers.py", line 29, in integrate
+    solution = torch.empty(len(t), *self.y0.shape, dtype=self.y0.dtype, device=self.y0.device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.07 GiB is allocated by PyTorch, and 1.72 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-07-19 03:21:54.565 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.11 GiB is allocated by PyTorch, and 1.68 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 72, in evaluate_population_batch
+    predicted_score, _, _ = cell(antigen_batch)
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 176, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/ode.py", line 209, in forward
+    h_trajectory = odeint(
+                   ^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 206, in odeint_adjoint
+    ans = OdeintAdjointMethod.apply(shapes, func, y0, t, rtol, atol, method, options, event_fn, adjoint_rtol, adjoint_atol,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/adjoint.py", line 24, in forward
+    ans = odeint(func, y0, t, rtol=rtol, atol=atol, method=method, options=options, event_fn=event_fn)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/odeint.py", line 80, in odeint
+    solution = solver.integrate(t)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torchdiffeq/_impl/solvers.py", line 29, in integrate
+    solution = torch.empty(len(t), *self.y0.shape, dtype=self.y0.dtype, device=self.y0.device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.11 GiB is allocated by PyTorch, and 1.68 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+2025-07-19 03:22:49.384 | INFO     | info                           |    Evaluated 64 cells using 'calculate_constrained_fitness':
+2025-07-19 03:22:49.385 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.571, Best=0.796
+2025-07-19 03:22:49.386 | INFO     | info                           |       • Inference Time: Avg=29.01ms, Best=8.23ms
+2025-07-19 03:22:49.387 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on CONSTRAINED! Cell a7ccf621 with fitness 0.7956🏆🏆🏆🏆
+2025-07-19 03:22:49.388 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:22:49.450 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.560 ± 0.008[0m, [35m🌿 Diversity: 4.767[0m, [33m🧬 Genes: 153[0m
+2025-07-19 03:22:49.450 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.02, phase=0.00
+2025-07-19 03:22:49.450 | INFO     | info                           |    Combined amplified stress: 0.010
+2025-07-19 03:22:49.451 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-19 03:22:49.451 | INFO     | info                           |    Current stress level: 1.000
+2025-07-19 03:22:49.451 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:22:49.452 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-19 03:22:49.453 | INFO     | info                           |    Executing stress response protocols:
+2025-07-19 03:22:49.453 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-19 03:23:04.589 | INFO     | info                           |      - 45/45 mutations executed. Tokens remaining: 32.0
+2025-07-19 03:23:04.593 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-19 03:23:04.610 | INFO     | info                           |      - 13 genes epigenetically modified.
+2025-07-19 03:23:04.610 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-19 03:23:18.359 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-19 03:23:18.360 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:23:18.360 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-19 03:23:18.433 | ERROR    | error                          |    Island 'CONSTRAINED' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.22 GiB is allocated by PyTorch, and 1.57 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1315, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:23:20.571 | INFO     | info                           |    Evaluated 96 cells using 'calculate_novelty_fitness':
+2025-07-19 03:23:20.572 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.578, Best=0.761
+2025-07-19 03:23:20.572 | INFO     | info                           |       • Inference Time: Avg=28.83ms, Best=11.56ms
+2025-07-19 03:23:20.572 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on NOVELTY! Cell a9793037 with fitness 0.9523🏆🏆🏆🏆
+2025-07-19 03:23:20.573 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-19 03:23:20.616 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.916 ± 0.000[0m, [35m🌿 Diversity: 4.594[0m, [33m🧬 Genes: 132[0m
+2025-07-19 03:23:20.617 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-19 03:23:20.617 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-19 03:23:20.617 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-19 03:23:20.617 | INFO     | info                           |    Current stress level: 1.000
+2025-07-19 03:23:20.617 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-19 03:23:20.619 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-19 03:23:20.619 | INFO     | info                           |    Executing stress response protocols:
+2025-07-19 03:23:20.619 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-19 03:23:25.605 | INFO     | info                           |      - 47/47 mutations executed. Tokens remaining: 28.0
+2025-07-19 03:23:25.605 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-19 03:23:25.606 | INFO     | info                           |      - 9 genes epigenetically modified.
+2025-07-19 03:23:25.607 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-19 03:23:37.397 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-19 03:23:37.397 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-19 03:23:37.397 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-19 03:23:37.440 | ERROR    | error                          |    Island 'NOVELTY' evolution task failed: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 118, in fast_clone
+    child = child.to(device)  # <--- THE FIX: move the whole cell to device
+            ^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB. GPU 0 has a total capacity of 24.00 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. 22.80 GiB allowed; Of the allocated memory 21.17 GiB is allocated by PyTorch, and 1.62 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 143, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 120, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1239, in evolve_generation
+    self._selection_and_reproduction_fast(fitness_scores)
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1315, in _selection_and_reproduction_fast
+    child = self.clone_pool.fast_clone(parent)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/clone_operation.py", line 137, in fast_clone
+    logger.error(f"Fast clone failed: {e}, using fallback method", exc_info=True)
+TypeError: DetailedLogger.error() got an unexpected keyword argument 'exc_info'
+
+2025-07-19 03:23:37.440 | INFO     | info                           | 
+   All islands have completed Generation 3.
+2025-07-19 03:23:37.440 | INFO     | info                           | 
+========================= 🏆 ARCHIPELAGO BREEDING SUMMIT at Generation 3 🏆 =========================
+2025-07-19 03:23:37.440 | INFO     | info                           |    New champion added to archive: D-J-S-S-V-V-V
+2025-07-19 03:23:37.440 | INFO     | info                           |    Current champion archive size: 1
+2025-07-19 03:23:37.441 | INFO     | info                           |    Champion from Island 1: Cell 4c050892 (Fitness: 0.7574) on cuda:0
+2025-07-19 03:23:37.441 | INFO     | info                           |    New champion added to archive: D-D-D-J-V-V-V
+2025-07-19 03:23:37.441 | INFO     | info                           |    Current champion archive size: 2
+2025-07-19 03:23:37.441 | INFO     | info                           |    Champion from Island 2: Cell cc3d3d34 (Fitness: 0.0732) on cuda:0
+2025-07-19 03:23:37.441 | INFO     | info                           |    New champion added to archive: D-J-Q-S-S-V-V
+2025-07-19 03:23:37.442 | INFO     | info                           |    Current champion archive size: 3
+2025-07-19 03:23:37.442 | INFO     | info                           |    Champion from Island 3: Cell a7ccf621 (Fitness: 0.7956) on cuda:0
+2025-07-19 03:23:37.442 | INFO     | info                           |    New champion added to archive: D-D-D-J-J-S-S-S-V-V
+2025-07-19 03:23:37.442 | INFO     | info                           |    Current champion archive size: 4
+2025-07-19 03:23:37.442 | INFO     | info                           |    Champion from Island 4: Cell a9793037 (Fitness: 0.9523) on cuda:0
+2025-07-19 03:23:37.442 | INFO     | info                           |    New champion added to archive: D-D-J-Q-S-S-S-V-V-V
+2025-07-19 03:23:37.442 | INFO     | info                           |    Current champion archive size: 5
+2025-07-19 03:23:37.442 | INFO     | info                           |    Champion from Island 5: Cell f51f57b9 (Fitness: 0.7783) on cuda:1
+2025-07-19 03:23:37.442 | INFO     | info                           | Shutting down the Archipelago's thread pool executor...
