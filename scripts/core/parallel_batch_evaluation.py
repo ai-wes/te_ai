@@ -45,118 +45,84 @@ class OptimizedBatchEvaluator:
         
     
 
-    def evaluate_population_batch(self, population: Dict, antigens: List[Data]) -> Dict[str, float]:
+    def evaluate_population_batch(self, population: Dict, antigens: list, fitness_function) -> Dict[str, float]:
         """
-        Evaluate entire population in parallel with single forward pass
-        MODIFIED FOR DRUG DISCOVERY
+        Evaluates the entire population, calculates raw performance metrics, and then applies
+        a specialized fitness function to get the final score for each cell.
         """
-        # Create single batch for all antigens
-        antigen_graphs = []
-        for i, a in enumerate(antigens):
-            # Check if it's already a graph object or an antigen object
-            if hasattr(a, 'to_graph'):
-                # It's an antigen object
-                graph = a.to(self.device)
-            else:
-                # It's already a graph object
-                graph = a
-            
-            # Ensure graph is on the correct device
-            if hasattr(graph, 'to'):
-                graph = graph.to(self.device)
-                
-            # Remove any existing batch attribute to let from_data_list handle it
-            if hasattr(graph, 'batch'):
-                delattr(graph, 'batch')
-            antigen_graphs.append(graph)
-        
-        antigen_batch = Batch.from_data_list(antigen_graphs)
-        # Ensure the batch is on the correct device
-        antigen_batch = antigen_batch.to(self.device)
-        
-        # Collect all cells and prepare batch processing
-        cell_ids = list(population.keys())
-        cells = [population[cid] for cid in cell_ids]
-        
+        if not population or not antigens:
+            return {}
+
+        antigen_batch = Batch.from_data_list(antigens).to(self.device)
+        true_score = antigen_batch.y.to(self.device).squeeze()
+
         fitness_scores = {}
         
-        # Extract target scores from batch
-        true_score = None
-        if hasattr(antigen_batch, 'y') and antigen_batch.y is not None:
-            true_score = antigen_batch.y
-        elif hasattr(antigen_batch, 'druggability') and antigen_batch.druggability is not None:
-            true_score = antigen_batch.druggability
-        
-        if true_score is None:
-            true_score = torch.ones(antigen_batch.num_graphs, device=self.device) * 0.5
+        # Track aggregate metrics for logging
+        total_raw_fitness = 0
+        total_inference_time = 0
+        best_raw_fitness = -float('inf')
+        best_inference_time = float('inf')
         
         with torch.no_grad():
             with torch.cuda.amp.autocast(enabled=cfg.use_amp):
-                # Process cells in batches for better GPU utilization
-                batch_size = min(32, len(cells))  # Process up to 32 cells at once
-                
-                for batch_start in range(0, len(cells), batch_size):
-                    batch_end = min(batch_start + batch_size, len(cells))
-                    batch_cells = cells[batch_start:batch_end]
-                    batch_cell_ids = cell_ids[batch_start:batch_end]
+                for cell_id, cell in population.items():
+                    # --- 1. Measure Raw Performance ---
+                    start_time = time.perf_counter()
+                    predicted_score, _, _ = cell(antigen_batch)
+                    end_time = time.perf_counter()
                     
-                    # Collect predictions from this batch of cells
-                    batch_predictions = []
-                    batch_representations = []
+                    # Calculate raw metrics
+                    inference_time_per_molecule = (end_time - start_time) / len(antigens)
                     
-                    for cell in batch_cells:
-                        predicted_score, cell_representation, _ = cell(antigen_batch)
-                        batch_predictions.append(predicted_score)
-                        batch_representations.append(cell_representation)
+                    # Calculate raw fitness based on MSE loss
+                    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+                    raw_fitness = 1.0 / (1.0 + loss.item())
+
+                    # Track aggregate metrics
+                    total_raw_fitness += raw_fitness
+                    total_inference_time += inference_time_per_molecule
+                    best_raw_fitness = max(best_raw_fitness, raw_fitness)
+                    best_inference_time = min(best_inference_time, inference_time_per_molecule)
+
+                    # --- 2. Apply Specialized Fitness Function ---
+                    evaluation_results = {
+                        'raw_fitness': raw_fitness,
+                        'inference_time': inference_time_per_molecule
+                    }
+                    specialized_fitness = fitness_function(cell, evaluation_results)
+
+                    # --- 3. Apply Penalties/Bonuses ---
+                    active_genes = len([g for g in cell.genes if g.is_active])
+                    complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
                     
-                    # Stack predictions for vectorized loss computation
-                    if batch_predictions:
-                        pred_stack = torch.stack([p.squeeze() for p in batch_predictions])
-                        repr_stack = torch.stack(batch_representations)
-                        
-                        # Ensure true_score matches prediction shape
-                        true_squeezed = true_score.squeeze()
-                        if true_squeezed.dim() == 0:
-                            true_squeezed = true_squeezed.unsqueeze(0)
-                        
-                        # Expand true_score for each cell in batch
-                        true_expanded = true_squeezed.unsqueeze(0).expand(pred_stack.shape[0], -1)
-                        
-                        # Handle shape mismatch
-                        min_size = min(pred_stack.shape[1], true_expanded.shape[1])
-                        pred_stack = pred_stack[:, :min_size]
-                        true_expanded = true_expanded[:, :min_size]
-                        
-                        # Vectorized loss computation
-                        losses = F.mse_loss(pred_stack, true_expanded, reduction='none').mean(dim=1)
-                        fitnesses = 1.0 / (1.0 + losses)
-                        
-                        # Process results for each cell
-                        for i, (cell_id, cell, fitness) in enumerate(zip(batch_cell_ids, batch_cells, fitnesses)):
-                            # Complexity penalty
-                            active_genes = len([g for g in cell.genes if g.is_active])
-                            complexity_penalty = max(0, active_genes - 10) * cfg.duplication_cost
-                            
-                            # Diversity bonus
-                            diversity_bonus = self._compute_cell_diversity(cell) * cfg.diversity_weight
-                            
-                            # Final fitness score
-                            final_fitness = fitness.item() - complexity_penalty + diversity_bonus
-                            fitness_scores[cell_id] = final_fitness
-                            
-                            # Update cell records
-                            cell.fitness_history.append(final_fitness)
-                            for gene in cell.genes:
-                                if gene.is_active:
-                                    gene.fitness_contribution = final_fitness
-                            
-                            # Store successful responses
-                            if final_fitness > 0.8:
-                                representation_cpu = repr_stack[i].mean(dim=0).detach().cpu()
-                                if hasattr(cell, 'store_memory'):
-                                    cell.store_memory(representation_cpu, final_fitness)
+                    # Note: A diversity bonus is complex in this context and might be better handled
+                    # at the selection stage. For now, we focus on the core fitness.
+                    
+                    final_fitness = specialized_fitness - complexity_penalty
+                    fitness_scores[cell_id] = final_fitness
+                    
+                    # Update cell's internal history
+                    cell.fitness_history.append(final_fitness)
+
+        # Log detailed metrics based on fitness function type
+        n_cells = len(fitness_scores)
+        avg_raw_fitness = total_raw_fitness / n_cells if n_cells > 0 else 0
+        avg_inference_time = total_inference_time / n_cells if n_cells > 0 else 0
         
-        print(f"   Evaluated {len(fitness_scores)} cells (drug discovery fitness).")
+        fitness_type = fitness_function.__name__.replace('calculate_', '').replace('_fitness', '')
+        
+        logger.info(f"   Evaluated {n_cells} cells using '{fitness_function.__name__}':")
+        logger.info(f"      • Raw Accuracy Metrics: Avg={avg_raw_fitness:.3f}, Best={best_raw_fitness:.3f}")
+        logger.info(f"      • Inference Time: Avg={avg_inference_time*1000:.2f}ms, Best={best_inference_time*1000:.2f}ms")
+        
+        if fitness_type == 'speed':
+            logger.info(f"      • Speed Focus: Prioritizing inference time (90% weight)")
+        elif fitness_type == 'accuracy':
+            logger.info(f"      • Accuracy Focus: Prioritizing prediction accuracy (100% weight)")
+        elif fitness_type == 'balanced':
+            logger.info(f"      • Balanced Focus: 60% accuracy, 40% speed")
+            
         return fitness_scores
     
         

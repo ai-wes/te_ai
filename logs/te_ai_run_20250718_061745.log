@@ -1,0 +1,26 @@
+2025-07-18 06:17:45.175 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:17:45.176 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_061745
+2025-07-18 06:17:45.176 | INFO     | __init__                       | Log file: logs\te_ai_run_20250718_061745.log
+2025-07-18 06:17:45.176 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 06:17:45.176 | INFO     | __init__                       | Backup files: 10
+2025-07-18 06:17:45.176 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:17:45.177 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 06:17:45.177 | INFO     | _log_system_info               |   Python version: 3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]
+2025-07-18 06:17:45.178 | INFO     | _log_system_info               |   PyTorch version: 2.3.0+cu121
+2025-07-18 06:17:45.178 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 06:17:45.179 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 06:17:45.179 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 06:17:45.179 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 06:17:45.179 | INFO     | info                           | ============================================================
+2025-07-18 06:17:45.179 | INFO     | info                           | DEEPCHEM DATASET PREPARATION SCRIPT
+2025-07-18 06:17:45.179 | INFO     | info                           | ============================================================
+2025-07-18 06:17:45.179 | INFO     | info                           | Attempting to download and cache the following datasets: ['bbbp', 'tox21', 'sider', 'hiv', 'bace_classification']
+2025-07-18 06:17:45.179 | INFO     | info                           | DeepChem data will be stored in: C:\Users\wes\AppData\Local\Temp
+2025-07-18 06:17:45.180 | INFO     | info                           | 
+--- Preparing 'bbbp' ---
+2025-07-18 06:17:45.213 | ERROR    | error                          | ❌ An error occurred while preparing 'bbbp': No module named 'numpy._core'
+2025-07-18 06:17:45.214 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:17:45.214 | INFO     | info                           | 
+--- Preparing 'tox21' ---
+2025-07-18 06:17:49.513 | ERROR    | error                          | ❌ An error occurred while preparing 'tox21': 'DistanceMatrix_Paths'
+2025-07-18 06:17:49.513 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.

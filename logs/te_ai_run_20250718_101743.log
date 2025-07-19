@@ -1,0 +1,22 @@
+2025-07-18 10:17:43.483 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:17:43.483 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_101743
+2025-07-18 10:17:43.483 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_101743.log
+2025-07-18 10:17:43.484 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 10:17:43.484 | INFO     | __init__                       | Backup files: 10
+2025-07-18 10:17:43.484 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:17:43.484 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 10:17:43.485 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 10:17:43.485 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 10:17:43.485 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 10:17:43.528 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 10:17:43.528 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 10:17:43.528 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 10:18:28.750 | INFO     | info                           | 
+============================================================
+2025-07-18 10:18:28.751 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 10:18:28.751 | INFO     | info                           | ============================================================
+
+2025-07-18 10:18:28.751 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 10:18:28.751 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 10:18:28.752 | CRITICAL | critical                       | FATAL: Could not import or initialize MorganGenerator from DeepChem: cannot import name 'MorganGenerator' from 'deepchem.feat' (/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/deepchem/feat/__init__.py)
+2025-07-18 10:18:28.752 | CRITICAL | critical                       | This featurizer is a critical dependency. Please check your DeepChem installation.

@@ -1,0 +1,536 @@
+2025-07-18 11:35:41.077 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:35:41.078 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_113541
+2025-07-18 11:35:41.078 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_113541.log
+2025-07-18 11:35:41.078 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 11:35:41.078 | INFO     | __init__                       | Backup files: 10
+2025-07-18 11:35:41.078 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:35:41.079 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 11:35:41.079 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 11:35:41.080 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 11:35:41.080 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 11:35:41.105 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 11:35:41.105 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 11:35:41.105 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 11:36:25.147 | INFO     | info                           | 
+============================================================
+2025-07-18 11:36:25.147 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 11:36:25.147 | INFO     | info                           | ============================================================
+
+2025-07-18 11:36:25.147 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 11:36:25.148 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 11:36:25.148 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 11:36:25.148 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 11:36:25.148 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 11:36:25.150 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 11:36:25.150 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 11:36:25.173 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 11:36:25.174 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 11:36:25.213 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:36:25.237 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:36:25.241 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 11:36:25.242 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 11:36:25.242 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 11:36:25.243 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 11:36:25.243 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 11:36:25.243 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 11:36:25.248 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 11:36:25.457 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 11:36:25.613 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 11:36:25.640 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 11:36:26.123 | INFO     | info                           | Step 5: Applying data transformations...
+2025-07-18 11:36:26.139 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 11:36:33.878 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 11:36:33.879 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:36:34.233 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:36:34.234 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:36:34.532 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:36:34.533 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 11:36:34.533 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 11:36:34.533 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 11:36:34.533 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 11:36:34.534 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 11:36:34.535 | INFO     | info                           | 🏝️  Initializing Archipelago with 3 islands across devices: ['cuda:0', 'cuda:0', 'cuda:0']
+2025-07-18 11:36:34.535 | INFO     | info                           |    Creating Island 1 on device cuda:0...
+2025-07-18 11:36:34.791 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 11:36:34.792 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:36:34.792 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:36:35.173 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:36:35.267 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:35.308 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:35.771 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.243 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.313 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.348 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.377 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.509 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:36.951 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:36:37.016 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:36:37.042 | INFO     | info                           |    Creating Island 2 on device cuda:0...
+2025-07-18 11:36:37.050 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 11:36:37.050 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:36:37.051 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:36:37.416 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:36:37.508 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:37.542 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:37.994 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.284 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.350 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.383 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.411 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.544 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:38.972 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:36:39.029 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:36:39.030 | INFO     | info                           |    Creating Island 3 on device cuda:0...
+2025-07-18 11:36:39.036 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 11:36:39.036 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:36:39.036 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:36:39.416 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:36:39.507 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:39.918 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:39.947 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:40.170 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:40.356 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:40.392 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:41.133 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:41.212 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:36:41.281 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:36:41.335 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:36:41.335 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-18 11:36:41.343 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 11:36:41.344 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:36:41.344 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:36:41.345 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:0...
+2025-07-18 11:36:41.346 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:36:41.361 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:36:41.361 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:36:41.361 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:36:41.362 | INFO     | info                           | GENERATION 1
+2025-07-18 11:36:41.362 | INFO     | info                           | GENERATION 1
+2025-07-18 11:36:41.362 | INFO     | info                           | GENERATION 1
+2025-07-18 11:36:41.362 | INFO     | info                           | ================================================================================
+2025-07-18 11:36:41.362 | INFO     | info                           | ================================================================================
+2025-07-18 11:36:41.362 | INFO     | info                           | ================================================================================
+2025-07-18 11:36:41.385 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:36:41.385 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:36:41.385 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:01.663 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:02.595 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:03.086 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:03.086 | INFO     | info                           |    All islands have completed Generation 1.
+2025-07-18 11:37:03.092 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-18 11:37:03.092 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:37:03.092 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:37:03.093 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:0...
+2025-07-18 11:37:03.093 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:37:03.107 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:03.107 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:03.107 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:03.107 | INFO     | info                           | GENERATION 2
+2025-07-18 11:37:03.107 | INFO     | info                           | GENERATION 2
+2025-07-18 11:37:03.108 | INFO     | info                           | GENERATION 2
+2025-07-18 11:37:03.108 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:03.108 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:03.108 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:03.131 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:03.131 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:03.131 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:21.623 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:22.073 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:22.431 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 93, in evaluate_population_batch
+    predicted_score, cell_representation, _ = cell(antigen_batch)
+                                              ^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/production_b_cell.py", line 162, in forward
+    gene_output = gene(**call_args)
+                  ^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/users/wes/desktop/te_ai/scripts/core/quantum_gene.py", line 229, in forward
+    h_0_initial = self.input_projection(x)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 240, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument mat1 in method wrapper_CUDA_addmm)
+
+2025-07-18 11:37:22.431 | INFO     | info                           |    All islands have completed Generation 2.
+2025-07-18 11:37:22.435 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 3 ==============================
+2025-07-18 11:37:22.435 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:37:22.435 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:37:22.436 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:0...
+2025-07-18 11:37:22.436 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:37:22.450 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:22.450 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:22.450 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:37:22.451 | INFO     | info                           | GENERATION 3
+2025-07-18 11:37:22.451 | INFO     | info                           | GENERATION 3
+2025-07-18 11:37:22.451 | INFO     | info                           | GENERATION 3
+2025-07-18 11:37:22.451 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:22.452 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:22.452 | INFO     | info                           | ================================================================================
+2025-07-18 11:37:22.487 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:22.487 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:37:22.487 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)

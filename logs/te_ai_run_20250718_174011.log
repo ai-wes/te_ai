@@ -1,0 +1,473 @@
+2025-07-18 17:40:11.255 | INFO     | __init__                       | ================================================================================
+2025-07-18 17:40:11.255 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_174011
+2025-07-18 17:40:11.255 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_174011.log
+2025-07-18 17:40:11.255 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 17:40:11.256 | INFO     | __init__                       | Backup files: 10
+2025-07-18 17:40:11.256 | INFO     | __init__                       | ================================================================================
+2025-07-18 17:40:11.257 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 17:40:11.257 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 17:40:11.257 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 17:40:11.257 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 17:40:11.284 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 17:40:11.285 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 17:40:11.285 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 17:40:52.977 | INFO     | info                           | 
+============================================================
+2025-07-18 17:40:52.977 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 17:40:52.977 | INFO     | info                           | ============================================================
+
+2025-07-18 17:40:52.977 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 17:40:52.977 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 17:40:52.978 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 17:40:52.978 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 17:40:52.978 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 17:40:52.979 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 17:40:52.979 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 17:40:53.002 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 17:40:53.003 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 17:40:53.041 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 17:40:53.064 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 17:40:53.068 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 17:40:53.069 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 17:40:53.070 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 17:40:53.070 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 17:40:53.070 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 17:40:53.071 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 17:40:53.075 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 17:40:53.273 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 17:40:53.424 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 17:40:53.449 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 17:40:53.904 | INFO     | info                           | Step 5: Applying data transformations...
+2025-07-18 17:40:53.919 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 17:41:01.409 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 17:41:01.409 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 17:41:01.748 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 17:41:01.748 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 17:41:02.078 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 17:41:02.078 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 17:41:02.078 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 17:41:02.079 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 17:41:02.079 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 17:41:02.079 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 17:41:02.080 | INFO     | info                           | 🏝️  Initializing Specialist Archipelago with 3 islands:
+2025-07-18 17:41:02.080 | INFO     | info                           |    🧪 Creating Island 'SCIENTIST (Accuracy-focused)' on device cuda:0...
+2025-07-18 17:41:02.290 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 17:41:02.291 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 17:41:02.291 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 17:41:02.663 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 17:41:02.754 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:02.791 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.242 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.700 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.762 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.795 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.824 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:03.954 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:04.368 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 17:41:04.428 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 17:41:04.447 | INFO     | info                           |    ⚡ Creating Island 'ENGINEER (Speed-focused)' on device cuda:0...
+2025-07-18 17:41:04.454 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 17:41:04.454 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 17:41:04.454 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 17:41:04.802 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 17:41:04.891 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:04.923 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.342 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.599 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.663 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.698 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.727 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:05.857 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:06.270 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 17:41:06.328 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 17:41:06.328 | INFO     | info                           |    ⚖️ Creating Island 'GENERALIST (Balanced)' on device cuda:0...
+2025-07-18 17:41:06.336 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 17:41:06.336 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 17:41:06.337 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 17:41:06.698 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 17:41:06.785 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:07.174 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:07.202 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:07.412 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:07.588 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:07.623 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:08.268 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:08.333 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 17:41:08.395 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 17:41:08.449 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 17:41:08.454 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 17:41:08.454 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 17:41:08.454 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 17:41:08.459 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 17:41:08.459 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 17:41:08.470 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:41:08.470 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:41:08.470 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:41:08.471 | INFO     | info                           | GENERATION 1 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 17:41:08.471 | INFO     | info                           | GENERATION 1 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 17:41:08.471 | INFO     | info                           | GENERATION 1 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 17:41:08.471 | INFO     | info                           | ================================================================================
+2025-07-18 17:41:08.472 | INFO     | info                           | ================================================================================
+2025-07-18 17:41:08.472 | INFO     | info                           | ================================================================================
+2025-07-18 17:41:08.492 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:41:08.492 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:41:08.492 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:42:44.460 | INFO     | info                           |    Evaluated 64 cells using 'calculate_accuracy_fitness':
+2025-07-18 17:42:44.461 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.578, Best=0.748
+2025-07-18 17:42:44.461 | INFO     | info                           |       • Inference Time: Avg=44.71ms, Best=17.76ms
+2025-07-18 17:42:44.462 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 17:42:44.462 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell 97cddfd5 with fitness 0.7485🏆🏆🏆🏆
+2025-07-18 17:42:44.465 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:42:44.574 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.573 ± 0.007[0m, [35m🌿 Diversity: 4.824[0m, [33m🧬 Genes: 158[0m
+2025-07-18 17:42:44.574 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 17:42:44.574 | INFO     | info                           |    Combined amplified stress: 0.010
+2025-07-18 17:42:44.575 | INFO     | info                           |    Current stress level: 0.010
+2025-07-18 17:42:44.575 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:42:44.578 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:42:44.578 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 17:42:45.847 | INFO     | info                           |    Evaluated 64 cells using 'calculate_speed_fitness':
+2025-07-18 17:42:45.848 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.576, Best=0.771
+2025-07-18 17:42:45.848 | INFO     | info                           |       • Inference Time: Avg=45.40ms, Best=20.04ms
+2025-07-18 17:42:45.848 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 17:42:45.848 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell 4df51a43 with fitness 0.0771🏆🏆🏆🏆
+2025-07-18 17:42:45.850 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:42:45.943 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 17:42:45.961 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.053 ± 0.001[0m, [35m🌿 Diversity: 4.817[0m, [33m🧬 Genes: 158[0m
+2025-07-18 17:42:45.962 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 17:42:45.962 | INFO     | info                           |    Combined amplified stress: 0.001
+2025-07-18 17:42:45.962 | INFO     | info                           |    Current stress level: 0.001
+2025-07-18 17:42:45.963 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:42:45.964 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:42:45.964 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 17:42:47.779 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 17:42:48.804 | INFO     | info                           |    New population size: 96
+2025-07-18 17:42:48.804 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:42:48.806 | INFO     | info                           | 
+⏱️  Generation 1 completed in 100.34s. Population: 96
+2025-07-18 17:42:49.280 | INFO     | info                           |    Evaluated 64 cells using 'calculate_balanced_fitness':
+2025-07-18 17:42:49.280 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.561, Best=0.756
+2025-07-18 17:42:49.281 | INFO     | info                           |       • Inference Time: Avg=47.07ms, Best=19.08ms
+2025-07-18 17:42:49.281 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 17:42:49.281 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on GENERALIST (Balanced)! Cell af6217cb with fitness 0.4536🏆🏆🏆🏆
+2025-07-18 17:42:49.282 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:42:49.389 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.326 ± 0.004[0m, [35m🌿 Diversity: 4.788[0m, [33m🧬 Genes: 157[0m
+2025-07-18 17:42:49.389 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 17:42:49.390 | INFO     | info                           |    Combined amplified stress: 0.005
+2025-07-18 17:42:49.391 | INFO     | info                           |    Current stress level: 0.005
+2025-07-18 17:42:49.391 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:42:49.393 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:42:49.393 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 17:42:49.410 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:42:49.429 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 17:42:49.429 | INFO     | info                           |       • Mean Fitness: 0.573
+2025-07-18 17:42:49.429 | INFO     | info                           |       • Champion Fitness: 0.748
+2025-07-18 17:42:49.430 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 17:42:50.288 | INFO     | info                           |    New population size: 96
+2025-07-18 17:42:50.288 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:42:50.289 | INFO     | info                           | 
+⏱️  Generation 1 completed in 101.82s. Population: 96
+2025-07-18 17:42:50.821 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:42:50.822 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 17:42:50.823 | INFO     | info                           |       • Mean Fitness: 0.053
+2025-07-18 17:42:50.824 | INFO     | info                           |       • Champion Fitness: 0.077
+2025-07-18 17:42:50.824 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 17:42:50.879 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 17:42:52.444 | INFO     | info                           |    New population size: 96
+2025-07-18 17:42:52.444 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:42:52.445 | INFO     | info                           | 
+⏱️  Generation 1 completed in 103.98s. Population: 96
+2025-07-18 17:42:52.781 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:42:52.781 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 17:42:52.781 | INFO     | info                           |       • Mean Fitness: 0.326
+2025-07-18 17:42:52.782 | INFO     | info                           |       • Champion Fitness: 0.454
+2025-07-18 17:42:52.782 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 17:42:52.782 | INFO     | info                           | 
+   All islands have completed Generation 1.
+2025-07-18 17:42:52.789 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-18 17:42:52.789 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 17:42:52.789 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 17:42:52.790 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 17:42:52.790 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 17:42:52.816 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:42:52.816 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:42:52.816 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:42:52.817 | INFO     | info                           | GENERATION 2 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 17:42:52.817 | INFO     | info                           | GENERATION 2 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 17:42:52.817 | INFO     | info                           | GENERATION 2 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 17:42:52.817 | INFO     | info                           | ================================================================================
+2025-07-18 17:42:52.817 | INFO     | info                           | ================================================================================
+2025-07-18 17:42:52.817 | INFO     | info                           | ================================================================================
+2025-07-18 17:42:52.832 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:42:52.832 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:42:52.832 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:45:13.167 | INFO     | info                           |    Evaluated 96 cells using 'calculate_speed_fitness':
+2025-07-18 17:45:13.168 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.540, Best=0.742
+2025-07-18 17:45:13.169 | INFO     | info                           |       • Inference Time: Avg=43.37ms, Best=18.15ms
+2025-07-18 17:45:13.169 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 17:45:13.170 | INFO     | info                           |    🏆 Current Hall of Fame Champion on ENGINEER (Speed-focused): Cell 4df51a43 with fitness 0.0771
+2025-07-18 17:45:13.171 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:45:13.297 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.054 ± 0.000[0m, [35m🌿 Diversity: 4.659[0m, [33m🧬 Genes: 134[0m
+2025-07-18 17:45:13.298 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 17:45:13.298 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-18 17:45:13.299 | INFO     | info                           |    Current stress level: 0.000
+2025-07-18 17:45:13.299 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:45:13.301 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:45:13.301 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 17:45:15.502 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 17:45:15.695 | INFO     | info                           |    Evaluated 96 cells using 'calculate_accuracy_fitness':
+2025-07-18 17:45:15.697 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.546, Best=0.710
+2025-07-18 17:45:15.697 | INFO     | info                           |       • Inference Time: Avg=44.20ms, Best=17.64ms
+2025-07-18 17:45:15.698 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 17:45:15.698 | INFO     | info                           |    🏆 Current Hall of Fame Champion on SCIENTIST (Accuracy-focused): Cell 97cddfd5 with fitness 0.7485
+2025-07-18 17:45:15.700 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:45:16.249 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.546 ± 0.005[0m, [35m🌿 Diversity: 4.627[0m, [33m🧬 Genes: 136[0m
+2025-07-18 17:45:16.250 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 17:45:16.250 | INFO     | info                           |    Combined amplified stress: 0.007
+2025-07-18 17:45:16.251 | INFO     | info                           |    Current stress level: 0.007
+2025-07-18 17:45:16.251 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:45:16.253 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:45:16.254 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 17:45:18.293 | INFO     | info                           |    Evaluated 96 cells using 'calculate_balanced_fitness':
+2025-07-18 17:45:18.293 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.524, Best=0.751
+2025-07-18 17:45:18.293 | INFO     | info                           |       • Inference Time: Avg=45.04ms, Best=17.11ms
+2025-07-18 17:45:18.293 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 17:45:18.294 | INFO     | info                           |    🏆 Current Hall of Fame Champion on GENERALIST (Balanced): Cell af6217cb with fitness 0.4536
+2025-07-18 17:45:18.296 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:45:21.514 | INFO     | info                           |    New population size: 120
+2025-07-18 17:45:21.555 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.315 ± 0.002[0m, [35m🌿 Diversity: 4.616[0m, [33m🧬 Genes: 134[0m
+2025-07-18 17:45:21.593 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:45:21.594 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 17:45:21.594 | INFO     | info                           |    Combined amplified stress: 0.003
+2025-07-18 17:45:21.594 | INFO     | info                           |    Current stress level: 0.003
+2025-07-18 17:45:21.595 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:45:22.042 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:45:22.042 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 17:45:22.912 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 17:45:23.191 | INFO     | info                           |    - Cleared CUDA memory: 9.16 -> 9.17 GB
+2025-07-18 17:45:23.191 | INFO     | info                           |    - GPU utilization: 38.2%
+2025-07-18 17:45:23.193 | INFO     | info                           | 
+⏱️  Generation 2 completed in 150.38s. Population: 120
+2025-07-18 17:45:24.084 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:45:24.085 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 17:45:24.086 | INFO     | info                           |       • Mean Fitness: 0.054
+2025-07-18 17:45:24.086 | INFO     | info                           |       • Champion Fitness: 0.077
+2025-07-18 17:45:24.086 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 17:45:24.765 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 17:45:25.152 | INFO     | info                           |    New population size: 120
+2025-07-18 17:45:25.153 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:45:25.599 | INFO     | info                           |    - Cleared CUDA memory: 9.83 -> 9.84 GB
+2025-07-18 17:45:25.600 | INFO     | info                           |    - GPU utilization: 41.0%
+2025-07-18 17:45:25.601 | INFO     | info                           | 
+⏱️  Generation 2 completed in 152.78s. Population: 120
+2025-07-18 17:45:26.325 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:45:26.326 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 17:45:26.326 | INFO     | info                           |       • Mean Fitness: 0.546
+2025-07-18 17:45:26.326 | INFO     | info                           |       • Champion Fitness: 0.748
+2025-07-18 17:45:26.326 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 17:45:26.722 | INFO     | info                           |    New population size: 120
+2025-07-18 17:45:26.722 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:45:27.183 | INFO     | info                           |    - Cleared CUDA memory: 10.37 -> 10.37 GB
+2025-07-18 17:45:27.183 | INFO     | info                           |    - GPU utilization: 43.2%
+2025-07-18 17:45:27.184 | INFO     | info                           | 
+⏱️  Generation 2 completed in 154.37s. Population: 120
+2025-07-18 17:45:27.612 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:45:27.613 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 17:45:27.613 | INFO     | info                           |       • Mean Fitness: 0.315
+2025-07-18 17:45:27.613 | INFO     | info                           |       • Champion Fitness: 0.454
+2025-07-18 17:45:27.613 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 17:45:27.613 | INFO     | info                           | 
+   All islands have completed Generation 2.
+2025-07-18 17:45:27.627 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 3 ==============================
+2025-07-18 17:45:27.628 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 17:45:27.628 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 17:45:27.628 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 17:45:27.628 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 17:45:27.648 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:45:27.648 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:45:27.649 | INFO     | info                           | 
+================================================================================
+2025-07-18 17:45:27.649 | INFO     | info                           | GENERATION 3 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 17:45:27.649 | INFO     | info                           | GENERATION 3 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 17:45:27.649 | INFO     | info                           | GENERATION 3 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 17:45:27.649 | INFO     | info                           | ================================================================================
+2025-07-18 17:45:27.649 | INFO     | info                           | ================================================================================
+2025-07-18 17:45:27.649 | INFO     | info                           | ================================================================================
+2025-07-18 17:45:27.673 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:45:27.673 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:45:27.673 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 17:48:21.369 | INFO     | info                           |    Evaluated 120 cells using 'calculate_speed_fitness':
+2025-07-18 17:48:21.372 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.562, Best=0.782
+2025-07-18 17:48:21.372 | INFO     | info                           |       • Inference Time: Avg=43.37ms, Best=16.38ms
+2025-07-18 17:48:21.372 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 17:48:21.373 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell adb3b95d with fitness 0.0782🏆🏆🏆🏆
+2025-07-18 17:48:21.375 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:48:21.536 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.056 ± 0.000[0m, [35m🌿 Diversity: 4.630[0m, [33m🧬 Genes: 134[0m
+2025-07-18 17:48:21.537 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 17:48:21.537 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-18 17:48:21.537 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 17:48:21.537 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 17:48:21.538 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:48:21.540 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 17:48:21.540 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 17:48:21.540 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 17:48:21.676 | INFO     | info                           |    Evaluated 120 cells using 'calculate_accuracy_fitness':
+2025-07-18 17:48:21.677 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.560, Best=0.827
+2025-07-18 17:48:21.677 | INFO     | info                           |       • Inference Time: Avg=43.46ms, Best=17.69ms
+2025-07-18 17:48:21.677 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 17:48:21.677 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell f9f42a20 with fitness 0.8271🏆🏆🏆🏆
+2025-07-18 17:48:21.679 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:48:21.867 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.560 ± 0.006[0m, [35m🌿 Diversity: 4.561[0m, [33m🧬 Genes: 129[0m
+2025-07-18 17:48:21.868 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 17:48:21.868 | INFO     | info                           |    Combined amplified stress: 0.007
+2025-07-18 17:48:21.868 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 17:48:21.869 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 17:48:21.869 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:48:21.871 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 17:48:21.871 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 17:48:21.871 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 17:48:25.941 | INFO     | info                           |    Evaluated 120 cells using 'calculate_balanced_fitness':
+2025-07-18 17:48:25.942 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.553, Best=0.741
+2025-07-18 17:48:25.942 | INFO     | info                           |       • Inference Time: Avg=44.57ms, Best=16.89ms
+2025-07-18 17:48:25.942 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 17:48:25.942 | INFO     | info                           |    🏆 Current Hall of Fame Champion on GENERALIST (Balanced): Cell af6217cb with fitness 0.4536
+2025-07-18 17:48:25.944 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 17:48:26.145 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.332 ± 0.002[0m, [35m🌿 Diversity: 4.577[0m, [33m🧬 Genes: 131[0m
+2025-07-18 17:48:26.145 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 17:48:26.145 | INFO     | info                           |    Combined amplified stress: 0.003
+2025-07-18 17:48:26.146 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 17:48:26.146 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 17:48:26.146 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 17:48:26.147 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 17:48:26.148 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 17:48:26.148 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 17:48:38.258 | INFO     | info                           |      - 44/44 mutations executed. Tokens remaining: 37.0
+2025-07-18 17:48:38.258 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 17:48:38.274 | INFO     | info                           |      - 14 genes epigenetically modified.
+2025-07-18 17:48:38.274 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 17:48:38.319 | INFO     | info                           |      - 43/43 mutations executed. Tokens remaining: 34.5
+2025-07-18 17:48:38.319 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 17:48:38.321 | INFO     | info                           |      - 12 genes epigenetically modified.
+2025-07-18 17:48:38.321 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 17:48:38.337 | WARNING  | warning                        | Gene 7 (S9-d3a4e3e0) on cpu, moving to cuda:0
+2025-07-18 17:48:41.508 | WARNING  | warning                        | Gene 9 (V16-d02a4f6d) on cpu, moving to cuda:0
+2025-07-18 17:48:42.348 | INFO     | info                           |      - 44/44 mutations executed. Tokens remaining: 33.5
+2025-07-18 17:48:42.349 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 17:48:42.354 | INFO     | info                           |      - 17 genes epigenetically modified.
+2025-07-18 17:48:42.355 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 17:49:11.589 | WARNING  | warning                        | Gene 8 (V84-7847687b) on cpu, moving to cuda:0
+2025-07-18 17:49:17.839 | WARNING  | warning                        | Gene 8 (D15-0a2158c6) on cpu, moving to cuda:0
+2025-07-18 17:49:20.404 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 17:49:20.405 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:49:20.405 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 17:49:23.631 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 17:49:23.631 | INFO     | info                           |    New population size: 120
+2025-07-18 17:49:23.631 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:49:23.634 | INFO     | info                           | 
+⏱️  Generation 3 completed in 235.99s. Population: 120
+2025-07-18 17:49:24.341 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:49:24.341 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 17:49:24.342 | INFO     | info                           |       • Mean Fitness: 0.056
+2025-07-18 17:49:24.342 | INFO     | info                           |       • Champion Fitness: 0.078
+2025-07-18 17:49:24.343 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 17:49:26.719 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 17:49:26.720 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:49:26.720 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 17:49:27.900 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 17:49:27.901 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 17:49:27.901 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 17:49:28.790 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 17:49:28.791 | INFO     | info                           |    New population size: 120
+2025-07-18 17:49:28.791 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:49:28.793 | INFO     | info                           | 
+⏱️  Generation 3 completed in 241.15s. Population: 120
+2025-07-18 17:49:29.294 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:49:29.295 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 17:49:29.295 | INFO     | info                           |       • Mean Fitness: 0.560
+2025-07-18 17:49:29.296 | INFO     | info                           |       • Champion Fitness: 0.827
+2025-07-18 17:49:29.296 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 17:49:29.714 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 17:49:29.715 | INFO     | info                           |    New population size: 120
+2025-07-18 17:49:29.715 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 17:49:29.717 | INFO     | info                           | 
+⏱️  Generation 3 completed in 242.07s. Population: 120
+2025-07-18 17:49:30.096 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 17:49:30.096 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 17:49:30.096 | INFO     | info                           |       • Mean Fitness: 0.332
+2025-07-18 17:49:30.097 | INFO     | info                           |       • Champion Fitness: 0.454
+2025-07-18 17:49:30.097 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 17:49:30.097 | INFO     | info                           | 
+   All islands have completed Generation 3.
+2025-07-18 17:49:30.097 | INFO     | info                           | 
+========================= 🏆 ARCHIPELAGO BREEDING SUMMIT at Generation 3 🏆 =========================
+2025-07-18 17:49:30.097 | INFO     | info                           |    🧪 SCIENTIST (Accuracy-focused) Champion: Cell f9f42a20 (Fitness: 0.8271) on cuda:0
+2025-07-18 17:49:30.097 | INFO     | info                           |    ⚡ ENGINEER (Speed-focused) Champion: Cell adb3b95d (Fitness: 0.0782) on cuda:0
+2025-07-18 17:49:30.098 | INFO     | info                           |    ⚖️ GENERALIST (Balanced) Champion: Cell af6217cb (Fitness: 0.4536) on cuda:0
+2025-07-18 17:49:30.098 | INFO     | info                           | 
+   Breeding Champions from 🧪 SCIENTIST (Accuracy-focused) and ⚡ ENGINEER (Speed-focused)...
+2025-07-18 17:49:30.098 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 1.
+2025-07-18 17:49:30.098 | INFO     | info                           | Shutting down the Archipelago's thread pool executor...

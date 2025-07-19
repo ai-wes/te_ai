@@ -1,0 +1,232 @@
+2025-07-18 11:40:02.534 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:40:02.534 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_114002
+2025-07-18 11:40:02.534 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_114002.log
+2025-07-18 11:40:02.534 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 11:40:02.534 | INFO     | __init__                       | Backup files: 10
+2025-07-18 11:40:02.535 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:40:02.542 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 11:40:02.542 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 11:40:02.543 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 11:40:02.543 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 11:40:02.597 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 11:40:02.597 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 11:40:02.597 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 11:40:47.079 | INFO     | info                           | 
+============================================================
+2025-07-18 11:40:47.080 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 11:40:47.080 | INFO     | info                           | ============================================================
+
+2025-07-18 11:40:47.080 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 11:40:47.080 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 11:40:47.081 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 11:40:47.081 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 11:40:47.081 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 11:40:47.082 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 11:40:47.083 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 11:40:47.108 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 11:40:47.108 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 11:40:47.149 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:40:47.173 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:40:47.177 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 11:40:47.178 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 11:40:47.178 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 11:40:47.179 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 11:40:47.179 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 11:40:47.179 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 11:40:47.184 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 11:40:48.123 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 11:40:48.282 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 11:40:48.311 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 11:40:48.800 | INFO     | info                           | Step 5: Applying data transformations...
+2025-07-18 11:40:48.816 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 11:40:57.149 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 11:40:57.150 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:40:57.504 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:40:57.504 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:40:57.857 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:40:57.858 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 11:40:57.858 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 11:40:57.859 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 11:40:57.859 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 11:40:57.860 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 11:40:57.861 | INFO     | info                           | 🏝️  Initializing Archipelago with 3 islands across devices: ['cuda:0', 'cuda:0', 'cuda:0']
+2025-07-18 11:40:57.861 | INFO     | info                           |    Creating Island 1 on device cuda:0...
+2025-07-18 11:40:58.082 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 11:40:58.082 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:40:58.082 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:40:58.467 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:40:58.565 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:58.603 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.033 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.495 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.558 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.592 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.682 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:40:59.806 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:00.216 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:41:00.274 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:41:00.305 | INFO     | info                           |    Creating Island 2 on device cuda:0...
+2025-07-18 11:41:00.312 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 11:41:00.312 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:41:00.312 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:41:00.672 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:41:00.757 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:00.789 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.208 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.467 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.531 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.564 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.594 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:01.713 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:02.121 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:41:02.183 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:41:02.184 | INFO     | info                           |    Creating Island 3 on device cuda:0...
+2025-07-18 11:41:02.190 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 11:41:02.191 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:41:02.191 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:41:02.543 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:41:02.631 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:03.016 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:03.045 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:03.253 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:03.432 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:03.466 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:04.104 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:04.170 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:41:04.234 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:41:04.288 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:41:04.288 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-18 11:41:04.297 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 11:41:04.297 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:41:04.297 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:41:04.302 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:0...
+2025-07-18 11:41:04.303 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:41:04.311 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:04.312 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:04.312 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:04.312 | INFO     | info                           | GENERATION 1
+2025-07-18 11:41:04.312 | INFO     | info                           | GENERATION 1
+2025-07-18 11:41:04.312 | INFO     | info                           | GENERATION 1
+2025-07-18 11:41:04.312 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:04.312 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:04.313 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:04.340 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:41:04.340 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:41:04.340 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:41:47.327 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 116, in evaluate_population_batch
+    losses = F.mse_loss(pred_stack, true_expanded, reduction='none').mean(dim=1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 11:41:48.278 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 116, in evaluate_population_batch
+    losses = F.mse_loss(pred_stack, true_expanded, reduction='none').mean(dim=1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 11:41:50.219 | ERROR    | error                          | An island evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+TRACEBACK:
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 71, in evolve_generation
+    future.result()
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 53, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1146, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 116, in evaluate_population_batch
+    losses = F.mse_loss(pred_stack, true_expanded, reduction='none').mean(dim=1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 11:41:50.219 | INFO     | info                           |    All islands have completed Generation 1.
+2025-07-18 11:41:50.233 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-18 11:41:50.233 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:41:50.233 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:41:50.233 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:0...
+2025-07-18 11:41:50.233 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:41:50.250 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:50.251 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:50.251 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:41:50.252 | INFO     | info                           | GENERATION 2
+2025-07-18 11:41:50.252 | INFO     | info                           | GENERATION 2
+2025-07-18 11:41:50.252 | INFO     | info                           | GENERATION 2
+2025-07-18 11:41:50.252 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:50.252 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:50.253 | INFO     | info                           | ================================================================================
+2025-07-18 11:41:50.288 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:41:50.288 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:41:50.288 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)

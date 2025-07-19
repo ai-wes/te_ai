@@ -1,0 +1,71 @@
+2025-07-18 06:49:13.422 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:49:13.422 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_064913
+2025-07-18 06:49:13.423 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_064913.log
+2025-07-18 06:49:13.423 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 06:49:13.423 | INFO     | __init__                       | Backup files: 10
+2025-07-18 06:49:13.423 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:49:13.424 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 06:49:13.424 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 06:49:13.424 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 06:49:13.472 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 06:49:13.502 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 06:49:13.502 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 06:49:13.502 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 06:49:13.503 | INFO     | info                           | ============================================================
+2025-07-18 06:49:13.503 | INFO     | info                           | DEEPCHEM DATASET PREPARATION SCRIPT
+2025-07-18 06:49:13.503 | INFO     | info                           | ============================================================
+2025-07-18 06:49:13.503 | INFO     | info                           | Attempting to download and cache the following datasets: ['bbbp', 'tox21', 'sider', 'hiv', 'bace_classification']
+2025-07-18 06:49:13.503 | INFO     | info                           | DeepChem data will be stored in: /tmp
+2025-07-18 06:49:13.503 | INFO     | info                           | 
+--- Preparing 'bbbp' ---
+2025-07-18 06:49:13.503 | INFO     | info                           |    Trying featurizer: Morgan
+2025-07-18 06:49:13.504 | INFO     | info                           |    Trying featurizer: morgan
+2025-07-18 06:49:13.504 | INFO     | info                           |    Trying featurizer: ECFP
+2025-07-18 06:49:14.820 | INFO     | info                           |    Trying featurizer: ecfp
+2025-07-18 06:49:15.864 | INFO     | info                           |    Trying featurizer: CircularFingerprint
+2025-07-18 06:49:15.864 | INFO     | info                           |    Trying without specifying featurizer...
+2025-07-18 06:49:16.897 | ERROR    | error                          | ❌ An error occurred while preparing 'bbbp': All featurizer attempts failed. Last error: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2050,) + inhomogeneous part.
+2025-07-18 06:49:16.897 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:49:16.898 | INFO     | info                           | 
+--- Preparing 'tox21' ---
+2025-07-18 06:49:16.899 | INFO     | info                           |    Trying featurizer: Morgan
+2025-07-18 06:49:16.899 | INFO     | info                           |    Trying featurizer: morgan
+2025-07-18 06:49:16.899 | INFO     | info                           |    Trying featurizer: ECFP
+2025-07-18 06:49:20.692 | INFO     | info                           |    Trying featurizer: ecfp
+2025-07-18 06:49:24.447 | INFO     | info                           |    Trying featurizer: CircularFingerprint
+2025-07-18 06:49:24.447 | INFO     | info                           |    Trying without specifying featurizer...
+2025-07-18 06:49:28.171 | ERROR    | error                          | ❌ An error occurred while preparing 'tox21': All featurizer attempts failed. Last error: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (7831,) + inhomogeneous part.
+2025-07-18 06:49:28.172 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:49:28.174 | INFO     | info                           | 
+--- Preparing 'sider' ---
+2025-07-18 06:49:28.174 | INFO     | info                           |    Trying featurizer: Morgan
+2025-07-18 06:49:28.174 | INFO     | info                           |    Trying featurizer: morgan
+2025-07-18 06:49:28.174 | INFO     | info                           |    Trying featurizer: ECFP
+2025-07-18 06:49:28.179 | INFO     | info                           |    Trying featurizer: ecfp
+2025-07-18 06:49:28.181 | INFO     | info                           |    Trying featurizer: CircularFingerprint
+2025-07-18 06:49:28.182 | INFO     | info                           |    Trying without specifying featurizer...
+2025-07-18 06:49:28.184 | ERROR    | error                          | ❌ An error occurred while preparing 'sider': All featurizer attempts failed. Last error: too many values to unpack (expected 2)
+2025-07-18 06:49:28.184 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:49:28.184 | INFO     | info                           | 
+--- Preparing 'hiv' ---
+2025-07-18 06:49:28.184 | INFO     | info                           |    Trying featurizer: Morgan
+2025-07-18 06:49:28.184 | INFO     | info                           |    Trying featurizer: morgan
+2025-07-18 06:49:28.184 | INFO     | info                           |    Trying featurizer: ECFP
+2025-07-18 06:49:32.407 | INFO     | info                           |    Trying featurizer: ecfp
+2025-07-18 06:49:36.608 | INFO     | info                           |    Trying featurizer: CircularFingerprint
+2025-07-18 06:49:36.608 | INFO     | info                           |    Trying without specifying featurizer...
+2025-07-18 06:49:40.816 | ERROR    | error                          | ❌ An error occurred while preparing 'hiv': All featurizer attempts failed. Last error: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (8192,) + inhomogeneous part.
+2025-07-18 06:49:40.816 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:49:40.818 | INFO     | info                           | 
+--- Preparing 'bace_classification' ---
+2025-07-18 06:49:40.818 | INFO     | info                           |    Trying featurizer: Morgan
+2025-07-18 06:49:40.818 | INFO     | info                           |    Trying featurizer: morgan
+2025-07-18 06:49:40.819 | INFO     | info                           |    Trying featurizer: ECFP
+2025-07-18 06:49:42.291 | INFO     | info                           |    Trying featurizer: ecfp
+2025-07-18 06:49:42.294 | INFO     | info                           |    Trying featurizer: CircularFingerprint
+2025-07-18 06:49:42.294 | INFO     | info                           |    Trying without specifying featurizer...
+2025-07-18 06:49:42.296 | ERROR    | error                          | ❌ An error occurred while preparing 'bace_classification': All featurizer attempts failed. Last error: too many values to unpack (expected 2)
+2025-07-18 06:49:42.297 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:49:42.297 | INFO     | info                           | 
+Dataset preparation complete.
+2025-07-18 06:49:42.297 | INFO     | info                           | You can now run your training scripts.

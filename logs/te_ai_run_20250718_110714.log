@@ -1,0 +1,143 @@
+2025-07-18 11:07:14.631 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:07:14.631 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_110714
+2025-07-18 11:07:14.631 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_110714.log
+2025-07-18 11:07:14.632 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 11:07:14.632 | INFO     | __init__                       | Backup files: 10
+2025-07-18 11:07:14.632 | INFO     | __init__                       | ================================================================================
+2025-07-18 11:07:14.633 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 11:07:14.633 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 11:07:14.633 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 11:07:14.633 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 11:07:14.662 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 11:07:14.663 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 11:07:14.663 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 11:07:59.478 | INFO     | info                           | 
+============================================================
+2025-07-18 11:07:59.478 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 11:07:59.478 | INFO     | info                           | ============================================================
+
+2025-07-18 11:07:59.479 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 11:07:59.479 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 11:07:59.479 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 11:07:59.479 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 11:07:59.479 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 11:07:59.480 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 11:07:59.480 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 11:07:59.502 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 11:07:59.502 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 11:07:59.543 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:07:59.567 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 11:07:59.572 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 11:07:59.572 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 11:07:59.573 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 11:07:59.573 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 11:07:59.573 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 11:07:59.574 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 11:07:59.578 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 11:07:59.785 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 11:07:59.942 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 11:07:59.969 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 11:08:00.436 | INFO     | info                           | Step 4: Applying data transformations...
+2025-07-18 11:08:00.451 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 11:08:08.123 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 11:08:08.124 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:08:08.477 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:08:08.478 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 11:08:08.856 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 11:08:08.856 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 11:08:08.857 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 11:08:08.857 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 11:08:08.857 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 11:08:08.858 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 11:08:08.858 | INFO     | info                           | 🏝️  Initializing Archipelago with 3 islands across devices: ['cuda:0', 'cuda:0', 'cuda:1']
+2025-07-18 11:08:08.858 | INFO     | info                           |    Creating Island 1 on device cuda:0...
+2025-07-18 11:08:09.073 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 11:08:09.073 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:08:09.073 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:08:09.439 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:08:09.528 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:09.564 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.009 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.461 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.524 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.558 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.588 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:10.706 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:11.114 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:08:11.172 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:08:11.196 | INFO     | info                           |    Creating Island 2 on device cuda:0...
+2025-07-18 11:08:11.203 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 11:08:11.204 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:08:11.204 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:08:11.558 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:08:11.641 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:11.673 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.088 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.351 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.413 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.446 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.476 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.595 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:12.993 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:08:13.051 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:08:13.051 | INFO     | info                           |    Creating Island 3 on device cuda:1...
+2025-07-18 11:08:13.058 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 11:08:13.058 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 11:08:13.058 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 11:08:13.411 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 11:08:13.497 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:13.897 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:13.924 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:14.133 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:14.313 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:14.347 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:14.963 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:15.028 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 11:08:15.090 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 11:08:15.150 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 11:08:15.151 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-18 11:08:15.155 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 11:08:15.156 | INFO     | info                           |    Submitting evolution task for Island 1 on cuda:0...
+2025-07-18 11:08:15.156 | INFO     | info                           |    Submitting evolution task for Island 2 on cuda:0...
+2025-07-18 11:08:15.156 | INFO     | info                           |    Submitting evolution task for Island 3 on cuda:1...
+2025-07-18 11:08:15.157 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 11:08:15.171 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:08:15.171 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:08:15.172 | INFO     | info                           | GENERATION 1
+2025-07-18 11:08:15.172 | INFO     | info                           | GENERATION 1
+2025-07-18 11:08:15.172 | INFO     | info                           | ================================================================================
+2025-07-18 11:08:15.172 | INFO     | info                           | ================================================================================
+2025-07-18 11:08:15.194 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:08:15.194 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:08:15.292 | INFO     | info                           | 
+================================================================================
+2025-07-18 11:08:15.293 | INFO     | info                           | GENERATION 1
+2025-07-18 11:08:15.293 | INFO     | info                           | ================================================================================
+2025-07-18 11:08:15.303 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 11:08:53.692 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 11:08:53.749 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.663 ± 0.007[0m, [35m🌿 Diversity: 4.788[0m, [33m🧬 Genes: 157[0m
+2025-07-18 11:08:53.749 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 11:08:53.750 | INFO     | info                           |    Combined amplified stress: 0.010
+2025-07-18 11:08:53.750 | INFO     | info                           |    Current stress level: 0.010
+2025-07-18 11:08:53.750 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 11:08:53.752 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 11:08:53.752 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 11:08:54.864 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 11:08:56.438 | INFO     | info                           |    New population size: 96
+2025-07-18 11:08:56.438 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 11:08:56.438 | INFO     | info                           | 
+⏱️  Generation 1 completed in 41.15s. Population: 96
+2025-07-18 11:08:56.799 | INFO     | info                           | write_visualization_state completed successfully

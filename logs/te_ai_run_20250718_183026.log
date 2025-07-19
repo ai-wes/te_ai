@@ -1,0 +1,100 @@
+2025-07-18 18:30:26.569 | INFO     | __init__                       | ================================================================================
+2025-07-18 18:30:26.569 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_183026
+2025-07-18 18:30:26.569 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_183026.log
+2025-07-18 18:30:26.569 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 18:30:26.570 | INFO     | __init__                       | Backup files: 10
+2025-07-18 18:30:26.570 | INFO     | __init__                       | ================================================================================
+2025-07-18 18:30:26.571 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 18:30:26.571 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 18:30:26.571 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 18:30:26.571 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 18:30:26.596 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 18:30:26.597 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 18:30:26.597 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 18:31:11.679 | INFO     | info                           | 
+============================================================
+2025-07-18 18:31:11.680 | INFO     | info                           | INITIALIZING NEW SYMBIOTIC SWARM TEST RUN
+2025-07-18 18:31:11.680 | INFO     | info                           | ============================================================
+
+2025-07-18 18:31:11.680 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 18:31:11.680 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 18:31:11.681 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 18:31:11.681 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 18:31:11.681 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 18:31:11.681 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 18:31:11.682 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 18:31:11.707 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 18:31:11.708 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 18:31:11.750 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 18:31:11.774 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 18:31:11.778 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 18:31:11.779 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 18:31:11.779 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 18:31:11.780 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 18:31:11.780 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 18:31:11.781 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 18:31:11.785 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 18:31:12.002 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 18:31:12.166 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 18:31:12.192 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 18:31:12.668 | INFO     | info                           | Step 5: Applying data transformations...
+2025-07-18 18:31:12.683 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 18:31:20.726 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 18:31:20.727 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 18:31:21.025 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 18:31:21.026 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 18:31:21.331 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 18:31:21.331 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 18:31:21.332 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 18:31:21.332 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 18:31:21.332 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 18:31:21.333 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 18:31:21.334 | INFO     | info                           | 🏝️  Initializing Specialist Archipelago with 3 islands:
+2025-07-18 18:31:21.339 | INFO     | info                           |    🧪 Creating Island 'SCIENTIST (Accuracy-focused)' on device cuda:0...
+2025-07-18 18:31:21.633 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 18:31:21.633 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 18:31:21.633 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 18:31:22.004 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 18:31:22.098 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:22.136 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:22.574 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:22.848 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:22.915 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:23.186 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:23.218 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:23.348 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:23.763 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 18:31:23.820 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 18:31:23.842 | INFO     | info                           |    ⚡ Creating Island 'ENGINEER (Speed-focused)' on device cuda:0...
+2025-07-18 18:31:23.850 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 18:31:23.850 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 18:31:23.850 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 18:31:24.204 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 18:31:24.294 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:24.329 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:24.766 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.036 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.100 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.134 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.165 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.292 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:25.709 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 18:31:25.766 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 18:31:25.767 | INFO     | info                           |    ⚖️ Creating Island 'GENERALIST (Balanced)' on device cuda:0...
+2025-07-18 18:31:25.774 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 18:31:25.774 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 18:31:25.774 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 18:31:26.136 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 18:31:26.226 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:26.403 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:26.431 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:26.862 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:27.038 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:27.072 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:27.709 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:27.772 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 18:31:27.843 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 18:31:27.895 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 

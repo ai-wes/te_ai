@@ -552,7 +552,7 @@ class TEAIBenchmarkAdapter:
                                 if not hasattr(self, 'best_validation_acc') or batch_acc > self.best_validation_acc:
                                     self.best_validation_acc = batch_acc
                                     self.best_cells = current_best_cells
-                                    logger.info(f"Updated best cells from generation {gen} with validation accuracy {batch_acc:.3f}")
+                                    logger.info(f"Updated best cells from generation {generation + 1} with validation accuracy {batch_acc:.3f}")
                             
                             # Check if this model meets our strict criteria for saving
                             if batch_acc >= 0.9 and batch_prec >= 0.9:

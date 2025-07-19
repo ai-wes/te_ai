@@ -1,0 +1,39 @@
+2025-07-18 06:33:16.902 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:33:16.902 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_063316
+2025-07-18 06:33:16.902 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_063316.log
+2025-07-18 06:33:16.903 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 06:33:16.903 | INFO     | __init__                       | Backup files: 10
+2025-07-18 06:33:16.903 | INFO     | __init__                       | ================================================================================
+2025-07-18 06:33:16.904 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 06:33:16.904 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 06:33:16.904 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 06:33:16.952 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 06:33:16.983 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 06:33:16.983 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 06:33:16.984 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 06:33:16.984 | INFO     | info                           | ============================================================
+2025-07-18 06:33:16.984 | INFO     | info                           | DEEPCHEM DATASET PREPARATION SCRIPT
+2025-07-18 06:33:16.984 | INFO     | info                           | ============================================================
+2025-07-18 06:33:16.984 | INFO     | info                           | Attempting to download and cache the following datasets: ['bbbp', 'tox21', 'sider', 'hiv', 'bace']
+2025-07-18 06:33:16.984 | INFO     | info                           | DeepChem data will be stored in: /tmp
+2025-07-18 06:33:16.984 | INFO     | info                           | 
+--- Preparing 'bbbp' ---
+2025-07-18 06:33:18.195 | ERROR    | error                          | ❌ An error occurred while preparing 'bbbp': setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2050,) + inhomogeneous part.
+2025-07-18 06:33:18.195 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:33:18.196 | INFO     | info                           | 
+--- Preparing 'tox21' ---
+2025-07-18 06:33:21.910 | ERROR    | error                          | ❌ An error occurred while preparing 'tox21': setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (7831,) + inhomogeneous part.
+2025-07-18 06:33:21.910 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:33:21.912 | INFO     | info                           | 
+--- Preparing 'sider' ---
+2025-07-18 06:33:24.081 | INFO     | info                           | ✅ Successfully downloaded and cached 'sider'.
+2025-07-18 06:33:24.081 | INFO     | info                           | 
+--- Preparing 'hiv' ---
+2025-07-18 06:33:29.682 | ERROR    | error                          | ❌ An error occurred while preparing 'hiv': setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (8192,) + inhomogeneous part.
+2025-07-18 06:33:29.683 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 06:33:29.684 | INFO     | info                           | 
+--- Preparing 'bace' ---
+2025-07-18 06:33:29.684 | ERROR    | error                          | ❌ Failed: No loader function found for 'bace'. Is the name correct?
+2025-07-18 06:33:29.685 | INFO     | info                           | 
+Dataset preparation complete.
+2025-07-18 06:33:29.685 | INFO     | info                           | You can now run your training scripts.

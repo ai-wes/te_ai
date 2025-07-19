@@ -1,0 +1,41 @@
+2025-07-18 07:01:01.974 | INFO     | __init__                       | ================================================================================
+2025-07-18 07:01:01.974 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_070101
+2025-07-18 07:01:01.974 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_070101.log
+2025-07-18 07:01:01.974 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 07:01:01.974 | INFO     | __init__                       | Backup files: 10
+2025-07-18 07:01:01.974 | INFO     | __init__                       | ================================================================================
+2025-07-18 07:01:01.975 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 07:01:01.976 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 07:01:01.976 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 07:01:02.019 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 07:01:02.047 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 07:01:02.048 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 07:01:02.048 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 07:01:02.048 | INFO     | info                           | ============================================================
+2025-07-18 07:01:02.048 | INFO     | info                           | DEEPCHEM DATASET PREPARATION SCRIPT
+2025-07-18 07:01:02.048 | INFO     | info                           | ============================================================
+2025-07-18 07:01:02.049 | INFO     | info                           | Attempting to download and cache the following datasets: ['bbbp', 'tox21', 'sider', 'hiv', 'bace_classification']
+2025-07-18 07:01:02.049 | INFO     | info                           | DeepChem data will be stored in: /tmp
+2025-07-18 07:01:02.049 | INFO     | info                           | 
+--- Preparing 'bbbp' ---
+2025-07-18 07:01:02.049 | ERROR    | error                          | ❌ An error occurred while preparing 'bbbp': module 'deepchem.feat' has no attribute 'MorganGenerator'
+2025-07-18 07:01:02.050 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 07:01:02.050 | INFO     | info                           | 
+--- Preparing 'tox21' ---
+2025-07-18 07:01:02.050 | ERROR    | error                          | ❌ An error occurred while preparing 'tox21': module 'deepchem.feat' has no attribute 'MorganGenerator'
+2025-07-18 07:01:02.050 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 07:01:02.050 | INFO     | info                           | 
+--- Preparing 'sider' ---
+2025-07-18 07:01:02.051 | ERROR    | error                          | ❌ An error occurred while preparing 'sider': module 'deepchem.feat' has no attribute 'MorganGenerator'
+2025-07-18 07:01:02.051 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 07:01:02.051 | INFO     | info                           | 
+--- Preparing 'hiv' ---
+2025-07-18 07:01:02.051 | ERROR    | error                          | ❌ An error occurred while preparing 'hiv': module 'deepchem.feat' has no attribute 'MorganGenerator'
+2025-07-18 07:01:02.051 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 07:01:02.051 | INFO     | info                           | 
+--- Preparing 'bace_classification' ---
+2025-07-18 07:01:02.052 | ERROR    | error                          | ❌ An error occurred while preparing 'bace_classification': module 'deepchem.feat' has no attribute 'MorganGenerator'
+2025-07-18 07:01:02.052 | ERROR    | error                          |    Please check your internet connection and permissions for the data directory.
+2025-07-18 07:01:02.052 | INFO     | info                           | 
+Dataset preparation complete.
+2025-07-18 07:01:02.052 | INFO     | info                           | You can now run your training scripts.

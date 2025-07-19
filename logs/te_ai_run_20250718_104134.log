@@ -1,0 +1,351 @@
+2025-07-18 10:41:34.681 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:41:34.681 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_104134
+2025-07-18 10:41:34.681 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_104134.log
+2025-07-18 10:41:34.681 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 10:41:34.681 | INFO     | __init__                       | Backup files: 10
+2025-07-18 10:41:34.682 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:41:34.682 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 10:41:34.682 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 10:41:34.682 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 10:41:34.682 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 10:41:34.711 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 10:41:34.711 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 10:41:34.711 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 10:42:17.867 | INFO     | info                           | 
+============================================================
+2025-07-18 10:42:17.867 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 10:42:17.867 | INFO     | info                           | ============================================================
+
+2025-07-18 10:42:17.867 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 10:42:17.868 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 10:42:17.868 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 10:42:17.868 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 10:42:17.868 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 10:42:17.869 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 10:42:17.869 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 10:42:17.890 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 10:42:17.891 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 10:42:17.933 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 10:42:17.958 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 10:42:17.963 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 10:42:17.963 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 10:42:17.964 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 10:42:17.964 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 10:42:17.964 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 10:42:17.965 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 10:42:17.969 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 10:42:18.191 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 10:42:18.356 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 10:42:18.383 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 10:42:18.873 | INFO     | info                           | Step 4: Applying data transformations...
+2025-07-18 10:42:18.893 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 10:42:28.010 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 10:42:28.010 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 10:42:28.361 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 10:42:28.361 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 10:42:28.772 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 10:42:28.773 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 10:42:28.773 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 10:42:28.773 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 10:42:28.773 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 10:42:28.774 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 10:42:28.774 | INFO     | info                           | 🏝️  Initializing Archipelago with 3 islands, each with 64 cells.
+2025-07-18 10:42:29.098 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 10:42:29.098 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 10:42:29.098 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 10:42:29.498 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 10:42:29.588 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:29.633 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.103 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.593 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.670 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.709 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.742 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:30.881 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:31.330 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 10:42:31.393 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 10:42:31.432 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 10:42:31.432 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 10:42:31.432 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 10:42:31.818 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 10:42:31.913 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:31.947 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.408 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.707 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.773 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.814 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.846 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:32.977 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:33.413 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 10:42:33.480 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 10:42:33.490 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 10:42:33.490 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 10:42:33.490 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 10:42:33.881 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 10:42:33.979 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:34.404 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:34.432 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:34.664 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:34.864 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:34.903 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:35.803 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:35.908 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 10:42:35.998 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 10:42:36.075 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 10:42:36.075 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-18 10:42:36.082 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 10:42:36.082 | INFO     | info                           | 
+--- Evolving Island 1/3 ---
+2025-07-18 10:42:36.082 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:42:36.082 | INFO     | info                           | GENERATION 1
+2025-07-18 10:42:36.083 | INFO     | info                           | ================================================================================
+2025-07-18 10:42:36.084 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:43:12.189 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:43:12.247 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.676 ± 0.007[0m, [35m🌿 Diversity: 4.824[0m, [33m🧬 Genes: 158[0m
+2025-07-18 10:43:12.247 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:43:12.247 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-18 10:43:12.247 | INFO     | info                           |    Current stress level: 0.009
+2025-07-18 10:43:12.248 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:43:12.250 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:43:12.250 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 10:43:13.490 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 10:43:15.057 | INFO     | info                           |    New population size: 96
+2025-07-18 10:43:15.057 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:43:15.057 | INFO     | info                           | 
+⏱️  Generation 1 completed in 38.97s. Population: 96
+2025-07-18 10:43:15.499 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:43:15.500 | INFO     | info                           | 
+--- Evolving Island 2/3 ---
+2025-07-18 10:43:15.500 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:43:15.500 | INFO     | info                           | GENERATION 1
+2025-07-18 10:43:15.500 | INFO     | info                           | ================================================================================
+2025-07-18 10:43:15.513 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:43:46.773 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:43:46.810 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.683 ± 0.008[0m, [35m🌿 Diversity: 4.817[0m, [33m🧬 Genes: 158[0m
+2025-07-18 10:43:46.811 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.02, phase=0.00
+2025-07-18 10:43:46.811 | INFO     | info                           |    Combined amplified stress: 0.010
+2025-07-18 10:43:46.811 | INFO     | info                           |    Current stress level: 0.010
+2025-07-18 10:43:46.811 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:43:46.812 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:43:46.812 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 10:43:47.514 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 10:43:49.163 | INFO     | info                           |    New population size: 96
+2025-07-18 10:43:49.163 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:43:49.163 | INFO     | info                           | 
+⏱️  Generation 1 completed in 33.66s. Population: 96
+2025-07-18 10:43:49.491 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:43:49.491 | INFO     | info                           | 
+--- Evolving Island 3/3 ---
+2025-07-18 10:43:49.491 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:43:49.492 | INFO     | info                           | GENERATION 1
+2025-07-18 10:43:49.492 | INFO     | info                           | ================================================================================
+2025-07-18 10:43:49.502 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:44:23.151 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:44:23.190 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.667 ± 0.007[0m, [35m🌿 Diversity: 4.788[0m, [33m🧬 Genes: 157[0m
+2025-07-18 10:44:23.190 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:44:23.190 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-18 10:44:23.191 | INFO     | info                           |    Current stress level: 0.009
+2025-07-18 10:44:23.191 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:44:23.192 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:44:23.192 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 10:44:24.565 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 10:44:25.991 | INFO     | info                           |    New population size: 96
+2025-07-18 10:44:25.991 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:44:25.992 | INFO     | info                           | 
+⏱️  Generation 1 completed in 36.50s. Population: 96
+2025-07-18 10:44:26.302 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:44:26.307 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-18 10:44:26.307 | INFO     | info                           | 
+--- Evolving Island 1/3 ---
+2025-07-18 10:44:26.307 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:44:26.307 | INFO     | info                           | GENERATION 2
+2025-07-18 10:44:26.307 | INFO     | info                           | ================================================================================
+2025-07-18 10:44:26.308 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:45:22.008 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:45:22.071 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.693 ± 0.005[0m, [35m🌿 Diversity: 4.668[0m, [33m🧬 Genes: 138[0m
+2025-07-18 10:45:22.071 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:45:22.071 | INFO     | info                           |    Combined amplified stress: 0.006
+2025-07-18 10:45:22.071 | INFO     | info                           |    Current stress level: 0.006
+2025-07-18 10:45:22.071 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:45:22.073 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:45:22.073 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 10:45:23.332 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 10:45:24.420 | INFO     | info                           |    New population size: 120
+2025-07-18 10:45:24.421 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:45:24.766 | INFO     | info                           |    - Cleared CUDA memory: 8.96 -> 8.96 GB
+2025-07-18 10:45:24.766 | INFO     | info                           |    - GPU utilization: 37.3%
+2025-07-18 10:45:24.766 | INFO     | info                           | 
+⏱️  Generation 2 completed in 58.46s. Population: 120
+2025-07-18 10:45:25.336 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:45:25.337 | INFO     | info                           | 
+--- Evolving Island 2/3 ---
+2025-07-18 10:45:25.337 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:45:25.337 | INFO     | info                           | GENERATION 2
+2025-07-18 10:45:25.338 | INFO     | info                           | ================================================================================
+2025-07-18 10:45:25.355 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:46:11.510 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:46:11.564 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.692 ± 0.006[0m, [35m🌿 Diversity: 4.685[0m, [33m🧬 Genes: 136[0m
+2025-07-18 10:46:11.564 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:46:11.564 | INFO     | info                           |    Combined amplified stress: 0.008
+2025-07-18 10:46:11.565 | INFO     | info                           |    Current stress level: 0.008
+2025-07-18 10:46:11.565 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:46:11.566 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:46:11.566 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 10:46:12.642 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 10:46:13.731 | INFO     | info                           |    New population size: 120
+2025-07-18 10:46:13.732 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:46:14.090 | INFO     | info                           |    - Cleared CUDA memory: 9.68 -> 9.68 GB
+2025-07-18 10:46:14.090 | INFO     | info                           |    - GPU utilization: 40.3%
+2025-07-18 10:46:14.091 | INFO     | info                           | 
+⏱️  Generation 2 completed in 48.75s. Population: 120
+2025-07-18 10:46:14.462 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:46:14.463 | INFO     | info                           | 
+--- Evolving Island 3/3 ---
+2025-07-18 10:46:14.463 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:46:14.463 | INFO     | info                           | GENERATION 2
+2025-07-18 10:46:14.463 | INFO     | info                           | ================================================================================
+2025-07-18 10:46:14.474 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:46:59.230 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:46:59.282 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.681 ± 0.006[0m, [35m🌿 Diversity: 4.637[0m, [33m🧬 Genes: 137[0m
+2025-07-18 10:46:59.283 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:46:59.283 | INFO     | info                           |    Combined amplified stress: 0.008
+2025-07-18 10:46:59.283 | INFO     | info                           |    Current stress level: 0.008
+2025-07-18 10:46:59.283 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:46:59.284 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:46:59.285 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 10:47:00.331 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 10:47:01.458 | INFO     | info                           |    New population size: 120
+2025-07-18 10:47:01.459 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:47:01.844 | INFO     | info                           |    - Cleared CUDA memory: 10.39 -> 10.39 GB
+2025-07-18 10:47:01.844 | INFO     | info                           |    - GPU utilization: 43.3%
+2025-07-18 10:47:01.844 | INFO     | info                           | 
+⏱️  Generation 2 completed in 47.38s. Population: 120
+2025-07-18 10:47:02.247 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:47:02.253 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 3 ==============================
+2025-07-18 10:47:02.253 | INFO     | info                           | 
+--- Evolving Island 1/3 ---
+2025-07-18 10:47:02.253 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:47:02.253 | INFO     | info                           | GENERATION 3
+2025-07-18 10:47:02.254 | INFO     | info                           | ================================================================================
+2025-07-18 10:47:02.254 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:48:00.720 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:48:00.773 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.669 ± 0.006[0m, [35m🌿 Diversity: 4.617[0m, [33m🧬 Genes: 133[0m
+2025-07-18 10:48:00.773 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:48:00.773 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-18 10:48:00.774 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 10:48:00.774 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 10:48:00.774 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:48:00.775 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 10:48:00.775 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 10:48:00.776 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 10:48:04.747 | INFO     | info                           |      - 36/50 mutations executed. Tokens remaining: 0.5
+2025-07-18 10:48:04.748 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 10:48:04.758 | INFO     | info                           |      - 13 genes epigenetically modified.
+2025-07-18 10:48:04.758 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 10:48:06.315 | WARNING  | warning                        | Gene 7 (V100-0b9179a3) on cpu, moving to cuda:0
+2025-07-18 10:48:06.834 | WARNING  | warning                        | Gene 9 (J6-60218e06) on cpu, moving to cuda:0
+2025-07-18 10:48:13.721 | WARNING  | warning                        | Gene 9 (D17-3d66989e) on cpu, moving to cuda:0
+2025-07-18 10:48:15.931 | WARNING  | warning                        | Gene 8 (D42-c6000ef7) on cpu, moving to cuda:0
+2025-07-18 10:48:21.019 | WARNING  | warning                        | Gene 7 (V45-d17dcd19) on cpu, moving to cuda:0
+2025-07-18 10:48:21.495 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 10:48:21.495 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:48:21.495 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 10:48:22.697 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 10:48:22.698 | INFO     | info                           |    New population size: 120
+2025-07-18 10:48:22.698 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:48:22.698 | INFO     | info                           | 
+⏱️  Generation 3 completed in 80.44s. Population: 120
+2025-07-18 10:48:23.046 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:48:23.047 | INFO     | info                           | 
+--- Evolving Island 2/3 ---
+2025-07-18 10:48:23.047 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:48:23.047 | INFO     | info                           | GENERATION 3
+2025-07-18 10:48:23.047 | INFO     | info                           | ================================================================================
+2025-07-18 10:48:23.055 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 10:49:16.697 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 10:49:16.760 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.672 ± 0.007[0m, [35m🌿 Diversity: 4.618[0m, [33m🧬 Genes: 133[0m
+2025-07-18 10:49:16.761 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 10:49:16.761 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-18 10:49:16.761 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 10:49:16.762 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 10:49:16.762 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 10:49:16.763 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 10:49:16.764 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 10:49:16.764 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 10:49:21.090 | INFO     | info                           |      - 37/44 mutations executed. Tokens remaining: 0.0
+2025-07-18 10:49:21.090 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 10:49:21.093 | INFO     | info                           |      - 15 genes epigenetically modified.
+2025-07-18 10:49:21.094 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 10:49:22.841 | WARNING  | warning                        | Gene 6 (J7-bd37a160) on cpu, moving to cuda:0
+2025-07-18 10:49:23.882 | WARNING  | warning                        | Gene 4 (V45-13b1527e) on cpu, moving to cuda:0
+2025-07-18 10:49:30.584 | WARNING  | warning                        | Gene 9 (V69-5ebef28c) on cpu, moving to cuda:0
+2025-07-18 10:49:31.747 | WARNING  | warning                        | Gene 8 (D9-ad122441) on cpu, moving to cuda:0
+2025-07-18 10:49:39.027 | WARNING  | warning                        | Gene 5 (D19-c690e80f) on cpu, moving to cuda:0
+2025-07-18 10:49:39.380 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 10:49:39.381 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 10:49:39.381 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 10:49:40.987 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 10:49:40.988 | INFO     | info                           |    New population size: 120
+2025-07-18 10:49:40.988 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 10:49:40.988 | INFO     | info                           | 
+⏱️  Generation 3 completed in 77.94s. Population: 120
+2025-07-18 10:49:41.448 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 10:49:41.448 | INFO     | info                           | 
+--- Evolving Island 3/3 ---
+2025-07-18 10:49:41.448 | INFO     | info                           | 
+================================================================================
+2025-07-18 10:49:41.448 | INFO     | info                           | GENERATION 3
+2025-07-18 10:49:41.448 | INFO     | info                           | ================================================================================
+2025-07-18 10:49:41.460 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)

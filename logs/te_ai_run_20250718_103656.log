@@ -1,0 +1,52 @@
+2025-07-18 10:36:56.387 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:36:56.387 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_103656
+2025-07-18 10:36:56.388 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_103656.log
+2025-07-18 10:36:56.388 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 10:36:56.388 | INFO     | __init__                       | Backup files: 10
+2025-07-18 10:36:56.388 | INFO     | __init__                       | ================================================================================
+2025-07-18 10:36:56.389 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 10:36:56.389 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 10:36:56.389 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 10:36:56.390 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 10:36:56.418 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 10:36:56.418 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 10:36:56.419 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 10:37:39.158 | INFO     | info                           | 
+============================================================
+2025-07-18 10:37:39.158 | INFO     | info                           | INITIALIZING SYMBIOTIC SWARM TEST
+2025-07-18 10:37:39.159 | INFO     | info                           | ============================================================
+
+2025-07-18 10:37:39.159 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 10:37:39.159 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 10:37:39.159 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 10:37:39.160 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 10:37:39.160 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 10:37:39.160 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 10:37:39.161 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 10:37:39.180 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 10:37:39.181 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 10:37:39.222 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 10:37:39.246 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 10:37:39.251 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 10:37:39.252 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 10:37:39.252 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 10:37:39.252 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 10:37:39.253 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 10:37:39.253 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 10:37:39.258 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 10:37:39.465 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 10:37:39.629 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 10:37:39.656 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 10:37:40.132 | INFO     | info                           | Step 4: Applying data transformations...
+2025-07-18 10:37:40.147 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 10:37:49.775 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 10:37:49.775 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 10:37:50.139 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 10:37:50.140 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 10:37:50.943 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 10:37:50.944 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 10:37:50.944 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 10:37:50.945 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 10:37:50.945 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 10:37:50.946 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 10:37:50.946 | INFO     | info                           | 🏝️  Initializing Archipelago with (3,) islands, each with 64 cells.
