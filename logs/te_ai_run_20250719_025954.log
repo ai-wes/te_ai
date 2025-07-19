@@ -1,0 +1,110 @@
+2025-07-19 02:59:54.895 | INFO     | __init__                       | ================================================================================
+2025-07-19 02:59:54.896 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250719_025954
+2025-07-19 02:59:54.896 | INFO     | __init__                       | Log file: logs/te_ai_run_20250719_025954.log
+2025-07-19 02:59:54.896 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-19 02:59:54.896 | INFO     | __init__                       | Backup files: 10
+2025-07-19 02:59:54.896 | INFO     | __init__                       | ================================================================================
+2025-07-19 02:59:54.897 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-19 02:59:54.897 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-19 02:59:54.897 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-19 02:59:54.898 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-19 02:59:54.926 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-19 02:59:54.927 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-19 02:59:54.927 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-19 03:00:53.469 | INFO     | info                           | 🏝️  Initializing Specialist Archipelago with 6 islands:
+2025-07-19 03:00:53.470 | INFO     | info                           |    🧪 Creating Island 'SCIENTIST (Accuracy-focused)' on device cuda:0...
+2025-07-19 03:00:53.494 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:00:53.687 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-19 03:00:53.687 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:00:53.688 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:00:54.103 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:00:54.206 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:54.241 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:54.719 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.021 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.092 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.133 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.165 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.298 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:55.957 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:00:56.020 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-19 03:00:56.046 | INFO     | info                           |    ⚡ Creating Island 'ENGINEER (Speed-focused)' on device cuda:0...
+2025-07-19 03:00:56.046 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:00:56.054 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-19 03:00:56.054 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:00:56.054 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:00:56.455 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:00:56.551 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:56.591 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.084 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.395 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.461 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.493 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.523 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:57.662 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:58.102 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:00:58.162 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-19 03:00:58.162 | INFO     | info                           |    🏝️ Creating Island 'NOVELTY' on device cuda:0...
+2025-07-19 03:00:58.162 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:00:58.169 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-19 03:00:58.169 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:00:58.169 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:00:58.567 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:00:58.653 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:58.838 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:58.871 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:59.078 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:59.267 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:00:59.307 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:00.413 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:00.499 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:00.588 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:01:00.667 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-19 03:01:00.667 | INFO     | info                           |    🏝️ Creating Island 'ROBUSTNESS' on device cuda:0...
+2025-07-19 03:01:00.667 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:01:00.678 | INFO     | info                           | GPU Memory: 5.31/24.00 GB (22.1%)
+2025-07-19 03:01:00.679 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:01:00.679 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:01:01.168 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:01:01.170 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:01.496 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:01.759 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:01.804 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:02.106 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:02.782 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:03.379 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:01:03.458 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-19 03:01:03.458 | INFO     | info                           |    🏝️ Creating Island 'PARSIMONY' on device cuda:1...
+2025-07-19 03:01:03.458 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:01:03.469 | INFO     | info                           | GPU Memory: 7.08/24.00 GB (29.5%)
+2025-07-19 03:01:03.469 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:01:03.469 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:01:03.985 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:01:04.847 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:05.525 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:05.686 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:06.293 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:06.632 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:01:06.732 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-19 03:01:06.732 | INFO     | info                           |    🏝️ Creating Island 'CONSTRAINED' on device cuda:1...
+2025-07-19 03:01:06.733 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-19 03:01:06.744 | INFO     | info                           | GPU Memory: 8.85/24.00 GB (36.9%)
+2025-07-19 03:01:06.744 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-19 03:01:06.744 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-19 03:01:07.313 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-19 03:01:07.830 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:08.057 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:08.465 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:08.583 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:08.782 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:08.930 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:09.621 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:09.662 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-19 03:01:09.741 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-19 03:01:09.828 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 

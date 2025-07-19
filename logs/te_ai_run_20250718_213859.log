@@ -1,0 +1,1502 @@
+2025-07-18 21:38:59.347 | INFO     | __init__                       | ================================================================================
+2025-07-18 21:38:59.347 | INFO     | __init__                       | TE-AI RUN INITIALIZED: 20250718_213859
+2025-07-18 21:38:59.347 | INFO     | __init__                       | Log file: logs/te_ai_run_20250718_213859.log
+2025-07-18 21:38:59.348 | INFO     | __init__                       | Max file size: 50.0 MB
+2025-07-18 21:38:59.348 | INFO     | __init__                       | Backup files: 10
+2025-07-18 21:38:59.348 | INFO     | __init__                       | ================================================================================
+2025-07-18 21:38:59.348 | INFO     | _log_system_info               | SYSTEM INFORMATION:
+2025-07-18 21:38:59.348 | INFO     | _log_system_info               |   Python version: 3.12.8 | packaged by Anaconda, Inc. | (main, Dec 11 2024, 16:31:09) [GCC 11.2.0]
+2025-07-18 21:38:59.348 | INFO     | _log_system_info               |   PyTorch version: 2.7.1+cu126
+2025-07-18 21:38:59.349 | INFO     | _log_system_info               |   CUDA available: True
+2025-07-18 21:38:59.379 | INFO     | _log_system_info               |   CUDA device: NVIDIA GeForce RTX 3090
+2025-07-18 21:38:59.380 | INFO     | _log_system_info               |   CUDA memory: 25.77 GB
+2025-07-18 21:38:59.380 | INFO     | _log_system_info               | --------------------------------------------------------------------------------
+2025-07-18 21:39:43.012 | INFO     | info                           | 
+============================================================
+2025-07-18 21:39:43.013 | INFO     | info                           | INITIALIZING NEW SYMBIOTIC SWARM TEST RUN
+2025-07-18 21:39:43.013 | INFO     | info                           | ============================================================
+
+2025-07-18 21:39:43.013 | INFO     | info                           | Loading 'bbbp' dataset...
+2025-07-18 21:39:43.013 | INFO     | info                           | Loading bbbp from MoleculeNet...
+2025-07-18 21:39:43.014 | INFO     | info                           | Successfully initialized RDKit MorganGenerator.
+2025-07-18 21:39:43.014 | INFO     | info                           | Using RobustFeaturizer wrapping RDKit MorganGenerator.
+2025-07-18 21:39:43.014 | INFO     | info                           | Using DeepChem data directory: deepchem_data
+2025-07-18 21:39:43.014 | INFO     | info                           | Data directory exists: deepchem_data
+2025-07-18 21:39:43.015 | WARNING  | warning                        | BBBP dataset directory not found: deepchem_data/bbbp
+2025-07-18 21:39:43.038 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'O=N([O-])C1=C(CN=C1NCCSCc2ncccc2)Cc3ccccc3'. Returning zero vector.
+2025-07-18 21:39:43.038 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(nc(NC(N)=[NH2])sc1)CSCCNC(=[NH]C#N)NC'. Returning zero vector.
+2025-07-18 21:39:43.077 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'Cc1nc(sc1)\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 21:39:43.100 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(CSCCN\C(NC)=[NH]\C#N)nc1\[NH]=C(\N)N'. Returning zero vector.
+2025-07-18 21:39:43.104 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1c(c(ncc1)CSCCN\C(=[NH]\C#N)NCC)Br'. Returning zero vector.
+2025-07-18 21:39:43.105 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1ccccc1'. Returning zero vector.
+2025-07-18 21:39:43.105 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N'. Returning zero vector.
+2025-07-18 21:39:43.105 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)NC(C)=O'. Returning zero vector.
+2025-07-18 21:39:43.106 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'n1c(csc1\[NH]=C(\N)N)c1cccc(c1)N\C(NC)=[NH]\C#N'. Returning zero vector.
+2025-07-18 21:39:43.106 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 's1cc(nc1\[NH]=C(\N)N)C'. Returning zero vector.
+2025-07-18 21:39:43.111 | WARNING  | warning                        | Could not create a valid molecule from datapoint: 'c1(cc(N\C(=[NH]\c2cccc(c2)CC)C)ccc1)CC'. Returning zero vector.
+2025-07-18 21:39:43.316 | INFO     | info                           | Step 2: Filtering out invalid molecules before splitting...
+2025-07-18 21:39:43.470 | WARNING  | warning                        | Removed 11 invalid SMILES strings before splitting.
+2025-07-18 21:39:43.496 | INFO     | info                           | Step 3: Splitting the cleaned dataset...
+2025-07-18 21:39:43.963 | INFO     | info                           | Step 5: Applying data transformations...
+2025-07-18 21:39:43.980 | INFO     | info                           | Converting 1631 molecules from DeepChem
+2025-07-18 21:39:53.009 | INFO     | info                           | Successfully converted 1631 molecules
+2025-07-18 21:39:53.010 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 21:39:53.323 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 21:39:53.323 | INFO     | info                           | Converting 204 molecules from DeepChem
+2025-07-18 21:39:53.580 | INFO     | info                           | Successfully converted 204 molecules
+2025-07-18 21:39:53.580 | INFO     | info                           | Successfully converted bbbp:
+2025-07-18 21:39:53.580 | INFO     | info                           |   Train: 1631 antigens
+2025-07-18 21:39:53.581 | INFO     | info                           |   Valid: 204 antigens
+2025-07-18 21:39:53.581 | INFO     | info                           |   Test: 204 antigens
+2025-07-18 21:39:53.581 | INFO     | info                           | Loaded 1631 training samples.
+2025-07-18 21:39:53.582 | INFO     | info                           | 🏝️  Initializing Specialist Archipelago with 3 islands:
+2025-07-18 21:39:53.582 | INFO     | info                           |    🧪 Creating Island 'SCIENTIST (Accuracy-focused)' on device cuda:0...
+2025-07-18 21:39:53.601 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-18 21:39:53.875 | INFO     | info                           | GPU Memory: 0.00/24.00 GB (0.0%)
+2025-07-18 21:39:53.875 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:39:53.876 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:39:54.257 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:39:54.338 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:54.378 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:54.818 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.104 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.169 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.392 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.424 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.553 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:55.964 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:39:56.021 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:39:56.042 | INFO     | info                           |    ⚡ Creating Island 'ENGINEER (Speed-focused)' on device cuda:0...
+2025-07-18 21:39:56.042 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-18 21:39:56.048 | INFO     | info                           | GPU Memory: 1.77/24.00 GB (7.4%)
+2025-07-18 21:39:56.049 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:39:56.049 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:39:56.396 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:39:56.483 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:56.516 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:56.934 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.189 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.251 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.290 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.324 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.441 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:57.846 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:39:57.901 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:39:57.901 | INFO     | info                           |    ⚖️ Creating Island 'GENERALIST (Balanced)' on device cuda:0...
+2025-07-18 21:39:57.902 | INFO     | info                           | Hall of Fame initialized with champion: None and fitness: -inf
+2025-07-18 21:39:57.908 | INFO     | info                           | GPU Memory: 3.54/24.00 GB (14.8%)
+2025-07-18 21:39:57.909 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:39:57.909 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:39:58.294 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:39:58.387 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:58.566 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:58.597 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:39:59.024 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:01.104 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:01.136 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:01.799 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:01.883 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:01.946 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:40:02.000 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:40:02.001 | INFO     | info                           | Resetting the entire Archipelago for a new run...
+2025-07-18 21:40:02.001 | INFO     | info                           |    Resetting state for Germinal Center on cuda:0...
+2025-07-18 21:40:02.017 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:40:02.017 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:40:02.338 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:40:02.340 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:02.556 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:02.722 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:02.754 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:02.953 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:03.399 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:03.836 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:40:03.915 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:40:03.916 | INFO     | info                           |    Resetting state for Germinal Center on cuda:0...
+2025-07-18 21:40:03.934 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:40:03.935 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:40:04.396 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:40:05.151 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:05.846 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:05.958 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:06.229 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:06.493 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:40:06.568 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:40:06.568 | INFO     | info                           |    Resetting state for Germinal Center on cuda:0...
+2025-07-18 21:40:06.587 | INFO     | info                           | 
+🧬 Initializing production population with 64 cells...
+2025-07-18 21:40:06.587 | INFO     | info                           |    Creating 12 dedicated stem cells...
+2025-07-18 21:40:07.037 | INFO     | info                           |    Creating 52 mixed-type cells...
+2025-07-18 21:40:07.426 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:07.586 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:07.880 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:07.956 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:08.102 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:08.228 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:08.841 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:08.879 | INFO     | info                           |    ✨✨ A Quantum Gene has emerged!  ✨✨
+2025-07-18 21:40:08.955 | INFO     | info                           |    Created 50/52 mixed cells...
+2025-07-18 21:40:09.036 | INFO     | info                           | ✅✅  Population initialized with 64 cells (12 stem cells + 52 mixed)  ✅✅ 
+2025-07-18 21:40:09.036 | INFO     | info                           | Establishing baselines...
+2025-07-18 21:40:09.037 | INFO     | info                           | Sampled 32 baseline antigens.
+2025-07-18 21:40:09.044 | INFO     | info                           | Converted to 32 baseline graphs.
+2025-07-18 21:40:09.044 | INFO     | info                           | 
+============================== 📊 ESTABLISHING PERFORMANCE BASELINES 📊 ==============================
+2025-07-18 21:40:42.073 | INFO     | info                           |    Evaluated 64 cells using 'calculate_accuracy_fitness':
+2025-07-18 21:40:42.074 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.574, Best=0.741
+2025-07-18 21:40:42.074 | INFO     | info                           |       • Inference Time: Avg=15.16ms, Best=7.04ms
+2025-07-18 21:40:42.075 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 21:41:07.050 | INFO     | info                           |    Evaluated 64 cells using 'calculate_speed_fitness':
+2025-07-18 21:41:07.051 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.574, Best=0.776
+2025-07-18 21:41:07.051 | INFO     | info                           |       • Inference Time: Avg=12.19ms, Best=5.30ms
+2025-07-18 21:41:07.051 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 21:41:34.387 | INFO     | info                           |    Evaluated 64 cells using 'calculate_balanced_fitness':
+2025-07-18 21:41:34.388 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.570, Best=0.717
+2025-07-18 21:41:34.388 | INFO     | info                           |       • Inference Time: Avg=12.41ms, Best=5.46ms
+2025-07-18 21:41:34.388 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 21:41:34.388 | INFO     | info                           |    Baselines established. Starting evolution.
+2025-07-18 21:41:34.389 | INFO     | info                           | 
+--- Starting Cultivation Loop ---
+2025-07-18 21:41:34.393 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 1 ==============================
+2025-07-18 21:41:34.393 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:41:34.395 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:41:34.395 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:41:34.396 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:41:34.409 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:41:34.409 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:41:34.409 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:41:34.409 | INFO     | info                           | GENERATION 1 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:41:34.409 | INFO     | info                           | GENERATION 1 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:41:34.410 | INFO     | info                           | GENERATION 1 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:41:34.410 | INFO     | info                           | ================================================================================
+2025-07-18 21:41:34.410 | INFO     | info                           | ================================================================================
+2025-07-18 21:41:34.410 | INFO     | info                           | ================================================================================
+2025-07-18 21:41:34.432 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:41:34.432 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:41:34.432 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:43:02.310 | INFO     | info                           |    Evaluated 64 cells using 'calculate_accuracy_fitness':
+2025-07-18 21:43:02.311 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.543, Best=0.760
+2025-07-18 21:43:02.311 | INFO     | info                           |       • Inference Time: Avg=40.09ms, Best=15.05ms
+2025-07-18 21:43:02.311 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 21:43:02.312 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell e6f026d1 with fitness 0.7597🏆🏆🏆🏆
+2025-07-18 21:43:02.316 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:43:02.423 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.539 ± 0.007[0m, [35m🌿 Diversity: 4.745[0m, [33m🧬 Genes: 147[0m
+2025-07-18 21:43:02.423 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 21:43:02.423 | INFO     | info                           |    Combined amplified stress: 0.009
+2025-07-18 21:43:02.424 | INFO     | info                           |    Current stress level: 0.009
+2025-07-18 21:43:02.424 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:43:02.426 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:43:02.427 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 21:43:04.050 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 21:43:07.270 | INFO     | info                           |    New population size: 96
+2025-07-18 21:43:07.270 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:43:07.394 | INFO     | info                           | 
+⏱️  Generation 1 completed in 92.98s. Population: 96
+2025-07-18 21:43:08.000 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:43:08.001 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 21:43:08.004 | INFO     | info                           |       • Mean Fitness: 0.539
+2025-07-18 21:43:08.004 | INFO     | info                           |       • Champion Fitness: 0.760
+2025-07-18 21:43:08.004 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 21:43:12.772 | INFO     | info                           |    Evaluated 64 cells using 'calculate_speed_fitness':
+2025-07-18 21:43:12.772 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.522, Best=0.752
+2025-07-18 21:43:12.773 | INFO     | info                           |       • Inference Time: Avg=45.20ms, Best=18.71ms
+2025-07-18 21:43:12.773 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 21:43:12.773 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell ada19a68 with fitness 0.0752🏆🏆🏆🏆
+2025-07-18 21:43:12.774 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:43:12.825 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.046 ± 0.001[0m, [35m🌿 Diversity: 4.769[0m, [33m🧬 Genes: 154[0m
+2025-07-18 21:43:12.825 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:43:12.825 | INFO     | info                           |    Combined amplified stress: 0.002
+2025-07-18 21:43:12.825 | INFO     | info                           |    Current stress level: 0.002
+2025-07-18 21:43:12.826 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:43:12.827 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:43:12.827 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 21:43:13.936 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 21:43:14.087 | INFO     | info                           |    Evaluated 64 cells using 'calculate_balanced_fitness':
+2025-07-18 21:43:14.088 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.539, Best=0.702
+2025-07-18 21:43:14.088 | INFO     | info                           |       • Inference Time: Avg=45.84ms, Best=24.73ms
+2025-07-18 21:43:14.088 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 21:43:14.088 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on GENERALIST (Balanced)! Cell 384599a9 with fitness 0.4210🏆🏆🏆🏆
+2025-07-18 21:43:14.089 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:43:14.159 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.322 ± 0.002[0m, [35m🌿 Diversity: 4.782[0m, [33m🧬 Genes: 155[0m
+2025-07-18 21:43:14.159 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:43:14.159 | INFO     | info                           |    Combined amplified stress: 0.003
+2025-07-18 21:43:14.159 | INFO     | info                           |    Current stress level: 0.003
+2025-07-18 21:43:14.159 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:43:14.161 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:43:14.161 | INFO     | info                           |    Selection complete: 44 survivors, 20 to be replaced.
+2025-07-18 21:43:15.521 | INFO     | info                           |    Replaced 20 cells with optimized cloning.
+2025-07-18 21:43:16.026 | INFO     | info                           |    New population size: 96
+2025-07-18 21:43:16.032 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:43:16.033 | INFO     | info                           | 
+⏱️  Generation 1 completed in 101.62s. Population: 96
+2025-07-18 21:43:16.818 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:43:16.819 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 21:43:16.820 | INFO     | info                           |       • Mean Fitness: 0.046
+2025-07-18 21:43:16.820 | INFO     | info                           |       • Champion Fitness: 0.075
+2025-07-18 21:43:16.820 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 21:43:17.713 | INFO     | info                           |    New population size: 96
+2025-07-18 21:43:17.713 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:43:17.714 | INFO     | info                           | 
+⏱️  Generation 1 completed in 103.30s. Population: 96
+2025-07-18 21:43:18.012 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:43:18.013 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 21:43:18.013 | INFO     | info                           |       • Mean Fitness: 0.322
+2025-07-18 21:43:18.013 | INFO     | info                           |       • Champion Fitness: 0.421
+2025-07-18 21:43:18.013 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 21:43:18.013 | INFO     | info                           | 
+   All islands have completed Generation 1.
+2025-07-18 21:43:18.018 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 2 ==============================
+2025-07-18 21:43:18.018 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:43:18.018 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:43:18.018 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:43:18.019 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:43:18.032 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:43:18.032 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:43:18.032 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:43:18.032 | INFO     | info                           | GENERATION 2 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:43:18.032 | INFO     | info                           | GENERATION 2 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:43:18.032 | INFO     | info                           | GENERATION 2 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:43:18.033 | INFO     | info                           | ================================================================================
+2025-07-18 21:43:18.033 | INFO     | info                           | ================================================================================
+2025-07-18 21:43:18.033 | INFO     | info                           | ================================================================================
+2025-07-18 21:43:18.059 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:43:18.059 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:43:18.059 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:45:42.888 | INFO     | info                           |    Evaluated 96 cells using 'calculate_speed_fitness':
+2025-07-18 21:45:42.893 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.580, Best=0.759
+2025-07-18 21:45:42.893 | INFO     | info                           |       • Inference Time: Avg=44.00ms, Best=16.86ms
+2025-07-18 21:45:42.894 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 21:45:42.894 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell a9a38dde with fitness 0.0759🏆🏆🏆🏆
+2025-07-18 21:45:42.896 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:45:43.029 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.058 ± 0.000[0m, [35m🌿 Diversity: 4.602[0m, [33m🧬 Genes: 132[0m
+2025-07-18 21:45:43.030 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:45:43.031 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-18 21:45:43.031 | INFO     | info                           |    Current stress level: 0.000
+2025-07-18 21:45:43.031 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:45:43.033 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:45:43.034 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 21:45:44.168 | INFO     | info                           |    Evaluated 96 cells using 'calculate_balanced_fitness':
+2025-07-18 21:45:44.169 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.580, Best=0.789
+2025-07-18 21:45:44.169 | INFO     | info                           |       • Inference Time: Avg=44.42ms, Best=21.87ms
+2025-07-18 21:45:44.170 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 21:45:44.171 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on GENERALIST (Balanced)! Cell 3a610ddd with fitness 0.4736🏆🏆🏆🏆
+2025-07-18 21:45:44.173 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:45:44.270 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.348 ± 0.002[0m, [35m🌿 Diversity: 4.668[0m, [33m🧬 Genes: 136[0m
+2025-07-18 21:45:44.270 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:45:44.271 | INFO     | info                           |    Combined amplified stress: 0.002
+2025-07-18 21:45:44.271 | INFO     | info                           |    Current stress level: 0.002
+2025-07-18 21:45:44.271 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:45:44.272 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:45:44.272 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 21:45:45.443 | INFO     | info                           |    Evaluated 96 cells using 'calculate_accuracy_fitness':
+2025-07-18 21:45:45.443 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.585, Best=0.792
+2025-07-18 21:45:45.444 | INFO     | info                           |       • Inference Time: Avg=44.83ms, Best=18.26ms
+2025-07-18 21:45:45.444 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 21:45:45.444 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell 238ada6d with fitness 0.7917🏆🏆🏆🏆
+2025-07-18 21:45:45.446 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:45:45.567 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.585 ± 0.006[0m, [35m🌿 Diversity: 4.565[0m, [33m🧬 Genes: 125[0m
+2025-07-18 21:45:45.568 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 21:45:45.568 | INFO     | info                           |    Combined amplified stress: 0.008
+2025-07-18 21:45:45.568 | INFO     | info                           |    Current stress level: 0.008
+2025-07-18 21:45:45.569 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:45:45.573 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:45:45.573 | INFO     | info                           |    Selection complete: 67 survivors, 29 to be replaced.
+2025-07-18 21:45:45.992 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 21:45:47.901 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 21:45:49.069 | INFO     | info                           |    New population size: 120
+2025-07-18 21:45:49.069 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:45:49.464 | INFO     | info                           |    - Cleared CUDA memory: 9.35 -> 9.37 GB
+2025-07-18 21:45:49.464 | INFO     | info                           |    - GPU utilization: 39.1%
+2025-07-18 21:45:49.465 | INFO     | info                           | 
+⏱️  Generation 2 completed in 151.43s. Population: 120
+2025-07-18 21:45:50.047 | INFO     | info                           |    Replaced 29 cells with optimized cloning.
+2025-07-18 21:45:50.443 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:45:50.444 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 21:45:50.445 | INFO     | info                           |       • Mean Fitness: 0.058
+2025-07-18 21:45:50.446 | INFO     | info                           |       • Champion Fitness: 0.076
+2025-07-18 21:45:50.447 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 21:45:50.974 | INFO     | info                           |    New population size: 120
+2025-07-18 21:45:50.975 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:45:51.401 | INFO     | info                           |    - Cleared CUDA memory: 10.01 -> 10.01 GB
+2025-07-18 21:45:51.402 | INFO     | info                           |    - GPU utilization: 41.7%
+2025-07-18 21:45:51.403 | INFO     | info                           | 
+⏱️  Generation 2 completed in 153.37s. Population: 120
+2025-07-18 21:45:51.975 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:45:51.976 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 21:45:51.976 | INFO     | info                           |       • Mean Fitness: 0.348
+2025-07-18 21:45:51.976 | INFO     | info                           |       • Champion Fitness: 0.474
+2025-07-18 21:45:51.977 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 21:45:52.096 | INFO     | info                           |    New population size: 120
+2025-07-18 21:45:52.096 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:45:52.524 | INFO     | info                           |    - Cleared CUDA memory: 10.42 -> 10.42 GB
+2025-07-18 21:45:52.524 | INFO     | info                           |    - GPU utilization: 43.4%
+2025-07-18 21:45:52.524 | INFO     | info                           | 
+⏱️  Generation 2 completed in 154.49s. Population: 120
+2025-07-18 21:45:52.949 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:45:52.949 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 21:45:52.949 | INFO     | info                           |       • Mean Fitness: 0.585
+2025-07-18 21:45:52.949 | INFO     | info                           |       • Champion Fitness: 0.792
+2025-07-18 21:45:52.949 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 21:45:52.949 | INFO     | info                           | 
+   All islands have completed Generation 2.
+2025-07-18 21:45:52.954 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 3 ==============================
+2025-07-18 21:45:52.954 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:45:52.954 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:45:52.959 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:45:52.960 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:45:52.971 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:45:52.971 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:45:52.971 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:45:52.971 | INFO     | info                           | GENERATION 3 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:45:52.972 | INFO     | info                           | GENERATION 3 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:45:52.972 | INFO     | info                           | GENERATION 3 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:45:52.972 | INFO     | info                           | ================================================================================
+2025-07-18 21:45:52.972 | INFO     | info                           | ================================================================================
+2025-07-18 21:45:52.972 | INFO     | info                           | ================================================================================
+2025-07-18 21:45:53.000 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:45:53.000 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:45:53.000 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:48:55.254 | INFO     | info                           |    Evaluated 120 cells using 'calculate_speed_fitness':
+2025-07-18 21:48:55.256 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.579, Best=0.801
+2025-07-18 21:48:55.257 | INFO     | info                           |       • Inference Time: Avg=44.93ms, Best=18.60ms
+2025-07-18 21:48:55.257 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 21:48:55.257 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on ENGINEER (Speed-focused)! Cell a9a38dde with fitness 0.0801🏆🏆🏆🏆
+2025-07-18 21:48:55.259 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:48:55.419 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.058 ± 0.000[0m, [35m🌿 Diversity: 4.549[0m, [33m🧬 Genes: 124[0m
+2025-07-18 21:48:55.420 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:48:55.420 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-18 21:48:55.420 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 21:48:55.420 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 21:48:55.421 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:48:55.423 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 21:48:55.423 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 21:48:55.423 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 21:48:55.877 | INFO     | info                           |    Evaluated 120 cells using 'calculate_accuracy_fitness':
+2025-07-18 21:48:55.877 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.584, Best=0.786
+2025-07-18 21:48:55.878 | INFO     | info                           |       • Inference Time: Avg=45.10ms, Best=25.45ms
+2025-07-18 21:48:55.878 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 21:48:55.878 | INFO     | info                           |    🏆 Current Hall of Fame Champion on SCIENTIST (Accuracy-focused): Cell 238ada6d with fitness 0.7917
+2025-07-18 21:48:55.880 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:48:56.028 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.584 ± 0.005[0m, [35m🌿 Diversity: 4.530[0m, [33m🧬 Genes: 121[0m
+2025-07-18 21:48:56.029 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 21:48:56.029 | INFO     | info                           |    Combined amplified stress: 0.007
+2025-07-18 21:48:56.029 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 21:48:56.029 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 21:48:56.029 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:48:56.031 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 21:48:56.031 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 21:48:56.032 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 21:48:56.518 | INFO     | info                           |    Evaluated 120 cells using 'calculate_balanced_fitness':
+2025-07-18 21:48:56.519 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.580, Best=0.754
+2025-07-18 21:48:56.519 | INFO     | info                           |       • Inference Time: Avg=45.27ms, Best=24.25ms
+2025-07-18 21:48:56.519 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 21:48:56.520 | INFO     | info                           |    🏆 Current Hall of Fame Champion on GENERALIST (Balanced): Cell 3a610ddd with fitness 0.4736
+2025-07-18 21:48:56.521 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 21:48:56.697 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.348 ± 0.001[0m, [35m🌿 Diversity: 4.599[0m, [33m🧬 Genes: 136[0m
+2025-07-18 21:48:56.697 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 21:48:56.697 | INFO     | info                           |    Combined amplified stress: 0.002
+2025-07-18 21:48:56.697 | INFO     | info                           | 
+🔥 DEBUG: Forcing maximum stress at Generation 3.
+2025-07-18 21:48:56.698 | INFO     | info                           |    Current stress level: 1.000
+2025-07-18 21:48:56.698 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 21:48:56.700 | INFO     | info                           | 
+⚠️⚠️   Phase 4: High Stress Response (stress=1.000)  ⚠️ ⚠️ 
+2025-07-18 21:48:56.700 | INFO     | info                           |    Executing stress response protocols:
+2025-07-18 21:48:56.701 | INFO     | info                           |    • Triggering transposition cascade (budgeted)
+2025-07-18 21:49:09.988 | INFO     | info                           |      - 42/42 mutations executed. Tokens remaining: 36.5
+2025-07-18 21:49:09.988 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 21:49:10.002 | INFO     | info                           |      - 10 genes epigenetically modified.
+2025-07-18 21:49:10.002 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 21:49:10.424 | INFO     | info                           |      - 39/39 mutations executed. Tokens remaining: 22.5
+2025-07-18 21:49:10.424 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 21:49:10.430 | INFO     | info                           |      - 16 genes epigenetically modified.
+2025-07-18 21:49:10.431 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 21:49:11.170 | INFO     | info                           |      - 48/48 mutations executed. Tokens remaining: 33.0
+2025-07-18 21:49:11.170 | INFO     | info                           |    • Applying epigenetic modifications
+2025-07-18 21:49:11.173 | INFO     | info                           |      - 15 genes epigenetically modified.
+2025-07-18 21:49:11.174 | INFO     | info                           |    • Facilitating horizontal gene transfer
+2025-07-18 21:49:17.792 | WARNING  | warning                        | Gene 6 (J3-ac0c1cc2) on cpu, moving to cuda:0
+2025-07-18 21:49:26.027 | WARNING  | warning                        | Gene 8 (J9-e92098e5) on cpu, moving to cuda:0
+2025-07-18 21:49:44.829 | WARNING  | warning                        | Gene 6 (V89-3be226cd) on cpu, moving to cuda:0
+2025-07-18 21:49:49.789 | WARNING  | warning                        | Gene 9 (S14-4b252065) on cpu, moving to cuda:0
+2025-07-18 21:49:51.431 | WARNING  | warning                        | Gene 9 (J6-fe2146fd) on cpu, moving to cuda:0
+2025-07-18 21:49:52.924 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 21:49:52.925 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:49:52.925 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 21:49:56.120 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 21:49:56.120 | INFO     | info                           |    New population size: 120
+2025-07-18 21:49:56.120 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:49:56.123 | INFO     | info                           | 
+⏱️  Generation 3 completed in 243.15s. Population: 120
+2025-07-18 21:49:56.682 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 21:49:56.683 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:49:56.683 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 21:49:56.994 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:49:56.995 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 21:49:56.996 | INFO     | info                           |       • Mean Fitness: 0.348
+2025-07-18 21:49:56.996 | INFO     | info                           |       • Champion Fitness: 0.474
+2025-07-18 21:49:56.996 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 21:49:58.034 | INFO     | info                           |      - 0 successful gene transfers.
+2025-07-18 21:49:58.035 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 21:49:58.035 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 21:49:58.754 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 21:49:58.754 | INFO     | info                           |    New population size: 120
+2025-07-18 21:49:58.755 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:49:58.757 | INFO     | info                           | 
+⏱️  Generation 3 completed in 245.79s. Population: 120
+2025-07-18 21:49:59.244 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:49:59.244 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 21:49:59.244 | INFO     | info                           |       • Mean Fitness: 0.058
+2025-07-18 21:49:59.245 | INFO     | info                           |       • Champion Fitness: 0.080
+2025-07-18 21:49:59.245 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 21:49:59.885 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 21:49:59.885 | INFO     | info                           |    New population size: 120
+2025-07-18 21:49:59.885 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 21:49:59.888 | INFO     | info                           | 
+⏱️  Generation 3 completed in 246.92s. Population: 120
+2025-07-18 21:50:00.256 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 21:50:00.257 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 21:50:00.257 | INFO     | info                           |       • Mean Fitness: 0.584
+2025-07-18 21:50:00.257 | INFO     | info                           |       • Champion Fitness: 0.792
+2025-07-18 21:50:00.257 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 21:50:00.258 | INFO     | info                           | 
+   All islands have completed Generation 3.
+2025-07-18 21:50:00.258 | INFO     | info                           | 
+========================= 🏆 ARCHIPELAGO BREEDING SUMMIT at Generation 3 🏆 =========================
+2025-07-18 21:50:00.258 | INFO     | info                           |    Champion from Island 1: Cell 238ada6d (Fitness: 0.7917) on cuda:0
+2025-07-18 21:50:00.258 | INFO     | info                           |    Champion from Island 2: Cell a9a38dde (Fitness: 0.0801) on cuda:0
+2025-07-18 21:50:00.258 | INFO     | info                           |    Champion from Island 3: Cell 3a610ddd (Fitness: 0.4736) on cuda:0
+2025-07-18 21:50:00.258 | INFO     | info                           | 
+   Breeding Champions from Island 1 and Island 2...
+2025-07-18 21:50:00.259 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 21:50:00.261 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:50:00.286 | INFO     | info                           |    Injecting Perfect Spawn a82fe944 into Island 3 (on cuda:0).
+2025-07-18 21:50:00.286 | INFO     | info                           |    It replaces the worst cell 7da963b6 (which had no fitness history).
+2025-07-18 21:50:00.286 | INFO     | info                           | 
+   Breeding Champions from Island 2 and Island 3...
+2025-07-18 21:50:00.287 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 1.
+2025-07-18 21:50:00.290 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:50:00.320 | INFO     | info                           |    Injecting Perfect Spawn 78be9267 into Island 1 (on cuda:0).
+2025-07-18 21:50:00.320 | INFO     | info                           |    It replaces the worst cell dffcf20f (which had no fitness history).
+2025-07-18 21:50:00.320 | INFO     | info                           | 
+   Breeding Champions from Island 3 and Island 1...
+2025-07-18 21:50:00.321 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 21:50:00.324 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:50:00.353 | INFO     | info                           |    Injecting Perfect Spawn d0ab3df5 into Island 2 (on cuda:0).
+2025-07-18 21:50:00.353 | INFO     | info                           |    It replaces the worst cell b2c31012 (which had no fitness history).
+2025-07-18 21:50:00.360 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 4 ==============================
+2025-07-18 21:50:00.361 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:50:00.361 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:50:00.361 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:50:00.361 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:50:00.391 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:50:00.392 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:50:00.392 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:50:00.394 | INFO     | info                           | GENERATION 4 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:50:00.394 | INFO     | info                           | GENERATION 4 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:50:00.394 | INFO     | info                           | GENERATION 4 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:50:00.394 | INFO     | info                           | ================================================================================
+2025-07-18 21:50:00.394 | INFO     | info                           | ================================================================================
+2025-07-18 21:50:00.394 | INFO     | info                           | ================================================================================
+2025-07-18 21:50:00.426 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:50:00.426 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:50:00.426 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:50:20.769 | WARNING  | warning                        | Gene 9 (V33-1f630126) on cpu, moving to cuda:0
+2025-07-18 21:50:30.715 | WARNING  | warning                        | Gene 8 (V79-fb6624f1) on cpu, moving to cuda:0
+2025-07-18 21:51:01.585 | WARNING  | warning                        | Gene 3 (V36-78562d64) on cpu, moving to cuda:0
+2025-07-18 21:51:17.289 | WARNING  | warning                        | Gene 8 (V18-4d37d919) on cpu, moving to cuda:0
+2025-07-18 21:51:32.087 | WARNING  | warning                        | Gene 8 (S11-be67f5da) on cpu, moving to cuda:0
+2025-07-18 21:51:36.221 | WARNING  | warning                        | Gene 7 (D42-9f06b21b) on cpu, moving to cuda:0
+2025-07-18 21:51:44.256 | WARNING  | warning                        | Gene 6 (J6-768a1346) on cpu, moving to cuda:0
+2025-07-18 21:53:00.659 | WARNING  | warning                        | Gene 0 (V8-ff3835c1) on cuda:0, moving to cpu
+2025-07-18 21:53:00.961 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:53:04.848 | WARNING  | warning                        | Gene 0 (V1-04702d9b) on cuda:0, moving to cpu
+2025-07-18 21:53:05.100 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:53:07.638 | WARNING  | warning                        | Gene 0 (V1-ea2ff20a) on cuda:0, moving to cpu
+2025-07-18 21:53:07.807 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:53:07.807 | INFO     | info                           | 
+   All islands have completed Generation 4.
+2025-07-18 21:53:07.811 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 5 ==============================
+2025-07-18 21:53:07.812 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:53:07.812 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:53:07.815 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:53:07.816 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:53:07.825 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:53:07.825 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:53:07.825 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:53:07.828 | INFO     | info                           | GENERATION 5 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:53:07.828 | INFO     | info                           | GENERATION 5 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:53:07.828 | INFO     | info                           | GENERATION 5 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:53:07.829 | INFO     | info                           | ================================================================================
+2025-07-18 21:53:07.829 | INFO     | info                           | ================================================================================
+2025-07-18 21:53:07.829 | INFO     | info                           | ================================================================================
+2025-07-18 21:53:07.860 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:53:07.860 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:53:07.861 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:55:55.096 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:55:58.731 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:56:01.005 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:56:01.005 | INFO     | info                           | 
+   All islands have completed Generation 5.
+2025-07-18 21:56:01.011 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 6 ==============================
+2025-07-18 21:56:01.011 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:56:01.011 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:56:01.012 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:56:01.012 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:56:01.025 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:56:01.025 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:56:01.025 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:56:01.028 | INFO     | info                           | GENERATION 6 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:56:01.028 | INFO     | info                           | GENERATION 6 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:56:01.028 | INFO     | info                           | GENERATION 6 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:56:01.028 | INFO     | info                           | ================================================================================
+2025-07-18 21:56:01.029 | INFO     | info                           | ================================================================================
+2025-07-18 21:56:01.029 | INFO     | info                           | ================================================================================
+2025-07-18 21:56:01.051 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:56:01.051 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:56:01.051 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:58:54.723 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:58:57.928 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:58:58.568 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 21:58:58.568 | INFO     | info                           | 
+   All islands have completed Generation 6.
+2025-07-18 21:58:58.568 | INFO     | info                           | 
+========================= 🏆 ARCHIPELAGO BREEDING SUMMIT at Generation 6 🏆 =========================
+2025-07-18 21:58:58.569 | INFO     | info                           |    Champion from Island 1: Cell 238ada6d (Fitness: 0.7917) on cuda:0
+2025-07-18 21:58:58.569 | INFO     | info                           |    Champion from Island 2: Cell a9a38dde (Fitness: 0.0801) on cuda:0
+2025-07-18 21:58:58.569 | INFO     | info                           |    Champion from Island 3: Cell 3a610ddd (Fitness: 0.4736) on cuda:0
+2025-07-18 21:58:58.569 | INFO     | info                           | 
+   Breeding Champions from Island 1 and Island 2...
+2025-07-18 21:58:58.569 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 21:58:58.571 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:58:58.599 | INFO     | info                           |    Injecting Perfect Spawn da29f306 into Island 3 (on cuda:0).
+2025-07-18 21:58:58.599 | INFO     | info                           |    It replaces the worst cell a82fe944 (which had no fitness history).
+2025-07-18 21:58:58.599 | INFO     | info                           | 
+   Breeding Champions from Island 2 and Island 3...
+2025-07-18 21:58:58.600 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 1.
+2025-07-18 21:58:58.603 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:58:58.631 | INFO     | info                           |    Injecting Perfect Spawn e676ced8 into Island 1 (on cuda:0).
+2025-07-18 21:58:58.632 | INFO     | info                           |    It replaces the worst cell 78be9267 (which had no fitness history).
+2025-07-18 21:58:58.632 | INFO     | info                           | 
+   Breeding Champions from Island 3 and Island 1...
+2025-07-18 21:58:58.633 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 21:58:58.635 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 21:58:58.664 | INFO     | info                           |    Injecting Perfect Spawn be00a165 into Island 2 (on cuda:0).
+2025-07-18 21:58:58.665 | INFO     | info                           |    It replaces the worst cell d0ab3df5 (which had no fitness history).
+2025-07-18 21:58:58.672 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 7 ==============================
+2025-07-18 21:58:58.672 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 21:58:58.672 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 21:58:58.673 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 21:58:58.673 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 21:58:58.689 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:58:58.689 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:58:58.689 | INFO     | info                           | 
+================================================================================
+2025-07-18 21:58:58.693 | INFO     | info                           | GENERATION 7 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 21:58:58.693 | INFO     | info                           | GENERATION 7 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 21:58:58.693 | INFO     | info                           | GENERATION 7 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 21:58:58.693 | INFO     | info                           | ================================================================================
+2025-07-18 21:58:58.694 | INFO     | info                           | ================================================================================
+2025-07-18 21:58:58.694 | INFO     | info                           | ================================================================================
+2025-07-18 21:58:58.717 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:58:58.717 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 21:58:58.718 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:01:46.865 | WARNING  | warning                        | Gene 0 (V1-b70fe005) on cuda:0, moving to cpu
+2025-07-18 22:01:47.251 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:01:50.248 | WARNING  | warning                        | Gene 0 (V8-877672c8) on cuda:0, moving to cpu
+2025-07-18 22:01:50.621 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:01:51.122 | WARNING  | warning                        | Gene 0 (V1-5540f1c2) on cuda:0, moving to cpu
+2025-07-18 22:01:51.278 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:01:51.279 | INFO     | info                           | 
+   All islands have completed Generation 7.
+2025-07-18 22:01:51.284 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 8 ==============================
+2025-07-18 22:01:51.284 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 22:01:51.284 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 22:01:51.285 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 22:01:51.285 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 22:01:51.298 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:01:51.299 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:01:51.299 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:01:51.299 | INFO     | info                           | GENERATION 8 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 22:01:51.302 | INFO     | info                           | GENERATION 8 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 22:01:51.302 | INFO     | info                           | GENERATION 8 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 22:01:51.302 | INFO     | info                           | ================================================================================
+2025-07-18 22:01:51.302 | INFO     | info                           | ================================================================================
+2025-07-18 22:01:51.302 | INFO     | info                           | ================================================================================
+2025-07-18 22:01:51.329 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:01:51.329 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:01:51.329 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:04:44.617 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:04:47.411 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:04:48.921 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:04:48.921 | INFO     | info                           | 
+   All islands have completed Generation 8.
+2025-07-18 22:04:48.928 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 9 ==============================
+2025-07-18 22:04:48.929 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 22:04:48.929 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 22:04:48.929 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 22:04:48.930 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 22:04:48.948 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:04:48.948 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:04:48.949 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:04:48.952 | INFO     | info                           | GENERATION 9 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 22:04:48.952 | INFO     | info                           | GENERATION 9 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 22:04:48.952 | INFO     | info                           | GENERATION 9 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 22:04:48.952 | INFO     | info                           | ================================================================================
+2025-07-18 22:04:48.953 | INFO     | info                           | ================================================================================
+2025-07-18 22:04:48.953 | INFO     | info                           | ================================================================================
+2025-07-18 22:04:48.969 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:04:48.970 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:04:48.970 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:07:38.497 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:07:39.610 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:07:41.607 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:07:41.608 | INFO     | info                           | 
+   All islands have completed Generation 9.
+2025-07-18 22:07:41.608 | INFO     | info                           | 
+========================= 🏆 ARCHIPELAGO BREEDING SUMMIT at Generation 9 🏆 =========================
+2025-07-18 22:07:41.608 | INFO     | info                           |    Champion from Island 1: Cell 238ada6d (Fitness: 0.7917) on cuda:0
+2025-07-18 22:07:41.608 | INFO     | info                           |    Champion from Island 2: Cell a9a38dde (Fitness: 0.0801) on cuda:0
+2025-07-18 22:07:41.608 | INFO     | info                           |    Champion from Island 3: Cell 3a610ddd (Fitness: 0.4736) on cuda:0
+2025-07-18 22:07:41.608 | INFO     | info                           | 
+   Breeding Champions from Island 1 and Island 2...
+2025-07-18 22:07:41.609 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 22:07:41.611 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 22:07:41.637 | INFO     | info                           |    Injecting Perfect Spawn 7341876d into Island 3 (on cuda:0).
+2025-07-18 22:07:41.637 | INFO     | info                           |    It replaces the worst cell da29f306 (which had no fitness history).
+2025-07-18 22:07:41.638 | INFO     | info                           | 
+   Breeding Champions from Island 2 and Island 3...
+2025-07-18 22:07:41.638 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 1.
+2025-07-18 22:07:41.641 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 22:07:41.671 | INFO     | info                           |    Injecting Perfect Spawn 67a2cfa9 into Island 1 (on cuda:0).
+2025-07-18 22:07:41.671 | INFO     | info                           |    It replaces the worst cell e676ced8 (which had no fitness history).
+2025-07-18 22:07:41.672 | INFO     | info                           | 
+   Breeding Champions from Island 3 and Island 1...
+2025-07-18 22:07:41.673 | INFO     | info                           |    [Breeder] Child inherits primary architecture from Parent 2.
+2025-07-18 22:07:41.675 | INFO     | info                           |    ✨ Perfect Spawn Created: A new Hybrid gene was bred.
+2025-07-18 22:07:41.704 | INFO     | info                           |    Injecting Perfect Spawn bd2509da into Island 2 (on cuda:0).
+2025-07-18 22:07:41.704 | INFO     | info                           |    It replaces the worst cell be00a165 (which had no fitness history).
+2025-07-18 22:07:41.711 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 10 ==============================
+2025-07-18 22:07:41.711 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 22:07:41.711 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 22:07:41.711 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 22:07:41.712 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 22:07:41.730 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:07:41.730 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:07:41.730 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:07:41.731 | INFO     | info                           | GENERATION 10 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 22:07:41.734 | INFO     | info                           | GENERATION 10 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 22:07:41.734 | INFO     | info                           | GENERATION 10 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 22:07:41.734 | INFO     | info                           | ================================================================================
+2025-07-18 22:07:41.734 | INFO     | info                           | ================================================================================
+2025-07-18 22:07:41.734 | INFO     | info                           | ================================================================================
+2025-07-18 22:07:41.758 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:07:41.758 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:07:41.759 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:10:37.348 | WARNING  | warning                        | Gene 0 (V8-0660c869) on cuda:0, moving to cpu
+2025-07-18 22:10:37.765 | ERROR    | error                          |    Island 'ENGINEER (Speed-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:10:37.926 | WARNING  | warning                        | Gene 0 (V1-70b3ebee) on cuda:0, moving to cpu
+2025-07-18 22:10:38.261 | ERROR    | error                          |    Island 'GENERALIST (Balanced)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:10:39.933 | WARNING  | warning                        | Gene 0 (V1-34dd9c24) on cuda:0, moving to cpu
+2025-07-18 22:10:40.091 | ERROR    | error                          |    Island 'SCIENTIST (Accuracy-focused)' evolution task failed: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Traceback (most recent call last):
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 137, in evolve_generation
+    metrics = future.result()
+              ^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/root/miniconda3/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/advanced/archipelago_germinal_center.py", line 114, in _evolve_island_worker
+    return island_gc.evolve_generation(antigen_batch_device, fitness_function)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/production_germinal_center.py", line 1197, in evolve_generation
+    fitness_scores = self.batch_evaluator.evaluate_population_batch(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/te_ai/scripts/core/parallel_batch_evaluation.py", line 79, in evaluate_population_batch
+    loss = F.mse_loss(predicted_score.squeeze(), true_score)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/wes/desktop/new_multi_omics_july10/venv/lib/python3.12/site-packages/torch/nn/functional.py", line 3905, in mse_loss
+    return torch._C._nn.mse_loss(
+           ^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+2025-07-18 22:10:40.091 | INFO     | info                           | 
+   All islands have completed Generation 10.
+2025-07-18 22:10:40.091 | INFO     | info                           | 
+⛵ MIGRATION EVENT at Generation 10 ⛵
+2025-07-18 22:10:40.092 | INFO     | info                           |    🧪 SCIENTIST (Accuracy-focused) (on cuda:0) is sending its top 5 cells.
+2025-07-18 22:10:40.092 | INFO     | info                           |    ⚡ ENGINEER (Speed-focused) (on cuda:0) is sending its top 5 cells.
+2025-07-18 22:10:40.092 | INFO     | info                           |    ⚖️ GENERALIST (Balanced) (on cuda:0) is sending its top 5 cells.
+2025-07-18 22:10:40.292 | INFO     | info                           |    🧪 SCIENTIST (Accuracy-focused) (on cuda:0) received 5 new cells.
+2025-07-18 22:10:40.508 | INFO     | info                           |    ⚡ ENGINEER (Speed-focused) (on cuda:0) received 5 new cells.
+2025-07-18 22:10:40.726 | INFO     | info                           |    ⚖️ GENERALIST (Balanced) (on cuda:0) received 5 new cells.
+2025-07-18 22:10:40.734 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 11 ==============================
+2025-07-18 22:10:40.735 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 22:10:40.735 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 22:10:40.735 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 22:10:40.736 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 22:10:40.750 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:10:40.751 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:10:40.751 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:10:40.753 | INFO     | info                           | GENERATION 11 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 22:10:40.754 | INFO     | info                           | GENERATION 11 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 22:10:40.755 | INFO     | info                           | GENERATION 11 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 22:10:40.755 | INFO     | info                           | ================================================================================
+2025-07-18 22:10:40.755 | INFO     | info                           | ================================================================================
+2025-07-18 22:10:40.755 | INFO     | info                           | ================================================================================
+2025-07-18 22:10:40.769 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:10:40.769 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:10:40.774 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:13:31.254 | INFO     | info                           |    Evaluated 120 cells using 'calculate_speed_fitness':
+2025-07-18 22:13:31.256 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.583, Best=0.765
+2025-07-18 22:13:31.256 | INFO     | info                           |       • Inference Time: Avg=41.77ms, Best=18.39ms
+2025-07-18 22:13:31.256 | INFO     | info                           |       • Speed Focus: Prioritizing inference time (90% weight)
+2025-07-18 22:13:31.257 | INFO     | info                           |    🏆 Current Hall of Fame Champion on ENGINEER (Speed-focused): Cell a9a38dde with fitness 0.0801
+2025-07-18 22:13:31.264 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 22:13:31.459 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.058 ± 0.000[0m, [35m🌿 Diversity: 4.528[0m, [33m🧬 Genes: 128[0m
+2025-07-18 22:13:31.459 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 22:13:31.459 | INFO     | info                           |    Combined amplified stress: 0.000
+2025-07-18 22:13:31.460 | INFO     | info                           |    Current stress level: 0.000
+2025-07-18 22:13:31.460 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 22:13:31.462 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 22:13:31.462 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 22:13:34.682 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 22:13:34.682 | INFO     | info                           |    New population size: 120
+2025-07-18 22:13:34.682 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 22:13:34.687 | INFO     | info                           | 
+⏱️  Generation 11 completed in 173.94s. Population: 120
+2025-07-18 22:13:35.414 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 22:13:35.415 | INFO     | info                           | 
+   ⚡ Island 'ENGINEER (Speed-focused)' completed:
+2025-07-18 22:13:35.415 | INFO     | info                           |       • Mean Fitness: 0.058
+2025-07-18 22:13:35.416 | INFO     | info                           |       • Champion Fitness: 0.080
+2025-07-18 22:13:35.417 | INFO     | info                           |       • Focus Metric (Speed): Population optimizing for minimal inference time
+2025-07-18 22:13:36.705 | INFO     | info                           |    Evaluated 120 cells using 'calculate_balanced_fitness':
+2025-07-18 22:13:36.706 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.581, Best=0.772
+2025-07-18 22:13:36.706 | INFO     | info                           |       • Inference Time: Avg=43.19ms, Best=17.19ms
+2025-07-18 22:13:36.706 | INFO     | info                           |       • Balanced Focus: 60% accuracy, 40% speed
+2025-07-18 22:13:36.707 | INFO     | info                           |    🏆 Current Hall of Fame Champion on GENERALIST (Balanced): Cell 3a610ddd with fitness 0.4736
+2025-07-18 22:13:36.709 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 22:13:36.818 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.348 ± 0.002[0m, [35m🌿 Diversity: 4.549[0m, [33m🧬 Genes: 134[0m
+2025-07-18 22:13:36.819 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.00, phase=0.00
+2025-07-18 22:13:36.819 | INFO     | info                           |    Combined amplified stress: 0.002
+2025-07-18 22:13:36.819 | INFO     | info                           |    Current stress level: 0.002
+2025-07-18 22:13:36.819 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 22:13:36.821 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 22:13:36.821 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 22:13:38.110 | INFO     | info                           |    Evaluated 120 cells using 'calculate_accuracy_fitness':
+2025-07-18 22:13:38.110 | INFO     | info                           |       • Raw Accuracy Metrics: Avg=0.585, Best=0.798
+2025-07-18 22:13:38.110 | INFO     | info                           |       • Inference Time: Avg=43.56ms, Best=18.52ms
+2025-07-18 22:13:38.110 | INFO     | info                           |       • Accuracy Focus: Prioritizing prediction accuracy (100% weight)
+2025-07-18 22:13:38.111 | INFO     | info                           |    🏆🏆🏆🏆 New Hall of Fame Champion on SCIENTIST (Accuracy-focused)! Cell 238ada6d with fitness 0.7976🏆🏆🏆🏆
+2025-07-18 22:13:38.113 | INFO     | info                           | 
+📈 Phase 2: Metrics and Stress Detection
+2025-07-18 22:13:38.223 | INFO     | info                           |    [1m📊 Metrics:[0m [36m💪 Fitness: 0.585 ± 0.005[0m, [35m🌿 Diversity: 4.528[0m, [33m🧬 Genes: 127[0m
+2025-07-18 22:13:38.224 | INFO     | info                           |    Stress factors: stagnation=N/A, diversity=0.00, variance=0.01, phase=0.00
+2025-07-18 22:13:38.224 | INFO     | info                           |    Combined amplified stress: 0.006
+2025-07-18 22:13:38.224 | INFO     | info                           |    Current stress level: 0.006
+2025-07-18 22:13:38.224 | INFO     | info                           | 
+🔍🔍  Phase 3: Phase Transition Analysis  🔍🔍
+2025-07-18 22:13:38.226 | INFO     | info                           | 
+🧬🧬 Phase 5: Selection and Reproduction (Optimized) 🧬🧬
+2025-07-18 22:13:38.226 | INFO     | info                           |    Selection complete: 84 survivors, 36 to be replaced.
+2025-07-18 22:13:40.993 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 22:13:40.993 | INFO     | info                           |    New population size: 120
+2025-07-18 22:13:40.994 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 22:13:40.997 | INFO     | info                           | 
+⏱️  Generation 11 completed in 180.25s. Population: 120
+2025-07-18 22:13:41.562 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 22:13:41.562 | INFO     | info                           | 
+   ⚖️ Island 'GENERALIST (Balanced)' completed:
+2025-07-18 22:13:41.563 | INFO     | info                           |       • Mean Fitness: 0.348
+2025-07-18 22:13:41.563 | INFO     | info                           |       • Champion Fitness: 0.474
+2025-07-18 22:13:41.564 | INFO     | info                           |       • Focus Metric (Balanced): Population balancing speed and accuracy
+2025-07-18 22:13:42.310 | INFO     | info                           |    Replaced 36 cells with optimized cloning.
+2025-07-18 22:13:42.310 | INFO     | info                           |    New population size: 120
+2025-07-18 22:13:42.311 | INFO     | info                           |    - Parallel batch cache cleared.
+2025-07-18 22:13:42.313 | INFO     | info                           | 
+⏱️  Generation 11 completed in 181.56s. Population: 120
+2025-07-18 22:13:42.665 | INFO     | info                           | write_visualization_state completed successfully
+2025-07-18 22:13:42.665 | INFO     | info                           | 
+   🧪 Island 'SCIENTIST (Accuracy-focused)' completed:
+2025-07-18 22:13:42.665 | INFO     | info                           |       • Mean Fitness: 0.585
+2025-07-18 22:13:42.666 | INFO     | info                           |       • Champion Fitness: 0.798
+2025-07-18 22:13:42.666 | INFO     | info                           |       • Focus Metric (Accuracy): Population optimizing for prediction accuracy
+2025-07-18 22:13:42.666 | INFO     | info                           | 
+   All islands have completed Generation 11.
+2025-07-18 22:13:42.671 | INFO     | info                           | 
+============================== ARCHIPELAGO GENERATION 12 ==============================
+2025-07-18 22:13:42.671 | INFO     | info                           |    🧪 Submitting task for 'SCIENTIST (Accuracy-focused)' Island on cuda:0...
+2025-07-18 22:13:42.671 | INFO     | info                           |    ⚡ Submitting task for 'ENGINEER (Speed-focused)' Island on cuda:0...
+2025-07-18 22:13:42.671 | INFO     | info                           |    ⚖️ Submitting task for 'GENERALIST (Balanced)' Island on cuda:0...
+2025-07-18 22:13:42.672 | INFO     | info                           |    All island tasks submitted. Waiting for completion...
+2025-07-18 22:13:42.700 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:13:42.701 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:13:42.701 | INFO     | info                           | 
+================================================================================
+2025-07-18 22:13:42.703 | INFO     | info                           | GENERATION 12 on cuda:0 [⚖️ GENERALIST (Balanced)]
+2025-07-18 22:13:42.703 | INFO     | info                           | GENERATION 12 on cuda:0 [🧪 SCIENTIST (Accuracy-focused)]
+2025-07-18 22:13:42.703 | INFO     | info                           | GENERATION 12 on cuda:0 [⚡ ENGINEER (Speed-focused)]
+2025-07-18 22:13:42.703 | INFO     | info                           | ================================================================================
+2025-07-18 22:13:42.704 | INFO     | info                           | ================================================================================
+2025-07-18 22:13:42.704 | INFO     | info                           | ================================================================================
+2025-07-18 22:13:42.731 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:13:42.731 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:13:42.734 | INFO     | info                           | 
+📊 Phase 1: Fitness Evaluation (Optimized)
+2025-07-18 22:15:02.804 | INFO     | info                           | Shutting down the Archipelago's thread pool executor...

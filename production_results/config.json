@@ -122,12 +122,14 @@
   "intelligent_recombination_rate": 0.05,
   "dataset_name": "bbbp",
   "generations": 30,
-  "num_islands": 3,
+  "num_islands": 5,
   "population_per_island": 128,
   "island_devices": [
     "cuda:0",
     "cuda:0",
-    "cuda:0"
+    "cuda:0",
+    "cuda:0",
+    "cuda:1"
   ],
   "num_migrants": 5,
   "breeding_summit_frequency": 3,
@@ -135,7 +137,9 @@
   "island_specializations": {
     "accuracy": "cuda:0",
     "speed": "cuda:0",
-    "balanced": "cuda:0"
+    "constrained": "cuda:0",
+    "novelty": "cuda:0",
+    "robustness": "cuda:1"
   },
   "deepchem_data_dir": "deepchem_data"
 }
